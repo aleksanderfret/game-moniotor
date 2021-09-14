@@ -40,7 +40,7 @@
     "lint:fix": "lerna run lint:fix",
     "outdated": "npx ts-node -T scripts/runInDirs.ts outdated",
     "prepare": "husky install",
-    "prepare-commit-msg": "node scripts/prepare-commit-message.ts",
+    "prepare-commit-msg": "npx ts-node -T scripts/prepare-commit-msg.ts",
     "pre-commit": "lerna run pre-commit --concurrency 1 --stream",
     "pre-push": "lerna run pre-push --concurrency 1 --stream",
     "reset": "lerna clean --yes && npm ci",
