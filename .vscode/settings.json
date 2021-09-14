@@ -1,0 +1,50 @@
+{
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.workingDirectories": [
+    {
+      "directory": "./packages/browser",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "./packages/server",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "./packages/desktop",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "./packages/mobile",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "./packages/auth",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "./packages/mailer",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "./packages/scheduler",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "./scripts",
+      "changeProcessCWD": true
+    }
+  ],
+  "eslint.trace.server": "off",
+  "js/ts.implicitProjectConfig.experimentalDecorators": true,
+  "cSpell.words": ["varchar"],
+  "prettier.arrowParens": "avoid",
+  "prettier.tabWidth": 2,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "none",
+  "typescript.tsdk": "node_modules\\typescript\\lib"
+}
