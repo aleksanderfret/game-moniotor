@@ -150,6 +150,7 @@
   },
   "settings": {
     "import/external-module-folders": ["node_modules"],
+    "import/ignore": ["node_modules"],
     "import/resolver": {
       "node": {},
       "webpack": {
