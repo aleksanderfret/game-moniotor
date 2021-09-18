@@ -20,7 +20,6 @@
     "build": "webpack --progress --config ./webpack.config.prod.ts",
     "check": "npm-run-all lint format stylelint test compile",
     "compile": "tsc -p ./tsconfig.prod.json",
-    "ci": "npm ci",
     "format": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\"",
     "format:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "libs": "license-checker-rseidelsohn --json --out libraries.json",
