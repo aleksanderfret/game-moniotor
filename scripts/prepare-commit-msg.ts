@@ -31,7 +31,6 @@ const editCommitMessage = async (messageFile: string) => {
   try {
     const branchName = await getCurrentBranch();
 
-    console.log(branchName, isBranchInvalid(branchName));
     if (isBranchInvalid(branchName)) {
       return;
     }
