@@ -35,3 +35,7 @@
  "stylelint:fix": lint and fix all style files,
  "test": run tests or all packages
 ```
+
+## Third party libraries
+
+[List of libraries we use](https://github.com/aleksanderfret/game-moniotor/blob/master/third-party-libraries.md)
