@@ -1,5 +1,6 @@
 import autoprefixer from 'autoprefixer';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebPackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import { Configuration as WebpackConfiguration } from 'webpack';
@@ -80,7 +81,14 @@ const config: IConfiguration = {
   },
   plugins: [
     new BundleAnalyzerPlugin(),
-    new HtmlWebPackPlugin({ template: path.resolve('public/index.html') })
+    new HtmlWebPackPlugin({ template: path.resolve('public/index.html') }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'public/icons', to: 'public/icons' },
+        { from: 'public/site.webmanifest', to: 'site.webmanifest' },
+        { from: 'public/browserconfig.xml', to: 'browserconfig.xml' }
+      ]
+    })
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],

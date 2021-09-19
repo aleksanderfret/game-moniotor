@@ -1,6 +1,6 @@
 import autoprefixer from 'autoprefixer';
 import { Configuration as WebpackConfiguration } from 'webpack';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebPackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
@@ -53,7 +53,6 @@ const config: WebpackConfiguration = {
   optimization: {
     minimize: true,
     minimizer: [
-      new BundleAnalyzerPlugin(),
       new TerserPlugin({
         parallel: true
       })
@@ -61,13 +60,20 @@ const config: WebpackConfiguration = {
   },
   output: {
     clean: true,
-    filename: 'bundle.[hash].js',
+    filename: 'index.[hash].js',
     path: path.resolve(__dirname, '../../dist/public'),
     publicPath: '/'
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'style.[hash].css'
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'public/icons', to: 'icons' },
+        { from: 'public/site.webmanifest', to: 'site.webmanifest' },
+        { from: 'public/browserconfig.xml', to: 'browserconfig.xml' }
+      ]
     }),
     new HtmlWebPackPlugin({ template: path.resolve('public/index.html') })
   ],
