@@ -552,6 +552,9 @@
 * **@types/cookie-parser@1<i></i>.4<i></i>.2**
   - license: MIT
   - repository: https://github.com/DefinitelyTyped/DefinitelyTyped
+* **@types/copy-webpack-plugin@8<i></i>.0<i></i>.1**
+  - license: MIT
+  - repository: https://github.com/DefinitelyTyped/DefinitelyTyped
 * **@types/cors@2<i></i>.8<i></i>.12**
   - license: MIT
   - repository: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -621,7 +624,7 @@
 * **@types/minimist@1<i></i>.2<i></i>.2**
   - license: MIT
   - repository: https://github.com/DefinitelyTyped/DefinitelyTyped
-* **@types/node@16<i></i>.9<i></i>.2**
+* **@types/node@16<i></i>.9<i></i>.3**
   - license: MIT
   - repository: https://github.com/DefinitelyTyped/DefinitelyTyped
 * **@types/normalize-package-data@2<i></i>.4<i></i>.1**
@@ -1320,6 +1323,9 @@
 * **cookie@0<i></i>.4<i></i>.0**
   - license: MIT
   - repository: https://github.com/jshttp/cookie
+* **copy-webpack-plugin@9<i></i>.0<i></i>.1**
+  - license: MIT
+  - repository: https://github.com/webpack-contrib/copy-webpack-plugin
 * **core-js-pure@3<i></i>.17<i></i>.3**
   - license: MIT
   - repository: https://github.com/zloirock/core-js
@@ -1350,7 +1356,7 @@
 * **cross-spawn@7<i></i>.0<i></i>.3**
   - license: MIT
   - repository: https://github.com/moxystudio/node-cross-spawn
-* **css-loader@6<i></i>.2<i></i>.0**
+* **css-loader@6<i></i>.3<i></i>.0**
   - license: MIT
   - repository: https://github.com/webpack-contrib/css-loader
 * **css-select@4<i></i>.1<i></i>.3**
@@ -1915,6 +1921,9 @@
   - license: BSD*
   - repository: https://github.com/soldair/node-gitconfiglocal
 * **glob-parent@5<i></i>.1<i></i>.2**
+  - license: ISC
+  - repository: https://github.com/gulpjs/glob-parent
+* **glob-parent@6<i></i>.0<i></i>.1**
   - license: ISC
   - repository: https://github.com/gulpjs/glob-parent
 * **glob-to-regexp@0<i></i>.4<i></i>.1**
