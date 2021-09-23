@@ -2,6 +2,7 @@
 
 $themeColor: var(--theme-color);
 $themeTextColor: var(--gray-dark);
+$themePageColor: var(--page-gray);
 
 $fontFamily: 'Montserrat';
 $fontLine: 1.45;
@@ -30,11 +31,10 @@ $sizeXL: 3rem; // 48px
 $sizeXXL: 4rem; // 64px
 
 //  breakpoints
-$screenXXS: 320px;
-$screenXS: 375px;
+$screenXXS: 0;
+$screenXS: 320px;
 $screenS: 576px;
 $screenM: 768px;
 $screenL: 992px;
-$screenXL: 1440px;
-$screenXXL: 1920px;
-$screenXXXL: 2560px;
+$screenXL: 1200px;
+$screenXXL: 1440px;
