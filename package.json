@@ -47,7 +47,6 @@
     "reset": "lerna clean --yes && npm ci",
     "start": "lerna run start",
     "stylelint": "lerna run stylelint",
-    "stylelint:fix": "lerna run stylelint:fix",
     "test": "lerna run test",
     "test:watch": "lerna run test:watch"
   }

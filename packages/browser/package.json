@@ -29,7 +29,6 @@
     "pre-push": "npm-run-all check test",
     "start": "webpack serve --mode development --config ./webpack.config.dev.ts",
     "stylelint": "npm-run-all stylelint:styled stylelint:scss",
-    "stylelint:fix": "npm-run-all stylelint:styled:fix stylelint:scss:fix",
     "stylelint:styled": "stylelint src/**/*.tsx --cache --config ./stylelint.styled.json",
     "stylelint:scss": "stylelint src/**/*.scss --cache --config ./stylelint.scss.json",
     "test": "jest --runInBand --verbose --passWithNoTests",
