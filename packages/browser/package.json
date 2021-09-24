@@ -31,9 +31,7 @@
     "stylelint": "npm-run-all stylelint:styled stylelint:scss",
     "stylelint:fix": "npm-run-all stylelint:styled:fix stylelint:scss:fix",
     "stylelint:styled": "stylelint src/**/*.tsx --cache --config ./stylelint.styled.json",
-    "stylelint:styled:fix": "stylelint src/**/*.tsx --cache --fix --config ./stylelint.styled.json",
     "stylelint:scss": "stylelint src/**/*.scss --cache --config ./stylelint.scss.json",
-    "stylelint:scss:fix": "stylelint src/**/*.scss --cache --fix --config ./stylelint.scss.json",
     "test": "jest --runInBand --verbose --passWithNoTests",
     "test:watch": "jest --watch"
   },
@@ -128,10 +126,10 @@
       "echo test"
     ],
     "*.{jsx,tsx}": [
-      "npm run stylelint:styled:fix"
+      "npm run stylelint:styled"
     ],
     "**/*.scss": [
-      "npm run stylelint:scss:fix"
+      "npm run stylelint:scss"
     ]
   }
 }

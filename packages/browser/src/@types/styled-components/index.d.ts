@@ -42,6 +42,7 @@ interface Spacing {
   multiplier: number;
   unit: Unit;
 }
+
 interface Typography {
   base: string;
   fontFamily: CSSProperties['fontFamily'];
