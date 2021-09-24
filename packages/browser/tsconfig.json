@@ -30,6 +30,16 @@
       "src/ui/*": ["src/ui/*"],
       "src/utils/*": ["src/utils*"]
     },
+    "plugins": [
+      {
+        "displayName": true,
+        "minify": true,
+        "namespace": "game-monitor",
+        "pure": true,
+        "transform": "typescript-plugin-styled-components",
+        "type": "config"
+      }
+    ],
     "preserveConstEnums": true,
     "pretty": true,
     "removeComments": true,
