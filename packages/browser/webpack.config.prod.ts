@@ -6,6 +6,8 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import TerserPlugin from 'terser-webpack-plugin';
 
+import getCustomTransformers from './webpack.ts-transformers';
+
 const config: WebpackConfiguration = {
   entry: './src/index.tsx',
   mode: 'production',
@@ -17,7 +19,8 @@ const config: WebpackConfiguration = {
         use: {
           loader: 'ts-loader',
           options: {
-            configFile: 'tsconfig.json'
+            configFile: 'tsconfig.json',
+            getCustomTransformers
           }
         }
       },

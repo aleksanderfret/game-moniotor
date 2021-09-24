@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useReducer } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
+import { ThemeProvider } from 'styled-components';
 
 import {
   AppDispatchProvider,
@@ -10,8 +11,9 @@ import {
   setIsAuthenticated,
   setLocale
 } from 'context';
-import { AppContent, AppIntro } from 'app/layout';
+import { theme } from 'theme';
 import messages from 'translations';
+import { AppContent, AppIntro } from 'app/layout';
 
 const locales = new Set(['en', 'pl']);
 
@@ -38,7 +40,9 @@ const App: FC = () => {
     <AppDispatchProvider value={dispatch}>
       <AppStateProvider value={state}>
         <IntlProvider locale={locale} messages={messages[locale]}>
-          <Router>{isAuthenticated ? <AppContent /> : <AppIntro />}</Router>
+          <ThemeProvider theme={theme}>
+            <Router>{!isAuthenticated ? <AppContent /> : <AppIntro />}</Router>
+          </ThemeProvider>
         </IntlProvider>
       </AppStateProvider>
     </AppDispatchProvider>

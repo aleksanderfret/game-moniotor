@@ -14,20 +14,32 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "noImplicitAny": true,
+    "noImplicitThis": true,
     "noUnusedLocals": true,
     "outDir": "../../dist/public",
     "paths": {
       "*": ["src/*"],
       "src/app/*": ["src/app/*"],
       "src/constants/*": ["src/constants/*"],
+      "src/context/*": ["src/context/*"],
       "src/env/*": ["src/env/*"],
       "src/errors/*": ["src/errors/*"],
       "src/hooks/*": ["src/hooks/*"],
       "src/router/*": ["src/router/*"],
-      "src/context/*": ["src/context/*"],
+      "src/theme/*": ["src/theme/*"],
       "src/ui/*": ["src/ui/*"],
       "src/utils/*": ["src/utils*"]
     },
+    "plugins": [
+      {
+        "displayName": true,
+        "minify": true,
+        "namespace": "game-monitor",
+        "pure": true,
+        "transform": "typescript-plugin-styled-components",
+        "type": "config"
+      }
+    ],
     "preserveConstEnums": true,
     "pretty": true,
     "removeComments": true,

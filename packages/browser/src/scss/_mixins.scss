@@ -19,3 +19,34 @@
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0.5, 0, 0.25, 1);
 }
+
+@mixin grid-classes($className, $selector: '', $columns: 12) {
+  $breakpoints: (
+    'xxs': 0,
+    'xs': 320px,
+    'sm': 576px,
+    'md': 768px,
+    'lg': 992px,
+    'xl': 1200px,
+    'xxl': 1440px
+  );
+
+  @each $name, $size in $breakpoints {
+    @include breakpoint($size) {
+      @for $i from 1 through $columns {
+        $value: ($i / $columns) * 100%;
+
+        #{$selector}.#{$className}-#{$name}-#{$i} {
+          -webkit-flex-basis: $value;
+          -ms-flex-preferred-size: $value;
+          flex-basis: $value;
+          -webkit-box-flex: 0;
+          -webkit-flex-grow: 0;
+          -ms-flex-positive: 0;
+          flex-grow: 0;
+          max-width: $value;
+        }
+      }
+    }
+  }
+}

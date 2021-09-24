@@ -32,7 +32,6 @@
  "reset": runs clean script and runs npm ci,
  "start": runs project for development,
  "stylelint": lint all style files,
- "stylelint:fix": lint and fix all style files,
  "test": run tests or all packages
 ```
 
