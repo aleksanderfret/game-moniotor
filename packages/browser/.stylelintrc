@@ -1,9 +1,12 @@
 {
-  "extends": ["stylelint-config-standard", "stylelint-config-standard", "stylelint-config-recommended"],
-  "ignoreFiles": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx",],
-  "plugins": [
-    "stylelint-scss"
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-recommended",
+    "stylelint-config-styled-components"
   ],
+  "ignoreFiles": ["**/*.js", "**/*.ts"],
+  "plugins": ["stylelint-scss"],
+  "processors": ["stylelint-processor-styled-components"],
   "rules": {
     "at-rule-no-unknown": null,
     "color-hex-case": "lower",
