@@ -1,5 +1,7 @@
 import 'styled-components';
-import { CSSProperties } from 'react';
+import { CSSProperties, DefaultTheme, ThemedCssFunction } from 'react';
+
+import { Breakpoint } from 'theme/types';
 
 interface Color {
   main: string;
@@ -26,6 +28,8 @@ interface Shape {
 
 type Unit = 'px' | '%' | 'em' | 'rem';
 
+type SpacingFunction = (multiplicand: number) => string;
+
 interface Breakpoints {
   keys: string[];
   values: { [key as string]: string };
@@ -37,10 +41,14 @@ interface Utils {
 }
 
 interface Spacing {
-  calc: (multiplicand: number) => string;
-  values: { [key as string]: string };
+  calc: SpacingFunction;
+  cols: SpacingFunction;
+  colsAll: SpacingFunction;
   multiplier: number;
+  rows: SpacingFunction;
+  rowsAll: SpacingFunction;
   unit: Unit;
+  values: { [key as string]: string };
 }
 
 interface Typography {
@@ -53,13 +61,22 @@ interface Typography {
 
 type Shadows = CSSProperties['boxShadow'][];
 
+type Transition = (...properties: CSSProperties[]) => string;
+
+type ConstSize = (width: string, height?: string) => string;
+
+type Media = Record<Breakpoint, ThemedCssFunction<DefaultTheme>>;
+
 declare module 'styled-components' {
   export interface Theme {
     breakpoints: Breakpoints;
+    constSize: ConstSize;
+    media: Media;
     palette: Palette;
     shadows?: Shadows;
     shape: Shape;
     spacing: Spacing;
+    transition: transition;
     typography: Typography;
   }
 }

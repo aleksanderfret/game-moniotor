@@ -37,4 +37,7 @@ export const transition = (...properties: CSSProperties[]): string => `
   transition-property: ${properties.join(' ')};
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0.5, 0, 0.25, 1);
+  transform: translate3d(0, 0, 0);
+  backface-visibility:hidden;
+  wii-change: ${properties.join(' ')};
 `;
