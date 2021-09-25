@@ -1,6 +1,7 @@
 import { Theme } from 'styled-components';
 
 import { breakpoints } from './variables';
+import { breakpoint, constSize, transition } from './mixins';
 
 const theme: Theme = {
   breakpoints: {
@@ -8,6 +9,8 @@ const theme: Theme = {
     values: breakpoints,
     unit: 'px'
   },
+  constSize,
+  media: breakpoint,
   palette: {
     common: {
       black: '#00000',
@@ -71,6 +74,42 @@ const theme: Theme = {
 
       return `${multiplicand * multiplier}${unit}`;
     },
+    cols: (value: number) => {
+      const { calc } = theme.spacing;
+
+      return `
+        & > :not(:last-child) {
+          margin-right: ${calc(value)};
+        }
+      `;
+    },
+    colsAll: (value: number) => {
+      const { calc } = theme.spacing;
+
+      return `
+        & > * {
+          margin-right: ${calc(value)};
+        }
+      `;
+    },
+    rows: (value: number) => {
+      const { calc } = theme.spacing;
+
+      return `
+        & > :not(:last-child) {
+          margin-bottom: ${calc(value)};
+        }
+      `;
+    },
+    rowsAll: (value: number) => {
+      const { calc } = theme.spacing;
+
+      return `
+        & > * {
+          margin-bottom: ${calc(value)};
+        }
+      `;
+    },
     values: {
       xxxs: '0.125rem', // 2px
       xxs: '0.25rem', // 4px
@@ -85,6 +124,7 @@ const theme: Theme = {
     multiplier: 0.25,
     unit: 'rem'
   },
+  transition,
   typography: {
     base: '16px',
     fontFamily: '"Montserrat", "Ubuntu", "Helvetica", "Arial", sans-serif',
