@@ -46,6 +46,7 @@
     "pre-push": "lerna run pre-push --concurrency 1 --stream",
     "reset": "lerna clean --yes && npm ci",
     "start": "lerna run start",
+    "storybook": "lerna run storybook",
     "stylelint": "lerna run stylelint",
     "test": "lerna run test",
     "test:watch": "lerna run test:watch"
