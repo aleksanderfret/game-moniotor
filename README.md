@@ -26,10 +26,10 @@ git clone https://github.com/aleksanderfret/game-monitor.git
 cd handle-it
 ```
 
-#### 5. Bootstrap project
+#### 5. Init project
 
 ```bash
-npx lerna bootstrap
+npm run init
 ```
 
 #### 6. Start development
@@ -51,6 +51,7 @@ npm start
  "create": creates a new lerna-managed package
  "format": formats all the files using Prettier,
  "format:fix": formats and fix all the files using Prettier,
+ "init": installs dependencies and bootstrap project,
  "libs:root": generates third party libraries list for root directory,
  "libs": generates third party libraries for whole project,
  "lint": lint all the files using eslint,
