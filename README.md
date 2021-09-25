@@ -23,7 +23,7 @@ git clone https://github.com/aleksanderfret/game-monitor.git
 #### 4. Go to the directory
 
 ```bash
-cd handle-it
+cd game-monitor
 ```
 
 #### 5. Init project
