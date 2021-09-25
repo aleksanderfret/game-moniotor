@@ -16,7 +16,7 @@
     "url": "https://github.com/aleksanderfret/game-monitor/issues"
   },
   "devDependencies": {
-    "@types/node": "16.9.6",
+    "@types/node": "16.10.1",
     "husky": "7.0.2",
     "lerna": "4.0.0",
     "license-checker-rseidelsohn": "2.1.1",
@@ -35,6 +35,7 @@
     "create": "lerna create",
     "format": "lerna run format",
     "format:fix": "lerna run format:fix",
+    "init": "npm ci && npm run bootstrap",
     "libs:root": "license-checker-rseidelsohn --json --out libraries.json",
     "libs": "lerna run libs && npm run libs:root && npx ts-node -T scripts/libs.ts libraries.json third-party-libraries",
     "lint": "lerna run lint",
@@ -46,6 +47,7 @@
     "pre-push": "lerna run pre-push --concurrency 1 --stream",
     "reset": "lerna clean --yes && npm ci",
     "start": "lerna run start",
+    "storybook": "lerna run storybook",
     "stylelint": "lerna run stylelint",
     "test": "lerna run test",
     "test:watch": "lerna run test:watch"
