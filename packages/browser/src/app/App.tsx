@@ -11,9 +11,10 @@ import {
   setIsAuthenticated,
   setLocale
 } from 'context';
-import { theme } from 'theme';
+import theme from 'theme';
 import messages from 'translations';
 import { AppContent, AppIntro } from 'app/layout';
+import Page from 'app/ui/Page';
 
 const locales = new Set(['en', 'pl']);
 
@@ -41,7 +42,11 @@ const App: FC = () => {
       <AppStateProvider value={state}>
         <IntlProvider locale={locale} messages={messages[locale]}>
           <ThemeProvider theme={theme}>
-            <Router>{!isAuthenticated ? <AppContent /> : <AppIntro />}</Router>
+            <Page>
+              <Router>
+                {!isAuthenticated ? <AppContent /> : <AppIntro />}
+              </Router>
+            </Page>
           </ThemeProvider>
         </IntlProvider>
       </AppStateProvider>

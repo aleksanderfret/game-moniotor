@@ -32,7 +32,7 @@ const theme: Theme = {
       main: '#c98200',
       light: '#d39b33',
       dark: '#8c5b00',
-      contrast: '#424242'
+      contrast: '#ffffff'
     },
     success: {
       main: '#4ca801',
@@ -51,6 +51,12 @@ const theme: Theme = {
       light: '#33B4A2',
       dark: '#007161',
       contrast: '#ffffff'
+    },
+    background: {
+      main: '#fafafa',
+      light: '#ffffff',
+      dark: '#f5f5f5',
+      contrast: '#000000'
     },
     gray: {
       50: '#fafafa',
