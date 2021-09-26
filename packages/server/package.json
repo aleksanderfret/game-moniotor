@@ -1,20 +1,20 @@
 {
-  "name": "game-monitor-server",
+  "name": "games-room-server",
   "version": "0.0.1",
-  "description": "Game Monitor - Server",
+  "description": "Games Room - Server",
   "main": "src/index.tsx",
   "author": {
     "name": "Aleksander Fret",
     "email": "olekfret80@gmail.com",
     "url": "https://github.com/aleksanderfret/"
   },
-  "homepage": "https://github.com/aleksanderfret/game-monitor/tree/master/packages/server#readme",
+  "homepage": "https://github.com/aleksanderfret/games-room/tree/master/packages/server#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aleksanderfret/game-monitor/tree/master/packages/server"
+    "url": "https://github.com/aleksanderfret/games-room/tree/master/packages/server"
   },
   "bugs": {
-    "url": "https://github.com/aleksanderfret/game-monitor/issues"
+    "url": "https://github.com/aleksanderfret/games-room/issues"
   },
   "scripts": {
     "build": "tsc --build tsconfig.prod.json",

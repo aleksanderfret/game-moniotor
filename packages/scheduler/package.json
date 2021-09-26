@@ -1,7 +1,7 @@
 {
-  "name": "game-monitor-scheduler",
+  "name": "games-room-scheduler",
   "version": "0.0.1",
-  "description": "Game Monitor - Scheduler",
+  "description": "Games Room - Scheduler",
   "type": "module",
   "main": "src/index.tsx",
   "author": {
@@ -9,13 +9,13 @@
     "email": "olekfret80@gmail.com",
     "url": "https://github.com/aleksanderfret/"
   },
-  "homepage": "https://github.com/aleksanderfret/game-monitor/tree/master/packages/scheduler#readme",
+  "homepage": "https://github.com/aleksanderfret/games-room/tree/master/packages/scheduler#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aleksanderfret/game-monitor/tree/master/packages/scheduler"
+    "url": "https://github.com/aleksanderfret/games-room/tree/master/packages/scheduler"
   },
   "bugs": {
-    "url": "https://github.com/aleksanderfret/game-monitor/issues"
+    "url": "https://github.com/aleksanderfret/games-room/issues"
   },
   "scripts": {},
   "lint-staged": {

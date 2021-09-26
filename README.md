@@ -1,6 +1,6 @@
-# game monitor
+# Games Room
 
-![game monitor](./docs/img/game-monitor.png)
+![games room](./docs/img/games-room.png)
 
 ## Version
 
@@ -17,13 +17,13 @@
 #### 3. Clone the repository
 
 ```bash
-git clone https://github.com/aleksanderfret/game-monitor.git
+git clone https://github.com/aleksanderfret/games-room.git
 ```
 
 #### 4. Go to the directory
 
 ```bash
-cd game-monitor
+cd games-room
 ```
 
 #### 5. Init project
@@ -71,4 +71,4 @@ npm start
 
 ## Third party libraries
 
-[List of libraries we use](https://github.com/aleksanderfret/game-monitor/blob/master/third-party-libraries.md)
+[List of libraries we use](https://github.com/aleksanderfret/games-room/blob/master/third-party-libraries.md)

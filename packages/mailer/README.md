@@ -1,1 +1,1 @@
-# Game Monitor - Mailer
+# Games Room - Mailer
