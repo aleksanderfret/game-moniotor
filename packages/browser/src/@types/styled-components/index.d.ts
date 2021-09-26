@@ -18,7 +18,7 @@ interface Palette {
   success: Color;
   error: Color;
   info: Color;
-  background?: string;
+  background: Color;
   gray: { [key as number]: string };
 }
 

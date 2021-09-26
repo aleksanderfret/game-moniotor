@@ -27,8 +27,7 @@
       "src/hooks/*": ["src/hooks/*"],
       "src/router/*": ["src/router/*"],
       "src/theme/*": ["src/theme/*"],
-      "src/ui/*": ["src/ui/*"],
-      "src/utils/*": ["src/utils*"]
+      "src/utils/*": ["src/utils/*"]
     },
     "plugins": [
       {
