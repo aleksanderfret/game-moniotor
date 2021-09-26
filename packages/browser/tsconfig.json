@@ -49,7 +49,7 @@
     "strictFunctionTypes": true,
     "strictNullChecks": true,
     "target": "ES6",
-    "typeRoots": ["./src/@types", "./node_modules/@types"]
+    "typeRoots": ["./src/@types", "./node_modules/@types", ".storybook/**/*.ts"]
   },
   "exclude": ["node_modules"],
   "include": ["src/**/*.ts", "src/**/*.tsx"]

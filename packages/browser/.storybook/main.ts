@@ -18,15 +18,18 @@ const config = {
       })
     ];
 
-    return { ...config, module: { ...module, rules } };
-    // return config;
+    return {
+      ...config,
+      module: { ...module, rules },
+      resolve: { ...resolve, plugins }
+    };
   },
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/preset-scss',
-    'storybook-addon-styled-component-theme'
+    'storybook-addon-styled-component-theme/dist/preset'
   ],
   core: {
     builder: 'webpack5'
