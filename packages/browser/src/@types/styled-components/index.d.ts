@@ -56,7 +56,13 @@ interface Typography {
   fontFamily: CSSProperties['fontFamily'];
   unit: Unit;
   size: { [key as string]: string };
-  weight: { light: number; regular: number; medium: number; bold: number };
+  weight: {
+    light: number;
+    regular: number;
+    medium: number;
+    bold: number;
+    black: number;
+  };
 }
 
 type Shadows = CSSProperties['boxShadow'][];

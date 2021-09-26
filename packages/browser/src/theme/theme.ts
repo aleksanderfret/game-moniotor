@@ -127,7 +127,7 @@ const theme: Theme = {
       xxl: '4rem', // 64px
       xxxl: '5rem' // 80px
     },
-    multiplier: 0.25,
+    multiplier: 1,
     unit: 'rem'
   },
   transition,
@@ -144,7 +144,7 @@ const theme: Theme = {
       super: '3rem' // 48px
     },
     unit: 'rem',
-    weight: { light: 300, regular: 400, medium: 500, bold: 700 }
+    weight: { light: 300, regular: 400, medium: 500, bold: 700, black: 900 }
   }
 };
 
