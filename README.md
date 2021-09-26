@@ -71,4 +71,4 @@ npm start
 
 ## Third party libraries
 
-[List of libraries we use](https://github.com/aleksanderfret/game-moniotor/blob/master/third-party-libraries.md)
+[List of libraries we use](https://github.com/aleksanderfret/game-monitor/blob/master/third-party-libraries.md)
