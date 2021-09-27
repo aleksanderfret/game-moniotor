@@ -41,14 +41,10 @@ interface Utils {
 }
 
 interface Spacing {
-  calc: SpacingFunction;
   cols: SpacingFunction;
   colsAll: SpacingFunction;
-  multiplier: number;
   rows: SpacingFunction;
   rowsAll: SpacingFunction;
-  unit: Unit;
-  values: { [key as string]: string };
 }
 
 interface Typography {
@@ -63,6 +59,12 @@ interface Typography {
     bold: number;
     black: number;
   };
+}
+interface Size {
+  calc: SpacingFunction;
+  multiplier: number;
+  unit: Unit;
+  values: { [key as string]: string };
 }
 
 type Shadows = CSSProperties['boxShadow'][];
@@ -81,6 +83,7 @@ declare module 'styled-components' {
     palette: Palette;
     shadows?: Shadows;
     shape: Shape;
+    size: Size;
     spacing: Spacing;
     transition: transition;
     typography: Typography;
