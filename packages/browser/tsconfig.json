@@ -26,7 +26,9 @@
       "src/errors/*": ["src/errors/*"],
       "src/hooks/*": ["src/hooks/*"],
       "src/router/*": ["src/router/*"],
+      "src/__tests__/*": ["src/__tests__/*"],
       "src/theme/*": ["src/theme/*"],
+      "src/transformers/*": ["src/transformers/*"],
       "src/utils/*": ["src/utils/*"]
     },
     "plugins": [
