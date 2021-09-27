@@ -74,48 +74,13 @@ const theme: Theme = {
   shape: {
     borderRadius: '10px'
   },
-  spacing: {
+  size: {
     calc: (multiplicand: number): string => {
-      const { multiplier, unit } = theme.spacing;
+      const { multiplier, unit } = theme.size;
 
       return `${multiplicand * multiplier}${unit}`;
     },
-    cols: (value: number) => {
-      const { calc } = theme.spacing;
-
-      return `
-        & > :not(:last-child) {
-          margin-right: ${calc(value)};
-        }
-      `;
-    },
-    colsAll: (value: number) => {
-      const { calc } = theme.spacing;
-
-      return `
-        & > * {
-          margin-right: ${calc(value)};
-        }
-      `;
-    },
-    rows: (value: number) => {
-      const { calc } = theme.spacing;
-
-      return `
-        & > :not(:last-child) {
-          margin-bottom: ${calc(value)};
-        }
-      `;
-    },
-    rowsAll: (value: number) => {
-      const { calc } = theme.spacing;
-
-      return `
-        & > * {
-          margin-bottom: ${calc(value)};
-        }
-      `;
-    },
+    multiplier: 1,
     values: {
       xxxs: '0.125rem', // 2px
       xxs: '0.25rem', // 4px
@@ -127,8 +92,45 @@ const theme: Theme = {
       xxl: '4rem', // 64px
       xxxl: '5rem' // 80px
     },
-    multiplier: 0.25,
     unit: 'rem'
+  },
+  spacing: {
+    cols: (value: number) => {
+      const { calc } = theme.size;
+
+      return `
+        & > :not(:last-child) {
+          margin-right: ${calc(value)};
+        }
+      `;
+    },
+    colsAll: (value: number) => {
+      const { calc } = theme.size;
+
+      return `
+        & > * {
+          margin-right: ${calc(value)};
+        }
+      `;
+    },
+    rows: (value: number) => {
+      const { calc } = theme.size;
+
+      return `
+        & > :not(:last-child) {
+          margin-bottom: ${calc(value)};
+        }
+      `;
+    },
+    rowsAll: (value: number) => {
+      const { calc } = theme.size;
+
+      return `
+        & > * {
+          margin-bottom: ${calc(value)};
+        }
+      `;
+    }
   },
   transition,
   typography: {
@@ -144,7 +146,7 @@ const theme: Theme = {
       super: '3rem' // 48px
     },
     unit: 'rem',
-    weight: { light: 300, regular: 400, medium: 500, bold: 700 }
+    weight: { light: 300, regular: 400, medium: 500, bold: 700, black: 900 }
   }
 };
 

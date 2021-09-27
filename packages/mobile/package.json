@@ -1,7 +1,7 @@
 {
-  "name": "game-monitor-mobile",
+  "name": "games-room-mobile",
   "version": "0.0.1",
-  "description": "Game Monitor - Mobile",
+  "description": "Games Room - Mobile",
   "type": "module",
   "main": "src/index.tsx",
   "author": {
@@ -9,13 +9,13 @@
     "email": "olekfret80@gmail.com",
     "url": "https://github.com/aleksanderfret/"
   },
-  "homepage": "https://github.com/aleksanderfret/game-monitor/tree/master/packages/mobile#readme",
+  "homepage": "https://github.com/aleksanderfret/games-room/tree/master/packages/mobile#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aleksanderfret/game-monitor/tree/master/packages/mobile"
+    "url": "https://github.com/aleksanderfret/games-room/tree/master/packages/mobile"
   },
   "bugs": {
-    "url": "https://github.com/aleksanderfret/game-monitor/issues"
+    "url": "https://github.com/aleksanderfret/games-room/issues"
   },
   "scripts": {},
   "lint-staged": {

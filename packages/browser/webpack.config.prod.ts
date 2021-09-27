@@ -6,7 +6,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import TerserPlugin from 'terser-webpack-plugin';
 
-import getCustomTransformers from './webpack.ts-transformers';
+import { getCustomProdTransformers as getCustomTransformers } from './src/transformers/getTransformers';
 
 const config: WebpackConfiguration = {
   entry: './src/index.tsx',

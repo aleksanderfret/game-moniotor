@@ -1,7 +1,7 @@
 {
-  "name": "game-monitor-mailer",
+  "name": "games-room-mailer",
   "version": "0.0.1",
-  "description": "Game Monitor - Mailer",
+  "description": "Games Room - Mailer",
   "type": "module",
   "main": "src/index.tsx",
   "author": {
@@ -9,13 +9,13 @@
     "email": "olekfret80@gmail.com",
     "url": "https://github.com/aleksanderfret/"
   },
-  "homepage": "https://github.com/aleksanderfret/game-monitor/tree/master/packages/mailer#readme",
+  "homepage": "https://github.com/aleksanderfret/games-room/tree/master/packages/mailer#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aleksanderfret/game-monitor/tree/master/packages/mailer"
+    "url": "https://github.com/aleksanderfret/games-room/tree/master/packages/mailer"
   },
   "bugs": {
-    "url": "https://github.com/aleksanderfret/game-monitor/issues"
+    "url": "https://github.com/aleksanderfret/games-room/issues"
   },
   "scripts": {},
   "lint-staged": {

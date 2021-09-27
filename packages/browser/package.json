@@ -1,20 +1,20 @@
 {
-  "name": "game-monitor-browser",
+  "name": "games-room-browser",
   "version": "0.0.1",
-  "description": "Game Monitor - Browser",
+  "description": "Games Room - Browser",
   "main": "src/index.tsx",
   "author": {
     "name": "Aleksander Fret",
     "email": "olekfret80@gmail.com",
     "url": "https://github.com/aleksanderfret/"
   },
-  "homepage": "https://github.com/aleksanderfret/game-monitor/tree/master/packages/browser#readme",
+  "homepage": "https://github.com/aleksanderfret/games-room/tree/master/packages/browser#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aleksanderfret/game-monitor/tree/master/packages/browser"
+    "url": "https://github.com/aleksanderfret/games-room/tree/master/packages/browser"
   },
   "bugs": {
-    "url": "https://github.com/aleksanderfret/game-monitor/issues"
+    "url": "https://github.com/aleksanderfret/games-room/issues"
   },
   "scripts": {
     "build": "webpack --progress --config ./webpack.config.prod.ts",
