@@ -966,6 +966,9 @@
 * **@stylelint/postcss-markdown@0<i></i>.36<i></i>.2**
   - license: MIT
   - repository: https://github.com/stylelint/postcss-markdown
+* **@testing-library/dom@7<i></i>.31<i></i>.2**
+  - license: MIT
+  - repository: https://github.com/testing-library/dom-testing-library
 * **@testing-library/dom@8<i></i>.5<i></i>.0**
   - license: MIT
   - repository: https://github.com/testing-library/dom-testing-library
@@ -2724,6 +2727,9 @@
 * **eslint-plugin-import@2<i></i>.24<i></i>.2**
   - license: MIT
   - repository: https://github.com/import-js/eslint-plugin-import
+* **eslint-plugin-jest-dom@3<i></i>.9<i></i>.2**
+  - license: MIT
+  - repository: https://github.com/testing-library/eslint-plugin-jest-dom
 * **eslint-plugin-jsx-a11y@6<i></i>.4<i></i>.1**
   - license: MIT
   - repository: https://github.com/evcohen/eslint-plugin-jsx-a11y
@@ -2736,6 +2742,9 @@
 * **eslint-plugin-react@7<i></i>.26<i></i>.0**
   - license: MIT
   - repository: https://github.com/yannickcr/eslint-plugin-react
+* **eslint-plugin-testing-library@4<i></i>.12<i></i>.4**
+  - license: MIT
+  - repository: https://github.com/testing-library/eslint-plugin-testing-library
 * **eslint-scope@4<i></i>.0<i></i>.3**
   - license: BSD-2-Clause
   - repository: https://github.com/eslint/eslint-scope
@@ -3036,15 +3045,15 @@
 * **fuse<i></i>.js@3<i></i>.6<i></i>.1**
   - license: Apache-2.0
   - repository: https://github.com/krisk/Fuse
-* **game-monitor-browser@0<i></i>.0<i></i>.1**
+* **games-room-browser@0<i></i>.0<i></i>.1**
   - license: UNKNOWN
-  - repository: https://github.com/aleksanderfret/game-monitor/tree/master/packages/browser
-* **game-monitor-server@0<i></i>.0<i></i>.1**
+  - repository: https://github.com/aleksanderfret/games-room/tree/master/packages/browser
+* **games-room-server@0<i></i>.0<i></i>.1**
   - license: UNKNOWN
-  - repository: https://github.com/aleksanderfret/game-monitor/tree/master/packages/server
-* **game-monitor@0<i></i>.0<i></i>.1**
+  - repository: https://github.com/aleksanderfret/games-room/tree/master/packages/server
+* **games-room@0<i></i>.0<i></i>.1**
   - license: UNLICENSED
-  - repository: https://github.com/aleksanderfret/game-monitor
+  - repository: https://github.com/aleksanderfret/games-room
 * **gauge@2<i></i>.7<i></i>.4**
   - license: ISC
   - repository: https://github.com/iarna/gauge
@@ -5007,6 +5016,9 @@
 * **pretty-error@3<i></i>.0<i></i>.4**
   - license: MIT
   - repository: https://github.com/AriaMinaei/pretty-error
+* **pretty-format@26<i></i>.6<i></i>.2**
+  - license: MIT
+  - repository: https://github.com/facebook/jest
 * **pretty-format@27<i></i>.2<i></i>.2**
   - license: MIT
   - repository: https://github.com/facebook/jest
@@ -5385,6 +5397,9 @@
 * **require-from-string@2<i></i>.0<i></i>.2**
   - license: MIT
   - repository: https://github.com/floatdrop/require-from-string
+* **requireindex@1<i></i>.2<i></i>.0**
+  - license: MIT
+  - repository: https://github.com/stephenhandley/requireindex
 * **requires-port@1<i></i>.0<i></i>.0**
   - license: MIT
   - repository: https://github.com/unshiftio/requires-port
