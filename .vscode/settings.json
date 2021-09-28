@@ -23,6 +23,10 @@
       "changeProcessCWD": true
     },
     {
+      "directory": "./packages/landing",
+      "changeProcessCWD": true
+    },
+    {
       "directory": "./packages/auth",
       "changeProcessCWD": true
     },
@@ -40,6 +44,9 @@
     }
   ],
   "eslint.trace.server": "off",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
   "js/ts.implicitProjectConfig.experimentalDecorators": true,
   "cSpell.words": ["varchar"],
   "prettier.arrowParens": "avoid",

@@ -10,7 +10,9 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "plugin:react/recommended",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended"
   ],
   "globals": {
     "document": false,
@@ -30,7 +32,9 @@
     "react-hooks",
     "@typescript-eslint",
     "import",
-    "jsx-a11y"
+    "jsx-a11y",
+    "testing-library",
+    "jest-dom"
   ],
   "root": true,
   "rules": {
