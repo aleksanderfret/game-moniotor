@@ -1,0 +1,33 @@
+{
+  "name": "games-room-landing",
+  "version": "0.0.1",
+  "description": "Games Room - Landing",
+  "type": "module",
+  "main": "src/index.tsx",
+  "author": {
+    "name": "Aleksander Fret",
+    "email": "olekfret80@gmail.com",
+    "url": "https://github.com/aleksanderfret/"
+  },
+  "homepage": "https://github.com/aleksanderfret/games-room/tree/master/packages/landing#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aleksanderfret/games-room/tree/master/packages/landing"
+  },
+  "bugs": {
+    "url": "https://github.com/aleksanderfret/games-room/issues"
+  },
+  "scripts": {},
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,json,scss,css,md}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint -c .eslintrc --fix",
+      "echo test"
+    ],
+    "**/*.scss": [
+      "stylelint --syntax scss"
+    ]
+  }
+}
