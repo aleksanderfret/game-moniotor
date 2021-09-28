@@ -4,7 +4,7 @@ import util from 'util';
 
 const cliArguments = process.argv.slice(2);
 const [messageFile] = cliArguments;
-const branchesToSkip = new Set(['master', 'test', '(no branch)']);
+const branchesToSkip = new Set(['main', 'master', 'test', '(no branch)']);
 
 const exec = util.promisify(childProcessExec);
 
