@@ -45,7 +45,7 @@
     "prepare-commit-msg": "npx ts-node -T scripts/prepare-commit-msg.ts",
     "pre-commit": "lerna run pre-commit --concurrency 1 --stream",
     "pre-push": "lerna run pre-push --concurrency 1 --stream",
-    "reset": "lerna clean --yes && npm ci",
+    "reset": "npm run clean:compiled && lerna clean --yes && npm ci",
     "start": "lerna run start",
     "storybook": "lerna run storybook",
     "stylelint": "lerna run stylelint",
