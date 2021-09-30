@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { Size } from 'types';
+import { SizeLabel } from 'types';
 
-export type LoaderSize = Extract<Size, 'md' | 'xl'>;
+export type LoaderSize = Extract<SizeLabel, 'md' | 'xl'>;
 
 interface LoaderBoxProps {
   size: LoaderSize;
