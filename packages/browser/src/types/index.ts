@@ -1,4 +1,4 @@
-export type Size =
+export type SizeLabel =
   | 'xxxs'
   | 'xxs'
   | 'xs'
