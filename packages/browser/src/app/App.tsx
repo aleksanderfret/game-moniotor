@@ -13,7 +13,7 @@ import {
 } from 'context';
 import theme from 'theme';
 import messages from 'translations';
-import { AppContent, AppIntro } from 'app/layout';
+import { AppContent, AppIntro, GlobalStyle } from 'app/layout';
 import Page from 'app/ui/Page';
 
 const locales = new Set(['en', 'pl']);
@@ -42,11 +42,14 @@ const App: FC = () => {
       <AppStateProvider value={state}>
         <IntlProvider locale={locale} messages={messages[locale]}>
           <ThemeProvider theme={theme}>
-            <Page>
-              <Router>
-                {!isAuthenticated ? <AppContent /> : <AppIntro />}
-              </Router>
-            </Page>
+            <>
+              <GlobalStyle />
+              <Page>
+                <Router>
+                  {!isAuthenticated ? <AppContent /> : <AppIntro />}
+                </Router>
+              </Page>
+            </>
           </ThemeProvider>
         </IntlProvider>
       </AppStateProvider>
