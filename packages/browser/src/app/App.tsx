@@ -13,8 +13,10 @@ import {
 } from 'context';
 import theme from 'theme';
 import messages from 'translations';
-import { AppContent, AppIntro, GlobalStyle } from 'app/layout';
-import Page from 'app/ui/Page';
+import AppContent from './AppContent';
+import AppIntro from './AppIntro';
+import GlobalStyle from './GlobalStyle';
+import Page from 'ui/ui/Page';
 
 const locales = new Set(['en', 'pl']);
 
