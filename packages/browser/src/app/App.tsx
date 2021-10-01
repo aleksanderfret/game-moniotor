@@ -16,7 +16,7 @@ import messages from 'translations';
 import AppContent from './AppContent';
 import AppIntro from './AppIntro';
 import GlobalStyle from './GlobalStyle';
-import Page from 'ui/ui/Page';
+import Page from 'ui/Page';
 
 const locales = new Set(['en', 'pl']);
 

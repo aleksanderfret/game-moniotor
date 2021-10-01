@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-import { HorizontalLogo, SimpleLogo, VerticalLogo } from 'app/ui/Logo/IconLogo';
+import { HorizontalLogo, SimpleLogo, VerticalLogo } from './IconLogo';
 
 type LogoVariant = 'simple' | 'horizontal' | 'vertical';
 

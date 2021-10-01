@@ -1,13 +1,11 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ComponentMeta } from '@storybook/react';
 
-import Home from './Home';
+import HomeComponent from './Home';
 
 export default {
   title: 'Views/Home',
-  component: Home
-} as ComponentMeta<typeof Home>;
+  component: HomeComponent
+} as ComponentMeta<typeof HomeComponent>;
 
-const Template: ComponentStory<typeof Home> = args => <Home {...args} />;
-
-export const Primary = Template.bind({});
+export const Home = () => <HomeComponent />;

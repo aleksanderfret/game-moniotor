@@ -13,8 +13,6 @@ import {
 } from './pathCreators';
 import Path, { RouteAccess } from './enums';
 import { PrivateRoute, PublicRoute } from './Route';
-// import { PrivateRouter, PublicRouter } from './Router';
-// import routes from './routes';
 
 export {
   createAccountPath,
@@ -30,9 +28,6 @@ export {
   createToolsPath,
   Path,
   PrivateRoute,
-  // PrivateRouter,
   PublicRoute,
-  //  PublicRouter,
   RouteAccess
-  //  routes
 };

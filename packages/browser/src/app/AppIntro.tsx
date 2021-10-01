@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Route, Switch } from 'react-router-dom';
 
-import Logo from 'app/ui/Logo';
-import Tile from 'app/ui/Tile';
-import Home from 'app/home';
-import { SignIn, SignUp } from 'app/auth';
+import Logo from 'ui/Logo';
+import Tile from 'ui/Tile';
+import Home from 'modules/home';
+import { SignIn, SignUp } from 'modules/auth';
 import { Path } from 'router';
 
 const Intro = styled(Tile)`
