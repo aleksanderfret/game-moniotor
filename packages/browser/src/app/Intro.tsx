@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 
 import Logo from 'ui/Logo';
 import Tile from 'ui/Tile';
@@ -21,13 +21,16 @@ const IntroBox = styled(Tile)`
 const Intro: FC = () => (
   <IntroBox>
     <h1>
-      <Logo size="medium" variant="vertical" />
+      <Link to={Path.Home}>
+        <Logo size="medium" variant="vertical" />
+      </Link>
     </h1>
     <Switch>
       <Route component={Home} exact path={Path.Home} />
       <Route component={SignIn} exact path={Path.SignIn} />
       <Route component={SignUp} exact path={Path.SignUp} />
     </Switch>
+    <div>© 2021 Aps First</div>
   </IntroBox>
 );
 
