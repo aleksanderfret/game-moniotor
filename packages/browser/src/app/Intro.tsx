@@ -8,7 +8,7 @@ import Home from 'modules/home';
 import { SignIn, SignUp } from 'modules/auth';
 import { Path } from 'router';
 
-const Intro = styled(Tile)`
+const IntroBox = styled(Tile)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,8 +18,8 @@ const Intro = styled(Tile)`
   margin: auto;
 `;
 
-const AppIntro: FC = () => (
-  <Intro>
+const Intro: FC = () => (
+  <IntroBox>
     <h1>
       <Logo size="medium" variant="vertical" />
     </h1>
@@ -28,7 +28,7 @@ const AppIntro: FC = () => (
       <Route component={SignIn} exact path={Path.SignIn} />
       <Route component={SignUp} exact path={Path.SignUp} />
     </Switch>
-  </Intro>
+  </IntroBox>
 );
 
-export default AppIntro;
+export default Intro;

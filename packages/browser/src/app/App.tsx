@@ -13,8 +13,8 @@ import {
 } from 'context';
 import theme from 'theme';
 import messages from 'translations';
-import AppContent from './AppContent';
-import AppIntro from './AppIntro';
+import Content from './Content';
+import Intro from './Intro';
 import GlobalStyle from './GlobalStyle';
 import Page from 'ui/Page';
 
@@ -28,7 +28,7 @@ const App: FC = () => {
     const locale = navigator.language;
 
     if (locale && locales.has(locale)) {
-      // TODO check user preferences cookies and localstorage or token
+      // TODO check user preferences cookies and localStorage or token
       dispatch(setLocale(locale));
     }
   }, []);
@@ -46,11 +46,9 @@ const App: FC = () => {
           <ThemeProvider theme={theme}>
             <>
               <GlobalStyle />
-              <Page>
-                <Router>
-                  {!isAuthenticated ? <AppContent /> : <AppIntro />}
-                </Router>
-              </Page>
+              <Router>
+                <Page>{!isAuthenticated ? <Content /> : <Intro />}</Page>
+              </Router>
             </>
           </ThemeProvider>
         </IntlProvider>

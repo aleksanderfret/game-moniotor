@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import { Path } from 'router';
 import Dashboard from 'modules/dashboard';
 
-const AppContent: FC = () => {
+const Content: FC = () => {
   return (
     <div>
       <Switch>
@@ -14,4 +14,4 @@ const AppContent: FC = () => {
   );
 };
 
-export default AppContent;
+export default Content;
