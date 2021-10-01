@@ -7,6 +7,7 @@ import {
   Visitor
 } from 'typescript';
 
+// taken from https://github.com/andrewbents/typescript-transformer-jsx-remove-data-test-id
 export function createRemoveDataTestIdTransformer<
   T extends Node
 >(): TransformerFactory<T> {

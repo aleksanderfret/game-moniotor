@@ -1,9 +1,9 @@
-import { Theme } from 'styled-components';
+import { DefaultTheme } from 'styled-components';
 
 import { breakpoints } from './variables';
 import { breakpoint, constSize, transition } from './mixins';
 
-const theme: Theme = {
+const theme: DefaultTheme = {
   breakpoints: {
     keys: Object.keys(breakpoints),
     values: breakpoints,
@@ -71,6 +71,23 @@ const theme: Theme = {
       900: '#212121'
     }
   },
+  font: {
+    base: '16px',
+    fontFamily: '"Montserrat", "Ubuntu", "Helvetica", "Arial", sans-serif',
+    letterSpacing: '0.005rem',
+    lineHeight: 1.45,
+    size: {
+      tiny: '0.75rem', // 12px
+      small: '0.875rem', // 14px
+      normal: '1rem', // 16px
+      big: '1.125rem', // 18px
+      large: '1.5rem', // 24px
+      huge: '2rem', // 32px
+      super: '3rem' // 48px
+    },
+    unit: 'rem',
+    weight: { light: 300, regular: 400, medium: 500, bold: 700, black: 900 }
+  },
   shape: {
     borderRadius: '10px'
   },
@@ -132,22 +149,7 @@ const theme: Theme = {
       `;
     }
   },
-  transition,
-  typography: {
-    base: '16px',
-    fontFamily: '"Montserrat", "Ubuntu", "Helvetica", "Arial", sans-serif',
-    size: {
-      tiny: '0.75rem', // 12px
-      small: '0.875rem', // 14px
-      normal: '1rem', // 16px
-      big: '1.125rem', // 18px
-      large: '1.5rem', // 24px
-      huge: '2rem', // 32px
-      super: '3rem' // 48px
-    },
-    unit: 'rem',
-    weight: { light: 300, regular: 400, medium: 500, bold: 700, black: 900 }
-  }
+  transition
 };
 
 export default theme;

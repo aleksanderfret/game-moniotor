@@ -1,13 +1,12 @@
-import Account from 'app/user';
-import Dashboard from 'app/dashboard';
-import Events from 'app/events';
-import Games from 'app/games';
-import Home from 'app/home';
-import Players from 'app/players';
-import Plays from 'app/plays';
-import Settings from 'app/settings';
-import Tools from 'app/tools';
-import Path, { RouteAccess } from './enums';
+import Account from 'modules/user';
+import Dashboard from 'modules/dashboard';
+import Events from 'modules/events';
+import Games from 'modules/games';
+import Home from 'modules/home';
+import Players from 'modules/players';
+import Plays from 'modules/plays';
+import Settings from 'modules/settings';
+import Tools from 'modules/tools';
 import {
   RemoveAccountConfirmation,
   ResetPassword,
@@ -15,7 +14,8 @@ import {
   SignUp,
   SignUpConfirmation,
   UpdatePassword
-} from 'app/auth';
+} from 'modules/auth';
+import Path, { RouteAccess } from './enums';
 import { RouteDefinition } from './types';
 
 const routes: RouteDefinition[] = [

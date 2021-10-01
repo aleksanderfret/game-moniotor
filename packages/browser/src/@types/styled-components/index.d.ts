@@ -2,6 +2,7 @@ import 'styled-components';
 import { CSSProperties, DefaultTheme, ThemedCssFunction } from 'react';
 
 import { Breakpoint } from 'theme/types';
+import { SizeLabel } from 'types';
 
 interface Color {
   main: string;
@@ -47,9 +48,11 @@ interface Spacing {
   rowsAll: SpacingFunction;
 }
 
-interface Typography {
+interface Font {
   base: string;
   fontFamily: CSSProperties['fontFamily'];
+  letterSpacing: CSSProperties['letterSpacing'];
+  lineHeight: CSSProperties['lineHeight'];
   unit: Unit;
   size: { [key as string]: string };
   weight: {
@@ -64,7 +67,7 @@ interface Size {
   calc: SpacingFunction;
   multiplier: number;
   unit: Unit;
-  values: { [key as string]: string };
+  values: { [key in SizeLabel]: string };
 }
 
 type Shadows = CSSProperties['boxShadow'][];
@@ -76,9 +79,10 @@ type ConstSize = (width: string, height?: string) => string;
 type Media = Record<Breakpoint, ThemedCssFunction<DefaultTheme>>;
 
 declare module 'styled-components' {
-  export interface Theme {
+  export interface DefaultTheme {
     breakpoints: Breakpoints;
     constSize: ConstSize;
+    font: Font;
     media: Media;
     palette: Palette;
     shadows?: Shadows;
@@ -86,6 +90,5 @@ declare module 'styled-components' {
     size: Size;
     spacing: Spacing;
     transition: transition;
-    typography: Typography;
   }
 }

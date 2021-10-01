@@ -1,4 +1,6 @@
 {
   "account": "Profil",
-  "app-name": "Games Room"
+  "app-name": "Games Room",
+  "sign-in": "Zaloguj",
+  "sign-up": "Utwórz konto"
 }
