@@ -1,6 +1,6 @@
-import { Breakpoint, Breakpoints } from './types';
+import { Breakpoint, BreakpointValues } from './types';
 
-export const breakpoints: Breakpoints = {
+export const breakpoints: BreakpointValues = {
   [Breakpoint.xxs]: 0,
   [Breakpoint.xs]: 320,
   [Breakpoint.sm]: 576,

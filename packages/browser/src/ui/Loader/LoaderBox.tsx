@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { SizeLabel } from 'types';
+import { SizeLabel } from 'theme/types';
 
 export type LoaderSize = Extract<SizeLabel, 'md' | 'xl'>;
 

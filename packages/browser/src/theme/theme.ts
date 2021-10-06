@@ -1,17 +1,16 @@
 import { DefaultTheme } from 'styled-components';
 
 import { breakpoints } from './variables';
-import { breakpoint, constSize, transition } from './mixins';
-
-const theme: DefaultTheme = {
-  breakpoints: {
-    keys: Object.keys(breakpoints),
-    values: breakpoints,
-    unit: 'px'
-  },
+import {
+  alpha,
   constSize,
-  media: breakpoint,
-  palette: {
+  breakpoint as media,
+  shadow,
+  transition
+} from './mixins';
+
+const createTheme = (): DefaultTheme => {
+  const palette = {
     common: {
       black: '#00000',
       white: '#ffffff'
@@ -70,86 +69,108 @@ const theme: DefaultTheme = {
       800: '#424242',
       900: '#212121'
     }
-  },
-  font: {
-    base: '16px',
-    fontFamily: '"Montserrat", "Ubuntu", "Helvetica", "Arial", sans-serif',
-    letterSpacing: '0.005rem',
-    lineHeight: 1.45,
+  };
+
+  const fontSizes = {
+    tiny: '0.75rem', // 12px
+    small: '0.875rem', // 14px
+    normal: '1rem', // 16px
+    big: '1.125rem', // 18px
+    large: '1.5rem', // 24px
+    huge: '2rem', // 32px
+    super: '3rem' // 48px
+  };
+
+  const sizes = {
+    xxxs: '0.125rem', // 2px
+    xxs: '0.25rem', // 4px
+    xs: '0.5rem', // 8px
+    sm: '1rem', // 16px
+    md: '1.5rem', // 24px
+    lg: '2rem', // 32px
+    xl: '3rem', // 48px
+    xxl: '4rem', // 64px
+    xxxl: '5rem' // 80px
+  };
+
+  const theme: DefaultTheme = {
+    alpha,
+    breakpoints: {
+      keys: Object.keys(breakpoints),
+      values: breakpoints,
+      unit: 'px'
+    },
+    constSize,
+    customShadow: shadow,
+    font: {
+      base: '16px',
+      fontFamily: '"Montserrat", "Ubuntu", "Helvetica", "Arial", sans-serif',
+      letterSpacing: '0.005rem',
+      lineHeight: 1.45,
+      size: fontSizes,
+      unit: 'rem',
+      weight: { light: 300, regular: 400, medium: 500, bold: 700, black: 900 }
+    },
+    media,
+    palette,
+    shape: {
+      borderRadius: '10px'
+    },
     size: {
-      tiny: '0.75rem', // 12px
-      small: '0.875rem', // 14px
-      normal: '1rem', // 16px
-      big: '1.125rem', // 18px
-      large: '1.5rem', // 24px
-      huge: '2rem', // 32px
-      super: '3rem' // 48px
-    },
-    unit: 'rem',
-    weight: { light: 300, regular: 400, medium: 500, bold: 700, black: 900 }
-  },
-  shape: {
-    borderRadius: '10px'
-  },
-  size: {
-    calc: (multiplicand: number): string => {
-      const { multiplier, unit } = theme.size;
+      calc: (multiplicand: number): string => {
+        const { multiplier, unit } = theme.size;
 
-      return `${multiplicand * multiplier}${unit}`;
+        return `${multiplicand * multiplier}${unit}`;
+      },
+      multiplier: 1,
+      values: sizes,
+      unit: 'rem'
     },
-    multiplier: 1,
-    values: {
-      xxxs: '0.125rem', // 2px
-      xxs: '0.25rem', // 4px
-      xs: '0.5rem', // 8px
-      sm: '1rem', // 16px
-      md: '1.5rem', // 24px
-      lg: '2rem', // 32px
-      xl: '3rem', // 48px
-      xxl: '4rem', // 64px
-      xxxl: '5rem' // 80px
-    },
-    unit: 'rem'
-  },
-  spacing: {
-    cols: (value: number) => {
-      const { calc } = theme.size;
+    spacing: {
+      cols: (value: number) => {
+        const { calc } = theme.size;
 
-      return `
-        & > :not(:last-child) {
-          margin-right: ${calc(value)};
-        }
-      `;
-    },
-    colsAll: (value: number) => {
-      const { calc } = theme.size;
+        return `
+          & > :not(:last-child) {
+            margin-right: ${calc(value)};
+          }
+        `;
+      },
+      colsAll: (value: number) => {
+        const { calc } = theme.size;
 
-      return `
-        & > * {
-          margin-right: ${calc(value)};
-        }
-      `;
-    },
-    rows: (value: number) => {
-      const { calc } = theme.size;
+        return `
+          & > * {
+            margin-right: ${calc(value)};
+          }
+        `;
+      },
+      rows: (value: number) => {
+        const { calc } = theme.size;
 
-      return `
-        & > :not(:last-child) {
-          margin-bottom: ${calc(value)};
-        }
-      `;
-    },
-    rowsAll: (value: number) => {
-      const { calc } = theme.size;
+        return `
+          & > :not(:last-child) {
+            margin-bottom: ${calc(value)};
+          }
+        `;
+      },
+      rowsAll: (value: number) => {
+        const { calc } = theme.size;
 
-      return `
-        & > * {
-          margin-bottom: ${calc(value)};
-        }
-      `;
-    }
-  },
-  transition
+        return `
+          & > * {
+            margin-bottom: ${calc(value)};
+          }
+        `;
+      }
+    },
+    shadows: {
+      focus: `0 0 0 0 ${sizes.xxs} ${alpha(palette.primary.main, 50)}`
+    },
+    transition
+  };
+
+  return theme;
 };
 
-export default theme;
+export default createTheme();

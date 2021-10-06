@@ -1,94 +1,33 @@
 import 'styled-components';
-import { CSSProperties, DefaultTheme, ThemedCssFunction } from 'react';
 
-import { Breakpoint } from 'theme/types';
-import { SizeLabel } from 'types';
-
-interface Color {
-  main: string;
-  light?: string;
-  dark?: string;
-  contrast?: string;
-}
-
-interface Palette {
-  common: { black: string; white: string };
-  primary: Color;
-  secondary: Color;
-  warning: Color;
-  success: Color;
-  error: Color;
-  info: Color;
-  background: Color;
-  gray: { [key as number]: string };
-}
-
-interface Shape {
-  borderRadius: CSSProperties['borderRadius'];
-}
-
-type Unit = 'px' | '%' | 'em' | 'rem';
-
-type SpacingFunction = (multiplicand: number) => string;
-
-interface Breakpoints {
-  keys: string[];
-  values: { [key as string]: string };
-  unit?: Unit;
-}
-
-interface Utils {
-  fourBy: (number: number) => number;
-}
-
-interface Spacing {
-  cols: SpacingFunction;
-  colsAll: SpacingFunction;
-  rows: SpacingFunction;
-  rowsAll: SpacingFunction;
-}
-
-interface Font {
-  base: string;
-  fontFamily: CSSProperties['fontFamily'];
-  letterSpacing: CSSProperties['letterSpacing'];
-  lineHeight: CSSProperties['lineHeight'];
-  unit: Unit;
-  size: { [key as string]: string };
-  weight: {
-    light: number;
-    regular: number;
-    medium: number;
-    bold: number;
-    black: number;
-  };
-}
-interface Size {
-  calc: SpacingFunction;
-  multiplier: number;
-  unit: Unit;
-  values: { [key in SizeLabel]: string };
-}
-
-type Shadows = CSSProperties['boxShadow'][];
-
-type Transition = (...properties: CSSProperties[]) => string;
-
-type ConstSize = (width: string, height?: string) => string;
-
-type Media = Record<Breakpoint, ThemedCssFunction<DefaultTheme>>;
+import {
+  Alpha,
+  Breakpoints,
+  ConstSize,
+  Font,
+  Media,
+  Palette,
+  ShadowFunction,
+  Shadows,
+  Shape,
+  Size,
+  Spacing,
+  Transition
+} from 'theme/types';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
+    alpha: Alpha;
     breakpoints: Breakpoints;
     constSize: ConstSize;
+    customShadow: ShadowFunction;
     font: Font;
     media: Media;
     palette: Palette;
-    shadows?: Shadows;
+    shadows: Shadows;
     shape: Shape;
     size: Size;
     spacing: Spacing;
-    transition: transition;
+    transition: Transition;
   }
 }
