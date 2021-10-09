@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { SizeLabel } from 'theme/types';
 
-export type LoaderSize = Extract<SizeLabel, 'md' | 'xl'>;
+export type LoaderSize = Extract<SizeLabel, 'sm' | 'md' | 'xl'>;
 
 interface LoaderBoxProps {
   size: LoaderSize;

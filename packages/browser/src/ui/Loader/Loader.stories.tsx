@@ -10,50 +10,32 @@ export default {
 
 const Template: Story<LoaderProps> = args => <Loader {...args} />;
 
-export const SmallMain = Template.bind({});
-SmallMain.args = {
+export const Main = Template.bind({});
+Main.args = {
   size: 'md',
   color: 'main'
 };
 
-export const SmallLight = Template.bind({});
-SmallLight.args = {
-  size: 'md',
-  color: 'light'
-};
-
-export const SmallDark = Template.bind({});
-SmallDark.args = {
-  size: 'md',
-  color: 'dark'
-};
-
-export const SmallContrast = Template.bind({});
-SmallContrast.args = {
+export const Contrast = Template.bind({});
+Contrast.args = {
   size: 'md',
   color: 'contrast'
 };
 
-export const BigMain = Template.bind({});
-BigMain.args = {
-  size: 'xl',
+export const Small = Template.bind({});
+Small.args = {
+  size: 'sm',
   color: 'main'
 };
 
-export const BigLight = Template.bind({});
-BigLight.args = {
-  size: 'xl',
-  color: 'light'
+export const Medium = Template.bind({});
+Medium.args = {
+  size: 'md',
+  color: 'main'
 };
 
-export const BigDark = Template.bind({});
-BigDark.args = {
+export const Big = Template.bind({});
+Big.args = {
   size: 'xl',
-  color: 'dark'
-};
-
-export const BigContrast = Template.bind({});
-BigContrast.args = {
-  size: 'xl',
-  color: 'contrast'
+  color: 'main'
 };

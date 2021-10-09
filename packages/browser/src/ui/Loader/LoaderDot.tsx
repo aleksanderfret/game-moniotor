@@ -12,7 +12,7 @@ const loaderBounceDelay = keyframes`
   }
 `;
 
-export type LoaderColor = 'main' | 'light' | 'dark' | 'contrast';
+export type LoaderColor = 'main' | 'contrast';
 
 interface LoaderDotProps {
   color: LoaderColor;
