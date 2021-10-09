@@ -126,9 +126,9 @@ const GlobalStyle = createGlobalStyle`
     font-size: ${({ theme }) => theme.font.base};
     font-family: ${({ theme }) => theme.font.fontFamily};
     line-height: ${({ theme }) => theme.font.lineHeight};
-    color: ${({ theme }) => theme.palette.common.black};
-    letter-spacing: ${({ theme }) => theme.palette.common.black};
-    background-color: ${({ theme }) => theme.palette.background.main};
+    color: ${({ theme }) => theme.colors.common.black};
+    letter-spacing: ${({ theme }) => theme.colors.common.black};
+    background-color: ${({ theme }) => theme.colors.background.main};
   }
 `;
 

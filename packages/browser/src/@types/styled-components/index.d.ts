@@ -2,33 +2,26 @@ import 'styled-components';
 
 import {
   Breakpoints,
-  ColorFunction,
-  ConstSize,
+  Colors,
   Font,
-  Media,
-  Palette,
-  ShadowFunction,
+  Mixins,
+  Multipliers,
   Shadows,
   Shape,
-  Size,
-  Spacing,
-  Transition
+  Sizes,
+  Unit
 } from 'theme/types';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    alpha: ColorFunction;
     breakpoints: Breakpoints;
-    constSize: ConstSize;
-    customShadow: ShadowFunction;
+    colors: Colors;
     font: Font;
-    media: Media;
-    palette: Palette;
+    mixins: Mixins;
+    multipliers: Multipliers;
     shadows: Shadows;
     shape: Shape;
-    size: Size;
-    spacing: Spacing;
-    tint: ColorFunction;
-    transition: Transition;
+    sizes: Sizes;
+    unit: Unit;
   }
 }

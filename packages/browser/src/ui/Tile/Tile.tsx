@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const Tile = styled.div`
-  background-color: ${({ theme }) => theme.palette.background.light};
+  background-color: ${({ theme }) => theme.colors.background.light};
   border-radius: ${({ theme }) => theme.shape.borderRadius};
-  padding: ${({ theme }) => theme.size.calc(1)};
+  padding: ${({ theme }) => theme.mixins.size(1)};
 `;
 
 export default Tile;

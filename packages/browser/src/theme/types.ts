@@ -11,21 +11,6 @@ export enum Breakpoint {
   xxl = 'xxl'
 }
 
-export type BreakpointValues = {
-  [key in Breakpoint]: number;
-};
-
-export type BreakpointMixins = {
-  [key in Breakpoint]: ThemedCssFunction<DefaultTheme>;
-};
-
-export interface Color {
-  main: string;
-  light: string;
-  dark: string;
-  contrast: string;
-}
-
 export type SizeLabel =
   | 'xxxs'
   | 'xxs'
@@ -38,46 +23,24 @@ export type SizeLabel =
   | 'xxxl'
   | 'xxxxl';
 
-export interface Palette {
-  common: { black: string; white: string };
-  primary: Color;
-  secondary: Color;
-  warning: Color;
-  success: Color;
-  danger: Color;
-  info: Color;
-  background: Color;
-  gray: { [key: number]: string };
-}
+export type Unit = 'px' | '%' | 'em' | 'rem';
+
+export type Sizes = { [key in SizeLabel]: string };
 
 export interface Shape {
   borderRadius: CSSProperties['borderRadius'];
 }
 
-export type Unit = 'px' | '%' | 'em' | 'rem';
-
-export type SpacingFunction = (multiplicand: number) => string;
-
-export type ColorFunction = (color: string, amount: number) => string;
-
-export type Tint = (color: string, amount: number) => string;
-export interface Breakpoints {
-  keys: string[];
-  values: BreakpointValues;
-  unit: Unit;
+export interface Shadows {
+  [key: string]: CSSProperties['boxShadow'];
 }
 
-export interface Utils {
-  fourBy: (number: number) => number;
+export interface Color {
+  main: string;
+  light: string;
+  dark: string;
+  contrast: string;
 }
-
-export interface Spacing {
-  cols: SpacingFunction;
-  colsAll: SpacingFunction;
-  rows: SpacingFunction;
-  rowsAll: SpacingFunction;
-}
-
 export interface Font {
   base: string;
   fontFamily: CSSProperties['fontFamily'];
@@ -93,11 +56,52 @@ export interface Font {
     black: number;
   };
 }
-export interface Size {
-  calc: SpacingFunction;
-  multiplier: number;
+
+export interface Colors {
+  common: { black: string; white: string };
+  primary: Color;
+  secondary: Color;
+  warning: Color;
+  success: Color;
+  danger: Color;
+  info: Color;
+  background: Color;
+  gray: { [key: number]: string };
+}
+export interface Multipliers {
+  px: number;
+  rem: number;
+}
+
+export interface Breakpoints {
+  keys: string[];
+  values: BreakpointValues;
   unit: Unit;
-  values: { [key in SizeLabel]: string };
+}
+
+export type BreakpointValues = {
+  [key in Breakpoint]: number;
+};
+
+export type BreakpointMixins = Record<
+  Breakpoint,
+  ThemedCssFunction<DefaultTheme>
+>;
+
+export type SizeMixin = (value: number) => string;
+export type ColorMixin = (color: string, amount: number) => string;
+
+export interface Mixins {
+  breakpoint: BreakpointMixins;
+  alpha: ColorMixin;
+  cols: SizeMixin;
+  colsAll: SizeMixin;
+  constSize: (width: string, height?: string) => string;
+  rows: SizeMixin;
+  rowsAll: SizeMixin;
+  size: SizeMixin;
+  tint: ColorMixin;
+  transition: (...properties: string[]) => string;
 }
 
 export interface ShadowParams {
@@ -110,13 +114,3 @@ export interface ShadowParams {
 }
 
 export type ShadowFunction = (params: ShadowParams) => string;
-
-export interface Shadows {
-  [key: string]: CSSProperties['boxShadow'];
-}
-
-export type Transition = (...properties: string[]) => string;
-
-export type ConstSize = (width: string, height?: string) => string;
-
-export type Media = Record<Breakpoint, ThemedCssFunction<DefaultTheme>>;

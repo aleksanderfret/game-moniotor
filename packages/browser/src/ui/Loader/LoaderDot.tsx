@@ -31,7 +31,7 @@ const LoaderDot = styled.div<LoaderDotProps>`
     margin: 0 auto;
     width: 15%;
     height: 15%;
-    background-color: ${({ color, theme }) => theme.palette.primary[color]};
+    background-color: ${({ color, theme }) => theme.colors.primary[color]};
     border-radius: 100%;
     animation: ${loaderBounceDelay} 1.2s infinite ease-in-out both;
   }

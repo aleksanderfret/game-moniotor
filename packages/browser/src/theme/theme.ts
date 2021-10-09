@@ -3,15 +3,26 @@ import { DefaultTheme } from 'styled-components';
 import { breakpoints } from './variables';
 import {
   alpha,
+  breakpoint,
+  cols,
+  colsAll,
   constSize,
-  breakpoint as media,
-  shadow,
+  rows,
+  rowsAll,
+  size,
   tint,
   transition
 } from './mixins';
 
 const createTheme = (): DefaultTheme => {
-  const palette = {
+  const unit = 'rem';
+
+  const multipliers = {
+    px: 4,
+    rem: 1
+  };
+
+  const colors = {
     common: {
       black: '#000000',
       white: '#ffffff'
@@ -95,15 +106,14 @@ const createTheme = (): DefaultTheme => {
     xxxxl: '5rem' // 80px
   };
 
+  const sizeMixin = size(multipliers.rem, 'rem');
+
   const theme: DefaultTheme = {
-    alpha,
     breakpoints: {
       keys: Object.keys(breakpoints),
       values: breakpoints,
       unit: 'px'
     },
-    constSize,
-    customShadow: shadow,
     font: {
       base: '16px',
       fontFamily: '"Montserrat", "Ubuntu", "Helvetica", "Arial", sans-serif',
@@ -113,66 +123,30 @@ const createTheme = (): DefaultTheme => {
       unit: 'rem',
       weight: { light: 300, regular: 400, medium: 500, bold: 700, black: 900 }
     },
-    media,
-    palette,
+    mixins: {
+      breakpoint,
+      alpha,
+      cols: cols(sizeMixin),
+      colsAll: colsAll(cols(sizeMixin)),
+      constSize,
+      rows: rows(sizeMixin),
+      rowsAll: rowsAll(sizeMixin),
+      size: sizeMixin,
+      tint,
+      transition
+    },
+    multipliers,
+    colors,
     shape: {
       borderRadius: '1rem'
     },
-    size: {
-      calc: (multiplicand: number): string => {
-        const { multiplier, unit } = theme.size;
-
-        return `${multiplicand * multiplier}${unit}`;
-      },
-      multiplier: 1,
-      values: sizes,
-      unit: 'rem'
-    },
-    spacing: {
-      cols: (value: number) => {
-        const { calc } = theme.size;
-
-        return `
-          & > :not(:last-child) {
-            margin-right: ${calc(value)};
-          }
-        `;
-      },
-      colsAll: (value: number) => {
-        const { calc } = theme.size;
-
-        return `
-          & > * {
-            margin-right: ${calc(value)};
-          }
-        `;
-      },
-      rows: (value: number) => {
-        const { calc } = theme.size;
-
-        return `
-          & > :not(:last-child) {
-            margin-bottom: ${calc(value)};
-          }
-        `;
-      },
-      rowsAll: (value: number) => {
-        const { calc } = theme.size;
-
-        return `
-          & > * {
-            margin-bottom: ${calc(value)};
-          }
-        `;
-      }
-    },
+    sizes,
     shadows: {
-      init: `0 0 0 0 ${alpha(palette.primary.main, 0)}`,
-      focus: `0 0 0 ${sizes.xxs} ${alpha(palette.secondary.main, 60)}`,
-      focusDanger: `0 0 0 ${sizes.xxs} ${alpha(palette.danger.main, 60)}`
+      init: `0 0 0 0 ${alpha(colors.primary.main, 0)}`,
+      focus: `0 0 0 ${sizes.xxs} ${alpha(colors.secondary.main, 60)}`,
+      focusDanger: `0 0 0 ${sizes.xxs} ${alpha(colors.danger.main, 60)}`
     },
-    tint,
-    transition
+    unit
   };
 
   return theme;

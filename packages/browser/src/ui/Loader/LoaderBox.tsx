@@ -9,7 +9,7 @@ interface LoaderBoxProps {
 }
 
 const LoaderBox = styled.div<LoaderBoxProps>`
-  ${({ size, theme }) => theme.constSize(theme.size.values[size])};
+  ${({ size, theme }) => theme.mixins.constSize(theme.sizes[size])};
   position: absolute;
 `;
 

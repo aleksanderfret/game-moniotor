@@ -19,11 +19,11 @@ interface LogoBoxProps {
 const LogoBox = styled.div<LogoBoxProps>`
   display: inline-block;
   width: auto;
-  height: ${({ sizeFactor, theme }) => theme.size.calc(sizeFactor)};
-  margin: ${({ theme }) => theme.size.calc(1)};
+  height: ${({ sizeFactor, theme }) => theme.mixins.size(sizeFactor)};
+  margin: ${({ theme }) => theme.mixins.size(1)};
 
   svg {
-    height: ${({ sizeFactor, theme }) => theme.size.calc(sizeFactor)};
+    height: ${({ sizeFactor, theme }) => theme.mixins.size(sizeFactor)};
   }
 `;
 
