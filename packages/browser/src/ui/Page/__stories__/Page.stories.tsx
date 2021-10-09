@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
-import PageComponent from './Page';
+import PageComponent from '../Page';
 
 export default {
   component: PageComponent,

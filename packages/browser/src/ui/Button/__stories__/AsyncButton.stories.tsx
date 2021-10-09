@@ -1,8 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 
-import AsyncButton from './AsyncButton';
-import { ButtonProps } from './types';
+import AsyncButton from '../AsyncButton';
+import { ButtonProps } from '../types';
 
 export default {
   title: 'UI/AsyncButton',
