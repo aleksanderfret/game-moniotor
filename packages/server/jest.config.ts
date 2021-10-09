@@ -20,6 +20,7 @@ const config: Config.InitialOptions = {
   },
   name: 'server',
   setupFilesAfterEnv: ['<rootDir>/src/__tests__/setupTests.ts'],
+  snapshotResolver: '<rootDir>/src/__tests__/snapshotResolver.ts',
   testEnvironment: 'node',
   testMatch: ['**/?(*.)+(spec|test).+(ts|js)'],
   transform: {

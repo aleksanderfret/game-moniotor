@@ -18,6 +18,7 @@ const config: Config.InitialOptions = {
     // '@testing-library/jest-dom/extend-expect'
     '<rootDir>/src/__tests__/setupTests.ts'
   ],
+  snapshotResolver: '<rootDir>/src/__tests__/snapshotResolver.ts',
   testEnvironment: 'jsdom',
   testMatch: ['**/?(*.)+(spec|test).+(ts|tsx|js|jsx)'],
   transform: {

@@ -27,6 +27,7 @@
     "lint:fix": "eslint ./ --ext \".js,.jsx,.ts,.tsx\" --max-warnings=0 --fix",
     "pre-commit": "lint-staged && npm run test",
     "pre-push": "npm-run-all check test",
+    "snapshot:update": "npm test -- -u",
     "start": "webpack serve --mode development --config ./webpack.config.dev.ts",
     "storybook": "start-storybook -p 6006",
     "stylelint": "npm-run-all stylelint:styled stylelint:scss",

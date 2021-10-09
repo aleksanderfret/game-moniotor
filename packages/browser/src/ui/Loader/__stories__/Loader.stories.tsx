@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 
-import Loader, { LoaderProps } from './Loader';
+import Loader, { LoaderProps } from 'ui/Loader';
 
 export default {
   title: 'UI/Loader',

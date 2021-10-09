@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Loader /> should have proper structure 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-gsTEea ieRIau"
+    role="progressbar"
+  >
+    <div
+      class="sc-bdfBQB crFuFB"
+      color="main"
+      data-testid="loader-dot-1"
+    />
+    <div
+      class="sc-bdfBQB crFuFB"
+      color="main"
+      data-testid="loader-dot-2"
+    />
+    <div
+      class="sc-bdfBQB crFuFB"
+      color="main"
+      data-testid="loader-dot-3"
+    />
+    <div
+      class="sc-bdfBQB crFuFB"
+      color="main"
+      data-testid="loader-dot-4"
+    />
+    <div
+      class="sc-bdfBQB crFuFB"
+      color="main"
+      data-testid="loader-dot-5"
+    />
+    <div
+      class="sc-bdfBQB crFuFB"
+      color="main"
+      data-testid="loader-dot-6"
+    />
+    <div
+      class="sc-bdfBQB crFuFB"
+      color="main"
+      data-testid="loader-dot-7"
+    />
+    <div
+      class="sc-bdfBQB crFuFB"
+      color="main"
+      data-testid="loader-dot-8"
+    />
+    <div
+      class="sc-bdfBQB crFuFB"
+      color="main"
+      data-testid="loader-dot-9"
+    />
+    <div
+      class="sc-bdfBQB crFuFB"
+      color="main"
+      data-testid="loader-dot-10"
+    />
+    <div
+      class="sc-bdfBQB crFuFB"
+      color="main"
+      data-testid="loader-dot-11"
+    />
+    <div
+      class="sc-bdfBQB crFuFB"
+      color="main"
+      data-testid="loader-dot-12"
+    />
+  </div>
+</DocumentFragment>
+`;
