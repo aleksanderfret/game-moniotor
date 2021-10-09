@@ -1,9 +1,4 @@
-import {
-  css,
-  CSSProperties,
-  DefaultTheme,
-  ThemedCssFunction
-} from 'styled-components';
+import { css, DefaultTheme, ThemedCssFunction } from 'styled-components';
 
 import {
   Breakpoint,
@@ -38,16 +33,14 @@ export const constSize = (width: string, height: string = width): string => `
   flex-shrink: 0;
 `;
 
-export const transition = (...properties: CSSProperties[]): string => `
-  transition-property: ${properties.join(' ')};
+export const transition = (...properties: string[]): string => `
+  transition-property: ${properties.join(', ')};
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0.5, 0, 0.25, 1);
-  transform: translate3d(0, 0, 0);
   backface-visibility:hidden;
-  wii-change: ${properties.join(' ')};
 `;
 
-export const alpha = (color: string, opacity: number): string => {
+const normalizeHex = (color: string): string => {
   const pattern = /^#(?:[a-f\d]{3}){1,2}$/i;
 
   if (!pattern.test(color)) {
@@ -56,13 +49,16 @@ export const alpha = (color: string, opacity: number): string => {
 
   const hexValues = color.substring(1);
 
-  const hexColor =
-    hexValues.length <= 3
-      ? `#${hexValues
-          .split('')
-          .map((v: string) => `${v}${v}`)
-          .join('')}`
-      : color;
+  return hexValues.length <= 3
+    ? `#${hexValues
+        .split('')
+        .map((v: string) => `${v}${v}`)
+        .join('')}`
+    : color;
+};
+
+export const alpha = (color: string, opacity: number): string => {
+  const hexColor = normalizeHex(color);
 
   const normalizedOpacity = Math.round(
     opacity > -1 && opacity < 1 ? opacity * 100 : opacity
@@ -74,6 +70,26 @@ export const alpha = (color: string, opacity: number): string => {
   hexOpacity = hexOpacity.length === 1 ? `0${hexOpacity}` : hexOpacity;
 
   return `${hexColor}${hexOpacity}`;
+};
+
+export const tint = (color: string, amount: number): string => {
+  const hexColor = normalizeHex(color).substring(1);
+  const percentage = Math.max(-100, Math.min(100, amount));
+  const luminosity = 2.55 * percentage;
+
+  const components = hexColor.match(/.{1,2}/g) || [];
+  const tint = components
+    .map((component: string) => {
+      const intColor = parseInt(component, 16);
+      const updatedColor = Math.round(
+        Math.min(Math.max(0, intColor + luminosity), 255)
+      ).toString(16);
+
+      return updatedColor.length === 1 ? `0${updatedColor}` : updatedColor;
+    })
+    .join('');
+
+  return `#${tint}`;
 };
 
 export const shadow: ShadowFunction = ({

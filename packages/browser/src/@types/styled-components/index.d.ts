@@ -1,8 +1,8 @@
 import 'styled-components';
 
 import {
-  Alpha,
   Breakpoints,
+  ColorFunction,
   ConstSize,
   Font,
   Media,
@@ -17,7 +17,7 @@ import {
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    alpha: Alpha;
+    alpha: ColorFunction;
     breakpoints: Breakpoints;
     constSize: ConstSize;
     customShadow: ShadowFunction;
@@ -28,6 +28,7 @@ declare module 'styled-components' {
     shape: Shape;
     size: Size;
     spacing: Spacing;
+    tint: ColorFunction;
     transition: Transition;
   }
 }

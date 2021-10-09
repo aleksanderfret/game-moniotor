@@ -6,25 +6,26 @@ import {
   constSize,
   breakpoint as media,
   shadow,
+  tint,
   transition
 } from './mixins';
 
 const createTheme = (): DefaultTheme => {
   const palette = {
     common: {
-      black: '#00000',
+      black: '#000000',
       white: '#ffffff'
     },
     primary: {
-      main: '#1414b8',
-      light: '#4343C6',
-      dark: '#0e0e80',
+      main: '#001999',
+      light: '#0026e6',
+      dark: '#000d4d',
       contrast: '#ffffff'
     },
     secondary: {
-      main: '#2979ff',
-      light: '#5393ff',
-      dark: '#1c54b2',
+      main: '#0055ff',
+      light: '#80aaff',
+      dark: '#003399',
       contrast: '#ffffff'
     },
     warning: {
@@ -36,13 +37,13 @@ const createTheme = (): DefaultTheme => {
     success: {
       main: '#4ca801',
       light: '#6FB933',
-      dark: '#b27d00',
+      dark: '#357500',
       contrast: '#ffffff'
     },
-    error: {
+    danger: {
       main: '#ff0034',
       light: '#ff335c',
-      dark: '#357500',
+      dark: '#b20024',
       contrast: '#ffffff'
     },
     info: {
@@ -88,9 +89,10 @@ const createTheme = (): DefaultTheme => {
     sm: '1rem', // 16px
     md: '1.5rem', // 24px
     lg: '2rem', // 32px
-    xl: '3rem', // 48px
-    xxl: '4rem', // 64px
-    xxxl: '5rem' // 80px
+    xl: '2.5rem', // 40px
+    xxl: '3rem', // 48px
+    xxxl: '4rem', // 64px
+    xxxxl: '5rem' // 80px
   };
 
   const theme: DefaultTheme = {
@@ -114,7 +116,7 @@ const createTheme = (): DefaultTheme => {
     media,
     palette,
     shape: {
-      borderRadius: '10px'
+      borderRadius: '1rem'
     },
     size: {
       calc: (multiplicand: number): string => {
@@ -165,8 +167,11 @@ const createTheme = (): DefaultTheme => {
       }
     },
     shadows: {
-      focus: `0 0 0 0 ${sizes.xxs} ${alpha(palette.primary.main, 50)}`
+      init: `0 0 0 0 ${alpha(palette.primary.main, 0)}`,
+      focus: `0 0 0 ${sizes.xxs} ${alpha(palette.secondary.main, 60)}`,
+      focusDanger: `0 0 0 ${sizes.xxs} ${alpha(palette.danger.main, 60)}`
     },
+    tint,
     transition
   };
 

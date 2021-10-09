@@ -21,9 +21,9 @@ export type BreakpointMixins = {
 
 export interface Color {
   main: string;
-  light?: string;
-  dark?: string;
-  contrast?: string;
+  light: string;
+  dark: string;
+  contrast: string;
 }
 
 export type SizeLabel =
@@ -35,7 +35,8 @@ export type SizeLabel =
   | 'lg'
   | 'xl'
   | 'xxl'
-  | 'xxxl';
+  | 'xxxl'
+  | 'xxxxl';
 
 export interface Palette {
   common: { black: string; white: string };
@@ -43,7 +44,7 @@ export interface Palette {
   secondary: Color;
   warning: Color;
   success: Color;
-  error: Color;
+  danger: Color;
   info: Color;
   background: Color;
   gray: { [key: number]: string };
@@ -57,7 +58,9 @@ export type Unit = 'px' | '%' | 'em' | 'rem';
 
 export type SpacingFunction = (multiplicand: number) => string;
 
-export type Alpha = (color: string, alpha: number) => string;
+export type ColorFunction = (color: string, amount: number) => string;
+
+export type Tint = (color: string, amount: number) => string;
 export interface Breakpoints {
   keys: string[];
   values: BreakpointValues;
@@ -112,7 +115,7 @@ export interface Shadows {
   [key: string]: CSSProperties['boxShadow'];
 }
 
-export type Transition = (...properties: CSSProperties[]) => string;
+export type Transition = (...properties: string[]) => string;
 
 export type ConstSize = (width: string, height?: string) => string;
 
