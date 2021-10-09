@@ -30,7 +30,7 @@ const Intro: FC = () => (
       <Route component={SignIn} exact path={Path.SignIn} />
       <Route component={SignUp} exact path={Path.SignUp} />
     </Switch>
-    <div>© 2021 Aps First</div>
+    <div>© 2021 Apps First</div>
   </IntroBox>
 );
 
