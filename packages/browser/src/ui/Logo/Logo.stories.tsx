@@ -10,74 +10,44 @@ export default {
 
 const Template: Story<LogoProps> = args => <Logo {...args} />;
 
-export const SmallSimple = Template.bind({});
-SmallSimple.args = {
-  size: 'small',
-  variant: 'simple'
-};
-
-export const SmallHorizontal = Template.bind({});
-SmallHorizontal.args = {
-  size: 'small',
-  variant: 'horizontal'
-};
-
-export const SmallVertical = Template.bind({});
-SmallVertical.args = {
-  size: 'small',
-  variant: 'vertical'
-};
-
-export const MediumSimple = Template.bind({});
-MediumSimple.args = {
+export const Simple = Template.bind({});
+Simple.args = {
   size: 'medium',
   variant: 'simple'
 };
 
-export const MediumHorizontal = Template.bind({});
-MediumHorizontal.args = {
+export const Horizontal = Template.bind({});
+Horizontal.args = {
   size: 'medium',
   variant: 'horizontal'
 };
 
-export const MediumVertical = Template.bind({});
-MediumVertical.args = {
+export const Vertical = Template.bind({});
+Vertical.args = {
   size: 'medium',
   variant: 'vertical'
 };
 
-export const BigSimple = Template.bind({});
-BigSimple.args = {
-  size: 'big',
-  variant: 'simple'
+export const Small = Template.bind({});
+Small.args = {
+  size: 'small',
+  variant: 'vertical'
 };
 
-export const BigHorizontal = Template.bind({});
-BigHorizontal.args = {
-  size: 'big',
-  variant: 'horizontal'
+export const Medium = Template.bind({});
+Medium.args = {
+  size: 'medium',
+  variant: 'vertical'
 };
 
-export const BigVertical = Template.bind({});
-BigVertical.args = {
+export const Big = Template.bind({});
+Big.args = {
   size: 'big',
   variant: 'vertical'
 };
 
-export const LargeSimple = Template.bind({});
-LargeSimple.args = {
-  size: 'large',
-  variant: 'simple'
-};
-
-export const LargeHorizontal = Template.bind({});
-LargeHorizontal.args = {
-  size: 'large',
-  variant: 'horizontal'
-};
-
-export const LargeVertical = Template.bind({});
-LargeVertical.args = {
+export const Large = Template.bind({});
+Large.args = {
   size: 'large',
   variant: 'vertical'
 };
