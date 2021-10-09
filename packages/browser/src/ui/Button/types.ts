@@ -17,3 +17,7 @@ export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
 export interface StyledButtonProps extends Omit<ButtonProps, 'size'> {
   size: number;
 }
+
+export interface AsyncContentBoxProps {
+  loading?: boolean;
+}

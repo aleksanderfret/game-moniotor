@@ -21,7 +21,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     {
       children,
       danger,
-      disabled: sourceDisabled,
+      disabled,
       label,
       loading,
       onClick,
@@ -34,7 +34,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
-    const disabled = sourceDisabled || loading;
     const secondary = sourceSecondary && !sourcePrimary;
     const primary = sourcePrimary || !secondary;
 
@@ -60,6 +59,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         aria-label={label}
         danger={danger}
         disabled={disabled}
+        loading={loading}
         onClick={handleClick}
         primary={primary}
         ref={ref}

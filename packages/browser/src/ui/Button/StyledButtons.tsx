@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { StyledButtonProps } from './types';
+import { AsyncContentBoxProps, StyledButtonProps } from './types';
 
 export const PrimaryButton = styled.button<StyledButtonProps>`
   position: relative;
@@ -25,7 +25,8 @@ export const PrimaryButton = styled.button<StyledButtonProps>`
   justify-content: center;
   overflow: hidden;
   padding: 0 ${({ theme }) => theme.size.calc(1)};
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+  cursor: ${({ disabled, loading }) =>
+    disabled ? 'not-allowed' : loading ? 'initial' : 'pointer'};
   box-shadow: ${({ theme }) => theme.shadows.init};
   ${({ theme }) =>
     theme.transition(
@@ -37,13 +38,17 @@ export const PrimaryButton = styled.button<StyledButtonProps>`
     )};
 
   &:hover:not(:disabled) {
-    background-color: ${({ theme }) => theme.palette.primary.dark};
-    border-color: ${({ theme }) => theme.palette.primary.dark};
+    background-color: ${({ loading, theme }) =>
+      theme.palette.primary[loading ? 'main' : 'dark']};
+    border-color: ${({ loading, theme }) =>
+      theme.palette.primary[loading ? 'main' : 'dark']};
   }
 
   &:active:not(:disabled) {
-    background-color: ${({ theme }) => theme.palette.primary.light};
-    border-color: ${({ theme }) => theme.palette.primary.light};
+    background-color: ${({ loading, theme }) =>
+      theme.palette.primary[loading ? 'main' : 'light']};
+    border-color: ${({ loading, theme }) =>
+      theme.palette.primary[loading ? 'main' : 'light']};
   }
 
   &:focus:not(:disabled) {
@@ -56,18 +61,26 @@ export const SecondaryButton = styled(PrimaryButton)`
   color: ${({ disabled, theme }) =>
     disabled ? theme.palette.gray[400] : theme.palette.primary.main};
 
+  &:hover:not(:disabled),
+  &:active:not(:disabled) {
+    border-color: ${({ loading, theme }) =>
+      theme.palette.primary[loading ? 'main' : 'dark']};
+    color: ${({ loading, theme }) =>
+      theme.palette.primary[loading ? 'main' : 'dark']};
+  }
+
   &:hover:not(:disabled) {
-    background-color: ${({ theme }) =>
-      theme.tint(theme.palette.primary.dark, 85)};
-    border-color: ${({ theme }) => theme.palette.primary.dark};
-    color: ${({ theme }) => theme.palette.primary.dark};
+    background-color: ${({ loading, theme }) =>
+      loading
+        ? theme.palette.background.light
+        : theme.tint(theme.palette.primary.dark, 85)};
   }
 
   &:active:not(:disabled) {
-    background-color: ${({ theme }) =>
-      theme.tint(theme.palette.primary.dark, 80)};
-    border-color: ${({ theme }) => theme.palette.primary.dark};
-    color: ${({ theme }) => theme.palette.primary.dark};
+    background-color: ${({ loading, theme }) =>
+      loading
+        ? theme.palette.background.light
+        : theme.tint(theme.palette.primary.dark, 80)};
   }
 `;
 
@@ -79,16 +92,29 @@ export const DangerButton = styled(PrimaryButton)`
       disabled ? theme.palette.gray[400] : theme.palette.danger.main};
 
   &:hover:not(:disabled) {
-    background-color: ${({ theme }) => theme.palette.danger.dark};
-    border-color: ${({ theme }) => theme.palette.danger.dark};
+    background-color: ${({ loading, theme }) =>
+      theme.palette.danger[loading ? 'main' : 'dark']};
+    border-color: ${({ loading, theme }) =>
+      theme.palette.danger[loading ? 'main' : 'dark']};
   }
 
   &:active:not(:disabled) {
-    background-color: ${({ theme }) => theme.palette.danger.light};
-    border-color: ${({ theme }) => theme.palette.danger.light};
+    background-color: ${({ loading, theme }) =>
+      theme.palette.danger[loading ? 'main' : 'light']};
+    border-color: ${({ loading, theme }) =>
+      theme.palette.danger[loading ? 'main' : 'light']};
   }
 
   &:focus:not(:disabled) {
     box-shadow: ${({ theme }) => theme.shadows.focusDanger};
   }
+`;
+
+export const AsyncContentBox = styled.span<AsyncContentBoxProps>`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: ${({ loading }) => (loading ? 'collapse' : 'initial')};
+  user-select: ${({ loading }) => (loading ? 'none' : 'auto')};
 `;

@@ -23,97 +23,26 @@ export default {
 
 const Template: Story<ButtonProps> = args => <Button {...args}>Button</Button>;
 
-export const PrimarySmall = Template.bind({});
-PrimarySmall.args = {
-  size: 'small'
-};
+export const Primary = Template.bind({});
+Primary.args = {};
 
-export const PrimarySmallDanger = Template.bind({});
-PrimarySmallDanger.args = {
-  danger: true,
-  size: 'small'
-};
+export const Secondary = Template.bind({});
+Secondary.args = { primary: false, secondary: true };
 
-export const PrimarySmallDisabled = Template.bind({});
-PrimarySmallDisabled.args = {
-  disabled: true,
-  size: 'small'
-};
+export const Danger = Template.bind({});
+Danger.args = { danger: true };
 
-export const PrimaryMedium = Template.bind({});
-PrimaryMedium.args = {
-  size: 'medium'
-};
+export const Disabled = Template.bind({});
+Disabled.args = { disabled: true };
 
-export const PrimaryMediumDanger = Template.bind({});
-PrimaryMediumDanger.args = {
-  danger: true,
-  size: 'medium'
-};
+export const SecondaryDisabled = Template.bind({});
+SecondaryDisabled.args = { disabled: true, primary: false, secondary: true };
 
-export const PrimaryMediumDisabled = Template.bind({});
-PrimaryMediumDisabled.args = {
-  disabled: true,
-  size: 'medium'
-};
+export const Small = Template.bind({});
+Small.args = { size: 'small' };
 
-export const PrimaryBig = Template.bind({});
-PrimaryBig.args = {
-  size: 'big'
-};
+export const Medium = Template.bind({});
+Medium.args = { size: 'medium' };
 
-export const PrimaryBigDanger = Template.bind({});
-PrimaryBigDanger.args = {
-  danger: true,
-  size: 'big'
-};
-export const PrimaryBigDisabled = Template.bind({});
-PrimaryBigDisabled.args = {
-  disabled: true,
-  size: 'big'
-};
-
-export const SecondarySmall = Template.bind({});
-SecondarySmall.args = {
-  primary: false,
-  secondary: true,
-  size: 'small'
-};
-
-export const SecondarySmallDisabled = Template.bind({});
-SecondarySmallDisabled.args = {
-  disabled: true,
-  primary: false,
-  secondary: true,
-  size: 'small'
-};
-
-export const SecondaryMedium = Template.bind({});
-SecondaryMedium.args = {
-  primary: false,
-  secondary: true,
-  size: 'medium'
-};
-
-export const SecondaryMediumDisabled = Template.bind({});
-SecondaryMediumDisabled.args = {
-  disabled: true,
-  primary: false,
-  secondary: true,
-  size: 'medium'
-};
-
-export const SecondaryBig = Template.bind({});
-SecondaryBig.args = {
-  primary: false,
-  secondary: true,
-  size: 'big'
-};
-
-export const SecondaryBigDisabled = Template.bind({});
-SecondaryBigDisabled.args = {
-  disabled: true,
-  primary: false,
-  secondary: true,
-  size: 'big'
-};
+export const Big = Template.bind({});
+Big.args = { size: 'big' };
