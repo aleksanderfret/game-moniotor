@@ -28,6 +28,12 @@ PrimarySmall.args = {
   size: 'small'
 };
 
+export const PrimarySmallDanger = Template.bind({});
+PrimarySmallDanger.args = {
+  danger: true,
+  size: 'small'
+};
+
 export const PrimarySmallDisabled = Template.bind({});
 PrimarySmallDisabled.args = {
   disabled: true,
@@ -36,6 +42,12 @@ PrimarySmallDisabled.args = {
 
 export const PrimaryMedium = Template.bind({});
 PrimaryMedium.args = {
+  size: 'medium'
+};
+
+export const PrimaryMediumDanger = Template.bind({});
+PrimaryMediumDanger.args = {
+  danger: true,
   size: 'medium'
 };
 
@@ -50,6 +62,11 @@ PrimaryBig.args = {
   size: 'big'
 };
 
+export const PrimaryBigDanger = Template.bind({});
+PrimaryBigDanger.args = {
+  danger: true,
+  size: 'big'
+};
 export const PrimaryBigDisabled = Template.bind({});
 PrimaryBigDisabled.args = {
   disabled: true,

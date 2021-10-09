@@ -73,7 +73,7 @@ export const SecondaryButton = styled(PrimaryButton)`
 
 export const DangerButton = styled(PrimaryButton)`
   background-color: ${({ disabled, theme }) =>
-    disabled ? theme.palette.gray[400] : theme.palette.danger.dark};
+    disabled ? theme.palette.gray[400] : theme.palette.danger.main};
   border: 1px solid
     ${({ disabled, theme }) =>
       disabled ? theme.palette.gray[400] : theme.palette.danger.main};
