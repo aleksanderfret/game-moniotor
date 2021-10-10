@@ -1,11 +1,15 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { cleanup, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import render from '__tests__/utils/render';
 import { Button } from 'ui/Button';
 
 describe('<Button />', () => {
+  afterEach(() => {
+    cleanup();
+  });
+
   test('should render', () => {
     render(<Button>Confirm</Button>);
     expect(screen.getByRole('button')).toBeVisible();

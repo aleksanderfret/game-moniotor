@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { cleanup, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { waitForElementToBeRemoved, within } from '@testing-library/dom';
 
@@ -13,6 +13,13 @@ const onClickHandlers = {
 };
 
 describe('<AsyncButton />', () => {
+  afterEach(() => {
+    cleanup();
+  });
+
+  afterAll(() => {
+    jest.restoreAllMocks();
+  });
   test('should render', () => {
     render(<AsyncButton>Confirm</AsyncButton>);
     expect(screen.getByRole('button')).toBeVisible();
@@ -120,9 +127,5 @@ describe('<AsyncButton />', () => {
     expect(button).not.toHaveClass('loading');
 
     expect(button).toBeEnabled();
-  });
-
-  afterAll(() => {
-    jest.restoreAllMocks();
   });
 });
