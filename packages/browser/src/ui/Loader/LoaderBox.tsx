@@ -1,16 +1,19 @@
 import styled from 'styled-components';
 
-import { SizeLabel } from 'theme/types';
-
-export type LoaderSize = Extract<SizeLabel, 'sm' | 'md' | 'xl'>;
-
-interface LoaderBoxProps {
-  size: LoaderSize;
-}
-
-const LoaderBox = styled.div<LoaderBoxProps>`
-  ${({ size, theme }) => theme.mixins.constSize(theme.sizes[size])};
+const LoaderBox = styled.div`
   position: absolute;
+
+  &.small {
+    ${({ theme }) => theme.mixins.constSize(theme.sizes.sm)};
+  }
+
+  &.medium {
+    ${({ theme }) => theme.mixins.constSize(theme.sizes.md)};
+  }
+
+  &.big {
+    ${({ theme }) => theme.mixins.constSize(theme.sizes.xxl)};
+  }
 `;
 
 export default LoaderBox;

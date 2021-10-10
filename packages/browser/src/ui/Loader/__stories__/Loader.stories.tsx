@@ -12,30 +12,30 @@ const Template: Story<LoaderProps> = args => <Loader {...args} />;
 
 export const Main = Template.bind({});
 Main.args = {
-  size: 'md',
+  size: 'medium',
   color: 'main'
 };
 
 export const Contrast = Template.bind({});
 Contrast.args = {
-  size: 'md',
+  size: 'medium',
   color: 'contrast'
 };
 
 export const Small = Template.bind({});
 Small.args = {
-  size: 'sm',
+  size: 'small',
   color: 'main'
 };
 
 export const Medium = Template.bind({});
 Medium.args = {
-  size: 'md',
+  size: 'medium',
   color: 'main'
 };
 
 export const Big = Template.bind({});
 Big.args = {
-  size: 'xl',
+  size: 'big',
   color: 'main'
 };

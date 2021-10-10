@@ -12,13 +12,7 @@ const loaderBounceDelay = keyframes`
   }
 `;
 
-export type LoaderColor = 'main' | 'contrast';
-
-interface LoaderDotProps {
-  color: LoaderColor;
-}
-
-const LoaderDot = styled.div<LoaderDotProps>`
+const LoaderDot = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
@@ -31,9 +25,20 @@ const LoaderDot = styled.div<LoaderDotProps>`
     margin: 0 auto;
     width: 15%;
     height: 15%;
-    background-color: ${({ color, theme }) => theme.colors.primary[color]};
     border-radius: 100%;
     animation: ${loaderBounceDelay} 1.2s infinite ease-in-out both;
+  }
+
+  &.main {
+    &::before {
+      background-color: ${({ theme }) => theme.colors.primary.main};
+    }
+  }
+
+  &.contrast {
+    &::before {
+      background-color: ${({ theme }) => theme.colors.primary.contrast};
+    }
   }
 
   &:nth-child(2) {
