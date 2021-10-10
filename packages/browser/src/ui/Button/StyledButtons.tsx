@@ -128,7 +128,7 @@ export const AsyncContentBox = styled.span<AsyncContentBoxProps>`
   justify-content: center;
 
   &.loading {
-    visibility: 'collapse';
-    user-select: 'none';
+    visibility: collapse;
+    user-select: none;
   }
 `;

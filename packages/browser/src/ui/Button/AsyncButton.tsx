@@ -22,7 +22,7 @@ const AsyncButton = forwardRef<HTMLButtonElement, ButtonProps>(
     const [loading, setLoading] = useState(false);
     const finalLoading = loading || sourceLoading;
     const loaderColor = secondary && !danger ? 'main' : 'contrast';
-    const loaderSize = size === 'small' ? 'sm' : 'md';
+    const loaderSize = size === 'small' ? 'small' : 'medium';
 
     const handleClick = async (
       event: React.MouseEvent<HTMLButtonElement, MouseEvent>
