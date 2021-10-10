@@ -1,4 +1,5 @@
 import React, { forwardRef, useState } from 'react';
+import clsx from 'clsx';
 
 import Loader from 'ui/Loader';
 import Button from './Button';
@@ -39,6 +40,10 @@ const AsyncButton = forwardRef<HTMLButtonElement, ButtonProps>(
       }
     };
 
+    const classes = clsx({
+      loading: finalLoading
+    });
+
     return (
       <Button
         danger={danger}
@@ -50,7 +55,7 @@ const AsyncButton = forwardRef<HTMLButtonElement, ButtonProps>(
         {...rest}
       >
         {finalLoading && <Loader color={loaderColor} size={loaderSize} />}
-        <AsyncContentBox loading={finalLoading}>{children}</AsyncContentBox>
+        <AsyncContentBox className={classes}>{children}</AsyncContentBox>
       </Button>
     );
   }

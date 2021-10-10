@@ -1,27 +1,15 @@
 import React, { forwardRef } from 'react';
+import clsx from 'clsx';
 
-import { ButtonProps, ButtonSize } from './types';
+import { ButtonProps } from './types';
 import { DangerButton, PrimaryButton, SecondaryButton } from './StyledButtons';
-
-const setSizeFactor = (size?: ButtonSize): number => {
-  switch (size) {
-    case 'small':
-      return 2;
-    case 'medium':
-      return 2.5;
-    case 'big':
-      return 3;
-    default:
-      return 2.5;
-  }
-};
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
       danger,
-      disabled,
+      disabled: sourceDisabled,
       label,
       loading,
       onClick,
@@ -36,6 +24,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const secondary = sourceSecondary && !sourcePrimary;
     const primary = sourcePrimary || !secondary;
+    const disabled = sourceDisabled || loading;
 
     const Component = primary
       ? danger
@@ -53,18 +42,22 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       onClick(event);
     };
 
+    const classes = clsx({
+      loading,
+      danger,
+      small: size === 'small',
+      medium: size === 'medium',
+      big: size === 'big'
+    });
+
     return (
       <Component
         {...rest}
         aria-label={label}
-        danger={danger}
+        className={classes}
         disabled={disabled}
-        loading={loading}
         onClick={handleClick}
-        primary={primary}
         ref={ref}
-        secondary={secondary}
-        size={setSizeFactor(size)}
         title={title}
         type={type}
       >
