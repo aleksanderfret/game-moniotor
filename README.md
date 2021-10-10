@@ -63,6 +63,7 @@ npm start
  "pre-commit": runs pre-commit hook,
  "pre-push": runs pre-push hook,
  "reset": runs clean script and runs npm ci,
+ "snapshot:update": updates test snapshots in all packages,
  "start": runs project for development,
  "storybook": runs storybook in all client packages,
  "stylelint": lint all style files,
