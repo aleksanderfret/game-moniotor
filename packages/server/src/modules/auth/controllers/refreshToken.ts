@@ -1,14 +1,14 @@
 import { Request, Response, RequestHandler } from 'express';
 
-import User from 'modules/user/entity';
 import {
   createAccessToken,
   createRefreshToken,
-  sendRefreshToken,
   verifyRefreshToken
-} from './auth';
+} from 'modules/auth/sign';
+import { sendRefreshToken } from 'modules/auth/sendTokenCookie';
+import User from 'modules/user/entity';
 
-export const refreshToken: RequestHandler = async (
+const refreshToken: RequestHandler = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
@@ -45,3 +45,5 @@ export const refreshToken: RequestHandler = async (
     return res.sendStatus(401);
   }
 };
+
+export default refreshToken;
