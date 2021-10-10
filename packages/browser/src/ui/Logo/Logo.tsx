@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { HorizontalLogo, SimpleLogo, VerticalLogo } from './IconLogo';
 
@@ -12,18 +13,29 @@ export interface LogoProps {
   variant?: LogoVariant;
 }
 
-interface LogoBoxProps {
-  sizeFactor: number;
-}
-
-const LogoBox = styled.div<LogoBoxProps>`
+const LogoBox = styled.div`
   display: inline-block;
   width: auto;
-  height: ${({ sizeFactor, theme }) => theme.size.calc(sizeFactor)};
-  margin: ${({ theme }) => theme.size.calc(1)};
+  margin: ${({ theme }) => theme.mixins.size(1)};
 
-  svg {
-    height: ${({ sizeFactor, theme }) => theme.size.calc(sizeFactor)};
+  &.small,
+  &.small svg {
+    height: ${({ theme }) => theme.mixins.size(3)};
+  }
+
+  &.medium,
+  &.medium svg {
+    height: ${({ theme }) => theme.mixins.size(6)};
+  }
+
+  &.big,
+  &.big svg {
+    height: ${({ theme }) => theme.mixins.size(9)};
+  }
+
+  &.large,
+  &.large svg {
+    height: ${({ theme }) => theme.mixins.size(12)};
   }
 `;
 
@@ -40,26 +52,18 @@ const setLogoComponent = (variant: LogoVariant): FC => {
   }
 };
 
-const setSizeFactor = (size: LogoSize): number => {
-  switch (size) {
-    case 'small':
-      return 3;
-    case 'medium':
-      return 6;
-    case 'big':
-      return 9;
-    case 'large':
-      return 12;
-    default:
-      return 3;
-  }
-};
-
 const Logo: FC<LogoProps> = ({ size = 'small', variant = 'simple' }) => {
   const LogoComponent = setLogoComponent(variant);
 
+  const classes = clsx({
+    small: size === 'small',
+    medium: size === 'medium',
+    big: size === 'big',
+    large: size === 'large'
+  });
+
   return (
-    <LogoBox data-testid="logo" sizeFactor={setSizeFactor(size)}>
+    <LogoBox className={classes}>
       <LogoComponent />
     </LogoBox>
   );

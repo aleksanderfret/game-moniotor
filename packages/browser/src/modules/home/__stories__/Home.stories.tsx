@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
-import HomeComponent from './Home';
+import HomeComponent from 'modules/home';
 
 export default {
   title: 'Views/Home',

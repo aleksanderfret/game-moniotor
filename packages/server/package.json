@@ -27,6 +27,7 @@
     "lint:fix": "eslint ./ --ext \".js,.ts\" --max-warnings=0 --fix",
     "pre-commit": "lint-staged && npm run test",
     "pre-push": "npm-run-all check test",
+    "snapshot:update": "npm test -- -u",
     "start": "ts-node-dev --project ./tsconfig.json --watch --respawn --transpile-only ./src/index.ts",
     "test": "jest --runInBand --verbose --passWithNoTests",
     "test:watch": "jest --watch"

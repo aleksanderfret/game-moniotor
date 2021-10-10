@@ -1,15 +1,17 @@
-import {
-  css,
-  CSSProperties,
-  DefaultTheme,
-  ThemedCssFunction
-} from 'styled-components';
+import { css, DefaultTheme, ThemedCssFunction } from 'styled-components';
 
-import { Breakpoint, BreakpointMixins, Breakpoints } from './types';
+import normalizeHexColor from './normalizeHexColor';
+import {
+  Breakpoint,
+  BreakpointMixins,
+  BreakpointValues,
+  SizeMixin,
+  Unit
+} from './types';
 import { breakpoints } from './variables';
 import { entries } from 'utils/entries';
 
-export const breakpoint = entries<Breakpoints>(breakpoints).reduce<
+export const breakpoint = entries<BreakpointValues>(breakpoints).reduce<
   Record<Breakpoint, ThemedCssFunction<DefaultTheme>>
 >(
   (accumulator: BreakpointMixins, [key, value]) => ({
@@ -33,11 +35,80 @@ export const constSize = (width: string, height: string = width): string => `
   flex-shrink: 0;
 `;
 
-export const transition = (...properties: CSSProperties[]): string => `
-  transition-property: ${properties.join(' ')};
+export const transition = (...properties: string[]): string => `
+  transition-property: ${properties.join(', ')};
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0.5, 0, 0.25, 1);
-  transform: translate3d(0, 0, 0);
   backface-visibility:hidden;
-  wii-change: ${properties.join(' ')};
 `;
+
+export const alpha = (color: string, opacity: number): string => {
+  const hexColor = normalizeHexColor(color);
+
+  const normalizedOpacity = Math.round(
+    opacity > -1 && opacity < 1 ? opacity * 100 : opacity
+  );
+
+  const validOpacity = Math.max(Math.min(normalizedOpacity, 100), 0);
+
+  let hexOpacity = validOpacity.toString(16);
+  hexOpacity = hexOpacity.length === 1 ? `0${hexOpacity}` : hexOpacity;
+
+  return `${hexColor}${hexOpacity}`;
+};
+
+export const tint = (color: string, amount: number): string => {
+  const hexColor = normalizeHexColor(color).substring(1);
+
+  const percentage = Math.max(-100, Math.min(100, amount));
+  const luminosity = 2.55 * percentage;
+
+  const components = hexColor.match(/.{1,2}/g) || [];
+  const tint = components
+    .map((component: string) => {
+      const intColor = parseInt(component, 16);
+      const updatedComponent = Math.round(
+        Math.min(Math.max(0, intColor + luminosity), 255)
+      ).toString(16);
+
+      return updatedComponent.length === 1
+        ? `0${updatedComponent}`
+        : updatedComponent;
+    })
+    .join('');
+
+  return `#${tint}`;
+};
+
+export const size =
+  (multiplier: number, unit: Unit): SizeMixin =>
+  (multiplicand: number): string =>
+    `${multiplicand * multiplier}${unit}`;
+
+export const cols = (size: SizeMixin) => (gap: number) =>
+  `
+& > :not(:last-child) {
+  margin-right: ${size(gap)};
+}
+`;
+
+export const colsAll = (size: SizeMixin) => (gap: number) =>
+  `
+& > * {
+  margin-right: ${size(gap)};
+}
+`;
+
+export const rows = (size: SizeMixin) => (gap: number) =>
+  `
+& > :not(:last-child) {
+  margin-right: ${size(gap)};
+}
+  `;
+
+export const rowsAll = (size: SizeMixin) => (gap: number) =>
+  `
+& > * {
+  margin-right: ${size(gap)};
+}
+  `;

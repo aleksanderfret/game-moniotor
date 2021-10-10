@@ -1,31 +1,42 @@
 import { DefaultTheme } from 'styled-components';
 
 import { breakpoints } from './variables';
-import { breakpoint, constSize, transition } from './mixins';
-
-const theme: DefaultTheme = {
-  breakpoints: {
-    keys: Object.keys(breakpoints),
-    values: breakpoints,
-    unit: 'px'
-  },
+import {
+  alpha,
+  breakpoint,
+  cols,
+  colsAll,
   constSize,
-  media: breakpoint,
-  palette: {
+  rows,
+  rowsAll,
+  size,
+  tint,
+  transition
+} from './mixins';
+
+const createTheme = (): DefaultTheme => {
+  const unit = 'rem';
+
+  const multipliers = {
+    px: 4,
+    rem: 1
+  };
+
+  const colors = {
     common: {
-      black: '#00000',
+      black: '#000000',
       white: '#ffffff'
     },
     primary: {
-      main: '#1414b8',
-      light: '#4343C6',
-      dark: '#0e0e80',
+      main: '#001999',
+      light: '#0026e6',
+      dark: '#000d4d',
       contrast: '#ffffff'
     },
     secondary: {
-      main: '#2979ff',
-      light: '#5393ff',
-      dark: '#1c54b2',
+      main: '#0055ff',
+      light: '#80aaff',
+      dark: '#003399',
       contrast: '#ffffff'
     },
     warning: {
@@ -37,13 +48,13 @@ const theme: DefaultTheme = {
     success: {
       main: '#4ca801',
       light: '#6FB933',
-      dark: '#b27d00',
+      dark: '#357500',
       contrast: '#ffffff'
     },
-    error: {
+    danger: {
       main: '#ff0034',
       light: '#ff335c',
-      dark: '#357500',
+      dark: '#b20024',
       contrast: '#ffffff'
     },
     info: {
@@ -70,86 +81,75 @@ const theme: DefaultTheme = {
       800: '#424242',
       900: '#212121'
     }
-  },
-  font: {
-    base: '16px',
-    fontFamily: '"Montserrat", "Ubuntu", "Helvetica", "Arial", sans-serif',
-    letterSpacing: '0.005rem',
-    lineHeight: 1.45,
-    size: {
-      tiny: '0.75rem', // 12px
-      small: '0.875rem', // 14px
-      normal: '1rem', // 16px
-      big: '1.125rem', // 18px
-      large: '1.5rem', // 24px
-      huge: '2rem', // 32px
-      super: '3rem' // 48px
-    },
-    unit: 'rem',
-    weight: { light: 300, regular: 400, medium: 500, bold: 700, black: 900 }
-  },
-  shape: {
-    borderRadius: '10px'
-  },
-  size: {
-    calc: (multiplicand: number): string => {
-      const { multiplier, unit } = theme.size;
+  };
 
-      return `${multiplicand * multiplier}${unit}`;
-    },
-    multiplier: 1,
-    values: {
-      xxxs: '0.125rem', // 2px
-      xxs: '0.25rem', // 4px
-      xs: '0.5rem', // 8px
-      sm: '1rem', // 16px
-      md: '1.5rem', // 24px
-      lg: '2rem', // 32px
-      xl: '3rem', // 48px
-      xxl: '4rem', // 64px
-      xxxl: '5rem' // 80px
-    },
-    unit: 'rem'
-  },
-  spacing: {
-    cols: (value: number) => {
-      const { calc } = theme.size;
+  const fontSizes = {
+    tiny: '0.75rem', // 12px
+    small: '0.875rem', // 14px
+    normal: '1rem', // 16px
+    big: '1.125rem', // 18px
+    large: '1.5rem', // 24px
+    huge: '2rem', // 32px
+    super: '3rem' // 48px
+  };
 
-      return `
-        & > :not(:last-child) {
-          margin-right: ${calc(value)};
-        }
-      `;
-    },
-    colsAll: (value: number) => {
-      const { calc } = theme.size;
+  const sizes = {
+    xxxs: '0.125rem', // 2px
+    xxs: '0.25rem', // 4px
+    xs: '0.5rem', // 8px
+    sm: '1rem', // 16px
+    md: '1.5rem', // 24px
+    lg: '2rem', // 32px
+    xl: '2.5rem', // 40px
+    xxl: '3rem', // 48px
+    xxxl: '4rem', // 64px
+    xxxxl: '5rem' // 80px
+  };
 
-      return `
-        & > * {
-          margin-right: ${calc(value)};
-        }
-      `;
-    },
-    rows: (value: number) => {
-      const { calc } = theme.size;
+  const sizeMixin = size(multipliers.rem, 'rem');
 
-      return `
-        & > :not(:last-child) {
-          margin-bottom: ${calc(value)};
-        }
-      `;
+  const theme: DefaultTheme = {
+    breakpoints: {
+      keys: Object.keys(breakpoints),
+      values: breakpoints,
+      unit: 'px'
     },
-    rowsAll: (value: number) => {
-      const { calc } = theme.size;
+    font: {
+      base: '16px',
+      fontFamily: '"Montserrat", "Ubuntu", "Helvetica", "Arial", sans-serif',
+      letterSpacing: '0.005rem',
+      lineHeight: 1.45,
+      size: fontSizes,
+      unit: 'rem',
+      weight: { light: 300, regular: 400, medium: 500, bold: 700, black: 900 }
+    },
+    mixins: {
+      breakpoint,
+      alpha,
+      cols: cols(sizeMixin),
+      colsAll: colsAll(cols(sizeMixin)),
+      constSize,
+      rows: rows(sizeMixin),
+      rowsAll: rowsAll(sizeMixin),
+      size: sizeMixin,
+      tint,
+      transition
+    },
+    multipliers,
+    colors,
+    shape: {
+      borderRadius: '1rem'
+    },
+    sizes,
+    shadows: {
+      init: `0 0 0 0 ${alpha(colors.primary.main, 0)}`,
+      focus: `0 0 0 ${sizes.xxs} ${alpha(colors.secondary.main, 60)}`,
+      focusDanger: `0 0 0 ${sizes.xxs} ${alpha(colors.danger.main, 60)}`
+    },
+    unit
+  };
 
-      return `
-        & > * {
-          margin-bottom: ${calc(value)};
-        }
-      `;
-    }
-  },
-  transition
+  return theme;
 };
 
-export default theme;
+export default createTheme();

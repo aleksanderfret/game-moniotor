@@ -14,7 +14,7 @@ interface RenderOptions extends rtlRenderOptions {
   locale: Locale;
 }
 
-export const render = (
+const render = (
   ui: ReactElement,
   { locale, ...options }: RenderOptions = { locale: 'en' }
 ) =>
@@ -24,3 +24,5 @@ export const render = (
     </IntlProvider>,
     options
   );
+
+export default render;
