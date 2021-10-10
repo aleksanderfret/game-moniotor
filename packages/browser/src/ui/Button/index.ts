@@ -1,3 +1,4 @@
+import AsyncButton from './AsyncButton';
 import Button from './Button';
 
-export default Button;
+export { AsyncButton, Button };

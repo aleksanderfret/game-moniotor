@@ -27,6 +27,7 @@
       "src/hooks/*": ["src/hooks/*"],
       "src/router/*": ["src/router/*"],
       "src/modules/*": ["src/modules/*"],
+      "src/__mocks__/*": ["src/__mocks__/*"],
       "src/__tests__/*": ["src/__tests__/*"],
       "src/theme/*": ["src/theme/*"],
       "src/transformers/*": ["src/transformers/*"],
