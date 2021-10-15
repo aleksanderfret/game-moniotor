@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 
+interface Payload {
+  [key: string]: any;
+}
 interface State<T> {
   loading: boolean;
   data?: T;
   error?: unknown;
 }
 
-const useFetch = <T extends unknown>(url: string, options?: any): State<T> => {
+const useFetch = <T extends Payload>(url: string, options?: any): State<T> => {
   const [data, setData] = useState();
   const [error, setError] = useState<unknown>();
   const [loading, setLoading] = useState(false);
