@@ -13,9 +13,10 @@ const startApp = async (app: Application): Promise<Application> => {
   app.use(express.urlencoded({ extended: false }));
   app.use(localeMiddleware);
 
-  app.use('/auth', authRouter);
+  app.use('/api/auth', authRouter);
 
-  app.use('*', (_, res) => res.sendFile(path.resolve('public/index.html')));
+  app.use('/', (_, res) => res.sendFile(path.resolve('public/index.html')));
+  app.use('*', (_, res) => res.status(404).send('Not found'));
 
   return app;
 };
