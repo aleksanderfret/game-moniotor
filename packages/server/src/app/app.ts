@@ -3,7 +3,7 @@ import cors from 'cors';
 import express, { Application } from 'express';
 import path from 'path';
 
-import useRoutes from './router';
+import authRouter from 'modules/auth/router';
 import { localeMiddleware } from 'app/middlewares/localeMiddleware';
 
 const startApp = async (app: Application): Promise<Application> => {
@@ -13,9 +13,10 @@ const startApp = async (app: Application): Promise<Application> => {
   app.use(express.urlencoded({ extended: false }));
   app.use(localeMiddleware);
 
-  app.use(useRoutes([]));
+  app.use('/api/auth', authRouter);
 
-  app.use('*', (_, res) => res.sendFile(path.resolve('public/index.html')));
+  app.use('/', (_, res) => res.sendFile(path.resolve('public/index.html')));
+  app.use('*', (_, res) => res.status(404).send('Not found'));
 
   return app;
 };

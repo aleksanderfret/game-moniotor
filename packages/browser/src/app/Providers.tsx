@@ -2,6 +2,7 @@ import React, { FC, ReactNode, useEffect, useReducer } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import { ThemeProvider } from 'styled-components';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import {
   AppDispatchProvider,
@@ -20,6 +21,8 @@ interface ProvidersProps {
 }
 
 const locales = new Set(['en', 'pl']);
+
+const queryClient = new QueryClient();
 
 const Providers: FC<ProvidersProps> = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialAppState);
@@ -42,12 +45,14 @@ const Providers: FC<ProvidersProps> = ({ children }) => {
     <AppDispatchProvider value={dispatch}>
       <AppStateProvider value={state}>
         <IntlProvider locale={locale} messages={messages[locale]}>
-          <ThemeProvider theme={theme}>
-            <Router>
-              <GlobalStyle />
-              {children}
-            </Router>
-          </ThemeProvider>
+          <QueryClientProvider client={queryClient}>
+            <ThemeProvider theme={theme}>
+              <Router>
+                <GlobalStyle />
+                {children}
+              </Router>
+            </ThemeProvider>
+          </QueryClientProvider>
         </IntlProvider>
       </AppStateProvider>
     </AppDispatchProvider>

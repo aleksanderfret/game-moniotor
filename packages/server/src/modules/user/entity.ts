@@ -1,8 +1,9 @@
 /* eslint-disable import/no-cycle */
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 
+import { Status } from 'modules/auth/enums';
 import BaseEntity from 'db/baseEntity';
-import { AccountStatus } from 'enums/enums';
+import Token from 'modules/auth/entity';
 
 @Entity()
 export default class User extends BaseEntity {
@@ -24,6 +25,9 @@ export default class User extends BaseEntity {
   @Column({ length: 128, nullable: true, type: 'varchar' })
   password!: string;
 
+  @Column({ nullable: false, type: 'timestamptz' })
+  policy!: Date;
+
   @Column({ length: 50, nullable: true, type: 'varchar' })
   provider!: string;
 
@@ -31,10 +35,13 @@ export default class User extends BaseEntity {
   tokenVersion!: number;
 
   @Column({
-    default: AccountStatus.Active,
-    enum: AccountStatus,
+    default: Status.Active,
+    enum: Status,
     nullable: false,
     type: 'enum'
   })
-  status!: AccountStatus;
+  status!: Status;
+
+  @OneToMany(() => Token, token => token.user)
+  token!: Token[];
 }

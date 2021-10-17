@@ -2,13 +2,13 @@
   "mail.footer.address-label": "Adres",
   "mail.footer.contact-label": "Kontakt",
   "mail.footer.service-provider": "{app} jest usługą dostarczaną przez {company}",
-  "mail.register.title": "Potwierdź rejestrację w aplikacji Game Monitor",
+  "mail.register.title": "Potwierdź rejestrację w aplikacji Games Room",
   "mail.register.confirm-link": "Potwierdź rejestrację",
-  "mail.register.message": "Dzień dobry {email}. Witamy na pokładzie. Użyj linku by potwierdzić rejestraję w Game Monitor: ",
-  "mail.remove-account.title": "Usuń swoje konto w Game Monitor",
+  "mail.register.message": "Dzień dobry {email}. Witamy na pokładzie. Użyj linku by potwierdzić rejestraję w Games Room: ",
+  "mail.remove-account.title": "Usuń swoje konto w Games Room",
   "mail.remove-account.confirm-link": "Usuń konto",
-  "mail.remove-account.message": "Dzień dobry {email}. Zgłosiłe(a)ś nam, że chcesz usunąć swoje konto w Game Monitor. Jeśli to Ty i chcesz usnąć konto, użyj linku by to zrobić: ",
-  "mail.reset-password.title": "Zresetuj swoje hasło do Game Monitor",
+  "mail.remove-account.message": "Dzień dobry {email}. Zgłosiłe(a)ś nam, że chcesz usunąć swoje konto w Games Room. Jeśli to Ty i chcesz usnąć konto, użyj linku by to zrobić: ",
+  "mail.reset-password.title": "Zresetuj swoje hasło do Games Room",
   "mail.reset-password.confirm-link": "Zresetuj hasło",
   "mail.reset-password.message": "Dzień dobry {email}. Zgłosiłe(a)ś nam, że zapomniałe(a)ś hasła. Jeśli to Ty i chcesz zresetować hasło użyj linku by to zrobić: "
 }

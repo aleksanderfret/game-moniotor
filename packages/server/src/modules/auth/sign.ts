@@ -1,9 +1,6 @@
-import { RequestHandler, Response } from 'express';
 import { sign, verify, VerifyOptions } from 'jsonwebtoken';
 import { randomBytes } from 'crypto';
 
-import User from 'modules/user/entity';
-import { AccountStatus } from 'enums/enums';
 import environment from 'env/env';
 
 const {
@@ -29,7 +26,7 @@ type Signer = (id: string, tokenVersion?: number) => string;
 
 type Verifier = (token: string, options?: VerifyOptions) => JwtPayload;
 
-const createSigner =
+export const createSigner =
   (key: string) =>
   (expiration: number): Signer =>
   (id: string, tokenVersion?: number) => {
@@ -47,7 +44,7 @@ const createSigner =
     return sign(payload, privateKey, { algorithm: 'RS256', jwtid });
   };
 
-const createVerifier =
+export const createVerifier =
   (key: string): Verifier =>
   (token: string, options?: VerifyOptions) => {
     const publicKey = Buffer.from(key, 'base64').toString('utf-8');
@@ -70,48 +67,3 @@ export const verifyAccessToken = createVerifier(ACCESS_PUBLIC_KEY);
 export const verifyRefreshToken = createVerifier(REFRESH_PUBLIC_KEY);
 
 export const verifyToken = createVerifier(TOKEN_PUBLIC_KEY);
-
-export const isAuth: RequestHandler = async (req, res, next) => {
-  const { headers } = req;
-
-  const { authorization } = headers;
-
-  if (!authorization) {
-    throw new Error('not Authorized');
-  }
-
-  try {
-    const [, token] = authorization.split(' ');
-
-    const payload = verifyAccessToken(token);
-
-    const { userId } = payload;
-
-    const user = await User.findOne({
-      id: userId,
-      status: AccountStatus.Active
-    });
-
-    if (user) {
-      req.user = user;
-    }
-  } catch (error) {
-    throw new Error('not Authorized');
-  }
-
-  return next();
-};
-
-export const sendRefreshToken = (res: Response, token: string) =>
-  res.cookie('refreshToken', token, {
-    httpOnly: true,
-    path: '/api/auth/refresh-token'
-  });
-
-export const checkIsTokenExpired = (token: string): Boolean => {
-  const { exp } = createVerifier(TOKEN_PUBLIC_KEY)(token, {
-    ignoreExpiration: true
-  });
-
-  return Date.now() >= exp * 1000;
-};
