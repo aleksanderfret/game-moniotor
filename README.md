@@ -10,9 +10,9 @@
 
 ### Installation
 
-#### 1. Install node.js 14.17.6
+#### 1. Install node.js ^14
 
-#### 2. Install npm 7.22.0
+#### 2. Install npm ^7
 
 #### 3. Clone the repository
 
@@ -32,7 +32,21 @@ cd games-room
 npm run init
 ```
 
-#### 6. Start development
+#### 6. Create .env file in server package directory and add necessary `.env` keys that you can find in the `.env.example` file
+
+```bash
+touch .env
+```
+
+#### 7. Create Sendgrid API Key
+
+Create an account on [sendgrid.com](https://sendgrid.com/) and get the Sendgrid API Key to make the app be able to send email messages. Save the key in your `.env` file as `SENDGRID_API_KEY`.
+
+#### 8. Generate RSA keys
+
+Generate three paris of keys: private and public ([you can do it here](https://www.csfieldguide.org.nz/en/interactives/rsa-key-generator/)). Encode them ([you can do it here](https://www.base64encode.org/)). Save encoded keys in your `.env` file as: `ACCESS_PRIVATE_KEY`, `ACCESS_PUBLIC_KEY`, `REFRESH_PRIVATE_KEY`, `REFRESH_PUBLIC_KEY`, `TOKEN_PRIVATE_KE`, `TOKEN_PUBLIC_KEY`.
+
+#### 9. Start development
 
 ```bash
 npm start
