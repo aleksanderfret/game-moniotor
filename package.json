@@ -46,7 +46,7 @@
     "pre-commit": "lerna run pre-commit --concurrency 1 --stream",
     "pre-push": "lerna run pre-push --concurrency 1 --stream",
     "reset": "npm run clean:compiled && lerna clean --yes && npm ci",
-    "start": "lerna run start",
+    "start": "lerna run start --stream",
     "snapshot:update": "lerna run snapshot:update",
     "storybook": "lerna run storybook",
     "stylelint": "lerna run stylelint",
