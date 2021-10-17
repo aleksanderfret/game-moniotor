@@ -1,6 +1,12 @@
 {
   "account": "Profile",
   "app-name": "Games Room",
+  "email": "Email",
+  "error.general": "Something went wrong.",
+  "password": "Password",
+  "password.confirm": "Confirm password",
+  "policy.acceptance": "I accept the {cookieLink}, {privacyLink} and {termsLink}.",
   "sign-in": "Sign in",
-  "sign-up": "Sign up"
+  "sign-up": "Sign up",
+  "sign-up.success.message": "We have sent an email on address {email}. To finish sign up process use the link from the email message to confirm your registration"
 }
