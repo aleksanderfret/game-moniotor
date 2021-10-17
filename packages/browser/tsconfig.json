@@ -19,6 +19,7 @@
     "outDir": "../../dist/public",
     "paths": {
       "*": ["src/*"],
+      "src/api/*": ["src/api/*"],
       "src/app/*": ["src/app/*"],
       "src/constants/*": ["src/constants/*"],
       "src/context/*": ["src/context/*"],
