@@ -2,7 +2,7 @@ import { RequestHandler } from 'express';
 
 import User from 'modules/user/entity';
 import { verifyAccessToken } from './sign';
-import { AccountStatus } from 'enums/enums';
+import { Status } from 'modules/auth/enums';
 
 export const isAuth: RequestHandler = async (req, res, next) => {
   const { headers } = req;
@@ -22,7 +22,7 @@ export const isAuth: RequestHandler = async (req, res, next) => {
 
     const user = await User.findOne({
       id: userId,
-      status: AccountStatus.Active
+      status: Status.Active
     });
 
     if (user) {

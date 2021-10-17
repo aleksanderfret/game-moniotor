@@ -73,10 +73,10 @@ const signUp: RequestHandler = async (
   } catch (error) {
     console.error(error);
 
-    return res.status(400).send({ message: 'dupa' });
+    return res.sendStatus(400);
   }
 
-  return res.status(400).send({ message: 'dupa' });
+  return res.sendStatus(201);
 };
 
 export default signUp;

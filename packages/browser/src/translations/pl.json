@@ -8,5 +8,6 @@
   "policy.acceptance": "Akceptuję {cookieLink}, {privacyLink} i {termsLink}.",
   "sign-in": "Zaloguj",
   "sign-up": "Utwórz konto",
+  "sign-up.confirmation.success": "Potwierdziłeś rejestrację.",
   "sign-up.success.message": "Wysłaliśmy wiadomość na adres {email}. Użyj linku z wiadomości by dokończyć proces rejestracji."
 }
