@@ -1,5 +1,6 @@
 * text eol=lf
 *.ai binary
+*.cdr binary
 *.eot binary
 *.gif binary
 *.jpg binary
