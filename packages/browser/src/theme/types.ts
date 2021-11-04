@@ -88,15 +88,25 @@ export type BreakpointMixins = Record<
   ThemedCssFunction<DefaultTheme>
 >;
 
+interface GridClassesOptions {
+  selector?: string;
+  columns?: number;
+  unit?: Unit;
+}
+
 export type SizeMixin = (value: number) => string;
 export type ColorMixin = (color: string, amount: number) => string;
-
+export type GridClassesMixin = (
+  color: string,
+  options?: GridClassesOptions
+) => string;
 export interface Mixins {
   breakpoint: BreakpointMixins;
   alpha: ColorMixin;
   cols: SizeMixin;
   colsAll: SizeMixin;
   constSize: (width: string, height?: string) => string;
+  gridClasses: GridClassesMixin;
   rows: SizeMixin;
   rowsAll: SizeMixin;
   size: SizeMixin;

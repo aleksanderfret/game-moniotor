@@ -127,9 +127,11 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${({ theme }) => theme.font.fontFamily};
     line-height: ${({ theme }) => theme.font.lineHeight};
     color: ${({ theme }) => theme.colors.common.black};
-    letter-spacing: ${({ theme }) => theme.colors.common.black};
+    letter-spacing: 0.2px;
     background-color: ${({ theme }) => theme.colors.background.main};
   }
+
+  ${({ theme }) => theme.mixins.gridClasses('grid')}
 `;
 
 export default GlobalStyle;

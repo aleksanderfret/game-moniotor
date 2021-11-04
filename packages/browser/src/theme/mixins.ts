@@ -5,6 +5,7 @@ import {
   Breakpoint,
   BreakpointMixins,
   BreakpointValues,
+  GridClassesMixin,
   SizeMixin,
   Unit
 } from './types';
@@ -112,3 +113,51 @@ export const rowsAll = (size: SizeMixin) => (gap: number) =>
   margin-right: ${size(gap)};
 }
   `;
+
+const gridClass = (
+  columns: number,
+  selector: string,
+  className: string,
+  breakpoint: string
+) => {
+  let styles = '';
+
+  // eslint-disable-next-line no-plusplus
+  for (let i = 1; i <= columns; i++) {
+    const value = `${(i / columns) * 100}%`;
+
+    styles += `
+      ${selector}.${className}-${breakpoint}-${i} {
+        -webkit-flex-basis: ${value};
+        -ms-flex-preferred-size: ${value};
+        flex-basis: ${value};
+        -webkit-box-flex: 0;
+        -webkit-flex-grow: 0;
+        -ms-flex-positive: 0;
+        flex-grow: 0;
+        max-width: ${value};
+      }
+
+    `;
+  }
+
+  return styles;
+};
+
+export const gridClasses =
+  (breakpoints: BreakpointValues): GridClassesMixin =>
+  (className, options) => {
+    const { selector = '', columns = 12, unit = 'px' } = options || {};
+    let styles = '';
+
+    Object.entries(breakpoints).forEach(([breakpoint, size]) => {
+      styles += `
+      @media only screen and (min-width: ${size}${unit}) {
+        ${gridClass(columns, selector, className, breakpoint)}
+      }
+
+      `;
+    });
+
+    return styles;
+  };
