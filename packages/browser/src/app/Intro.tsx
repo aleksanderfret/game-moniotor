@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 
 import Logo from 'ui/Logo';
 import Tile from 'ui/Tile';
@@ -25,16 +25,12 @@ const Intro: FC = () => (
         <Logo size="medium" variant="vertical" />
       </Link>
     </h1>
-    <Switch>
-      <Route component={Home} exact path={Path.Home} />
-      <Route component={SignIn} exact path={Path.SignIn} />
-      <Route component={SignUp} exact path={Path.SignUp} />
-      <Route
-        component={SignUpConfirmation}
-        exact
-        path={Path.SignUpConfirmation}
-      />
-    </Switch>
+    <Routes>
+      <Route element={<Home />} path={Path.Home} />
+      <Route element={<SignIn />} path={Path.SignIn} />
+      <Route element={<SignUp />} path={Path.SignUp} />
+      <Route element={<SignUpConfirmation />} path={Path.SignUpConfirmation} />
+    </Routes>
     <div>© 2021 Apps First</div>
   </IntroBox>
 );

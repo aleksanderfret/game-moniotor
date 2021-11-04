@@ -6,7 +6,7 @@ import Loader from 'ui/Loader';
 import useConfirmSignUp, { ConfirmSignUpPayload } from './useConfirmSignUp';
 
 const SignUpConfirmation: FC = () => {
-  const { tokenId } = useParams<ConfirmSignUpPayload>();
+  const { tokenId } = useParams<keyof ConfirmSignUpPayload>();
   const {
     mutate: confirmSignUp,
     isError,
@@ -15,7 +15,9 @@ const SignUpConfirmation: FC = () => {
   } = useConfirmSignUp();
 
   useEffect(() => {
-    confirmSignUp({ tokenId });
+    if (tokenId) {
+      confirmSignUp({ tokenId });
+    }
   }, [confirmSignUp, tokenId]);
 
   return (
