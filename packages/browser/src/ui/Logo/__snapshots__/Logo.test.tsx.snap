@@ -3,7 +3,7 @@
 exports[`<Logo /> should render simple logo 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBQB bqDHkZ small"
+    class="sc-bdvvtL cBjhIo small"
   >
     <svg
       aria-labelledby="logo-title"
@@ -64,7 +64,7 @@ exports[`<Logo /> should render simple logo 1`] = `
 exports[`<Logo /> should render simple logo 2`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBQB bqDHkZ small"
+    class="sc-bdvvtL cBjhIo small"
   >
     <svg
       aria-labelledby="logo-title"
@@ -130,7 +130,7 @@ exports[`<Logo /> should render simple logo 2`] = `
 exports[`<Logo /> should render simple logo 3`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBQB bqDHkZ small"
+    class="sc-bdvvtL cBjhIo small"
   >
     <svg
       aria-labelledby="logo-title"
