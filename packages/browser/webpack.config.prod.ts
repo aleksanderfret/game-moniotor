@@ -1,8 +1,6 @@
-import autoprefixer from 'autoprefixer';
 import { Configuration as WebpackConfiguration } from 'webpack';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebPackPlugin from 'html-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import TerserPlugin from 'terser-webpack-plugin';
 
@@ -23,33 +21,6 @@ const config: WebpackConfiguration = {
             getCustomTransformers
           }
         }
-      },
-      {
-        exclude: /node_modules/,
-        test: /\.s?css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: [autoprefixer]
-              }
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              implementation: require('sass'),
-              sassOptions: {
-                includePaths: ['./src/scss'],
-                indentWidth: 2
-              },
-              sourceMap: true
-            }
-          }
-        ]
       }
     ]
   },
@@ -68,9 +39,6 @@ const config: WebpackConfiguration = {
     publicPath: '/'
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'style.[hash].css'
-    }),
     new CopyWebpackPlugin({
       patterns: [
         { from: 'public/icons', to: 'icons' },
