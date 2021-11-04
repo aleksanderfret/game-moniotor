@@ -1,4 +1,4 @@
-import autoprefixer from 'autoprefixer';
+// import autoprefixer from 'autoprefixer';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebPackPlugin from 'html-webpack-plugin';
 import path from 'path';
@@ -45,33 +45,6 @@ const config: IConfiguration = {
             getCustomTransformers
           }
         }
-      },
-      {
-        exclude: /node_modules/,
-        test: /\.s?css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: [autoprefixer]
-              }
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              implementation: require('sass'),
-              sassOptions: {
-                includePaths: ['./src/scss'],
-                indentWidth: 2
-              },
-              sourceMap: true
-            }
-          }
-        ]
       }
     ]
   },
