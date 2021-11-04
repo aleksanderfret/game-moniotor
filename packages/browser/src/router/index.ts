@@ -12,7 +12,6 @@ import {
   createToolsPath
 } from './pathCreators';
 import Path, { RouteAccess } from './enums';
-import { PrivateRoute, PublicRoute } from './Route';
 
 export {
   createAccountPath,
@@ -27,7 +26,5 @@ export {
   createSignUpPath,
   createToolsPath,
   Path,
-  PrivateRoute,
-  PublicRoute,
   RouteAccess
 };

@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import { Path } from 'router';
 import Dashboard from 'modules/dashboard';
@@ -7,9 +7,9 @@ import Dashboard from 'modules/dashboard';
 const Content: FC = () => {
   return (
     <div>
-      <Switch>
-        <Route component={Dashboard} exact path={Path.Dashboard} />
-      </Switch>
+      <Routes>
+        <Route element={<Dashboard />} path={Path.Dashboard} />
+      </Routes>
     </div>
   );
 };
