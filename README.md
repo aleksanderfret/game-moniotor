@@ -10,9 +10,9 @@
 
 ### Installation
 
-#### 1. Install node.js ^14
+#### 1. Install node.js ^16
 
-#### 2. Install npm ^7
+#### 2. Install npm ^8
 
 #### 3. Clone the repository
 
