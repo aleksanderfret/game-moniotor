@@ -28,23 +28,26 @@
     "pre-commit": "lint-staged && npm run test",
     "pre-push": "npm-run-all check test",
     "snapshot:update": "npm test -- -u",
-    "start": "ts-node-dev --project ./tsconfig.json --watch --respawn --transpile-only ./src/index.ts",
+    "start": "ts-node-dev --project ./tsconfig.json --watch --respawn ./src/index.ts",
     "test": "jest --runInBand --verbose --passWithNoTests",
     "test:watch": "jest --watch"
   },
   "dependencies": {
     "@sendgrid/mail": "7.6.0",
+    "apollo-server-express": "3.5.0",
     "bcryptjs": "2.4.3",
     "cookie-parser": "1.4.5",
     "cors": "2.8.5",
     "express": "4.17.1",
     "express-validator": "6.13.0",
+    "graphql": "15.7.2",
     "jsonwebtoken": "8.5.1",
     "pg": "8.7.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-intl": "5.21.0",
     "reflect-metadata": "0.1.13",
+    "type-graphql": "1.1.1",
     "typeorm": "0.2.38"
   },
   "devDependencies": {

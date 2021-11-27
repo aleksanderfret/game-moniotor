@@ -1,3 +1,5 @@
+import 'express';
+
 import { Locale } from 'types/types';
 import User from 'modules/user/entity';
 
