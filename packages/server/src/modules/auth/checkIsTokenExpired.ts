@@ -1,4 +1,4 @@
-import environment from 'env/env';
+import environment from 'env/environment';
 import { createVerifier } from './sign';
 
 const { TOKEN_PUBLIC_KEY } = environment;

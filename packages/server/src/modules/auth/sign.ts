@@ -1,7 +1,7 @@
 import { sign, verify, VerifyOptions } from 'jsonwebtoken';
 import { randomBytes } from 'crypto';
 
-import environment from 'env/env';
+import environment from 'env/environment';
 
 const {
   ACCESS_PRIVATE_KEY,

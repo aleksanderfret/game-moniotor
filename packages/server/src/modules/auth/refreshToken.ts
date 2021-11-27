@@ -1,14 +1,14 @@
 import { Request, Response, RequestHandler } from 'express';
 
+import User from 'modules/user/entity';
 import {
   createAccessToken,
   createRefreshToken,
   verifyRefreshToken
-} from 'modules/auth/sign';
-import { sendRefreshToken } from 'modules/auth/sendTokenCookie';
-import User from 'modules/user/entity';
+} from './sign';
+import { sendRefreshToken } from './sendTokenCookie';
 
-const refreshToken: RequestHandler = async (
+export const refreshToken: RequestHandler = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
@@ -39,9 +39,6 @@ const refreshToken: RequestHandler = async (
 
     return res.send({ accessToken: createAccessToken(id) });
   } catch (error) {
-    // console.error(error);
-
-    //return res.send({ accessToken: '' });
     return res.sendStatus(401);
   }
 };

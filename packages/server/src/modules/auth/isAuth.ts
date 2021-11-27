@@ -1,11 +1,14 @@
-import { RequestHandler } from 'express';
+import { MiddlewareFn } from 'type-graphql';
 
 import User from 'modules/user/entity';
 import { verifyAccessToken } from './sign';
-import { Status } from 'modules/auth/enums';
+import { Status } from 'modules/user/enums';
+import { Context } from 'types/types';
 
-export const isAuth: RequestHandler = async (req, res, next) => {
-  const { headers } = req;
+export const isAuth: MiddlewareFn<Context> = async ({ context }, next) => {
+  const {
+    req: { headers }
+  } = context;
 
   const { authorization } = headers;
 
@@ -26,7 +29,7 @@ export const isAuth: RequestHandler = async (req, res, next) => {
     });
 
     if (user) {
-      req.user = user;
+      context.user = user;
     }
   } catch (error) {
     throw new Error('not Authorized');
@@ -34,3 +37,5 @@ export const isAuth: RequestHandler = async (req, res, next) => {
 
   return next();
 };
+
+export default isAuth;
