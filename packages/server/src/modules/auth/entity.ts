@@ -1,13 +1,16 @@
 /* eslint-disable import/no-cycle */
 import { Column, Entity, Index, ManyToOne } from 'typeorm';
+import { Field, ObjectType } from 'type-graphql';
 
 import BaseEntity from 'db/baseEntity';
 import User from 'modules/user/entity';
 import { TokenType } from './enums';
 
+@ObjectType()
 @Entity()
 @Index(['id', 'token', 'type', 'user'], { unique: true })
 export default class Token extends BaseEntity {
+  @Field({ nullable: false })
   @Column({ length: 2000, type: 'varchar' })
   token!: string;
 

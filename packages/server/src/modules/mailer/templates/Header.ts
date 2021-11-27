@@ -1,4 +1,4 @@
-import environment from 'env/env';
+import environment from 'env/environment';
 import { MailComponentsProps } from 'modules/mailer/types';
 import {
   Cell,

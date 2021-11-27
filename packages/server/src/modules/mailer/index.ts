@@ -1,6 +1,6 @@
 import SendGridMail, { MailDataRequired } from '@sendgrid/mail';
 
-import environment from 'env/env';
+import environment from 'env/environment';
 import {
   Mail,
   MessageData,
