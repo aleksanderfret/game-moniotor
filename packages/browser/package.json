@@ -37,10 +37,13 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@apollo/client": "3.4.17",
     "@formatjs/intl-pluralrules": "4.1.5",
     "@formatjs/intl-relativetimeformat": "9.3.2",
+    "apollo-link-token-refresh": "0.3.2",
     "axios": "0.24.0",
     "clsx": "1.1.1",
+    "graphql": "15.7.2",
     "jwt-decode": "3.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",

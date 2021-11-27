@@ -15,6 +15,7 @@ import {
 import theme from 'theme';
 import messages from 'translations';
 import GlobalStyle from './GlobalStyle';
+import Apollo from './Apollo';
 
 interface ProvidersProps {
   children: ReactNode;
@@ -42,20 +43,22 @@ const Providers: FC<ProvidersProps> = ({ children }) => {
   }
 
   return (
-    <AppDispatchProvider value={dispatch}>
-      <AppStateProvider value={state}>
-        <IntlProvider locale={locale} messages={messages[locale]}>
-          <QueryClientProvider client={queryClient}>
-            <ThemeProvider theme={theme}>
-              <Router>
-                <GlobalStyle />
-                {children}
-              </Router>
-            </ThemeProvider>
-          </QueryClientProvider>
-        </IntlProvider>
-      </AppStateProvider>
-    </AppDispatchProvider>
+    <Apollo>
+      <AppDispatchProvider value={dispatch}>
+        <AppStateProvider value={state}>
+          <IntlProvider locale={locale} messages={messages[locale]}>
+            <QueryClientProvider client={queryClient}>
+              <ThemeProvider theme={theme}>
+                <Router>
+                  <GlobalStyle />
+                  {children}
+                </Router>
+              </ThemeProvider>
+            </QueryClientProvider>
+          </IntlProvider>
+        </AppStateProvider>
+      </AppDispatchProvider>
+    </Apollo>
   );
 };
 
