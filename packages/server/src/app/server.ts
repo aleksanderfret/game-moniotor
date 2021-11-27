@@ -2,7 +2,7 @@ import http from 'http';
 import express from 'express';
 
 import startApp from './app';
-import environment from 'env/env';
+import environment from 'env/environment';
 import { connectDB } from 'db/db';
 
 const { PORT } = environment;

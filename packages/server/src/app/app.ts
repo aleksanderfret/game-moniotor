@@ -4,6 +4,7 @@ import express, { Application } from 'express';
 import path from 'path';
 
 import authRouter from 'modules/auth/router';
+import { startApollo } from 'app/apollo';
 import { localeMiddleware } from 'app/middlewares/localeMiddleware';
 
 const startApp = async (app: Application): Promise<Application> => {
@@ -14,6 +15,10 @@ const startApp = async (app: Application): Promise<Application> => {
   app.use(localeMiddleware);
 
   app.use('/api/auth', authRouter);
+
+  const apollo = await startApollo();
+
+  apollo.applyMiddleware({ app, cors: false });
 
   app.use('/', (_, res) => res.sendFile(path.resolve('public/index.html')));
   app.use('*', (_, res) => res.status(404).send('Not found'));
