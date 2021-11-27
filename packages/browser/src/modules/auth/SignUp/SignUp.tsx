@@ -3,14 +3,14 @@ import { FormattedMessage } from 'react-intl';
 
 import { InputChangeHandler } from 'types';
 import { AsyncButton } from 'ui/Button';
-import useSignUp from './useSignUp';
+import { useSignUpMutation } from './useSignUpMutation';
 
 const SignUp: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [policy, setPolicy] = useState(false);
-  const { mutate: signUp, error, isError, isLoading, isSuccess } = useSignUp();
+  const [signUp, { data, error, loading }] = useSignUpMutation();
 
   const handleEmailChange: InputChangeHandler = event => {
     setEmail(event.target.value);
@@ -42,12 +42,16 @@ const SignUp: FC = () => {
     }
 
     await signUp({
-      email,
-      password,
-      passwordConfirmation,
-      policy: new Date()
+      variables: {
+        email,
+        password,
+        passwordConfirmation,
+        policy: new Date().toISOString()
+      }
     });
   };
+
+  const isSuccess = data && !error && !loading;
 
   return isSuccess ? (
     <div>
@@ -64,7 +68,7 @@ const SignUp: FC = () => {
         <label>
           <FormattedMessage id="email" />
           <input
-            disabled={isLoading}
+            disabled={loading}
             onChange={handleEmailChange}
             type="text"
             value={email}
@@ -75,7 +79,7 @@ const SignUp: FC = () => {
         <label>
           <FormattedMessage id="password" />
           <input
-            disabled={isLoading}
+            disabled={loading}
             onChange={handlePasswordChange}
             type="password"
             value={password}
@@ -86,7 +90,7 @@ const SignUp: FC = () => {
         <label>
           <FormattedMessage id="password.confirm" />
           <input
-            disabled={isLoading}
+            disabled={loading}
             onChange={handlePasswordConfirmationChange}
             type="password"
             value={passwordConfirmation}
@@ -98,18 +102,18 @@ const SignUp: FC = () => {
           <FormattedMessage id="policy.acceptance" />
           <input
             checked={policy}
-            disabled={isLoading}
+            disabled={loading}
             onChange={handlePolicyAcceptanceChange}
             type="checkbox"
           />
         </label>
       </div>
       <div>
-        <AsyncButton loading={isLoading} type="submit">
+        <AsyncButton loading={loading} type="submit">
           <FormattedMessage id="sign-up" />
         </AsyncButton>
       </div>
-      {isError && (
+      {error && (
         <>
           <div>
             <FormattedMessage id="error.general" />

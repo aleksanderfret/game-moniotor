@@ -3,6 +3,7 @@ import Route, {
   AccountRoute,
   DashboardRoute,
   EventsRoute,
+  ForgotPasswordRoute,
   GamesRoute,
   HomeRoute,
   NoParams,
@@ -14,8 +15,7 @@ import Route, {
   SignInRoute,
   SignUpConfirmationRoute,
   SignUpRoute,
-  ToolsRoute,
-  UpdatePasswordRoute
+  ToolsRoute
 } from './types';
 
 const createPath = <T extends Route>(path: T[0]) => {
@@ -35,6 +35,9 @@ const createPath = <T extends Route>(path: T[0]) => {
 export const createAccountPath = createPath<AccountRoute>(Path.Account);
 export const createDashboardPath = createPath<DashboardRoute>(Path.Dashboard);
 export const createEventsPath = createPath<EventsRoute>(Path.Events);
+export const createForgotPath = createPath<ForgotPasswordRoute>(
+  Path.ForgotPassword
+);
 export const createHomePath = createPath<HomeRoute>(Path.Home);
 export const createGamesPath = createPath<GamesRoute>(Path.Games);
 export const createPlayersPath = createPath<PlayersRoute>(Path.Players);
@@ -50,7 +53,5 @@ export const createSignUpConfirmationPath = createPath<SignUpConfirmationRoute>(
   Path.SignUpConfirmation
 );
 export const createSignUpPath = createPath<SignUpRoute>(Path.SignUp);
-export const createUpdatePasswordPath = createPath<UpdatePasswordRoute>(
-  Path.UpdatePassword
-);
+
 export const createToolsPath = createPath<ToolsRoute>(Path.Tools);

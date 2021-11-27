@@ -1,11 +1,10 @@
-import { FC, ReactNode } from 'react';
-
-import Path, { RouteAccess } from './enums';
+import Path from './enums';
 
 export type NoParams = undefined | void;
 export type AccountRoute = [Path.Account, NoParams];
 export type DashboardRoute = [Path.Dashboard, NoParams];
 export type EventsRoute = [Path.Events, { eventId: string }];
+export type ForgotPasswordRoute = [Path.ForgotPassword, NoParams];
 export type GamesRoute = [Path.Games, { gameId: string }];
 export type HomeRoute = [Path.Home, NoParams];
 export type PlayersRoute = [Path.Players, { playerId: string }];
@@ -14,7 +13,7 @@ export type RemoveAccountConfirmationRoute = [
   Path.RemoveAccountConfirmation,
   { tokenId: string }
 ];
-export type ResetPasswordRoute = [Path.ResetPassword, NoParams];
+export type ResetPasswordRoute = [Path.ResetPassword, { tokenId: string }];
 export type SettingsRoute = [Path.Settings, NoParams];
 export type SignInRoute = [Path.SignIn, NoParams];
 export type SignUpRoute = [Path.SignUp, NoParams];
@@ -23,12 +22,12 @@ export type SignUpConfirmationRoute = [
   { tokenId: string }
 ];
 export type ToolsRoute = [Path.Tools, NoParams];
-export type UpdatePasswordRoute = [Path.UpdatePassword, { tokenId: string }];
 
 type Route =
   | AccountRoute
   | DashboardRoute
   | EventsRoute
+  | ForgotPasswordRoute
   | GamesRoute
   | HomeRoute
   | PlayersRoute
@@ -39,19 +38,6 @@ type Route =
   | SignInRoute
   | SignUpConfirmationRoute
   | SignUpRoute
-  | ToolsRoute
-  | UpdatePasswordRoute;
-
-export interface RouteDefinition {
-  component: FC;
-  desktopNav: boolean;
-  exact: boolean;
-  icon?: ReactNode;
-  mobileNav: boolean;
-  name?: string;
-  parent: Path | null;
-  path: Path;
-  access: RouteAccess;
-}
+  | ToolsRoute;
 
 export default Route;
