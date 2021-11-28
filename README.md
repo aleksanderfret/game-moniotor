@@ -44,7 +44,7 @@ Create an account on [sendgrid.com](https://sendgrid.com/) and get the Sendgrid 
 
 #### 8. Generate RSA keys
 
-Generate three paris of keys: private and public ([you can do it here](https://www.csfieldguide.org.nz/en/interactives/rsa-key-generator/)). Encode them ([you can do it here](https://www.base64encode.org/)). Save encoded keys in your `.env` file as: `ACCESS_PRIVATE_KEY`, `ACCESS_PUBLIC_KEY`, `REFRESH_PRIVATE_KEY`, `REFRESH_PUBLIC_KEY`, `TOKEN_PRIVATE_KE`, `TOKEN_PUBLIC_KEY`.
+Generate three paris of keys: private and public ([you can do it here](https://www.csfieldguide.org.nz/en/interactives/rsa-key-generator/)). Encode them ([you can do it here](https://www.base64encode.org/)). Save encoded keys in your `.env` file as: `ACCESS_PRIVATE_KEY`, `ACCESS_PUBLIC_KEY`, `REFRESH_PRIVATE_KEY`, `REFRESH_PUBLIC_KEY`, `TOKEN_PRIVATE_KEY`, `TOKEN_PUBLIC_KEY`.
 
 #### 9. Start development
 
