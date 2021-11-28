@@ -1,19 +1,24 @@
 import React, { FC, FormEvent, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 
+import { useChangePasswordMutation } from './useChangePasswordMutation';
 import { InputChangeHandler } from 'types/types';
 import { AsyncButton } from 'ui/Button';
-import { useSignUpMutation } from './useSignUpMutation';
 
-const SignUp: FC = () => {
+const ChangePassword: FC = () => {
   const [email, setEmail] = useState('');
+  const [oldPassword, setOldPassword] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [policy, setPolicy] = useState(false);
-  const [signUp, { data, error, loading }] = useSignUpMutation();
+  const [changePassword, { data, error, loading }] =
+    useChangePasswordMutation();
 
   const handleEmailChange: InputChangeHandler = event => {
     setEmail(event.target.value);
+  };
+
+  const handleOldPasswordChange: InputChangeHandler = event => {
+    setOldPassword(event.target.value);
   };
 
   const handlePasswordChange: InputChangeHandler = event => {
@@ -24,62 +29,61 @@ const SignUp: FC = () => {
     setPasswordConfirmation(event.target.value);
   };
 
-  const handlePolicyAcceptanceChange: InputChangeHandler = () => {
-    setPolicy(policy => !policy);
-  };
-
-  const handleSignUp = async (event: FormEvent): Promise<void> => {
+  const handleChangePassword = async (event: FormEvent): Promise<void> => {
     event.preventDefault();
 
     if (
       !email ||
+      !oldPassword ||
       !password ||
-      !policy ||
       !passwordConfirmation ||
       password !== passwordConfirmation
     ) {
       return;
     }
 
-    await signUp({
-      variables: {
-        email,
-        password,
-        passwordConfirmation,
-        policy: new Date().toISOString()
-      }
+    await changePassword({
+      variables: { email, oldPassword, password, passwordConfirmation }
     });
+
+    // eslint-disable-next-line no-console
+    console.log('Po await');
+    setEmail('');
+    setPassword('');
+    setOldPassword('');
+    setPasswordConfirmation('');
   };
 
-  const isSuccess = data && !error && !loading;
+  const success = data && !error && !loading;
 
-  return isSuccess ? (
+  return success ? (
     <div>
-      <FormattedMessage
-        id="sign-up.success.message"
-        values={{
-          email
-        }}
-      />
+      <p>
+        <FormattedMessage id="auth.password-changed" />
+      </p>
     </div>
   ) : (
-    <form onSubmit={handleSignUp}>
+    <form onSubmit={handleChangePassword}>
       <div>
         <label>
           <FormattedMessage id="email" />
+          <input onChange={handleEmailChange} type="text" value={email} />
+        </label>
+      </div>
+      <div>
+        <label>
+          <FormattedMessage id="password.old" />
           <input
-            disabled={loading}
-            onChange={handleEmailChange}
-            type="text"
-            value={email}
+            onChange={handleOldPasswordChange}
+            type="password"
+            value={oldPassword}
           />
         </label>
       </div>
       <div>
         <label>
-          <FormattedMessage id="password" />
+          <FormattedMessage id="password.new" />
           <input
-            disabled={loading}
             onChange={handlePasswordChange}
             type="password"
             value={password}
@@ -90,7 +94,6 @@ const SignUp: FC = () => {
         <label>
           <FormattedMessage id="password.confirm" />
           <input
-            disabled={loading}
             onChange={handlePasswordConfirmationChange}
             type="password"
             value={passwordConfirmation}
@@ -98,31 +101,17 @@ const SignUp: FC = () => {
         </label>
       </div>
       <div>
-        <label>
-          <FormattedMessage id="policy.acceptance" />
-          <input
-            checked={policy}
-            disabled={loading}
-            onChange={handlePolicyAcceptanceChange}
-            type="checkbox"
-          />
-        </label>
-      </div>
-      <div>
         <AsyncButton loading={loading} type="submit">
-          <FormattedMessage id="sign-up" />
+          <FormattedMessage id="save" />
         </AsyncButton>
       </div>
       {error && (
-        <>
-          <div>
-            <FormattedMessage id="error.general" />
-          </div>
-          {error && error.message && <div>{error.message}</div>}
-        </>
+        <div>
+          <FormattedMessage id="error.general" />
+        </div>
       )}
     </form>
   );
 };
 
-export default SignUp;
+export default ChangePassword;

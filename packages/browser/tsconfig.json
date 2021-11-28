@@ -31,6 +31,7 @@
       "src/__mocks__/*": ["src/__mocks__/*"],
       "src/__tests__/*": ["src/__tests__/*"],
       "src/theme/*": ["src/theme/*"],
+      "src/types/*": ["src/types/*"],
       "src/transformers/*": ["src/transformers/*"],
       "src/ui/*": ["src/ui/*"],
       "src/utils/*": ["src/utils/*"]

@@ -33,8 +33,8 @@ import environment from 'env/environment';
 const {
   APP_URL,
   CONFIRM_SIGN_UP_TOKEN_EXP,
-  REMOVE_ACCOUNT_TOKEN_EXP,
-  RESET_PASSWORD_TOKEN_EXP
+  FORGOT_PASSWORD_TOKEN_EXP,
+  REMOVE_ACCOUNT_TOKEN_EXP
 } = environment;
 
 @ObjectType()
@@ -138,6 +138,49 @@ export class AuthResolver {
     return true;
   }
 
+  @Mutation(() => Boolean)
+  async forgotPassword(
+    @Arg('email') email: string,
+    @Ctx() { req: { locale } }: Context
+  ) {
+    const user = await User.findOne({
+      email,
+      status: Status.Active
+    });
+    if (user) {
+      const { id } = user;
+
+      await Token.delete({ type: TokenType.ResetPassword, user });
+
+      await getManager().increment(User, { id }, 'tokenVersion', 1);
+
+      const token = createToken(FORGOT_PASSWORD_TOKEN_EXP)(id);
+
+      const {
+        identifiers: [{ id: tokenId }]
+      } = await Token.insert({
+        token,
+        type: TokenType.ResetPassword,
+        user
+      });
+
+      const redirectUrl = `${APP_URL}/reset-password/${tokenId}`;
+
+      try {
+        await sendResetPasswordConfirmation({
+          locale,
+          recipient: email,
+          redirectUrl,
+          user: { email }
+        });
+      } catch {
+        throw new Error('Sending confirmation failed');
+      }
+    }
+
+    return true;
+  }
+
   @UseMiddleware(isAuth)
   @Mutation(() => Boolean)
   async removeAccount(
@@ -225,44 +268,57 @@ export class AuthResolver {
 
   @Mutation(() => Boolean)
   async resetPassword(
+    @Arg('tokenId') tokenId: string,
     @Arg('email') email: string,
-    @Ctx() { req: { locale } }: Context
+    @Arg('password') password: string,
+    @Arg('passwordConfirmation') passwordConfirmation: string,
+    @Ctx() { res }: Context
   ) {
+    if (password !== passwordConfirmation) {
+      throw new Error('Password mismatch');
+    }
+
+    if (!tokenId) {
+      throw new Error('link invalid');
+    }
+
+    const token = await Token.findOne({ id: tokenId });
+
+    if (!token) {
+      throw new Error();
+    }
+
+    const { token: jwtToken } = token;
+
+    const payload = verifyToken(jwtToken, {
+      ignoreExpiration: true
+    });
+
+    const { exp, userId: id } = payload;
+
+    if (Date.now() >= exp * 1000) {
+      throw new Error('Link has expired');
+    }
+
     const user = await User.findOne({
       email,
       status: Status.Active
     });
 
-    if (user) {
-      const { id } = user;
-
-      await Token.delete({ type: TokenType.ResetPassword, user });
-
-      await getManager().increment(User, { id }, 'tokenVersion', 1);
-
-      const token = createToken(RESET_PASSWORD_TOKEN_EXP)(id);
-
-      const {
-        identifiers: [{ id: tokenId }]
-      } = await Token.insert({
-        token,
-        type: TokenType.ResetPassword,
-        user
-      });
-
-      const redirectUrl = `${APP_URL}/update-password/${tokenId}`;
-
-      try {
-        await sendResetPasswordConfirmation({
-          locale,
-          recipient: email,
-          redirectUrl,
-          user: { email }
-        });
-      } catch {
-        throw new Error('Sending confirmation failed');
-      }
+    if (!user) {
+      throw new Error();
     }
+
+    const hashedPassword = await hash(password, 12);
+    const tokenVersion = user.tokenVersion + 1;
+
+    await getManager().update(
+      User,
+      { email, id, status: Status.Active },
+      { password: hashedPassword, tokenVersion }
+    );
+
+    res.clearCookie('refreshToken', { path: '/api/auth/refresh-token' });
 
     return true;
   }
@@ -361,61 +417,6 @@ export class AuthResolver {
 
       throw new Error('Sending confirmation failed');
     }
-
-    return true;
-  }
-
-  @Mutation(() => Boolean)
-  async updatePassword(
-    @Arg('tokenId') tokenId: string,
-    @Arg('email') email: string,
-    @Arg('password') password: string,
-    @Arg('passwordConfirmation') passwordConfirmation: string,
-    @Ctx() { res }: Context
-  ) {
-    if (password !== passwordConfirmation) {
-      throw new Error('Password mismatch');
-    }
-
-    const token = await Token.findOne({ id: tokenId });
-
-    if (!token) {
-      throw new Error();
-    }
-
-    const { token: jwtToken } = token;
-
-    const payload = verifyToken(jwtToken, {
-      ignoreExpiration: true
-    });
-
-    const { exp, userId: id } = payload;
-
-    if (Date.now() >= exp * 1000) {
-      throw new Error('Link has expired');
-    }
-
-    const user = await User.findOne({
-      email,
-      status: Status.Active
-    });
-
-    if (!user) {
-      throw new Error();
-    }
-
-    const hashedPassword = await hash(password, 12);
-    const tokenVersion = user.tokenVersion + 1;
-
-    await getManager().update(
-      User,
-      { email, id, status: Status.Active },
-      { password: hashedPassword, tokenVersion }
-    );
-
-    res.clearCookie('refreshToken', { path: '/api/auth/refresh-token' });
-
-    await Token.delete({ id: tokenId });
 
     return true;
   }
