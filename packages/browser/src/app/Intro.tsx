@@ -5,7 +5,14 @@ import { Link, Route, Routes } from 'react-router-dom';
 import Logo from 'ui/Logo';
 import Tile from 'ui/Tile';
 import Home from 'modules/home';
-import { SignIn, SignUp, SignUpConfirmation } from 'modules/auth';
+import {
+  ForgotPassword,
+  RemoveAccountConfirmation,
+  ResetPassword,
+  SignIn,
+  SignUp,
+  SignUpConfirmation
+} from 'modules/auth';
 import { Path } from 'router';
 
 const IntroBox = styled(Tile)`
@@ -30,6 +37,12 @@ const Intro: FC = () => (
       <Route element={<SignIn />} path={Path.SignIn} />
       <Route element={<SignUp />} path={Path.SignUp} />
       <Route element={<SignUpConfirmation />} path={Path.SignUpConfirmation} />
+      <Route element={<ForgotPassword />} path={Path.ForgotPassword} />
+      <Route
+        element={<RemoveAccountConfirmation />}
+        path={Path.RemoveAccountConfirmation}
+      />
+      <Route element={<ResetPassword />} path={Path.ResetPassword} />
     </Routes>
     <div>© 2021 Apps First</div>
   </IntroBox>
