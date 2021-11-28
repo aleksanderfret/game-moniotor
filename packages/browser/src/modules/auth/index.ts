@@ -1,15 +1,14 @@
 import { RemoveAccount, RemoveAccountConfirmation } from './RemoveAccount';
-import ResetPassword from './ResetPassword';
+import { ForgotPassword, ResetPassword } from './ForgotPassword';
 import SignIn from './SignIn';
 import { SignUp, SignUpConfirmation } from './SignUp';
-import UpdatePassword from './ResetPassword/ForgotPassword';
 
 export {
+  ForgotPassword,
   RemoveAccount,
   RemoveAccountConfirmation,
   ResetPassword,
   SignIn,
   SignUp,
-  SignUpConfirmation,
-  UpdatePassword
+  SignUpConfirmation
 };
