@@ -3348,6 +3348,9 @@
 * **graphql-tag@2<i></i>.12<i></i>.6**
   - license: MIT
   - repository: https://github.com/apollographql/graphql-tag
+* **graphql@14<i></i>.7<i></i>.0**
+  - license: MIT
+  - repository: https://github.com/graphql/graphql-js
 * **graphql@15<i></i>.7<i></i>.2**
   - license: MIT
   - repository: https://github.com/graphql/graphql-js
@@ -4503,6 +4506,9 @@
 * **min-indent@1<i></i>.0<i></i>.1**
   - license: MIT
   - repository: https://github.com/thejameskyle/min-indent
+* **minify-graphql-loader@1<i></i>.0<i></i>.2**
+  - license: MIT
+  - repository: https://github.com/gabsprates/minify-graphql-loader
 * **minimalistic-assert@1<i></i>.0<i></i>.1**
   - license: ISC
   - repository: https://github.com/calvinmetcalf/minimalistic-assert
