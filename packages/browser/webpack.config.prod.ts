@@ -21,6 +21,11 @@ const config: WebpackConfiguration = {
             getCustomTransformers
           }
         }
+      },
+      {
+        exclude: /node_modules/,
+        test: /\.(graphql|gql)$/,
+        use: ['graphql-tag/loader', 'minify-graphql-loader']
       }
     ]
   },
