@@ -1,17 +1,12 @@
-import { gql, MutationHookOptions, useMutation } from '@apollo/client';
+import { MutationHookOptions, useMutation } from '@apollo/client';
+
+import REMOVE_ACCOUNT_CONFIRMATION from './removeAccountConfirmation.graphql';
 
 type RemoveAccountConfirmationResponse = boolean;
 
 interface RemoveAccountConfirmationArgs {
   tokenId: string | undefined;
 }
-
-const REMOVE_ACCOUNT_CONFIRMATION = gql`
-  mutation removeAccountConfirmation($tokenId: String!) {
-    removeAccountConfirmation(tokenId: $tokenId)
-  }
-`;
-
 export function useRemoveAccountConfirmationMutation(
   baseOptions?: MutationHookOptions<
     RemoveAccountConfirmationResponse,
