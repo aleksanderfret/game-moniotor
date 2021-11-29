@@ -1,4 +1,6 @@
-import { gql, MutationHookOptions, useMutation } from '@apollo/client';
+import { MutationHookOptions, useMutation } from '@apollo/client';
+
+import RESET_PASSWORD from './resetPassword.graphql';
 
 type ResetPasswordResponse = boolean;
 
@@ -8,22 +10,6 @@ interface ResetPasswordArgs {
   passwordConfirmation: string;
   tokenId: string | undefined;
 }
-
-const RESET_PASSWORD = gql`
-  mutation resetPassword(
-    $tokenId: String!
-    $email: String!
-    $password: String!
-    $passwordConfirmation: String!
-  ) {
-    resetPassword(
-      tokenId: $tokenId
-      email: $email
-      password: $password
-      passwordConfirmation: $passwordConfirmation
-    )
-  }
-`;
 
 export function useResetPasswordMutation(
   baseOptions?: MutationHookOptions<ResetPasswordResponse, ResetPasswordArgs>

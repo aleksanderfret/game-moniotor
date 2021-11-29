@@ -1,6 +1,7 @@
-import { gql, MutationHookOptions, useMutation } from '@apollo/client';
+import { MutationHookOptions, useMutation } from '@apollo/client';
 
 import { setAccessToken } from 'modules/auth/token';
+import CHANGE_PASSWORD from './changePassword.graphql';
 
 type ChangePasswordResponse = {
   changePassword: {
@@ -14,24 +15,6 @@ interface ChangePasswordArgs {
   password: string;
   passwordConfirmation: string;
 }
-
-const CHANGE_PASSWORD = gql`
-  mutation changePassword(
-    $email: String!
-    $oldPassword: String!
-    $password: String!
-    $passwordConfirmation: String!
-  ) {
-    changePassword(
-      email: $email
-      oldPassword: $oldPassword
-      password: $password
-      passwordConfirmation: $passwordConfirmation
-    ) {
-      accessToken
-    }
-  }
-`;
 
 export function useChangePasswordMutation(
   baseOptions?: MutationHookOptions<ChangePasswordResponse, ChangePasswordArgs>

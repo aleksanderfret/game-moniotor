@@ -1,16 +1,12 @@
-import { gql, MutationHookOptions, useMutation } from '@apollo/client';
+import { MutationHookOptions, useMutation } from '@apollo/client';
+
+import FORGOT_PASSWORD from './forgotPassword.graphql';
 
 type ForgotPasswordResponse = boolean;
 
 interface ForgotPasswordArgs {
   email: string;
 }
-
-const FORGOT_PASSWORD = gql`
-  mutation forgotPassword($email: String!) {
-    forgotPassword(email: $email)
-  }
-`;
 
 export function useForgotPasswordMutation(
   baseOptions?: MutationHookOptions<ForgotPasswordResponse, ForgotPasswordArgs>

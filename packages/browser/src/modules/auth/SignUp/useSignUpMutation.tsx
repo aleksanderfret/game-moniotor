@@ -1,4 +1,6 @@
-import { gql, MutationHookOptions, useMutation } from '@apollo/client';
+import { MutationHookOptions, useMutation } from '@apollo/client';
+
+import SIGN_UP from './signUp.graphql';
 
 type SignUpResponse = boolean;
 
@@ -8,22 +10,6 @@ interface SignUpArgs {
   passwordConfirmation: string;
   policy: string;
 }
-
-const SIGN_UP = gql`
-  mutation signUp(
-    $email: String!
-    $password: String!
-    $passwordConfirmation: String!
-    $policy: String!
-  ) {
-    signUp(
-      email: $email
-      password: $password
-      passwordConfirmation: $passwordConfirmation
-      policy: $policy
-    )
-  }
-`;
 
 export function useSignUpMutation(
   baseOptions?: MutationHookOptions<SignUpResponse, SignUpArgs>

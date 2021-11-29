@@ -10,8 +10,14 @@ const ChangePassword: FC = () => {
   const [oldPassword, setOldPassword] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [changePassword, { data, error, loading }] =
-    useChangePasswordMutation();
+  const [changePassword, { data, error, loading }] = useChangePasswordMutation({
+    onCompleted: () => {
+      setEmail('');
+      setPassword('');
+      setOldPassword('');
+      setPasswordConfirmation('');
+    }
+  });
 
   const handleEmailChange: InputChangeHandler = event => {
     setEmail(event.target.value);
@@ -45,13 +51,6 @@ const ChangePassword: FC = () => {
     await changePassword({
       variables: { email, oldPassword, password, passwordConfirmation }
     });
-
-    // eslint-disable-next-line no-console
-    console.log('Po await');
-    setEmail('');
-    setPassword('');
-    setOldPassword('');
-    setPasswordConfirmation('');
   };
 
   const success = data && !error && !loading;

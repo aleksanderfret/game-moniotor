@@ -1,0 +1,3 @@
+mutation removeAccountConfirmation($tokenId: String!) {
+  removeAccountConfirmation(tokenId: $tokenId)
+}

@@ -1,4 +1,6 @@
-import { gql, MutationHookOptions, useMutation } from '@apollo/client';
+import { MutationHookOptions, useMutation } from '@apollo/client';
+
+import REMOVE_ACCOUNT from './removeAccount.graphql';
 
 type RemoveAccountResponse = boolean;
 
@@ -6,12 +8,6 @@ type RemoveAccountArgs = {
   email: string;
   password: string;
 };
-
-const REMOVE_ACCOUNT = gql`
-  mutation removeAccount($email: String!, $password: String!) {
-    removeAccount(email: $email, password: $password)
-  }
-`;
 
 export function useRemoveAccountMutation(
   baseOptions?: MutationHookOptions<RemoveAccountResponse, RemoveAccountArgs>
