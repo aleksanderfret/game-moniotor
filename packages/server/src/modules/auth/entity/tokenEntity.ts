@@ -3,8 +3,8 @@ import { Column, Entity, Index, ManyToOne } from 'typeorm';
 import { Field, ObjectType } from 'type-graphql';
 
 import BaseEntity from 'db/baseEntity';
-import User from 'modules/user/entity';
-import { TokenType } from './enums';
+import User from 'modules/user/entity/userEntity';
+import { TokenType } from '../enums';
 
 @ObjectType()
 @Entity()

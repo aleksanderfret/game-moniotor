@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import User from 'modules/user/entity';
+import User from 'modules/user/entity/userEntity';
 
 export type Locale = 'en' | 'pl';
 
