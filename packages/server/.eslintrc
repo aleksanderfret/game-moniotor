@@ -132,7 +132,8 @@
           ["errors", "./src/errors"],
           ["modules", "./src/modules"],
           ["translations", "./src/translations"],
-          ["types", "./src/types"]
+          ["types", "./src/types"],
+          ["utils", "./src/utils"]
         ],
         "extensions": [".ts", ".js", ".json"]
       }

@@ -1,6 +1,6 @@
 import { MiddlewareFn } from 'type-graphql';
 
-import User from 'modules/user/entity';
+import User from 'modules/user/entity/userEntity';
 import { verifyAccessToken } from './sign';
 import { Status } from 'modules/user/enums';
 import { Context } from 'types/types';

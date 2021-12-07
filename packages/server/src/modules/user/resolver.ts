@@ -2,7 +2,7 @@ import { Ctx, Query, Resolver, UseMiddleware } from 'type-graphql';
 
 import { Context } from 'types/types';
 import { isAuth } from 'modules/auth/isAuth';
-import User from './entity';
+import User from './entity/userEntity';
 
 @Resolver()
 export class UserResolver {

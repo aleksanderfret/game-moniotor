@@ -1,3 +1,5 @@
+import registerEnumTypes from 'utils/registerEnumTypes';
+
 export enum AccountStatus {
   Active = 'active',
   Deleted = 'deleted',
@@ -40,8 +42,4 @@ export enum Type {
   Complex = 'Complex'
 }
 
-export enum TokenType {
-  DeleteAccountToken = 'DeleteAccountToken',
-  ResetPasswordToken = 'ResetPasswordToken',
-  SignUpConfirmToken = 'SignUpConfirmToken'
-}
+registerEnumTypes([[Icon, 'Icon']]);

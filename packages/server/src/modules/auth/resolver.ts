@@ -19,14 +19,14 @@ import {
 } from 'modules/auth/sign';
 import isAuth from './isAuth';
 import { sendRefreshToken } from './sendTokenCookie';
-import Token from './entity';
+import Token from './entity/tokenEntity';
 import {
   sendRemoveAccountConfirmation,
   sendResetPasswordConfirmation,
   sendSignUpConfirmation
 } from 'modules/mailer';
 import { Context } from 'types/types';
-import User from 'modules/user/entity';
+import User from 'modules/user/entity/userEntity';
 import { Status } from 'modules/user/enums';
 import environment from 'env/environment';
 

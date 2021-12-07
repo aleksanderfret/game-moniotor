@@ -1,6 +1,6 @@
 import { Request, Response, RequestHandler } from 'express';
 
-import User from 'modules/user/entity';
+import User from 'modules/user/entity/userEntity';
 import {
   createAccessToken,
   createRefreshToken,

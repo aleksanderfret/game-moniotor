@@ -88,7 +88,8 @@
     "errors": "src/errors",
     "modules": "src/modules",
     "translations": "src/translations",
-    "types": "src/types"
+    "types": "src/types",
+    "utils": "src/utils"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx,json,scss,css,md}": [

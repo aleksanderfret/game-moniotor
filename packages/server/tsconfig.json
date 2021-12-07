@@ -26,7 +26,8 @@
       "errors/*": ["src/errors/*"],
       "modules/*": ["src/modules/*"],
       "types/*": ["src/types/*"],
-      "translations/*": ["src/translations/*"]
+      "translations/*": ["src/translations/*"],
+      "utils/*": ["src/utils/*"]
     },
     "preserveConstEnums": true,
     "pretty": true,
