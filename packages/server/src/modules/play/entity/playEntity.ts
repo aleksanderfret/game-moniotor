@@ -1,5 +1,12 @@
 /* eslint-disable import/no-cycle */
-import { Column, Entity, ManyToMany, OneToMany, OneToOne } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToMany,
+  OneToMany,
+  OneToOne,
+  JoinColumn
+} from 'typeorm';
 import { ObjectType, Field, GraphQLISODateTime } from 'type-graphql';
 
 import BaseEntity from 'db/baseEntity';
@@ -38,6 +45,7 @@ export default class Play extends BaseEntity {
 
   @Field(() => User, { nullable: false })
   @OneToOne(() => User, user => user.organizedPlay, { nullable: false })
+  @JoinColumn()
   organizer!: User;
 
   @Field(() => GameEvent)

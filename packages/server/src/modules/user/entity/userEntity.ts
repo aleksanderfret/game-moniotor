@@ -1,5 +1,12 @@
 /* eslint-disable import/no-cycle */
-import { Column, Entity, OneToOne, OneToMany, ManyToMany } from 'typeorm';
+import {
+  Column,
+  Entity,
+  OneToOne,
+  OneToMany,
+  ManyToMany,
+  JoinTable
+} from 'typeorm';
 import { ObjectType, Field, GraphQLISODateTime } from 'type-graphql';
 
 import BaseEntity from 'db/baseEntity';
@@ -10,6 +17,7 @@ import Artist from 'modules/game/entity/artistEntity';
 import Rate from 'modules/rate/entity/rateEntity';
 import Review from 'modules/review/entity/reviewEntity';
 import Play from 'modules/play/entity/playEntity';
+import Game from 'modules/game/entity/gameEntity';
 import GameEvent from 'modules/gameEvent/entity/gameEventEntity';
 
 @ObjectType()
@@ -79,7 +87,13 @@ export default class User extends BaseEntity {
 
   @Field(() => Play)
   @ManyToMany(() => Play, play => play.players)
+  @JoinTable()
   play!: Play[];
+
+  @Field(() => Game)
+  @ManyToMany(() => Game, game => game.collector)
+  @JoinTable()
+  games!: Game[];
 
   @Field(() => Play)
   @OneToMany(() => Play, play => play.organizer)
@@ -88,4 +102,8 @@ export default class User extends BaseEntity {
   @Field(() => GameEvent)
   @ManyToMany(() => GameEvent, gameEvent => gameEvent.organizers)
   organizedEvent!: GameEvent[];
+
+  @Field(() => GameEvent)
+  @ManyToMany(() => GameEvent, gameEvent => gameEvent.participants)
+  participation!: GameEvent[];
 }
