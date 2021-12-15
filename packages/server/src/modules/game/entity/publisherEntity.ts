@@ -1,5 +1,12 @@
 /* eslint-disable import/no-cycle */
-import { Column, Entity, OneToOne, ManyToMany } from 'typeorm';
+import {
+  Column,
+  Entity,
+  OneToOne,
+  JoinColumn,
+  JoinTable,
+  OneToMany
+} from 'typeorm';
 import { ObjectType, Field } from 'type-graphql';
 
 import BaseEntity from 'db/baseEntity';
@@ -14,11 +21,13 @@ export default class Publisher extends BaseEntity {
   name!: string;
 
   @Field(() => Game)
-  @ManyToMany(() => Game, game => game.categories)
+  @OneToMany(() => Game, game => game.publisher)
+  @JoinTable()
   games!: Game[];
 
   @Field(() => Address)
   @OneToOne(() => Address, address => address.plays)
+  @JoinColumn()
   address!: Address;
 
   @Field({ nullable: true })

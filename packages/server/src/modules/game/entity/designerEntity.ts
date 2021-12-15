@@ -18,9 +18,7 @@ export default class Designer extends BaseEntity {
   games!: Game[];
 
   @Field(() => User, { nullable: false })
-  @OneToOne(() => User, {
-    nullable: false
-  })
+  @OneToOne(() => User, { nullable: false })
   @JoinColumn()
   user!: User;
 }

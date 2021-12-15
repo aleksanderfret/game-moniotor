@@ -6,7 +6,8 @@ import {
   ManyToOne,
   OneToOne,
   OneToMany,
-  JoinColumn
+  JoinColumn,
+  JoinTable
 } from 'typeorm';
 import { ObjectType, Field, GraphQLISODateTime } from 'type-graphql';
 
@@ -20,7 +21,6 @@ import Artist from './artistEntity';
 import Publisher from './publisherEntity';
 import Review from 'modules/review/entity/reviewEntity';
 import Play from 'modules/play/entity/playEntity';
-import Address from 'modules/address/entity/addressEntity';
 import GameEvent from 'modules/gameEvent/entity/gameEventEntity';
 import Rate from 'modules/rate/entity/rateEntity';
 
@@ -73,6 +73,7 @@ export default class Game extends BaseEntity {
 
   @Field({ nullable: true })
   @Column({ nullable: true, precision: 3, scale: 0, type: 'numeric' })
+  @JoinTable()
   players!: number;
 
   @Field({ nullable: false })
@@ -84,35 +85,37 @@ export default class Game extends BaseEntity {
   description!: string;
 
   @Field(() => User, { nullable: false })
-  @OneToOne(() => User, {
-    nullable: false
-  })
+  @OneToOne(() => User, { nullable: false })
   @JoinColumn()
   addedBy!: User;
 
   @Field(() => Designer, { nullable: true })
   @ManyToMany(() => Designer, designer => designer.games, { nullable: true })
+  @JoinTable()
   designers!: Designer[];
+
+  @Field(() => Publisher, { nullable: true })
+  @ManyToOne(() => Publisher, publisher => publisher.games, { nullable: true })
+  publisher!: Publisher[];
 
   @Field(() => Artist, { nullable: true })
   @ManyToMany(() => Artist, artist => artist.games, { nullable: true })
+  @JoinTable()
   artists!: Artist[];
 
   @Field(() => Mechanics)
-  @ManyToMany(() => Mechanics, mechanics => mechanics.games)
+  @ManyToMany(() => Mechanics, mechanics => mechanics.games, { cascade: true })
+  @JoinTable()
   mechanics!: Mechanics[];
 
   @Field(() => Category)
   @ManyToMany(() => Category, category => category.games)
+  @JoinTable()
   categories!: Category[];
 
   @Field(() => Type)
   @ManyToOne(() => Type, gameType => gameType.games)
   gameType!: Type;
-
-  @Field(() => Publisher, { nullable: true })
-  @ManyToOne(() => Publisher, publisher => publisher.games, { nullable: true })
-  type!: Publisher;
 
   @Field(() => Rate)
   @OneToMany(() => Rate, rate => rate.game)
@@ -122,13 +125,13 @@ export default class Game extends BaseEntity {
   @OneToMany(() => Play, play => play.game)
   plays!: Play[];
 
+  @Field(() => User)
+  @ManyToMany(() => User, user => user.games)
+  collector!: User[];
+
   @Field(() => GameEvent)
   @ManyToMany(() => GameEvent, gameEvent => gameEvent.games)
   gameEvents!: GameEvent[];
-
-  @Field(() => Address)
-  @OneToMany(() => Address, address => address.games)
-  address!: Address;
 
   @Field(() => Review, { nullable: true })
   @OneToMany(() => Review, review => review.game, { nullable: true })

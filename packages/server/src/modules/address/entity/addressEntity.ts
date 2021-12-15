@@ -4,7 +4,6 @@ import { ObjectType, Field } from 'type-graphql';
 
 import { Icon } from 'enums/enums';
 import BaseEntity from 'db/baseEntity';
-import Game from 'modules/game/entity/gameEntity';
 import Publisher from 'modules/game/entity/publisherEntity';
 import Play from 'modules/play/entity/playEntity';
 
@@ -50,10 +49,6 @@ export default class Address extends BaseEntity {
   @Field()
   @Column({ length: 256, nullable: true, type: 'varchar' })
   country!: string;
-
-  @Field(() => Game)
-  @ManyToOne(() => Game, game => game.address)
-  games!: Game[];
 
   @Field(() => Play)
   @ManyToOne(() => Play, play => play.address)

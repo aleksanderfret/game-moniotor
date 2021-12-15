@@ -14,13 +14,11 @@ export default class Artist extends BaseEntity {
   name!: string;
 
   @Field(() => Game)
-  @ManyToMany(() => Game, game => game.categories)
+  @ManyToMany(() => Game, game => game.artists)
   games!: Game[];
 
   @Field(() => User, { nullable: false })
-  @OneToOne(() => User, {
-    nullable: false
-  })
+  @OneToOne(() => User, { nullable: false })
   @JoinColumn()
   user!: User;
 }

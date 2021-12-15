@@ -1,5 +1,12 @@
 /* eslint-disable import/no-cycle */
-import { Column, Entity, ManyToOne, ManyToMany, OneToMany } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  ManyToMany,
+  OneToMany,
+  JoinTable
+} from 'typeorm';
 import { ObjectType, Field } from 'type-graphql';
 
 import BaseEntity from 'db/baseEntity';
@@ -22,15 +29,23 @@ export default class GameEvent extends BaseEntity {
 
   @Field(() => Play)
   @ManyToMany(() => Play, play => play.gameEvent)
+  @JoinTable()
   plays!: Play[];
 
   @Field(() => Game)
   @ManyToMany(() => Game, game => game.gameEvents)
+  @JoinTable()
   games!: Game;
 
   @Field(() => User)
   @ManyToMany(() => User, user => user.organizedEvent)
+  @JoinTable()
   organizers!: User[];
+
+  @Field(() => User)
+  @ManyToMany(() => User, user => user.participation)
+  @JoinTable()
+  participants!: User[];
 
   @Field(() => User)
   @ManyToOne(() => User, user => user.reviews)
