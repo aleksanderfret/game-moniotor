@@ -4,7 +4,6 @@ import {
   Entity,
   ManyToMany,
   ManyToOne,
-  OneToOne,
   OneToMany,
   JoinColumn,
   JoinTable
@@ -85,7 +84,7 @@ export default class Game extends BaseEntity {
   description!: string;
 
   @Field(() => User, { nullable: false })
-  @OneToOne(() => User, { nullable: false })
+  @ManyToOne(() => User, user => user.addedGames, { nullable: false })
   @JoinColumn()
   addedBy!: User;
 
@@ -126,8 +125,8 @@ export default class Game extends BaseEntity {
   plays!: Play[];
 
   @Field(() => User)
-  @ManyToMany(() => User, user => user.games)
-  collector!: User[];
+  @ManyToMany(() => User, user => user.collection, { cascade: true })
+  collectors!: User[];
 
   @Field(() => GameEvent)
   @ManyToMany(() => GameEvent, gameEvent => gameEvent.games)
