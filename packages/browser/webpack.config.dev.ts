@@ -20,9 +20,9 @@ const config: IConfiguration = {
     historyApiFallback: true,
     hot: true,
     open: true,
-    port: 4000,
+    port: 3000,
     proxy: {
-      '/api': 'http://localhost:5000'
+      '/api': 'http://localhost:4000'
     },
     static: {
       watch: {

@@ -3,12 +3,21 @@ import cors from 'cors';
 import express, { Application } from 'express';
 import path from 'path';
 
+import environment from 'env/environment';
 import authRouter from 'modules/auth/router';
 import { startApollo } from 'app/apollo';
 import { localeMiddleware } from 'app/middlewares/localeMiddleware';
 
+const { IS_DEV } = environment;
+
+const origin = ['http://localhost:3000'];
+
+if (IS_DEV) {
+  origin.push('https://studio.apollographql.com');
+}
+
 const startApp = async (app: Application): Promise<Application> => {
-  app.use(cors({ credentials: true, origin: 'http://localhost:4000' }));
+  app.use(cors({ credentials: true, origin }));
   app.use(express.json());
   app.use(cookieParser());
   app.use(express.urlencoded({ extended: false }));
