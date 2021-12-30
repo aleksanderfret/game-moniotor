@@ -11,5 +11,5 @@ export const sendTokenCookie =
 
 export const sendRefreshToken = sendTokenCookie(
   'refreshToken',
-  '/auth/refresh-token'
+  '/api/auth/refresh-token'
 );

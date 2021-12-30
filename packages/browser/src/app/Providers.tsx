@@ -4,6 +4,8 @@ import { IntlProvider } from 'react-intl';
 import { ThemeProvider } from 'styled-components';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
+import { setAccessToken } from 'modules/auth/token';
+import useFetch from 'hooks/useFetch';
 import {
   AppDispatchProvider,
   appReducer,
@@ -21,13 +23,17 @@ interface ProvidersProps {
   children: ReactNode;
 }
 
+interface AT {
+  accessToken: string;
+}
+
 const locales = new Set(['en', 'pl']);
 
 const queryClient = new QueryClient();
 
 const Providers: FC<ProvidersProps> = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialAppState);
-  const { isAuthenticated, locale } = state;
+  const { locale } = state;
 
   useEffect(() => {
     const locale = navigator.language;
@@ -38,8 +44,26 @@ const Providers: FC<ProvidersProps> = ({ children }) => {
     }
   }, []);
 
-  if (!isAuthenticated) {
-    dispatch(setIsAuthenticated(true));
+  const { data, loading, error } = useFetch<AT | null>(
+    '/api/auth/refresh-token'
+  );
+
+  if (data) {
+    const { accessToken } = data;
+    const { isAuthenticated } = state;
+
+    setAccessToken(accessToken);
+
+    if (!isAuthenticated) {
+      dispatch(setIsAuthenticated(true));
+    }
+  }
+  if (loading) {
+    return <div>loading...</div>;
+  }
+
+  if (error) {
+    console.error('useFetch', error);
   }
 
   return (
