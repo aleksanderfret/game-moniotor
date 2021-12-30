@@ -43,9 +43,9 @@ const Intro: FC = () => (
         path={Path.RemoveAccountConfirmation}
       />
       <Route element={<ResetPassword />} path={Path.ResetPassword} />
+      <Route element={<Home />} path="*" />
     </Routes>
     <div>© 2021 Apps First</div>
   </IntroBox>
 );
-
 export default Intro;
