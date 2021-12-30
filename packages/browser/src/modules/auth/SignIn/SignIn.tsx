@@ -11,11 +11,17 @@ import { useAppDispatch } from 'hooks';
 import { AsyncButton } from 'ui/Button';
 
 export const SignIn: FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [signIn, { error, loading }] = useSignInMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [signIn, { error, loading }] = useSignInMutation({
+    onCompleted: data => {
+      setAccessToken(data.signIn.accessToken);
+      dispatch(setIsAuthenticated(true));
+      navigate(Path.Home);
+    }
+  });
 
   const handleEmailChange: InputChangeHandler = event => {
     setEmail(event.target.value);
@@ -32,15 +38,7 @@ export const SignIn: FC = () => {
       return false;
     }
 
-    const response = await signIn({
-      variables: { email, password }
-    });
-
-    if (response && response.data) {
-      setAccessToken(response.data.signIn.accessToken);
-      dispatch(setIsAuthenticated(true));
-      navigate(Path.Dashboard);
-    }
+    await signIn({ variables: { email, password } });
 
     return false;
   };
