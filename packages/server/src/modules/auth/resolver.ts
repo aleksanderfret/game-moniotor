@@ -115,7 +115,7 @@ export class AuthResolver {
 
     const user = await User.findOne({
       id,
-      status: Status.Active
+      status: Status.Registered
     });
 
     if (!user) {
@@ -347,6 +347,8 @@ export class AuthResolver {
       throw new Error('Account Not Active');
     }
 
+    // eslint-disable-next-line no-console
+    console.log(createRefreshToken(id, tokenVersion));
     sendRefreshToken(res, createRefreshToken(id, tokenVersion));
 
     return {

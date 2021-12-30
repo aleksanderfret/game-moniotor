@@ -5,13 +5,14 @@ import { buildSchema } from 'type-graphql';
 import environment from 'env/environment';
 import { AuthResolver } from 'modules/auth/resolver';
 import { UserResolver } from 'modules/user/resolver';
+import { GameResolver } from 'modules/game/resolver';
 
 const { NODE_ENV } = environment;
 
 export const startApollo = async (): Promise<ApolloServer> => {
   const schema = await buildSchema({
     dateScalarMode: 'timestamp',
-    resolvers: [AuthResolver, UserResolver]
+    resolvers: [AuthResolver, GameResolver, UserResolver]
   });
 
   const server = new ApolloServer({

@@ -85,15 +85,19 @@ export default class User extends BaseEntity {
   @OneToMany(() => Review, review => review.reviewer)
   reviews!: Review[];
 
+  @Field(() => Game)
+  @OneToMany(() => Game, game => game.addedBy)
+  addedGames!: Game[];
+
   @Field(() => Play)
   @ManyToMany(() => Play, play => play.players)
   @JoinTable()
   play!: Play[];
 
   @Field(() => Game)
-  @ManyToMany(() => Game, game => game.collector)
+  @ManyToMany(() => Game, game => game.collectors)
   @JoinTable()
-  games!: Game[];
+  collection!: Game[];
 
   @Field(() => Play)
   @OneToMany(() => Play, play => play.organizer)
