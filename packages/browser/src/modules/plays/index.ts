@@ -1,3 +1,4 @@
 import Plays from './Plays';
+import Play from './Play';
 
-export default Plays;
+export { Play, Plays };
