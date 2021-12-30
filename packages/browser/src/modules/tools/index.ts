@@ -1,3 +1,4 @@
 import Tools from './Tools';
+import Tool from './Tool';
 
-export default Tools;
+export { Tool, Tools };
