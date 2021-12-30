@@ -1,12 +1,16 @@
 enum Path {
   Account = '/account',
   Dashboard = '/dashboard',
-  Events = '/events/:eventId',
+  Events = '/events',
+  Event = '/events/:eventId',
   ForgotPassword = '/forgot-password',
-  Games = '/games/:gameId',
+  Games = '/games',
+  Game = '/games/:gameId',
   Home = '/',
-  Plays = '/plays/:playId',
-  Players = '/players/:playerId',
+  Plays = '/plays',
+  Play = '/plays/:playId',
+  Players = '/players',
+  Player = '/players/:playerId',
   RemoveAccountConfirmation = '/remove-account-confirmation/:tokenId',
   ResetPassword = '/reset-password/:tokenId',
   Settings = '/settings',
@@ -14,6 +18,7 @@ enum Path {
   SignUp = '/sign-up',
   SignUpConfirmation = '/sign-up-confirmation/:tokenId',
   Tools = '/tools',
+  Tool = '/tool/:toolId',
   UpdatePassword = '/update-password/:tokenId'
 }
 

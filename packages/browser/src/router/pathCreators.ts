@@ -2,12 +2,16 @@ import Path from './enums';
 import Route, {
   AccountRoute,
   DashboardRoute,
+  EventRoute,
   EventsRoute,
   ForgotPasswordRoute,
+  GameRoute,
   GamesRoute,
   HomeRoute,
   NoParams,
+  PlayerRoute,
   PlayersRoute,
+  PlayRoute,
   PlaysRoute,
   RemoveAccountConfirmationRoute,
   ResetPasswordRoute,
@@ -15,6 +19,7 @@ import Route, {
   SignInRoute,
   SignUpConfirmationRoute,
   SignUpRoute,
+  ToolRoute,
   ToolsRoute
 } from './types';
 
@@ -35,13 +40,17 @@ const createPath = <T extends Route>(path: T[0]) => {
 export const createAccountPath = createPath<AccountRoute>(Path.Account);
 export const createDashboardPath = createPath<DashboardRoute>(Path.Dashboard);
 export const createEventsPath = createPath<EventsRoute>(Path.Events);
+export const createEventPath = createPath<EventRoute>(Path.Event);
 export const createForgotPath = createPath<ForgotPasswordRoute>(
   Path.ForgotPassword
 );
 export const createHomePath = createPath<HomeRoute>(Path.Home);
 export const createGamesPath = createPath<GamesRoute>(Path.Games);
+export const createGamePath = createPath<GameRoute>(Path.Game);
 export const createPlayersPath = createPath<PlayersRoute>(Path.Players);
+export const createPlayerPath = createPath<PlayerRoute>(Path.Player);
 export const createPlaysPath = createPath<PlaysRoute>(Path.Plays);
+export const createPlayPath = createPath<PlayRoute>(Path.Play);
 export const createRemoveAccountConfirmationPath =
   createPath<RemoveAccountConfirmationRoute>(Path.RemoveAccountConfirmation);
 export const createResetPasswordPath = createPath<ResetPasswordRoute>(
@@ -55,3 +64,4 @@ export const createSignUpConfirmationPath = createPath<SignUpConfirmationRoute>(
 export const createSignUpPath = createPath<SignUpRoute>(Path.SignUp);
 
 export const createToolsPath = createPath<ToolsRoute>(Path.Tools);
+export const createToolPath = createPath<ToolRoute>(Path.Tool);
