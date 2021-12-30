@@ -1,0 +1,22 @@
+query Games {
+  games {
+    id
+    cover
+    subtitle
+    title
+    minTime
+    maxTime
+    time
+    age
+    minPlayers
+    maxPlayers
+    players
+    rate
+    averageRating
+    addedBy {
+      id
+      email
+      name
+    }
+  }
+}

@@ -1,0 +1,22 @@
+mutation CreateGame($game: GameInput!, $owned: Boolean!) {
+  createGame(game: $game, owned: $owned) {
+    id
+    cover
+    subtitle
+    title
+    minTime
+    maxTime
+    time
+    age
+    minPlayers
+    maxPlayers
+    players
+    rate
+    averageRating
+    addedBy {
+      id
+      email
+      name
+    }
+  }
+}
