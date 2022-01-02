@@ -9,6 +9,7 @@ export type ForgotPasswordRoute = [Path.ForgotPassword, NoParams];
 export type GamesRoute = [Path.Games, NoParams];
 export type GameRoute = [Path.Game, { gameId: string }];
 export type HomeRoute = [Path.Home, NoParams];
+export type NewGameRoute = [Path.NewGame, NoParams];
 export type PlayersRoute = [Path.Players, NoParams];
 export type PlayerRoute = [Path.Player, { playerId: string }];
 export type PlaysRoute = [Path.Plays, NoParams];
@@ -37,6 +38,7 @@ type Route =
   | GameRoute
   | GamesRoute
   | HomeRoute
+  | NewGameRoute
   | PlayersRoute
   | PlayerRoute
   | PlaysRoute

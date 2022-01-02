@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Path } from 'router';
 import Dashboard from 'modules/dashboard';
 import Account from 'modules/user/Account';
-import { Game, Games } from 'modules/games';
+import { CreateGame, Game, Games } from 'modules/games';
 import { Play, Plays } from 'modules/plays';
 import { Event, Events } from 'modules/events';
 import { Tool, Tools } from 'modules/tools';
@@ -17,6 +17,7 @@ const Content: FC = () => (
       <Route element={<Account />} path={Path.Account} />
       <Route element={<Game />} path={Path.Game} />
       <Route element={<Games />} path={Path.Games} />
+      <Route element={<CreateGame />} path={Path.NewGame} />
       <Route element={<Play />} path={Path.Play} />
       <Route element={<Plays />} path={Path.Plays} />
       <Route element={<Event />} path={Path.Event} />

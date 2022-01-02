@@ -15,7 +15,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       onClick,
       primary: sourcePrimary,
       secondary: sourceSecondary,
-      size,
+      size = 'medium',
       title,
       type = 'button',
       ...rest

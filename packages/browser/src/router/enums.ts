@@ -7,6 +7,7 @@ enum Path {
   Games = '/games',
   Game = '/games/:gameId',
   Home = '/',
+  NewGame = '/games/new-game',
   Plays = '/plays',
   Play = '/plays/:playId',
   Players = '/players',
