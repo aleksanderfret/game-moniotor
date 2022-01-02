@@ -22,6 +22,7 @@ import Review from 'modules/review/entity/reviewEntity';
 import Play from 'modules/play/entity/playEntity';
 import GameEvent from 'modules/gameEvent/entity/gameEventEntity';
 import Rate from 'modules/rate/entity/rateEntity';
+import Collection from 'modules/game/entity/collectionEntity';
 
 @ObjectType()
 @Entity()
@@ -124,9 +125,9 @@ export default class Game extends BaseEntity {
   @OneToMany(() => Play, play => play.game)
   plays!: Play[];
 
-  @Field(() => User)
-  @ManyToMany(() => User, user => user.collection, { cascade: true })
-  collectors!: User[];
+  @Field(() => Collection)
+  @OneToMany(() => Collection, collection => collection.game, { cascade: true })
+  collection!: Collection[];
 
   @Field(() => GameEvent)
   @ManyToMany(() => GameEvent, gameEvent => gameEvent.games)

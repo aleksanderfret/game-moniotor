@@ -16,6 +16,7 @@ import {
 import { Context } from 'types/types';
 import { isAuth } from 'modules/auth/isAuth';
 import Game from 'modules/game/entity/gameEntity';
+import Collection from 'modules/game/entity/collectionEntity';
 import Rate from 'modules/rate/entity/rateEntity';
 
 @InputType()
@@ -45,8 +46,8 @@ export class GameResolver {
       .leftJoinAndSelect('game.gameType', 'gameType')
       .leftJoinAndSelect('game.rates', 'rate')
       .leftJoinAndSelect('game.addedBy', 'user')
-      .leftJoinAndSelect('game.collectors', 'collector')
-      .where('collector.id = :userId', { userId: user?.id })
+      .leftJoinAndSelect('game.collection', 'collection')
+      .where('collection.userId = :userId', { userId: user?.id })
       .orWhere('game.private = :private', { private: false })
       .getMany();
 
@@ -90,7 +91,12 @@ export class GameResolver {
         }).save();
 
         if (owned) {
-          createdGame.collectors = [user];
+          const collection = await Collection.create({
+            game: createdGame,
+            owned: new Date(),
+            user
+          });
+          createdGame.collection = [collection];
         }
 
         await createdGame.save();
@@ -108,7 +114,7 @@ export class GameResolver {
             'gameType',
             'rates',
             'addedBy',
-            'collectors'
+            'collection'
           ],
           where: { id }
         });

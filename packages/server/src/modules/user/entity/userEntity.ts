@@ -19,6 +19,7 @@ import Review from 'modules/review/entity/reviewEntity';
 import Play from 'modules/play/entity/playEntity';
 import Game from 'modules/game/entity/gameEntity';
 import GameEvent from 'modules/gameEvent/entity/gameEventEntity';
+import Collection from 'modules/game/entity/collectionEntity';
 
 @ObjectType()
 @Entity()
@@ -94,10 +95,9 @@ export default class User extends BaseEntity {
   @JoinTable()
   play!: Play[];
 
-  @Field(() => Game)
-  @ManyToMany(() => Game, game => game.collectors)
-  @JoinTable()
-  collection!: Game[];
+  @Field(() => Collection)
+  @OneToMany(() => Collection, collection => collection.user)
+  collection!: Collection[];
 
   @Field(() => Play)
   @OneToMany(() => Play, play => play.organizer)
