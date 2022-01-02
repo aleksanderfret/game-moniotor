@@ -8,6 +8,7 @@ import Route, {
   GameRoute,
   GamesRoute,
   HomeRoute,
+  NewGameRoute,
   NoParams,
   PlayerRoute,
   PlayersRoute,
@@ -47,6 +48,7 @@ export const createForgotPath = createPath<ForgotPasswordRoute>(
 export const createHomePath = createPath<HomeRoute>(Path.Home);
 export const createGamesPath = createPath<GamesRoute>(Path.Games);
 export const createGamePath = createPath<GameRoute>(Path.Game);
+export const createNewGamePath = createPath<NewGameRoute>(Path.NewGame);
 export const createPlayersPath = createPath<PlayersRoute>(Path.Players);
 export const createPlayerPath = createPath<PlayerRoute>(Path.Player);
 export const createPlaysPath = createPath<PlaysRoute>(Path.Plays);
