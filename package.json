@@ -16,7 +16,7 @@
     "url": "https://github.com/aleksanderfret/games-room/issues"
   },
   "devDependencies": {
-    "@types/node": "17.0.5",
+    "@types/node": "17.0.6",
     "husky": "7.0.4",
     "lerna": "4.0.0",
     "license-checker-rseidelsohn": "2.2.0",
