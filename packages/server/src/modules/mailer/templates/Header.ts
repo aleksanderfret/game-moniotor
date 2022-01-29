@@ -4,7 +4,7 @@ import {
   Cell,
   Link,
   Paragraph,
-  Row
+  Row,
 } from 'modules/mailer/templates/components';
 
 const { APP_NAME, APP_URL } = environment;

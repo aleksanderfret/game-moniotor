@@ -18,7 +18,7 @@ const initialGameData = {
   rate: null,
   subtitle: null,
   time: null,
-  title: ''
+  title: '',
 };
 
 const CreateGame: FC = () => {
@@ -32,7 +32,7 @@ const CreateGame: FC = () => {
     },
     onError: error => {
       console.error(error);
-    }
+    },
   });
 
   const handleOwnedChange: InputChangeHandler = () => {
@@ -56,9 +56,9 @@ const CreateGame: FC = () => {
         createGame: {
           ...initialGameData,
           title,
-          id: randomKey()
-        }
-      }
+          id: randomKey(),
+        },
+      },
     });
 
     return false;

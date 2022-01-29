@@ -12,5 +12,5 @@ export {
   ResetPassword,
   SignIn,
   SignUp,
-  SignUpConfirmation
+  SignUpConfirmation,
 };

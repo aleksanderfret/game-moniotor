@@ -20,13 +20,13 @@ enum Path {
   SignUpConfirmation = '/sign-up-confirmation/:tokenId',
   Tools = '/tools',
   Tool = '/tool/:toolId',
-  UpdatePassword = '/update-password/:tokenId'
+  UpdatePassword = '/update-password/:tokenId',
 }
 
 export enum RouteAccess {
   Public = 'public',
   Private = 'private',
-  All = 'all'
+  All = 'all',
 }
 
 export default Path;

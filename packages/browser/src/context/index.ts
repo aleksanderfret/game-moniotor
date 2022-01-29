@@ -1,7 +1,7 @@
 import {
   AppStateContext,
   AppStateProvider,
-  initialAppState
+  initialAppState,
 } from './AppStateContext';
 import { AppDispatchContext, AppDispatchProvider } from './AppDispatchContext';
 import appReducer from './reducer';
@@ -15,5 +15,5 @@ export {
   AppStateProvider,
   initialAppState,
   setIsAuthenticated,
-  setLocale
+  setLocale,
 };

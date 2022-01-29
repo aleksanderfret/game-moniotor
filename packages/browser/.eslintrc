@@ -56,7 +56,16 @@
     "arrow-spacing": ["error", { "before": true, "after": true }],
     "block-spacing": ["warn"],
     "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
-    "comma-dangle": ["warn", "never"],
+    "comma-dangle": [
+      "error",
+      {
+        "functions": "never",
+        "objects": "always-multiline",
+        "arrays": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline"
+      }
+    ],
     "comma-spacing": ["warn"],
     "computed-property-spacing": ["error", "never"],
     "eqeqeq": ["error", "smart"],

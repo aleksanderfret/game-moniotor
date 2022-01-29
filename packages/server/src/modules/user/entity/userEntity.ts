@@ -5,7 +5,7 @@ import {
   OneToOne,
   OneToMany,
   ManyToMany,
-  JoinTable
+  JoinTable,
 } from 'typeorm';
 import { ObjectType, Field, GraphQLISODateTime } from 'type-graphql';
 
@@ -62,7 +62,7 @@ export default class User extends BaseEntity {
     default: Status.Active,
     enum: Status,
     nullable: false,
-    type: 'enum'
+    type: 'enum',
   })
   status!: Status;
 

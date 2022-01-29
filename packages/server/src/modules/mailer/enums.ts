@@ -1,7 +1,7 @@
 enum EmailTemplate {
   SignUp = 'SignUp',
   RemoveAccount = 'RemoveAccount',
-  ResetPassword = 'ResetPassword'
+  ResetPassword = 'ResetPassword',
 }
 
 export default EmailTemplate;

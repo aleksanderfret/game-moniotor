@@ -9,19 +9,19 @@ const client = new ApolloClient({
   connectToDevTools: true,
   defaultOptions: {
     mutate: {
-      errorPolicy: 'all'
+      errorPolicy: 'all',
     },
     query: {
       fetchPolicy: 'cache-first',
-      errorPolicy: 'all'
+      errorPolicy: 'all',
     },
     watchQuery: {
       fetchPolicy: 'network-only',
       nextFetchPolicy: 'cache-first',
-      errorPolicy: 'none'
-    }
+      errorPolicy: 'none',
+    },
   },
-  link
+  link,
 });
 
 const Apollo: FC = ({ children }) => (

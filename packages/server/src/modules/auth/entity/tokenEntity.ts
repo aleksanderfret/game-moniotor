@@ -17,7 +17,7 @@ export default class Token extends BaseEntity {
   @Column({
     enum: TokenType,
     nullable: false,
-    type: 'enum'
+    type: 'enum',
   })
   type!: TokenType;
 

@@ -37,7 +37,7 @@ const refreshTokenLink = new TokenRefreshLink({
     } catch {
       return false;
     }
-  }
+  },
 });
 
 export default refreshTokenLink;

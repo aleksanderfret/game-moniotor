@@ -5,7 +5,7 @@ import {
   Mutation,
   ObjectType,
   Resolver,
-  UseMiddleware
+  UseMiddleware,
 } from 'type-graphql';
 import { getManager } from 'typeorm';
 import { compare, hash } from 'bcryptjs';
@@ -15,7 +15,7 @@ import {
   createAccessToken,
   createRefreshToken,
   createToken,
-  verifyToken
+  verifyToken,
 } from 'modules/auth/sign';
 import isAuth from './isAuth';
 import { sendRefreshToken } from './sendTokenCookie';
@@ -23,7 +23,7 @@ import Token from './entity/tokenEntity';
 import {
   sendRemoveAccountConfirmation,
   sendResetPasswordConfirmation,
-  sendSignUpConfirmation
+  sendSignUpConfirmation,
 } from 'modules/mailer';
 import { Context } from 'types/types';
 import User from 'modules/user/entity/userEntity';
@@ -34,7 +34,7 @@ const {
   APP_URL,
   CONFIRM_SIGN_UP_TOKEN_EXP,
   FORGOT_PASSWORD_TOKEN_EXP,
-  REMOVE_ACCOUNT_TOKEN_EXP
+  REMOVE_ACCOUNT_TOKEN_EXP,
 } = environment;
 
 @ObjectType()
@@ -68,7 +68,7 @@ export class AuthResolver {
 
     const user = await User.findOne({
       email,
-      status: Status.Active
+      status: Status.Active,
     });
 
     if (!user) {
@@ -93,7 +93,7 @@ export class AuthResolver {
     sendRefreshToken(res, createRefreshToken(user.id, tokenVersion));
 
     return {
-      accessToken: createAccessToken(user.id, tokenVersion)
+      accessToken: createAccessToken(user.id, tokenVersion),
     };
   }
 
@@ -108,14 +108,14 @@ export class AuthResolver {
     const { token: jwtToken } = token;
 
     const payload = verifyToken(jwtToken, {
-      ignoreExpiration: true
+      ignoreExpiration: true,
     });
 
     const { exp, userId: id } = payload;
 
     const user = await User.findOne({
       id,
-      status: Status.Registered
+      status: Status.Registered,
     });
 
     if (!user) {
@@ -145,7 +145,7 @@ export class AuthResolver {
   ) {
     const user = await User.findOne({
       email,
-      status: Status.Active
+      status: Status.Active,
     });
     if (user) {
       const { id } = user;
@@ -157,11 +157,11 @@ export class AuthResolver {
       const token = createToken(FORGOT_PASSWORD_TOKEN_EXP)(id);
 
       const {
-        identifiers: [{ id: tokenId }]
+        identifiers: [{ id: tokenId }],
       } = await Token.insert({
         token,
         type: TokenType.ResetPassword,
-        user
+        user,
       });
 
       const redirectUrl = `${APP_URL}/reset-password/${tokenId}`;
@@ -171,7 +171,7 @@ export class AuthResolver {
           locale,
           recipient: email,
           redirectUrl,
-          user: { email }
+          user: { email },
         });
       } catch {
         throw new Error('Sending confirmation failed');
@@ -202,11 +202,11 @@ export class AuthResolver {
       const token = createToken(REMOVE_ACCOUNT_TOKEN_EXP)(id);
 
       const {
-        identifiers: [{ id: tokenId }]
+        identifiers: [{ id: tokenId }],
       } = await Token.insert({
         token,
         type: TokenType.ResetPassword,
-        user
+        user,
       });
 
       const redirectUrl = `${APP_URL}/remove-account/${tokenId}`;
@@ -216,7 +216,7 @@ export class AuthResolver {
           locale,
           recipient: email,
           redirectUrl,
-          user: { email }
+          user: { email },
         });
       } catch {
         throw new Error('Sending confirmation failed');
@@ -235,7 +235,7 @@ export class AuthResolver {
     const { token: jwtToken } = token;
 
     const payload = verifyToken(jwtToken, {
-      ignoreExpiration: true
+      ignoreExpiration: true,
     });
 
     const { exp, userId: id } = payload;
@@ -291,7 +291,7 @@ export class AuthResolver {
     const { token: jwtToken } = token;
 
     const payload = verifyToken(jwtToken, {
-      ignoreExpiration: true
+      ignoreExpiration: true,
     });
 
     const { exp, userId: id } = payload;
@@ -302,7 +302,7 @@ export class AuthResolver {
 
     const user = await User.findOne({
       email,
-      status: Status.Active
+      status: Status.Active,
     });
 
     if (!user) {
@@ -353,7 +353,7 @@ export class AuthResolver {
 
     return {
       accessToken: createAccessToken(id, tokenVersion),
-      user
+      user,
     };
   }
 
@@ -388,7 +388,7 @@ export class AuthResolver {
       email,
       password: hashedPassword,
       policy: new Date(policy),
-      status: Status.Registered
+      status: Status.Registered,
     });
 
     const { identifiers } = newUser;
@@ -398,11 +398,11 @@ export class AuthResolver {
     const token = createToken(CONFIRM_SIGN_UP_TOKEN_EXP)(id);
 
     const {
-      identifiers: [{ id: tokenId }]
+      identifiers: [{ id: tokenId }],
     } = await Token.insert({
       token,
       type: TokenType.SignUpConfirm,
-      user: id
+      user: id,
     });
 
     const redirectUrl = `${APP_URL}/sign-up-confirmation/${tokenId}`;
@@ -412,7 +412,7 @@ export class AuthResolver {
         locale,
         recipient: email,
         redirectUrl,
-        user: { email }
+        user: { email },
       });
     } catch (error) {
       console.error(error);

@@ -5,7 +5,7 @@ import TileComponent from '../Tile';
 
 export default {
   component: TileComponent,
-  title: 'UI/Tile'
+  title: 'UI/Tile',
 } as ComponentMeta<typeof TileComponent>;
 
 export const Tile = () => <TileComponent />;

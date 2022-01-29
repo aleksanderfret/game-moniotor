@@ -5,7 +5,7 @@ import { AppState, Theme } from './types';
 export const initialAppState: AppState = {
   isAuthenticated: false,
   locale: 'en',
-  theme: Theme.Light
+  theme: Theme.Light,
 };
 
 export const AppStateContext = createContext<AppState>(initialAppState);
@@ -17,5 +17,5 @@ interface AppStateContextProviderProps {
 
 export const AppStateProvider: FC<AppStateContextProviderProps> = ({
   children,
-  value
+  value,
 }) => <StateContextProvider value={value}>{children}</StateContextProvider>;

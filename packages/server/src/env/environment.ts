@@ -21,7 +21,7 @@ const {
   SENDER_EMAIL = '',
   SENDGRID_API_KEY = '',
   TOKEN_PRIVATE_KEY = '',
-  TOKEN_PUBLIC_KEY = ''
+  TOKEN_PUBLIC_KEY = '',
 } = process.env;
 
 const environment = {
@@ -51,7 +51,7 @@ const environment = {
   SENDER_EMAIL,
   SENDGRID_API_KEY,
   TOKEN_PRIVATE_KEY,
-  TOKEN_PUBLIC_KEY
+  TOKEN_PUBLIC_KEY,
 };
 
 export default environment;

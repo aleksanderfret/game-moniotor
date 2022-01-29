@@ -9,7 +9,7 @@ import { AsyncButton } from 'ui/Button';
 
 const onClickHandlers = {
   asyncResolved,
-  caughtRejected
+  caughtRejected,
 };
 
 describe('<AsyncButton />', () => {

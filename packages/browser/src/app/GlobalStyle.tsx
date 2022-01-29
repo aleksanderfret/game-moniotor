@@ -13,31 +13,31 @@ const GlobalStyles = () => (
           fontSize: '100%',
           verticalAlign: 'baseline',
           background: 'transparent',
-          boxSizing: 'border-box'
+          boxSizing: 'border-box',
         },
       'ol,ul': {
-        listStyle: 'none'
+        listStyle: 'none',
       },
       'blockquote, q': {
-        quotes: 'none'
+        quotes: 'none',
       },
       ':focus': {
-        outline: 0
+        outline: 0,
       },
       ins: {
-        textDecoration: 'none'
+        textDecoration: 'none',
       },
       del: {
-        textDecoration: 'line-through'
+        textDecoration: 'line-through',
       },
       table: {
         borderCollapse: 'collapse',
-        borderSpacing: 0
+        borderSpacing: 0,
       },
       'html,body': {
         maxWidth: '100%',
         overflowX: 'hidden',
-        minHeight: '100vh'
+        minHeight: '100vh',
       },
       body: {
         fontStyle: 'normal',
@@ -48,8 +48,8 @@ const GlobalStyles = () => (
         lineHeight: theme.font.lineHeight,
         color: theme.palette.common.black,
         letterSpacing: '0.2px',
-        backgroundColor: theme.palette.background.default
-      }
+        backgroundColor: theme.palette.background.default,
+      },
     })}
   />
 );

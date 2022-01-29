@@ -4,7 +4,7 @@ import User from 'modules/user/entity/userEntity';
 import {
   createAccessToken,
   createRefreshToken,
-  verifyRefreshToken
+  verifyRefreshToken,
 } from './sign';
 import { sendRefreshToken } from './sendTokenCookie';
 

@@ -11,7 +11,7 @@ import {
   AppStateProvider,
   initialAppState,
   setIsAuthenticated,
-  setLocale
+  setLocale,
 } from 'context';
 import theme from 'theme';
 import messages from 'translations';

@@ -5,7 +5,7 @@ import {
   OneToOne,
   JoinColumn,
   JoinTable,
-  OneToMany
+  OneToMany,
 } from 'typeorm';
 import { ObjectType, Field } from 'type-graphql';
 

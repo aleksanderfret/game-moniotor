@@ -12,13 +12,13 @@ const { NODE_ENV } = environment;
 export const startApollo = async (): Promise<ApolloServer> => {
   const schema = await buildSchema({
     dateScalarMode: 'timestamp',
-    resolvers: [AuthResolver, GameResolver, UserResolver]
+    resolvers: [AuthResolver, GameResolver, UserResolver],
   });
 
   const server = new ApolloServer({
     context: ({ req, res }) => ({ req, res }),
     debug: NODE_ENV === 'development',
-    schema
+    schema,
   });
 
   await server.start();

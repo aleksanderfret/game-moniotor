@@ -5,7 +5,7 @@ import PageComponent from '../Page';
 
 export default {
   component: PageComponent,
-  title: 'UI/Page'
+  title: 'UI/Page',
 } as ComponentMeta<typeof PageComponent>;
 
 export const Page = () => <PageComponent />;

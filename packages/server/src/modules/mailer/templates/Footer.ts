@@ -5,7 +5,7 @@ import {
   Cell,
   Link,
   Paragraph,
-  Row
+  Row,
 } from 'modules/mailer/templates/components';
 
 const {
@@ -13,7 +13,7 @@ const {
   COMPANY_ADDRESS,
   COMPANY_EMAIL,
   COMPANY_NAME,
-  COMPANY_PHONE
+  COMPANY_PHONE,
 } = environment;
 const address = COMPANY_ADDRESS.replace(/_/g, ' ');
 const phone = COMPANY_PHONE.replace(/_/g, ' ');
@@ -37,7 +37,7 @@ const Footer = ({ locale = 'en', ...rest }: MailComponentsProps) => {
         Link({ href: `tel:${phone}` })(phone),
         ' | ',
         Link({
-          href: `mailto:${COMPANY_EMAIL}`
+          href: `mailto:${COMPANY_EMAIL}`,
         })(COMPANY_EMAIL)
       )
     )

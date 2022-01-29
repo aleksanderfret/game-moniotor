@@ -21,7 +21,7 @@ import Route, {
   SignUpConfirmationRoute,
   SignUpRoute,
   ToolRoute,
-  ToolsRoute
+  ToolsRoute,
 } from './types';
 
 const createPath = <T extends Route>(path: T[0]) => {

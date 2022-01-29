@@ -6,7 +6,7 @@ export const sendTokenCookie =
     res.cookie(name, token, {
       httpOnly: true,
       path,
-      ...options
+      ...options,
     });
 
 export const sendRefreshToken = sendTokenCookie(

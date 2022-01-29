@@ -11,7 +11,7 @@ const {
   REFRESH_PUBLIC_KEY,
   REFRESH_TOKEN_EXP,
   TOKEN_PRIVATE_KEY,
-  TOKEN_PUBLIC_KEY
+  TOKEN_PUBLIC_KEY,
 } = environment;
 
 export interface JwtPayload {

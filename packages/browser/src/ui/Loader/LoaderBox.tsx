@@ -4,16 +4,16 @@ const LoaderBox = styled('div')(({ theme }) => ({
   position: 'absolute',
 
   '&.small': {
-    ...theme.utils.constSize(theme.sizes.sm)
+    ...theme.utils.constSize(theme.sizes.sm),
   },
 
   '&.medium': {
-    ...theme.utils.constSize(theme.sizes.md)
+    ...theme.utils.constSize(theme.sizes.md),
   },
 
   '&.big': {
-    ...theme.utils.constSize(theme.sizes.xxl)
-  }
+    ...theme.utils.constSize(theme.sizes.xxl),
+  },
 }));
 
 export default LoaderBox;

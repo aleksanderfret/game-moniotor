@@ -6,7 +6,7 @@ const Page = styled('div')(({ theme }) => ({
   width: '100vw',
   minHeight: '100vh',
   backgroundColor: theme.palette.background.default,
-  color: theme.palette.common.black
+  color: theme.palette.common.black,
 }));
 
 export default Page;

@@ -13,7 +13,7 @@ const getIntl = (locale: Locale) => {
       {
         defaultLocale: 'en',
         locale: locale,
-        messages: { ...locales[locale] }
+        messages: { ...locales[locale] },
       },
       cache
     );

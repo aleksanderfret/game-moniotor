@@ -5,7 +5,7 @@ import {
   ManyToOne,
   ManyToMany,
   OneToMany,
-  JoinTable
+  JoinTable,
 } from 'typeorm';
 import { ObjectType, Field } from 'type-graphql';
 
@@ -65,7 +65,7 @@ export default class GameEvent extends BaseEntity {
     nullable: true,
     precision: 8,
     scale: 6,
-    type: 'decimal'
+    type: 'decimal',
   })
   latitude!: number;
 
@@ -75,7 +75,7 @@ export default class GameEvent extends BaseEntity {
     nullable: true,
     precision: 9,
     scale: 6,
-    type: 'decimal'
+    type: 'decimal',
   })
   longitude!: number;
 }

@@ -33,8 +33,8 @@ export function useCreateGameMutation(
 
       cache.writeQuery<{ games: Game[] }>({
         query: GAMES,
-        data: { games: [...games, data.createGame] }
+        data: { games: [...games, data.createGame] },
       });
-    }
+    },
   });
 }

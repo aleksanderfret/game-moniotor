@@ -6,7 +6,7 @@ const link = ApolloLink.from([
   refreshTokenLink,
   errorLink,
   requestLink,
-  httpLink
+  httpLink,
 ]);
 
 export default link;

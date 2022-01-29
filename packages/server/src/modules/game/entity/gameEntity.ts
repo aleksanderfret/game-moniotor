@@ -6,7 +6,7 @@ import {
   ManyToOne,
   OneToMany,
   JoinColumn,
-  JoinTable
+  JoinTable,
 } from 'typeorm';
 import { ObjectType, Field, GraphQLISODateTime } from 'type-graphql';
 

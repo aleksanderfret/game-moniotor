@@ -7,7 +7,7 @@ import { Context } from 'types/types';
 
 export const isAuth: MiddlewareFn<Context> = async ({ context }, next) => {
   const {
-    req: { headers }
+    req: { headers },
   } = context;
 
   const { authorization } = headers;
@@ -25,7 +25,7 @@ export const isAuth: MiddlewareFn<Context> = async ({ context }, next) => {
 
     const user = await User.findOne({
       id: userId,
-      status: Status.Active
+      status: Status.Active,
     });
 
     if (user) {

@@ -21,5 +21,5 @@ export default {
   SENDER_EMAIL: 'test@example.com',
   SENDGRID_API_KEY: 'sendgrid_api_key',
   TOKEN_PRIVATE_KEY: '',
-  TOKEN_PUBLIC_KEY: ''
+  TOKEN_PUBLIC_KEY: '',
 };
