@@ -15,7 +15,7 @@ import {
   createSignInPath,
   createSignUpPath,
   createToolPath,
-  createToolsPath
+  createToolsPath,
 } from './pathCreators';
 import Path, { RouteAccess } from './enums';
 
@@ -38,5 +38,5 @@ export {
   createToolsPath,
   createToolPath,
   Path,
-  RouteAccess
+  RouteAccess,
 };

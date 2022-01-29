@@ -27,7 +27,7 @@ export function useChangePasswordMutation(
       onCompleted: data => {
         setAccessToken(data.changePassword.accessToken);
       },
-      ...options
+      ...options,
     }
   );
 }

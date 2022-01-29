@@ -9,7 +9,7 @@ const config: Config.InitialOptions = {
     '!src/__tests__/*.*',
     '!src/__mocks__/*.*',
     '!src/__stories__/*.*',
-    '!src/__snapshots__/*.*'
+    '!src/__snapshots__/*.*',
   ],
   coverageDirectory: 'coverage',
   displayName: 'browser',
@@ -17,7 +17,7 @@ const config: Config.InitialOptions = {
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/src/__mocks__/fileMock.ts',
-    '\\.(css|scss)$': 'identity-obj-proxy'
+    '\\.(css|scss)$': 'identity-obj-proxy',
   },
   name: 'browser',
   setupFilesAfterEnv: ['<rootDir>/src/__tests__/setupTests.ts'],
@@ -25,7 +25,7 @@ const config: Config.InitialOptions = {
   testEnvironment: 'jsdom',
   testMatch: ['**/?(*.)+(spec|test).+(ts|tsx|js|jsx)'],
   transform: {
-    '^.+\\.tsx?$': 'ts-jest'
-  }
+    '^.+\\.tsx?$': 'ts-jest',
+  },
 };
 export default config;

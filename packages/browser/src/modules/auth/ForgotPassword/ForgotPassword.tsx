@@ -22,7 +22,7 @@ const ResetPassword: FC = () => {
     }
 
     await forgotPassword({
-      variables: { email }
+      variables: { email },
     });
   };
 

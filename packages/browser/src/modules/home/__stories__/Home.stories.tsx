@@ -5,7 +5,7 @@ import HomeComponent from 'modules/home';
 
 export default {
   title: 'Views/Home',
-  component: HomeComponent
+  component: HomeComponent,
 } as ComponentMeta<typeof HomeComponent>;
 
 export const Home = () => <HomeComponent />;

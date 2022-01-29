@@ -12,8 +12,8 @@ const requestLink = new ApolloLink(
           if (accessToken) {
             operation.setContext({
               headers: {
-                authorization: `bearer ${accessToken}`
-              }
+                authorization: `bearer ${accessToken}`,
+              },
             });
           }
         })
@@ -21,7 +21,7 @@ const requestLink = new ApolloLink(
           handle = forward(operation).subscribe({
             complete: observer.complete.bind(observer),
             error: observer.error.bind(observer),
-            next: observer.next.bind(observer)
+            next: observer.next.bind(observer),
           });
         })
         .catch(observer.error.bind(observer));

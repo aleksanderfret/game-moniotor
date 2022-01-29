@@ -10,7 +10,7 @@ import {
   Arg,
   FieldResolver,
   Root,
-  Float
+  Float,
 } from 'type-graphql';
 
 import { Context } from 'types/types';
@@ -67,9 +67,9 @@ export class GameResolver {
           'mechanics',
           'reviews',
           'gameType',
-          'rates'
+          'rates',
         ],
-        where: { collector: user?.id }
+        where: { collector: user?.id },
       });
     } catch (error) {
       console.error(error);
@@ -87,14 +87,14 @@ export class GameResolver {
       if (user) {
         const createdGame = await Game.create({
           ...game,
-          addedBy: user
+          addedBy: user,
         }).save();
 
         if (owned) {
           const collection = await Collection.create({
             game: createdGame,
             owned: new Date(),
-            user
+            user,
           });
           createdGame.collection = [collection];
         }
@@ -114,9 +114,9 @@ export class GameResolver {
             'gameType',
             'rates',
             'addedBy',
-            'collection'
+            'collection',
           ],
-          where: { id }
+          where: { id },
         });
 
         return newGame;
@@ -150,7 +150,7 @@ export class GameResolver {
   async averageRating(@Root() game: Game): Promise<number | null> {
     const rates = await Rate.find({
       select: ['rate'],
-      where: { game: game.id }
+      where: { game: game.id },
     });
     const sum = rates.reduce((a: number, b: Rate) => a + b.rate, 0);
 
@@ -164,7 +164,7 @@ export class GameResolver {
   ): Promise<number | null> {
     const rate = await Rate.findOne({
       select: ['rate'],
-      where: [{ game: game.id }, { user }]
+      where: [{ game: game.id }, { user }],
     });
 
     return rate ? rate.rate : null;

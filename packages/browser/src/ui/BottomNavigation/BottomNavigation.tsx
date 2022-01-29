@@ -10,7 +10,7 @@ const Link = styled(NavLink)(() => ({
   display: 'flex',
   alignItems: 'center',
   padding: '8px',
-  boxSizing: 'border-box'
+  boxSizing: 'border-box',
 }));
 
 export const Box = styled('div')(() => ({
@@ -19,7 +19,7 @@ export const Box = styled('div')(() => ({
   left: 0,
   right: 0,
   bottom: 0,
-  height: '64px'
+  height: '64px',
 }));
 
 const BottomNavigation: FC = () => {

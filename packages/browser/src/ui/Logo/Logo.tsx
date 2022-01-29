@@ -19,20 +19,20 @@ const LogoBox = styled('div')(({ theme }) => ({
   margin: theme.spacing(1),
 
   '&.small, &.small svg': {
-    height: theme.utils.size(3)
+    height: theme.utils.size(3),
   },
 
   '&.medium, &.medium svg': {
-    height: theme.utils.size(6)
+    height: theme.utils.size(6),
   },
 
   '&.big, &.big svg': {
-    height: theme.utils.size(9)
+    height: theme.utils.size(9),
   },
 
   '&.large, &.large svg': {
-    height: theme.utils.size(12)
-  }
+    height: theme.utils.size(12),
+  },
 }));
 
 const setLogoComponent = (variant: LogoVariant): FC => {
@@ -55,7 +55,7 @@ const Logo: FC<LogoProps> = ({ size = 'small', variant = 'simple' }) => {
     small: size === 'small',
     medium: size === 'medium',
     big: size === 'big',
-    large: size === 'large'
+    large: size === 'large',
   });
 
   return (

@@ -18,45 +18,45 @@ const config: WebpackConfiguration = {
           loader: 'ts-loader',
           options: {
             configFile: 'tsconfig.json',
-            getCustomTransformers
-          }
-        }
+            getCustomTransformers,
+          },
+        },
       },
       {
         exclude: /node_modules/,
         test: /\.(graphql|gql)$/,
-        use: ['graphql-tag/loader', 'minify-graphql-loader']
-      }
-    ]
+        use: ['graphql-tag/loader', 'minify-graphql-loader'],
+      },
+    ],
   },
   optimization: {
     minimize: true,
     minimizer: [
       new TerserPlugin({
-        parallel: true
-      })
-    ]
+        parallel: true,
+      }),
+    ],
   },
   output: {
     clean: true,
     filename: 'index.[hash].js',
     path: path.resolve(__dirname, '../../dist/public'),
-    publicPath: '/'
+    publicPath: '/',
   },
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
         { from: 'public/icons', to: 'icons' },
         { from: 'public/site.webmanifest', to: 'site.webmanifest' },
-        { from: 'public/browserconfig.xml', to: 'browserconfig.xml' }
-      ]
+        { from: 'public/browserconfig.xml', to: 'browserconfig.xml' },
+      ],
     }),
-    new HtmlWebPackPlugin({ template: path.resolve('public/index.html') })
+    new HtmlWebPackPlugin({ template: path.resolve('public/index.html') }),
   ],
   resolve: {
     extensions: ['.ts', '.generated.tsx', '.tsx', '.js', '.jsx', '.json'],
-    modules: [path.resolve(__dirname, 'src'), 'tests', 'node_modules']
-  }
+    modules: [path.resolve(__dirname, 'src'), 'tests', 'node_modules'],
+  },
 };
 
 export default config;

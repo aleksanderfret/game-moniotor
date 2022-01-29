@@ -7,7 +7,7 @@ export enum BreakpointKey {
   md = 'md',
   lg = 'lg',
   xl = 'xl',
-  xxl = 'xxl'
+  xxl = 'xxl',
 }
 
 export enum BreakpointSizes {
@@ -17,7 +17,7 @@ export enum BreakpointSizes {
   md = 768,
   lg = 992,
   xl = 1200,
-  xxl = 1440
+  xxl = 1440,
 }
 
 export type SizeLabel =
@@ -149,10 +149,10 @@ const breakpointValues: BreakpointValues = {
   [BreakpointKey.md]: BreakpointSizes.md,
   [BreakpointKey.lg]: BreakpointSizes.lg,
   [BreakpointKey.xl]: BreakpointSizes.xl,
-  [BreakpointKey.xxl]: BreakpointSizes.xxl
+  [BreakpointKey.xxl]: BreakpointSizes.xxl,
 };
 
 export const breakpoints: Breakpoints = {
   keys: Object.keys(breakpointValues) as BreakpointKey[],
-  values: breakpointValues
+  values: breakpointValues,
 };

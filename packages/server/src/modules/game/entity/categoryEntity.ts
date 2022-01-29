@@ -17,7 +17,7 @@ export default class Category extends BaseEntity {
   @Column({
     enum: Icon,
     nullable: true,
-    type: 'enum'
+    type: 'enum',
   })
   icon!: Icon;
 

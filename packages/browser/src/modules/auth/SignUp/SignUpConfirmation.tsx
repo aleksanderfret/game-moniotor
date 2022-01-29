@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import Loader from 'ui/Loader';
 import {
   SignUpConfirmationArgs,
-  useSignUpConfirmationMutation
+  useSignUpConfirmationMutation,
 } from './useSignUpConfirmationMutation';
 
 const SignUpConfirmation: FC = () => {

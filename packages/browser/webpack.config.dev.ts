@@ -13,20 +13,20 @@ const config: IConfiguration = {
   devServer: {
     allowedHosts: 'all',
     devMiddleware: {
-      publicPath: '/'
+      publicPath: '/',
     },
     historyApiFallback: true,
     hot: true,
     open: true,
     port: 3000,
     proxy: {
-      '/api': 'http://localhost:4000'
+      '/api': 'http://localhost:4000',
     },
     static: {
       watch: {
-        ignored: /node_modules/
-      }
-    }
+        ignored: /node_modules/,
+      },
+    },
   },
   devtool: 'inline-source-map',
   entry: './src/index.tsx',
@@ -39,22 +39,22 @@ const config: IConfiguration = {
         use: {
           loader: 'ts-loader',
           options: {
-            configFile: 'tsconfig.json'
-          }
-        }
+            configFile: 'tsconfig.json',
+          },
+        },
       },
       {
         exclude: /node_modules/,
         test: /\.(graphql|gql)$/,
-        use: ['graphql-tag/loader', 'minify-graphql-loader']
-      }
-    ]
+        use: ['graphql-tag/loader', 'minify-graphql-loader'],
+      },
+    ],
   },
   output: {
     clean: true,
     filename: 'index.js',
     path: path.resolve(__dirname, '../../dist/public'),
-    publicPath: '/'
+    publicPath: '/',
   },
   plugins: [
     new HtmlWebPackPlugin({ template: path.resolve('public/index.html') }),
@@ -62,15 +62,15 @@ const config: IConfiguration = {
       patterns: [
         { from: 'public/icons', to: 'public/icons' },
         { from: 'public/site.webmanifest', to: 'site.webmanifest' },
-        { from: 'public/browserconfig.xml', to: 'browserconfig.xml' }
-      ]
-    })
+        { from: 'public/browserconfig.xml', to: 'browserconfig.xml' },
+      ],
+    }),
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
-    modules: [path.resolve(__dirname, 'src'), '__tests__', 'node_modules']
+    modules: [path.resolve(__dirname, 'src'), '__tests__', 'node_modules'],
   },
-  target: 'web'
+  target: 'web',
 };
 
 export default config;

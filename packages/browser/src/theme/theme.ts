@@ -1,7 +1,7 @@
 import {
   createTheme,
   PaletteOptions,
-  ThemeOptions
+  ThemeOptions,
 } from '@mui/material/styles';
 
 import { breakpoints, Font, Multipliers, Shadow, Sizes, Utils } from './types';
@@ -14,7 +14,7 @@ import {
   rows,
   rowsAll,
   size,
-  tint
+  tint,
 } from './mixins';
 
 declare module '@mui/material/styles' {
@@ -50,7 +50,7 @@ const createCustomTheme = (): ThemeOptions => {
 
   const multipliers = {
     px: 4,
-    rem: 1
+    rem: 1,
   };
 
   const fontSizes = {
@@ -61,7 +61,7 @@ const createCustomTheme = (): ThemeOptions => {
     big: '1.5rem', // 24px
     large: '2rem', // 32px
     huge: '2.5rem', // 40px
-    super: '3rem' // 48px
+    super: '3rem', // 48px
   };
 
   const fontWeight = {
@@ -69,7 +69,7 @@ const createCustomTheme = (): ThemeOptions => {
     regular: 400,
     medium: 500,
     bold: 700,
-    black: 900
+    black: 900,
   };
 
   const sizes = {
@@ -82,55 +82,55 @@ const createCustomTheme = (): ThemeOptions => {
     xl: '2.5rem', // 40px
     xxl: '3rem', // 48px
     xxxl: '4rem', // 64px
-    xxxxl: '5rem' // 80px
+    xxxxl: '5rem', // 80px
   };
 
   const palette = {
     mode: 'light',
     common: {
       black: '#000000',
-      white: '#ffffff'
+      white: '#ffffff',
     },
     primary: {
       main: '#001999',
       light: '#0026e6',
       dark: '#000d4d',
-      contrastText: '#ffffff'
+      contrastText: '#ffffff',
     },
     secondary: {
       main: '#0055ff',
       light: '#80aaff',
       dark: '#003399',
-      contrastText: '#ffffff'
+      contrastText: '#ffffff',
     },
     warning: {
       main: '#c98200',
       light: '#d39b33',
       dark: '#8c5b00',
-      contrastText: '#ffffff'
+      contrastText: '#ffffff',
     },
     success: {
       main: '#4ca801',
       light: '#6FB933',
       dark: '#357500',
-      contrastText: '#ffffff'
+      contrastText: '#ffffff',
     },
     error: {
       main: '#ff0034',
       light: '#ff335c',
       dark: '#b20024',
-      contrastText: '#ffffff'
+      contrastText: '#ffffff',
     },
     info: {
       main: '#00a28b',
       light: '#33B4A2',
       dark: '#007161',
-      contrastText: '#ffffff'
+      contrastText: '#ffffff',
     },
     background: {
       default: '#fafafa',
-      paper: '#ffffff'
-    }
+      paper: '#ffffff',
+    },
   };
 
   const sizeMixin = size(multipliers.rem, unit);
@@ -145,70 +145,70 @@ const createCustomTheme = (): ThemeOptions => {
       h1: {
         fontSize: fontSizes.super,
         fontWeight: fontWeight.bold,
-        lineHeight: 1.45
+        lineHeight: 1.45,
       },
       h2: {
         fontWeight: fontWeight.bold,
         lineHeight: 1.45,
-        fontSize: fontSizes.huge
+        fontSize: fontSizes.huge,
       },
       h3: {
         fontWeight: fontWeight.bold,
         fontSize: fontSizes.large,
-        lineHeight: 1.45
+        lineHeight: 1.45,
       },
       h4: {
         fontWeight: fontWeight.bold,
         fontSize: fontSizes.big,
-        lineHeight: 1.45
+        lineHeight: 1.45,
       },
       h5: {
         fontWeight: fontWeight.bold,
         fontSize: fontSizes.medium,
-        lineHeight: 1.45
+        lineHeight: 1.45,
       },
       h6: {
         fontWeight: fontWeight.bold,
         fontSize: fontSizes.normal,
-        lineHeight: 1.45
+        lineHeight: 1.45,
       },
       subtitle1: {
         fontWeight: fontWeight.medium,
         lineHeight: 1.45,
-        fontSize: fontSizes.medium
+        fontSize: fontSizes.medium,
       },
       subtitle2: {
-        lineHeight: 1.45
+        lineHeight: 1.45,
       },
       body1: {
         fontWeight: fontWeight.light,
         fontSize: fontSizes.normal,
-        lineHeight: 1.45
+        lineHeight: 1.45,
       },
       body2: {
         fontWeight: fontWeight.light,
         lineHeight: 1.45,
-        fontSize: fontSizes.small
+        fontSize: fontSizes.small,
       },
       button: {
-        fontWeight: fontWeight.medium
+        fontWeight: fontWeight.medium,
       },
       caption: {
         fontSize: fontSizes.small,
-        lineHeight: 1.45
+        lineHeight: 1.45,
       },
       overline: {
         lineHeight: 2.5,
-        fontSize: fontSizes.small
-      }
+        fontSize: fontSizes.small,
+      },
     },
     shadow: {
       init: `0 0 0 0 ${alpha(palette.primary.main, 0)}`,
       focus: `0 0 0 ${sizes.xxs} ${alpha(palette.secondary.main, 60)}`,
-      focusError: `0 0 0 ${sizes.xxs} ${alpha(palette.error.main, 60)}`
+      focusError: `0 0 0 ${sizes.xxs} ${alpha(palette.error.main, 60)}`,
     },
     shape: {
-      borderRadius: 16
+      borderRadius: 16,
     },
     spacing: (factor: number) => `${1 * factor}rem`,
     utils: {
@@ -220,7 +220,7 @@ const createCustomTheme = (): ThemeOptions => {
       rows: rows(sizeMixin),
       rowsAll: rowsAll(sizeMixin),
       size: sizeMixin,
-      tint
+      tint,
     },
     font: {
       base: '16px',
@@ -229,16 +229,16 @@ const createCustomTheme = (): ThemeOptions => {
       lineHeight: 1.45,
       size: fontSizes,
       unit,
-      weight: fontWeight
+      weight: fontWeight,
     },
-    sizes
+    sizes,
   };
 
   return themeOptions;
 };
 
 const theme = createTheme({
-  ...createCustomTheme()
+  ...createCustomTheme(),
 });
 
 export default theme;

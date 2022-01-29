@@ -16,7 +16,7 @@ const config: Config.InitialOptions = {
     '^errors/(.*)$': '<rootDir>/src/errors/$1',
     '^modules/(.*)$': '<rootDir>/src/modules/$1',
     '^translations/(.*)$': '<rootDir>/src/translations/$1',
-    '^types/(.*)$': '<rootDir>/src/types/$1'
+    '^types/(.*)$': '<rootDir>/src/types/$1',
   },
   name: 'server',
   setupFilesAfterEnv: ['<rootDir>/src/__tests__/setupTests.ts'],
@@ -24,7 +24,7 @@ const config: Config.InitialOptions = {
   testEnvironment: 'node',
   testMatch: ['**/?(*.)+(spec|test).+(ts|js)'],
   transform: {
-    '^.+\\.tsx?$': 'ts-jest'
-  }
+    '^.+\\.tsx?$': 'ts-jest',
+  },
 };
 export default config;

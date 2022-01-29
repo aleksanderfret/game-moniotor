@@ -27,47 +27,47 @@ export const PrimaryButton = styled('button')(({ theme }) => ({
     'background-color',
     'border-color',
     'box-shadow',
-    'transform'
+    'transform',
   ]),
 
   '&:disabled:not(.loading)': {
     backgroundColor: theme.palette.grey[400],
     border: `1px solid ${theme.palette.grey[400]}`,
-    cursor: 'not-allowed'
+    cursor: 'not-allowed',
   },
 
   '&.loading:not(:disabled)': {
-    cursor: 'initial'
+    cursor: 'initial',
   },
 
   '&.small': {
     height: theme.utils.size(2),
-    maxHeight: theme.utils.size(2)
+    maxHeight: theme.utils.size(2),
   },
 
   '&.medium': {
     height: theme.utils.size(2.5),
-    maxHeight: theme.utils.size(2.5)
+    maxHeight: theme.utils.size(2.5),
   },
 
   '&.big': {
     height: theme.utils.size(3),
-    maxHeight: theme.utils.size(3)
+    maxHeight: theme.utils.size(3),
   },
 
   '&:hover:not(:disabled):not(.loading)': {
     backgroundColor: theme.palette.primary.dark,
-    borderColor: theme.palette.primary.dark
+    borderColor: theme.palette.primary.dark,
   },
 
   '&:active:not(:disabled):not(.loading)': {
     backgroundColor: theme.palette.primary.light,
-    borderColor: theme.palette.primary.light
+    borderColor: theme.palette.primary.light,
   },
 
   '&:focus:not(:disabled)': {
-    boxShadow: theme.shadow.focus
-  }
+    boxShadow: theme.shadow.focus,
+  },
 }));
 
 export const SecondaryButton = styled(PrimaryButton)(({ theme }) => ({
@@ -76,22 +76,22 @@ export const SecondaryButton = styled(PrimaryButton)(({ theme }) => ({
 
   '&:disabled:not(.loading)': {
     backgroundColor: theme.palette.background.paper,
-    color: theme.palette.grey[400]
+    color: theme.palette.grey[400],
   },
 
   '&:hover:not(:disabled):not(.loading), &:active:not(:disabled):not(.loading)':
     {
       borderColor: theme.palette.primary.dark,
-      color: theme.palette.primary.dark
+      color: theme.palette.primary.dark,
     },
 
   '&:hover:not(:disabled):not(.loading)': {
-    backgroundColor: theme.utils.tint(theme.palette.primary.dark, 85)
+    backgroundColor: theme.utils.tint(theme.palette.primary.dark, 85),
   },
 
   '&:active:not(:disabled):not(.loading)': {
-    backgroundColor: theme.utils.tint(theme.palette.primary.dark, 80)
-  }
+    backgroundColor: theme.utils.tint(theme.palette.primary.dark, 80),
+  },
 }));
 
 export const DangerButton = styled(PrimaryButton)(({ theme }) => ({
@@ -100,22 +100,22 @@ export const DangerButton = styled(PrimaryButton)(({ theme }) => ({
 
   '&:disabled:not(.loading)': {
     backgroundColor: theme.palette.grey[400],
-    border: `1px solid ${theme.palette.grey[400]}`
+    border: `1px solid ${theme.palette.grey[400]}`,
   },
 
   '&:hover:not(:disabled):not(.loading)': {
     backgroundColor: theme.palette.error.dark,
-    borderColor: theme.palette.error.dark
+    borderColor: theme.palette.error.dark,
   },
 
   '&:active:not(:disabled):not(.loading)': {
     backgroundColor: theme.palette.error.light,
-    borderColor: theme.palette.error.light
+    borderColor: theme.palette.error.light,
   },
 
   '&:focus:not(:disabled)': {
-    boxShadow: theme.shadow.focusError
-  }
+    boxShadow: theme.shadow.focusError,
+  },
 }));
 
 export const AsyncContentBox = styled('span')<AsyncContentBoxProps>(() => ({
@@ -126,6 +126,6 @@ export const AsyncContentBox = styled('span')<AsyncContentBoxProps>(() => ({
 
   '&.loading': {
     visibility: 'collapse',
-    userSelect: 'none'
-  }
+    userSelect: 'none',
+  },
 }));

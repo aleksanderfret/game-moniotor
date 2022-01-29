@@ -14,7 +14,7 @@ interface AppDispatchContextProviderProps {
 
 export const AppDispatchProvider: FC<AppDispatchContextProviderProps> = ({
   children,
-  value
+  value,
 }) => (
   <DispatchContextProvider value={value}>{children}</DispatchContextProvider>
 );

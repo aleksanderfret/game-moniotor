@@ -46,8 +46,8 @@ const SignUp: FC = () => {
         email,
         password,
         passwordConfirmation,
-        policy: new Date().toISOString()
-      }
+        policy: new Date().toISOString(),
+      },
     });
   };
 
@@ -58,7 +58,7 @@ const SignUp: FC = () => {
       <FormattedMessage
         id="sign-up.success.message"
         values={{
-          email
+          email,
         }}
       />
     </div>

@@ -11,7 +11,7 @@ import {
   ResetPassword,
   SignIn,
   SignUp,
-  SignUpConfirmation
+  SignUpConfirmation,
 } from 'modules/auth';
 import { Path } from 'router';
 
@@ -22,7 +22,7 @@ const IntroBox = styled(Tile)(() => ({
   alignItems: 'center',
   width: '90%',
   maxWidth: '600px',
-  margin: 'auto'
+  margin: 'auto',
 }));
 
 const Intro: FC = () => (

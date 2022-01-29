@@ -17,8 +17,8 @@ export default {
     secondary: false,
     size: 'medium',
     title: '',
-    type: 'button'
-  }
+    type: 'button',
+  },
 } as Meta<typeof Button>;
 
 const Template: Story<ButtonProps> = args => <Button {...args}>Button</Button>;

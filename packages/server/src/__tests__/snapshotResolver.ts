@@ -6,7 +6,7 @@ const snapshotResolver = {
       .replace('__snapshots__', '__tests__')
       .slice(0, -snapshotExtension.length),
 
-  testPathForConsistencyCheck: 'src/__tests__/example.test.js'
+  testPathForConsistencyCheck: 'src/__tests__/example.test.js',
 };
 
 export default snapshotResolver;

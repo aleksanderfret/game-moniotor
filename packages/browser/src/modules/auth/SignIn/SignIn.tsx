@@ -20,7 +20,7 @@ export const SignIn: FC = () => {
       setAccessToken(data.signIn.accessToken);
       dispatch(setIsAuthenticated(true));
       navigate(Path.Home);
-    }
+    },
   });
 
   const handleEmailChange: InputChangeHandler = event => {

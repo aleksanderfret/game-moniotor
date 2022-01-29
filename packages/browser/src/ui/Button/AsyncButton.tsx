@@ -41,7 +41,7 @@ const AsyncButton = forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     const classes = clsx({
-      loading: finalLoading
+      loading: finalLoading,
     });
 
     return (

@@ -2,7 +2,7 @@ import { Dispatch } from 'react';
 
 export enum Theme {
   Dark = 'Dark',
-  Light = 'Light'
+  Light = 'Light',
 }
 
 export type Locale = 'en' | 'pl';
@@ -10,7 +10,7 @@ export type Locale = 'en' | 'pl';
 export enum ActionTypes {
   SetIsAuthenticated = 'APP/UPDATE_IS_AUTHENTICATED',
   SetLocale = 'APP/UPDATE_LOCALE',
-  SetTheme = 'APP/UPDATE_THEME'
+  SetTheme = 'APP/UPDATE_THEME',
 }
 
 export interface ThemeAction {

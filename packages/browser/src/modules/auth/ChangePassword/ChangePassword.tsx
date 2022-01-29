@@ -16,7 +16,7 @@ const ChangePassword: FC = () => {
       setPassword('');
       setOldPassword('');
       setPasswordConfirmation('');
-    }
+    },
   });
 
   const handleEmailChange: InputChangeHandler = event => {
@@ -49,7 +49,7 @@ const ChangePassword: FC = () => {
     }
 
     await changePassword({
-      variables: { email, oldPassword, password, passwordConfirmation }
+      variables: { email, oldPassword, password, passwordConfirmation },
     });
   };
 

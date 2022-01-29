@@ -8,7 +8,7 @@ export const localeMiddleware = (
   next: NextFunction
 ): void => {
   const {
-    cookies: { locale }
+    cookies: { locale },
   } = req;
 
   const locales = ['en', 'pl'];

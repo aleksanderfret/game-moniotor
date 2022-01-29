@@ -20,7 +20,7 @@ const ResetPassword: FC = () => {
       setEmail('');
       setPassword('');
       setPasswordConfirmation('');
-    }
+    },
   });
   const { tokenId } = useParams<keyof RouteParams>();
 
@@ -49,7 +49,7 @@ const ResetPassword: FC = () => {
     }
 
     await resetPassword({
-      variables: { tokenId, email, password, passwordConfirmation }
+      variables: { tokenId, email, password, passwordConfirmation },
     });
   };
 

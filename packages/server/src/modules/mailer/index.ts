@@ -7,7 +7,7 @@ import {
   ResetPasswordMail,
   Send,
   SendMailResult,
-  SignUpMail
+  SignUpMail,
 } from './types';
 import EmailTemplate from './enums';
 import SignUpConfirmation from './templates/SignUpConfirmation';
@@ -22,7 +22,7 @@ SendGridMail.setApiKey(SENDGRID_API_KEY);
 const templates = {
   [EmailTemplate.SignUp]: SignUpConfirmation,
   [EmailTemplate.RemoveAccount]: RemoveAccountConfirmation,
-  [EmailTemplate.ResetPassword]: ResetPasswordConfirmation
+  [EmailTemplate.ResetPassword]: ResetPasswordConfirmation,
 };
 
 const sendMessage =
@@ -40,7 +40,7 @@ const send = async (messageData: MessageData): SendMailResult => {
     from: SENDER_EMAIL,
     html,
     subject,
-    to: recipient
+    to: recipient,
   };
 
   return SendGridMail.send(message);

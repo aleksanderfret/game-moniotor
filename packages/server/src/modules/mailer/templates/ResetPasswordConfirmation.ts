@@ -7,7 +7,7 @@ const ResetPasswordConfirmation: MailDataCreator<AuthMailData> = mailData => {
     locale,
     recipient,
     redirectUrl,
-    user: { email }
+    user: { email },
   } = mailData;
   const { formatMessage: f } = getIntl(locale);
 

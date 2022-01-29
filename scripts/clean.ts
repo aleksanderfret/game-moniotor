@@ -1,7 +1,7 @@
 import fs from 'fs';
 
 const {
-  promises: { rmdir }
+  promises: { rm }
 } = fs;
 
 const { cwd } = process;
@@ -10,7 +10,7 @@ const dir = `${cwd()}/dist`;
 
 const removeDistDirectory = async () => {
   try {
-    await rmdir(dir, { recursive: true });
+    await rm(dir, { recursive: true });
   } catch (error) {
     console.error(error);
   }

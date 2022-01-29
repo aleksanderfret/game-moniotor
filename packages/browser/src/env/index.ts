@@ -6,7 +6,7 @@
 const API_URL = 'http://localhost:4000/api';
 
 const environment = {
-  API_URL
+  API_URL,
   // APP_URL,
   // HOST,
   // NODE_ENV: process.env.NODE_ENV,

@@ -3,7 +3,7 @@ import registerEnumTypes from 'utils/registerEnumTypes';
 export enum GameType {
   BaseGame = 'BaseGame',
   Expansion = 'Expansion',
-  MiniExpansion = 'MiniExpansion'
+  MiniExpansion = 'MiniExpansion',
 }
 
 registerEnumTypes([[GameType, 'GameType']]);

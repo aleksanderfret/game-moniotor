@@ -18,7 +18,7 @@ export default class Type extends BaseEntity {
   @Column({
     enum: Icon,
     nullable: true,
-    type: 'enum'
+    type: 'enum',
   })
   icon!: Icon;
 
@@ -26,7 +26,7 @@ export default class Type extends BaseEntity {
   @Column({
     enum: GameType,
     nullable: true,
-    type: 'enum'
+    type: 'enum',
   })
   name!: string;
 

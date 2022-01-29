@@ -17,7 +17,7 @@ export default class Mechanics extends BaseEntity {
   @Column({
     enum: Icon,
     nullable: true,
-    type: 'enum'
+    type: 'enum',
   })
   icon!: Icon;
 

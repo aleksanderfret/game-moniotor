@@ -4,7 +4,7 @@ import {
   TransformerFactory,
   visitEachChild,
   visitNode,
-  Visitor
+  Visitor,
 } from 'typescript';
 
 // taken from https://github.com/andrewbents/typescript-transformer-jsx-remove-data-test-id

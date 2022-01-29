@@ -14,7 +14,7 @@ function useFetch<T>(url: string, options?: any): State<T> {
   useEffect(() => {
     const abortController = new AbortController();
     const {
-      signal: { aborted }
+      signal: { aborted },
     } = abortController;
 
     const doFetch = async () => {

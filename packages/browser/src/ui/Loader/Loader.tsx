@@ -17,12 +17,12 @@ const Loader: FC<LoaderProps> = ({ size = 'medium', color = 'main' }) => {
   const boxClasses = clsx({
     small: size === 'small',
     medium: size === 'medium',
-    big: size === 'big'
+    big: size === 'big',
   });
 
   const dotClasses = clsx({
     main: color === 'main',
-    contrast: color === 'contrast'
+    contrast: color === 'contrast',
   });
 
   return (

@@ -4,9 +4,9 @@ export enum Status {
   Active = 'active',
   Deleted = 'deleted',
   Invited = 'invited',
-  Registered = 'registered'
+  Registered = 'registered',
 }
 
 registerEnumType(Status, {
-  name: 'Status'
+  name: 'Status',
 });

@@ -3,7 +3,7 @@ import { MutationHookOptions, useMutation } from '@apollo/client';
 import { User } from 'modules/user/types';
 import {
   CURRENT_USER,
-  CurrentUserResponse
+  CurrentUserResponse,
 } from 'modules/user/CurrentUser/useCurrentUserQuery';
 import SIGN_IN from './signIn.graphql';
 
@@ -31,9 +31,9 @@ export function useSignInMutation(
       }
       cache.writeQuery<CurrentUserResponse>({
         data: { currentUser: data.signIn.user },
-        query: CURRENT_USER
+        query: CURRENT_USER,
       });
     },
-    ...options
+    ...options,
   });
 }

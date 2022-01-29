@@ -5,7 +5,7 @@ import {
   ManyToMany,
   OneToMany,
   OneToOne,
-  JoinColumn
+  JoinColumn,
 } from 'typeorm';
 import { ObjectType, Field, GraphQLISODateTime } from 'type-graphql';
 
@@ -70,7 +70,7 @@ export default class Play extends BaseEntity {
     nullable: true,
     precision: 8,
     scale: 6,
-    type: 'decimal'
+    type: 'decimal',
   })
   latitude!: number;
 
@@ -80,7 +80,7 @@ export default class Play extends BaseEntity {
     nullable: true,
     precision: 9,
     scale: 6,
-    type: 'decimal'
+    type: 'decimal',
   })
   longitude!: number;
 }

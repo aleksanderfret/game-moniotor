@@ -47,7 +47,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       danger,
       small: size === 'small',
       medium: size === 'medium',
-      big: size === 'big'
+      big: size === 'big',
     });
 
     return (

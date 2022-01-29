@@ -17,8 +17,8 @@ export default {
     secondary: false,
     size: 'medium',
     title: '',
-    type: 'button'
-  }
+    type: 'button',
+  },
 } as Meta<typeof AsyncButton>;
 
 const Template: Story<ButtonProps> = args => (
@@ -28,14 +28,14 @@ const Template: Story<ButtonProps> = args => (
 export const Primary = Template.bind({});
 Primary.args = {
   loading: true,
-  size: 'medium'
+  size: 'medium',
 };
 
 export const Danger = Template.bind({});
 Danger.args = {
   danger: true,
   loading: true,
-  size: 'medium'
+  size: 'medium',
 };
 
 export const Secondary = Template.bind({});
@@ -43,5 +43,5 @@ Secondary.args = {
   loading: true,
   primary: false,
   secondary: true,
-  size: 'medium'
+  size: 'medium',
 };

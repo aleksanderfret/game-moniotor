@@ -12,13 +12,13 @@ import User from 'modules/user/entity/userEntity';
 @Entity()
 export default class Rate extends BaseEntity {
   @Field({
-    nullable: false
+    nullable: false,
   })
   @Column({
     default: 0.0,
     precision: 3,
     scale: 1,
-    type: 'decimal'
+    type: 'decimal',
   })
   rate!: number;
 
