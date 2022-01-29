@@ -1,7 +1,7 @@
 import React, { FC, ReactNode, useEffect, useReducer } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from '@mui/material/styles';
 
 import { setAccessToken } from 'modules/auth/token';
 import useFetch from 'hooks/useFetch';

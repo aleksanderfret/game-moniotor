@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 
-const Tile = styled.div`
-  background-color: ${({ theme }) => theme.colors.background.light};
-  border-radius: ${({ theme }) => theme.shape.borderRadius};
-  padding: ${({ theme }) => theme.mixins.size(1)};
-`;
+const Tile = styled('div')(({ theme }) => ({
+  backgroundColor: theme.palette.background.paper,
+  borderRadius: theme.shape.borderRadius,
+  padding: theme.spacing(1)
+}));
 
 export default Tile;

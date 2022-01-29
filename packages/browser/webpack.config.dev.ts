@@ -5,8 +5,6 @@ import path from 'path';
 import { Configuration as WebpackConfiguration } from 'webpack';
 import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
 
-import { getCustomDevTransformers as getCustomTransformers } from './src/transformers/getTransformers';
-
 interface IConfiguration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration;
 }
@@ -41,8 +39,7 @@ const config: IConfiguration = {
         use: {
           loader: 'ts-loader',
           options: {
-            configFile: 'tsconfig.json',
-            getCustomTransformers
+            configFile: 'tsconfig.json'
           }
         }
       },

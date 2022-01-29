@@ -1,9 +1,12 @@
-import { DefaultTheme } from 'styled-components';
+import {
+  createTheme,
+  PaletteOptions,
+  ThemeOptions
+} from '@mui/material/styles';
 
-import { breakpoints } from './variables';
+import { breakpoints, Font, Multipliers, Shadow, Sizes, Utils } from './types';
 import {
   alpha,
-  breakpoint,
   cols,
   colsAll,
   constSize,
@@ -11,11 +14,38 @@ import {
   rows,
   rowsAll,
   size,
-  tint,
-  transition
+  tint
 } from './mixins';
 
-const createTheme = (): DefaultTheme => {
+declare module '@mui/material/styles' {
+  interface BreakpointOverrides {
+    xxs: true;
+    xs: true;
+    sm: true;
+    md: true;
+    lg: true;
+    xl: true;
+    xxl: true;
+  }
+
+  interface Theme {
+    multipliers: Multipliers;
+    utils: Utils;
+    font: Font;
+    sizes: Sizes;
+    shadow: Shadow;
+  }
+
+  interface ThemeOptions {
+    multipliers: Multipliers;
+    utils: Utils;
+    font: Font;
+    sizes: Sizes;
+    shadow: Shadow;
+  }
+}
+
+const createCustomTheme = (): ThemeOptions => {
   const unit = 'rem';
 
   const multipliers = {
@@ -23,75 +53,23 @@ const createTheme = (): DefaultTheme => {
     rem: 1
   };
 
-  const colors = {
-    common: {
-      black: '#000000',
-      white: '#ffffff'
-    },
-    primary: {
-      main: '#001999',
-      light: '#0026e6',
-      dark: '#000d4d',
-      contrast: '#ffffff'
-    },
-    secondary: {
-      main: '#0055ff',
-      light: '#80aaff',
-      dark: '#003399',
-      contrast: '#ffffff'
-    },
-    warning: {
-      main: '#c98200',
-      light: '#d39b33',
-      dark: '#8c5b00',
-      contrast: '#ffffff'
-    },
-    success: {
-      main: '#4ca801',
-      light: '#6FB933',
-      dark: '#357500',
-      contrast: '#ffffff'
-    },
-    danger: {
-      main: '#ff0034',
-      light: '#ff335c',
-      dark: '#b20024',
-      contrast: '#ffffff'
-    },
-    info: {
-      main: '#00a28b',
-      light: '#33B4A2',
-      dark: '#007161',
-      contrast: '#ffffff'
-    },
-    background: {
-      main: '#fafafa',
-      light: '#ffffff',
-      dark: '#f5f5f5',
-      contrast: '#000000'
-    },
-    gray: {
-      50: '#fafafa',
-      100: '#f5f5f5',
-      200: '#eeeeee',
-      300: '#e0e0e0',
-      400: '#bdbdbd',
-      500: '#9e9e9e',
-      600: '#757575',
-      700: '#616161',
-      800: '#424242',
-      900: '#212121'
-    }
-  };
-
   const fontSizes = {
     tiny: '0.75rem', // 12px
     small: '0.875rem', // 14px
     normal: '1rem', // 16px
-    big: '1.125rem', // 18px
-    large: '1.5rem', // 24px
-    huge: '2rem', // 32px
+    medium: '1.125rem', // 18px
+    big: '1.5rem', // 24px
+    large: '2rem', // 32px
+    huge: '2.5rem', // 40px
     super: '3rem' // 48px
+  };
+
+  const fontWeight = {
+    light: 300,
+    regular: 400,
+    medium: 500,
+    bold: 700,
+    black: 900
   };
 
   const sizes = {
@@ -107,13 +85,142 @@ const createTheme = (): DefaultTheme => {
     xxxxl: '5rem' // 80px
   };
 
-  const sizeMixin = size(multipliers.rem, 'rem');
+  const palette = {
+    mode: 'light',
+    common: {
+      black: '#000000',
+      white: '#ffffff'
+    },
+    primary: {
+      main: '#001999',
+      light: '#0026e6',
+      dark: '#000d4d',
+      contrastText: '#ffffff'
+    },
+    secondary: {
+      main: '#0055ff',
+      light: '#80aaff',
+      dark: '#003399',
+      contrastText: '#ffffff'
+    },
+    warning: {
+      main: '#c98200',
+      light: '#d39b33',
+      dark: '#8c5b00',
+      contrastText: '#ffffff'
+    },
+    success: {
+      main: '#4ca801',
+      light: '#6FB933',
+      dark: '#357500',
+      contrastText: '#ffffff'
+    },
+    error: {
+      main: '#ff0034',
+      light: '#ff335c',
+      dark: '#b20024',
+      contrastText: '#ffffff'
+    },
+    info: {
+      main: '#00a28b',
+      light: '#33B4A2',
+      dark: '#007161',
+      contrastText: '#ffffff'
+    },
+    background: {
+      default: '#fafafa',
+      paper: '#ffffff'
+    }
+  };
 
-  const theme: DefaultTheme = {
-    breakpoints: {
-      keys: Object.keys(breakpoints),
-      values: breakpoints,
-      unit: 'px'
+  const sizeMixin = size(multipliers.rem, unit);
+
+  const themeOptions: ThemeOptions = {
+    breakpoints,
+    multipliers,
+    palette: palette as PaletteOptions,
+    typography: {
+      fontSize: 16,
+      fontFamily: 'Montserrat, sans-serif',
+      h1: {
+        fontSize: fontSizes.super,
+        fontWeight: fontWeight.bold,
+        lineHeight: 1.45
+      },
+      h2: {
+        fontWeight: fontWeight.bold,
+        lineHeight: 1.45,
+        fontSize: fontSizes.huge
+      },
+      h3: {
+        fontWeight: fontWeight.bold,
+        fontSize: fontSizes.large,
+        lineHeight: 1.45
+      },
+      h4: {
+        fontWeight: fontWeight.bold,
+        fontSize: fontSizes.big,
+        lineHeight: 1.45
+      },
+      h5: {
+        fontWeight: fontWeight.bold,
+        fontSize: fontSizes.medium,
+        lineHeight: 1.45
+      },
+      h6: {
+        fontWeight: fontWeight.bold,
+        fontSize: fontSizes.normal,
+        lineHeight: 1.45
+      },
+      subtitle1: {
+        fontWeight: fontWeight.medium,
+        lineHeight: 1.45,
+        fontSize: fontSizes.medium
+      },
+      subtitle2: {
+        lineHeight: 1.45
+      },
+      body1: {
+        fontWeight: fontWeight.light,
+        fontSize: fontSizes.normal,
+        lineHeight: 1.45
+      },
+      body2: {
+        fontWeight: fontWeight.light,
+        lineHeight: 1.45,
+        fontSize: fontSizes.small
+      },
+      button: {
+        fontWeight: fontWeight.medium
+      },
+      caption: {
+        fontSize: fontSizes.small,
+        lineHeight: 1.45
+      },
+      overline: {
+        lineHeight: 2.5,
+        fontSize: fontSizes.small
+      }
+    },
+    shadow: {
+      init: `0 0 0 0 ${alpha(palette.primary.main, 0)}`,
+      focus: `0 0 0 ${sizes.xxs} ${alpha(palette.secondary.main, 60)}`,
+      focusError: `0 0 0 ${sizes.xxs} ${alpha(palette.error.main, 60)}`
+    },
+    shape: {
+      borderRadius: 16
+    },
+    spacing: (factor: number) => `${1 * factor}rem`,
+    utils: {
+      alpha,
+      cols: cols(sizeMixin),
+      colsAll: colsAll(cols(sizeMixin)),
+      constSize,
+      gridClasses: gridClasses(breakpoints.values),
+      rows: rows(sizeMixin),
+      rowsAll: rowsAll(sizeMixin),
+      size: sizeMixin,
+      tint
     },
     font: {
       base: '16px',
@@ -121,37 +228,17 @@ const createTheme = (): DefaultTheme => {
       letterSpacing: '0.005rem',
       lineHeight: 1.45,
       size: fontSizes,
-      unit: 'rem',
-      weight: { light: 300, regular: 400, medium: 500, bold: 700, black: 900 }
+      unit,
+      weight: fontWeight
     },
-    mixins: {
-      breakpoint,
-      alpha,
-      cols: cols(sizeMixin),
-      colsAll: colsAll(cols(sizeMixin)),
-      constSize,
-      gridClasses: gridClasses(breakpoints),
-      rows: rows(sizeMixin),
-      rowsAll: rowsAll(sizeMixin),
-      size: sizeMixin,
-      tint,
-      transition
-    },
-    multipliers,
-    colors,
-    shape: {
-      borderRadius: '1rem'
-    },
-    sizes,
-    shadows: {
-      init: `0 0 0 0 ${alpha(colors.primary.main, 0)}`,
-      focus: `0 0 0 ${sizes.xxs} ${alpha(colors.secondary.main, 60)}`,
-      focusDanger: `0 0 0 ${sizes.xxs} ${alpha(colors.danger.main, 60)}`
-    },
-    unit
+    sizes
   };
 
-  return theme;
+  return themeOptions;
 };
 
-export default createTheme();
+const theme = createTheme({
+  ...createCustomTheme()
+});
+
+export default theme;

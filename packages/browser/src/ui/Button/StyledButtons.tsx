@@ -1,134 +1,131 @@
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 
 import { AsyncContentBoxProps } from './types';
 
-export const PrimaryButton = styled.button`
-  position: relative;
-  font-family: inherit;
-  letter-spacing: inherit;
-  font-size: ${({ theme }) => theme.font.size.normal};
-  font-weight: ${({ theme }) => theme.font.weight.regular};
-  background-color: ${({ theme }) => theme.colors.primary.main};
-  color: ${({ theme }) => theme.colors.primary.contrast};
-  box-sizing: border-box;
-  outline: 0;
-  border: 1px solid ${({ theme }) => theme.colors.primary.main};
-  white-space: nowrap;
-  border-radius: ${({ theme }) => theme.shape.borderRadius};
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 0 ${({ theme }) => theme.mixins.size(1)};
-  cursor: 'pointer';
-  box-shadow: ${({ theme }) => theme.shadows.init};
-  ${({ theme }) =>
-    theme.mixins.transition(
-      'color',
-      'background-color',
-      'border-color',
-      'box-shadow',
-      'transform'
-    )};
+export const PrimaryButton = styled('button')(({ theme }) => ({
+  position: 'relative',
+  fontFamily: 'inherit',
+  letterSpacing: 'inherit',
+  fontSize: theme.font.size.normal,
+  fontWeight: theme.font.weight.regular,
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.primary.contrastText,
+  boxSizing: 'border-box',
+  outline: 0,
+  border: `1px solid ${theme.palette.primary.main}`,
+  whiteSpace: 'nowrap',
+  borderRadius: theme.shape.borderRadius,
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  overflow: 'hidden',
+  padding: `0 ${theme.utils.size(1)}`,
+  cursor: 'pointer',
+  boxShadow: theme.shadow.init,
+  transition: theme.transitions.create([
+    'color',
+    'background-color',
+    'border-color',
+    'box-shadow',
+    'transform'
+  ]),
 
-  &:disabled:not(.loading) {
-    background-color: ${({ theme }) => theme.colors.gray[400]};
-    border: 1px solid ${({ theme }) => theme.colors.gray[400]};
-    cursor: 'not-allowed';
+  '&:disabled:not(.loading)': {
+    backgroundColor: theme.palette.grey[400],
+    border: `1px solid ${theme.palette.grey[400]}`,
+    cursor: 'not-allowed'
+  },
+
+  '&.loading:not(:disabled)': {
+    cursor: 'initial'
+  },
+
+  '&.small': {
+    height: theme.utils.size(2),
+    maxHeight: theme.utils.size(2)
+  },
+
+  '&.medium': {
+    height: theme.utils.size(2.5),
+    maxHeight: theme.utils.size(2.5)
+  },
+
+  '&.big': {
+    height: theme.utils.size(3),
+    maxHeight: theme.utils.size(3)
+  },
+
+  '&:hover:not(:disabled):not(.loading)': {
+    backgroundColor: theme.palette.primary.dark,
+    borderColor: theme.palette.primary.dark
+  },
+
+  '&:active:not(:disabled):not(.loading)': {
+    backgroundColor: theme.palette.primary.light,
+    borderColor: theme.palette.primary.light
+  },
+
+  '&:focus:not(:disabled)': {
+    boxShadow: theme.shadow.focus
   }
+}));
 
-  &.loading:not(:disabled) {
-    cursor: 'initial';
+export const SecondaryButton = styled(PrimaryButton)(({ theme }) => ({
+  backgroundColor: theme.palette.background.paper,
+  color: theme.palette.primary.main,
+
+  '&:disabled:not(.loading)': {
+    backgroundColor: theme.palette.background.paper,
+    color: theme.palette.grey[400]
+  },
+
+  '&:hover:not(:disabled):not(.loading), &:active:not(:disabled):not(.loading)':
+    {
+      borderColor: theme.palette.primary.dark,
+      color: theme.palette.primary.dark
+    },
+
+  '&:hover:not(:disabled):not(.loading)': {
+    backgroundColor: theme.utils.tint(theme.palette.primary.dark, 85)
+  },
+
+  '&:active:not(:disabled):not(.loading)': {
+    backgroundColor: theme.utils.tint(theme.palette.primary.dark, 80)
   }
+}));
 
-  &.small {
-    height: ${({ theme }) => theme.mixins.size(2)};
-    max-height: ${({ theme }) => theme.mixins.size(2)};
+export const DangerButton = styled(PrimaryButton)(({ theme }) => ({
+  backgroundColor: theme.palette.error.main,
+  border: `1px solid ${theme.palette.error.main}`,
+
+  '&:disabled:not(.loading)': {
+    backgroundColor: theme.palette.grey[400],
+    border: `1px solid ${theme.palette.grey[400]}`
+  },
+
+  '&:hover:not(:disabled):not(.loading)': {
+    backgroundColor: theme.palette.error.dark,
+    borderColor: theme.palette.error.dark
+  },
+
+  '&:active:not(:disabled):not(.loading)': {
+    backgroundColor: theme.palette.error.light,
+    borderColor: theme.palette.error.light
+  },
+
+  '&:focus:not(:disabled)': {
+    boxShadow: theme.shadow.focusError
   }
+}));
 
-  &.medium {
-    height: ${({ theme }) => theme.mixins.size(2.5)};
-    max-height: ${({ theme }) => theme.mixins.size(2.5)};
+export const AsyncContentBox = styled('span')<AsyncContentBoxProps>(() => ({
+  height: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+
+  '&.loading': {
+    visibility: 'collapse',
+    userSelect: 'none'
   }
-
-  &.big {
-    height: ${({ theme }) => theme.mixins.size(3)};
-    max-height: ${({ theme }) => theme.mixins.size(3)};
-  }
-
-  &:hover:not(:disabled):not(.loading) {
-    background-color: ${({ theme }) => theme.colors.primary['dark']};
-    border-color: ${({ theme }) => theme.colors.primary['dark']};
-  }
-
-  &:active:not(:disabled):not(.loading) {
-    background-color: ${({ theme }) => theme.colors.primary['light']};
-    border-color: ${({ theme }) => theme.colors.primary['light']};
-  }
-
-  &:focus:not(:disabled) {
-    box-shadow: ${({ theme }) => theme.shadows.focus};
-  }
-`;
-
-export const SecondaryButton = styled(PrimaryButton)`
-  background-color: ${({ theme }) => theme.colors.background.light};
-  color: ${({ theme }) => theme.colors.primary.main};
-
-  &:disabled:not(.loading) {
-    background-color: ${({ theme }) => theme.colors.background.light};
-    color: ${({ theme }) => theme.colors.gray[400]};
-  }
-
-  &:hover:not(:disabled):not(.loading),
-  &:active:not(:disabled):not(.loading) {
-    border-color: ${({ theme }) => theme.colors.primary['dark']};
-    color: ${({ theme }) => theme.colors.primary['dark']};
-  }
-
-  &:hover:not(:disabled):not(.loading) {
-    background-color: ${({ theme }) =>
-      theme.mixins.tint(theme.colors.primary.dark, 85)};
-  }
-
-  &:active:not(:disabled):not(.loading) {
-    background-color: ${({ theme }) =>
-      theme.mixins.tint(theme.colors.primary.dark, 80)};
-  }
-`;
-
-export const DangerButton = styled(PrimaryButton)`
-  background-color: ${({ theme }) => theme.colors.danger.main};
-  border: 1px solid ${({ theme }) => theme.colors.danger.main};
-
-  &:disabled:not(.loading) {
-    background-color: ${({ theme }) => theme.colors.gray[400]};
-    border: 1px solid ${({ theme }) => theme.colors.gray[400]};
-  }
-
-  &:hover:not(:disabled):not(.loading) {
-    background-color: ${({ theme }) => theme.colors.danger['dark']};
-    border-color: ${({ theme }) => theme.colors.danger['dark']};
-  }
-
-  &:active:not(:disabled):not(.loading) {
-    background-color: ${({ theme }) => theme.colors.danger['light']};
-    border-color: ${({ theme }) => theme.colors.danger['light']};
-  }
-
-  &:focus:not(:disabled) {
-    box-shadow: ${({ theme }) => theme.shadows.focusDanger};
-  }
-`;
-
-export const AsyncContentBox = styled.span<AsyncContentBoxProps>`
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &.loading {
-    visibility: collapse;
-    user-select: none;
-  }
-`;
+}));

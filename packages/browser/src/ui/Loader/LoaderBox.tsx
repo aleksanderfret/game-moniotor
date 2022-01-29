@@ -1,19 +1,19 @@
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 
-const LoaderBox = styled.div`
-  position: absolute;
+const LoaderBox = styled('div')(({ theme }) => ({
+  position: 'absolute',
 
-  &.small {
-    ${({ theme }) => theme.mixins.constSize(theme.sizes.sm)};
+  '&.small': {
+    ...theme.utils.constSize(theme.sizes.sm)
+  },
+
+  '&.medium': {
+    ...theme.utils.constSize(theme.sizes.md)
+  },
+
+  '&.big': {
+    ...theme.utils.constSize(theme.sizes.xxl)
   }
-
-  &.medium {
-    ${({ theme }) => theme.mixins.constSize(theme.sizes.md)};
-  }
-
-  &.big {
-    ${({ theme }) => theme.mixins.constSize(theme.sizes.xxl)};
-  }
-`;
+}));
 
 export default LoaderBox;

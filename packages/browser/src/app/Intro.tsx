@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 import { Link, Route, Routes } from 'react-router-dom';
 
 import Logo from 'ui/Logo';
@@ -15,15 +15,15 @@ import {
 } from 'modules/auth';
 import { Path } from 'router';
 
-const IntroBox = styled(Tile)`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  max-width: 600px;
-  margin: auto;
-`;
+const IntroBox = styled(Tile)(() => ({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '90%',
+  maxWidth: '600px',
+  margin: 'auto'
+}));
 
 const Intro: FC = () => (
   <IntroBox>
