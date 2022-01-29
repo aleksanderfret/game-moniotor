@@ -1,26 +1,26 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 import { NavLink } from 'react-router-dom';
 
 import { Path } from 'router';
 
-const Link = styled(NavLink)`
-  flex-grow: 1;
-  justify-content: center;
-  display: flex;
-  align-items: center;
-  padding: 8px;
-  box-sizing: border-box;
-`;
+const Link = styled(NavLink)(() => ({
+  flexGrow: 1,
+  justifyContent: 'center',
+  display: 'flex',
+  alignItems: 'center',
+  padding: '8px',
+  boxSizing: 'border-box'
+}));
 
-export const Box = styled.div`
-  display: flex;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 64px;
-`;
+export const Box = styled('div')(() => ({
+  display: 'flex',
+  position: 'fixed',
+  left: 0,
+  right: 0,
+  bottom: 0,
+  height: '64px'
+}));
 
 const BottomNavigation: FC = () => {
   return (

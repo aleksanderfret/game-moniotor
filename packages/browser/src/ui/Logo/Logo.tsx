@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
 import clsx from 'clsx';
+import { styled } from '@mui/material/styles';
 
 import { HorizontalLogo, SimpleLogo, VerticalLogo } from './IconLogo';
 
@@ -13,31 +13,27 @@ export interface LogoProps {
   variant?: LogoVariant;
 }
 
-const LogoBox = styled.div`
-  display: inline-block;
-  width: auto;
-  margin: ${({ theme }) => theme.mixins.size(1)};
+const LogoBox = styled('div')(({ theme }) => ({
+  display: 'inline-block',
+  width: 'auto',
+  margin: theme.spacing(1),
 
-  &.small,
-  &.small svg {
-    height: ${({ theme }) => theme.mixins.size(3)};
-  }
+  '&.small, &.small svg': {
+    height: theme.utils.size(3)
+  },
 
-  &.medium,
-  &.medium svg {
-    height: ${({ theme }) => theme.mixins.size(6)};
-  }
+  '&.medium, &.medium svg': {
+    height: theme.utils.size(6)
+  },
 
-  &.big,
-  &.big svg {
-    height: ${({ theme }) => theme.mixins.size(9)};
-  }
+  '&.big, &.big svg': {
+    height: theme.utils.size(9)
+  },
 
-  &.large,
-  &.large svg {
-    height: ${({ theme }) => theme.mixins.size(12)};
+  '&.large, &.large svg': {
+    height: theme.utils.size(12)
   }
-`;
+}));
 
 const setLogoComponent = (variant: LogoVariant): FC => {
   switch (variant) {

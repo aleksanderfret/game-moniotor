@@ -42,7 +42,6 @@
         "minify": true,
         "namespace": "game-monitor",
         "pure": true,
-        "transform": "typescript-plugin-styled-components",
         "type": "config"
       }
     ],

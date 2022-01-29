@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import { keyframes, styled } from '@mui/material/styles';
 
 const loaderBounceDelay = keyframes`
   0%,
@@ -12,122 +12,122 @@ const loaderBounceDelay = keyframes`
   }
 `;
 
-const LoaderDot = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
+const LoaderDot = styled('div')(({ theme }) => ({
+  width: '100%',
+  height: ' 100%',
+  position: 'absolute',
+  left: 0,
+  top: 0,
 
-  &::before {
-    content: '';
-    display: block;
-    margin: 0 auto;
-    width: 15%;
-    height: 15%;
-    border-radius: 100%;
-    animation: ${loaderBounceDelay} 1.2s infinite ease-in-out both;
-  }
+  '&::before': {
+    content: '""',
+    display: 'block',
+    margin: '0 auto',
+    width: '15%',
+    height: '15%',
+    borderRadius: '100%',
+    animation: `${loaderBounceDelay} 1.2s infinite ease-in-out both`
+  },
 
-  &.main {
-    &::before {
-      background-color: ${({ theme }) => theme.colors.primary.main};
+  '&.main': {
+    '&::before': {
+      backgroundColor: theme.palette.primary.main
+    }
+  },
+
+  '&.contrast': {
+    '&::before': {
+      backgroundColor: theme.palette.primary.contrastText
+    }
+  },
+
+  '&:nth-of-type(2)': {
+    transform: 'rotate(30deg)',
+
+    '&::before': {
+      animationDelay: '-1.1s'
+    }
+  },
+
+  '&:nth-of-type(3)': {
+    transform: 'rotate(60deg)',
+
+    '&::before': {
+      animationDelay: '-1s'
+    }
+  },
+
+  '&:nth-of-type(4)': {
+    transform: 'rotate(90deg)',
+
+    '&::before': {
+      animationDelay: '-0.9s'
+    }
+  },
+
+  '&:nth-of-type(5)': {
+    transform: 'rotate(120deg)',
+
+    '&::before': {
+      animationDelay: '-0.8s'
+    }
+  },
+
+  '&:nth-of-type(6)': {
+    transform: 'rotate(150deg)',
+
+    '&::before': {
+      animationDelay: '-0.7s'
+    }
+  },
+
+  '&:nth-of-type(7)': {
+    transform: 'rotate(180deg)',
+
+    '&::before': {
+      animationDelay: '-0.6s'
+    }
+  },
+
+  '&:nth-of-type(8)': {
+    transform: 'rotate(210deg)',
+
+    '&::before': {
+      animationDelay: '-0.5s'
+    }
+  },
+
+  '&:nth-of-type(9)': {
+    transform: 'rotate(240deg)',
+
+    '&::before': {
+      animationDelay: '-0.4s'
+    }
+  },
+
+  '&:nth-of-type(10)': {
+    transform: 'rotate(270deg)',
+
+    '&::before': {
+      animationDelay: '-0.3s'
+    }
+  },
+
+  '&:nth-of-type(11)': {
+    transform: 'rotate(300deg)',
+
+    '&::before': {
+      animationDelay: '-0.2s'
+    }
+  },
+
+  '&:nth-of-type(12)': {
+    transform: 'rotate(330deg)',
+
+    '&::before': {
+      animationDelay: '-0.1s'
     }
   }
-
-  &.contrast {
-    &::before {
-      background-color: ${({ theme }) => theme.colors.primary.contrast};
-    }
-  }
-
-  &:nth-child(2) {
-    transform: rotate(30deg);
-
-    &::before {
-      animation-delay: -1.1s;
-    }
-  }
-
-  &:nth-child(3) {
-    transform: rotate(60deg);
-
-    &::before {
-      animation-delay: -1s;
-    }
-  }
-
-  &:nth-child(4) {
-    transform: rotate(90deg);
-
-    &::before {
-      animation-delay: -0.9s;
-    }
-  }
-
-  &:nth-child(5) {
-    transform: rotate(120deg);
-
-    &::before {
-      animation-delay: -0.8s;
-    }
-  }
-
-  &:nth-child(6) {
-    transform: rotate(150deg);
-
-    &::before {
-      animation-delay: -0.7s;
-    }
-  }
-
-  &:nth-child(7) {
-    transform: rotate(180deg);
-
-    &::before {
-      animation-delay: -0.6s;
-    }
-  }
-
-  &:nth-child(8) {
-    transform: rotate(210deg);
-
-    &::before {
-      animation-delay: -0.5s;
-    }
-  }
-
-  &:nth-child(9) {
-    transform: rotate(240deg);
-
-    &::before {
-      animation-delay: -0.4s;
-    }
-  }
-
-  &:nth-child(10) {
-    transform: rotate(270deg);
-
-    &::before {
-      animation-delay: -0.3s;
-    }
-  }
-
-  &:nth-child(11) {
-    transform: rotate(300deg);
-
-    &::before {
-      animation-delay: -0.2s;
-    }
-  }
-
-  &:nth-child(12) {
-    transform: rotate(330deg);
-
-    &::before {
-      animation-delay: -0.1s;
-    }
-  }
-`;
+}));
 
 export default LoaderDot;

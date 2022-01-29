@@ -3,7 +3,7 @@ import {
   render as rtlRender,
   RenderOptions as rtlRenderOptions
 } from '@testing-library/react';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from '@mui/material/styles';
 import { IntlProvider } from 'react-intl';
 
 import theme from 'theme';

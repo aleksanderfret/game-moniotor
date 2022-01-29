@@ -1,47 +1,32 @@
-import { css, DefaultTheme, ThemedCssFunction } from 'styled-components';
-
 import normalizeHexColor from './normalizeHexColor';
 import {
-  Breakpoint,
-  BreakpointMixins,
   BreakpointValues,
+  ConstSize,
   GridClassesMixin,
   SizeMixin,
+  Transition,
   Unit
 } from './types';
-import { breakpoints } from './variables';
-import { entries } from 'utils/entries';
 
-export const breakpoint = entries<BreakpointValues>(breakpoints).reduce<
-  Record<Breakpoint, ThemedCssFunction<DefaultTheme>>
->(
-  (accumulator: BreakpointMixins, [key, value]) => ({
-    ...accumulator,
-    [key]: (...args: Parameters<ThemedCssFunction<DefaultTheme>>) => css`
-      @media (min-width: ${value}px) {
-        ${css(...args)};
-      }
-    `
-  }),
-  {} as BreakpointMixins
-);
+export const constSize = (
+  width: string,
+  height: string = width
+): ConstSize => ({
+  width: width,
+  maxWidth: width,
+  minWidth: width,
+  height: height,
+  maxHeight: height,
+  minHeight: height,
+  flexShrink: 0
+});
 
-export const constSize = (width: string, height: string = width): string => `
-  width: ${width};
-  max-width: ${width};
-  min-width: ${width};
-  height: ${height};
-  max-height: ${height};
-  min-height: ${height};
-  flex-shrink: 0;
-`;
-
-export const transition = (...properties: string[]): string => `
-  transition-property: ${properties.join(', ')};
-  transition-duration: 0.3s;
-  transition-timing-function: cubic-bezier(0.5, 0, 0.25, 1);
-  backface-visibility:hidden;
-`;
+export const transition = (...properties: string[]): Transition => ({
+  transitionProperty: properties.join(', '),
+  transitionDuration: '0.3s',
+  transitionTimingFunction: 'cubic-bezier(0.5, 0, 0.25, 1)',
+  backfaceVisibility: 'hidden'
+});
 
 export const alpha = (color: string, opacity: number): string => {
   const hexColor = normalizeHexColor(color);

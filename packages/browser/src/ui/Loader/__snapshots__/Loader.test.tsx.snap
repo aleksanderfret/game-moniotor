@@ -3,55 +3,55 @@
 exports[`<Loader /> should have proper structure 1`] = `
 <DocumentFragment>
   <div
-    class="sc-gsDKAQ xErSY medium"
+    class="medium css-1at6hqf"
     role="progressbar"
   >
     <div
-      class="sc-bdvvtL ephYTY main"
+      class="main css-18imq8f"
       data-testid="loader-dot-1"
     />
     <div
-      class="sc-bdvvtL ephYTY main"
+      class="main css-18imq8f"
       data-testid="loader-dot-2"
     />
     <div
-      class="sc-bdvvtL ephYTY main"
+      class="main css-18imq8f"
       data-testid="loader-dot-3"
     />
     <div
-      class="sc-bdvvtL ephYTY main"
+      class="main css-18imq8f"
       data-testid="loader-dot-4"
     />
     <div
-      class="sc-bdvvtL ephYTY main"
+      class="main css-18imq8f"
       data-testid="loader-dot-5"
     />
     <div
-      class="sc-bdvvtL ephYTY main"
+      class="main css-18imq8f"
       data-testid="loader-dot-6"
     />
     <div
-      class="sc-bdvvtL ephYTY main"
+      class="main css-18imq8f"
       data-testid="loader-dot-7"
     />
     <div
-      class="sc-bdvvtL ephYTY main"
+      class="main css-18imq8f"
       data-testid="loader-dot-8"
     />
     <div
-      class="sc-bdvvtL ephYTY main"
+      class="main css-18imq8f"
       data-testid="loader-dot-9"
     />
     <div
-      class="sc-bdvvtL ephYTY main"
+      class="main css-18imq8f"
       data-testid="loader-dot-10"
     />
     <div
-      class="sc-bdvvtL ephYTY main"
+      class="main css-18imq8f"
       data-testid="loader-dot-11"
     />
     <div
-      class="sc-bdvvtL ephYTY main"
+      class="main css-18imq8f"
       data-testid="loader-dot-12"
     />
   </div>

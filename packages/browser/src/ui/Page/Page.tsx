@@ -1,12 +1,12 @@
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 
-const Page = styled.div`
-  display: flex;
-  min-width: 100vw;
-  width: 100vw;
-  min-height: 100vh;
-  background-color: ${({ theme }) => theme.colors.background.main};
-  color: ${({ theme }) => theme.colors.background.contrast};
-`;
+const Page = styled('div')(({ theme }) => ({
+  display: 'flex',
+  minWidth: '100vw',
+  width: '100vw',
+  minHeight: '100vh',
+  backgroundColor: theme.palette.background.default,
+  color: theme.palette.common.black
+}));
 
 export default Page;
