@@ -3492,6 +3492,12 @@
 * **graphql@15<i></i>.7<i></i>.2**
   - license: MIT
   - repository: https://github.com/graphql/graphql-js
+* **graphql@15<i></i>.8<i></i>.0**
+  - license: MIT
+  - repository: https://github.com/graphql/graphql-js
+* **graphql@16<i></i>.3<i></i>.0**
+  - license: MIT
+  - repository: https://github.com/graphql/graphql-js
 * **gzip-size@6<i></i>.0<i></i>.0**
   - license: MIT
   - repository: https://github.com/sindresorhus/gzip-size
