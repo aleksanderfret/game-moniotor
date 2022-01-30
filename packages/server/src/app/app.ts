@@ -8,12 +8,12 @@ import authRouter from 'modules/auth/router';
 import { startApollo } from 'app/apollo';
 import { localeMiddleware } from 'app/middlewares/localeMiddleware';
 
-const { IS_DEV } = environment;
+const { APP_URL, IS_DEV } = environment;
 
-const origin = ['http://localhost:3000'];
+const origin: string[] = [];
 
 if (IS_DEV) {
-  origin.push('https://studio.apollographql.com');
+  origin.push(APP_URL, 'https://studio.apollographql.com');
 }
 
 const startApp = async (app: Application): Promise<Application> => {

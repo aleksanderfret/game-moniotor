@@ -41,6 +41,7 @@ const environment = {
   FORGOT_PASSWORD_TOKEN_EXP: Number(FORGOT_PASSWORD_TOKEN_EXP),
   HOST,
   IS_DEV: NODE_ENV === 'development',
+  IS_PROD: NODE_ENV === 'production',
   NODE_ENV,
   PORT: Number(PORT),
   PROTOCOL,
