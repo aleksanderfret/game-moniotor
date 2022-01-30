@@ -1185,9 +1185,6 @@
 * **@stylelint/postcss-css-in-js@0<i></i>.37<i></i>.2**
   - license: MIT
   - repository: https://github.com/stylelint/postcss-css-in-js
-* **@stylelint/postcss-markdown@0<i></i>.36<i></i>.2**
-  - license: MIT
-  - repository: https://github.com/stylelint/postcss-markdown
 * **@testing-library/dom@8<i></i>.11<i></i>.3**
   - license: MIT
   - repository: https://github.com/testing-library/dom-testing-library
@@ -2421,6 +2418,9 @@
 * **color@3<i></i>.2<i></i>.1**
   - license: MIT
   - repository: https://github.com/Qix-/color
+* **colord@2<i></i>.9<i></i>.2**
+  - license: MIT
+  - repository: https://github.com/omgovich/colord
 * **colorette@1<i></i>.4<i></i>.0**
   - license: MIT
   - repository: https://github.com/jorgebucaran/colorette
@@ -2835,9 +2835,6 @@
 * **dom-helpers@5<i></i>.2<i></i>.1**
   - license: MIT
   - repository: https://github.com/react-bootstrap/dom-helpers
-* **dom-serializer@0<i></i>.2<i></i>.2**
-  - license: MIT
-  - repository: https://github.com/cheeriojs/dom-renderer
 * **dom-serializer@1<i></i>.3<i></i>.2**
   - license: MIT
   - repository: https://github.com/cheeriojs/dom-renderer
@@ -2847,24 +2844,15 @@
 * **domain-browser@1<i></i>.2<i></i>.0**
   - license: MIT
   - repository: https://github.com/bevry/domain-browser
-* **domelementtype@1<i></i>.3<i></i>.1**
-  - license: BSD-2-Clause
-  - repository: https://github.com/fb55/domelementtype
 * **domelementtype@2<i></i>.2<i></i>.0**
   - license: BSD-2-Clause
   - repository: https://github.com/fb55/domelementtype
 * **domexception@2<i></i>.0<i></i>.1**
   - license: MIT
   - repository: https://github.com/jsdom/domexception
-* **domhandler@2<i></i>.4<i></i>.2**
-  - license: BSD-2-Clause
-  - repository: https://github.com/fb55/DomHandler
 * **domhandler@4<i></i>.3<i></i>.0**
   - license: BSD-2-Clause
   - repository: https://github.com/fb55/domhandler
-* **domutils@1<i></i>.7<i></i>.0**
-  - license: BSD-2-Clause
-  - repository: https://github.com/FB55/domutils
 * **domutils@2<i></i>.8<i></i>.0**
   - license: BSD-2-Clause
   - repository: https://github.com/fb55/domutils
@@ -2958,9 +2946,6 @@
 * **enhanced-resolve@5<i></i>.8<i></i>.3**
   - license: MIT
   - repository: https://github.com/webpack/enhanced-resolve
-* **entities@1<i></i>.1<i></i>.2**
-  - license: BSD-2-Clause
-  - repository: https://github.com/fb55/entities
 * **entities@2<i></i>.2<i></i>.0**
   - license: BSD-2-Clause
   - repository: https://github.com/fb55/entities
@@ -3486,9 +3471,6 @@
 * **globjoin@0<i></i>.1<i></i>.4**
   - license: MIT
   - repository: https://github.com/amobiz/globjoin
-* **gonzales-pe@4<i></i>.3<i></i>.0**
-  - license: MIT
-  - repository: https://github.com/tonyganch/gonzales-pe
 * **graceful-fs@4<i></i>.2<i></i>.8**
   - license: ISC
   - repository: https://github.com/isaacs/node-graceful-fs
@@ -3663,9 +3645,6 @@
 * **html-webpack-plugin@5<i></i>.5<i></i>.0**
   - license: MIT
   - repository: https://github.com/jantimon/html-webpack-plugin
-* **htmlparser2@3<i></i>.10<i></i>.1**
-  - license: MIT
-  - repository: https://github.com/fb55/htmlparser2
 * **htmlparser2@6<i></i>.1<i></i>.0**
   - license: MIT
   - repository: https://github.com/fb55/htmlparser2
@@ -4314,7 +4293,7 @@
 * **klona@2<i></i>.0<i></i>.5**
   - license: MIT
   - repository: https://github.com/lukeed/klona
-* **known-css-properties@0<i></i>.21<i></i>.0**
+* **known-css-properties@0<i></i>.24<i></i>.0**
   - license: MIT
   - repository: https://github.com/known-css/known-css-properties
 * **language-subtag-registry@0<i></i>.3<i></i>.21**
@@ -4476,9 +4455,6 @@
 * **long@4<i></i>.0<i></i>.0**
   - license: Apache-2.0
   - repository: https://github.com/dcodeIO/long.js
-* **longest-streak@2<i></i>.0<i></i>.4**
-  - license: MIT
-  - repository: https://github.com/wooorm/longest-streak
 * **loose-envify@1<i></i>.4<i></i>.0**
   - license: MIT
   - repository: https://github.com/zertosh/loose-envify
@@ -4554,19 +4530,10 @@
 * **mdast-util-definitions@4<i></i>.0<i></i>.0**
   - license: MIT
   - repository: https://github.com/syntax-tree/mdast-util-definitions
-* **mdast-util-from-markdown@0<i></i>.8<i></i>.5**
-  - license: MIT
-  - repository: https://github.com/syntax-tree/mdast-util-from-markdown
 * **mdast-util-to-hast@10<i></i>.0<i></i>.1**
   - license: MIT
   - repository: https://github.com/syntax-tree/mdast-util-to-hast
-* **mdast-util-to-markdown@0<i></i>.6<i></i>.5**
-  - license: MIT
-  - repository: https://github.com/syntax-tree/mdast-util-to-markdown
 * **mdast-util-to-string@1<i></i>.1<i></i>.0**
-  - license: MIT
-  - repository: https://github.com/syntax-tree/mdast-util-to-string
-* **mdast-util-to-string@2<i></i>.0<i></i>.0**
   - license: MIT
   - repository: https://github.com/syntax-tree/mdast-util-to-string
 * **mdurl@1<i></i>.0<i></i>.1**
@@ -4617,9 +4584,6 @@
 * **microevent<i></i>.ts@0<i></i>.1<i></i>.1**
   - license: MIT
   - repository: https://github.com/DirtyHairy/microevent
-* **micromark@2<i></i>.11<i></i>.4**
-  - license: MIT
-  - repository: https://github.com/micromark/micromark
 * **micromatch@3<i></i>.1<i></i>.10**
   - license: MIT
   - repository: https://github.com/micromatch/micromatch
@@ -5256,12 +5220,6 @@
 * **postcss-flexbugs-fixes@4<i></i>.2<i></i>.1**
   - license: MIT
   - repository: https://github.com/luisrudge/postcss-flexbugs-fixes
-* **postcss-html@0<i></i>.36<i></i>.0**
-  - license: MIT
-  - repository: https://github.com/gucong3000/postcss-html
-* **postcss-less@3<i></i>.1<i></i>.4**
-  - license: MIT
-  - repository: https://github.com/shellscape/postcss-less
 * **postcss-loader@4<i></i>.3<i></i>.0**
   - license: MIT
   - repository: https://github.com/webpack-contrib/postcss-loader
@@ -5295,15 +5253,9 @@
 * **postcss-resolve-nested-selector@0<i></i>.1<i></i>.1**
   - license: MIT
   - repository: undefined
-* **postcss-safe-parser@4<i></i>.0<i></i>.2**
+* **postcss-safe-parser@6<i></i>.0<i></i>.0**
   - license: MIT
   - repository: https://github.com/postcss/postcss-safe-parser
-* **postcss-sass@0<i></i>.4<i></i>.4**
-  - license: MIT
-  - repository: https://github.com/AleshaOleg/postcss-sass
-* **postcss-scss@2<i></i>.1<i></i>.1**
-  - license: MIT
-  - repository: https://github.com/postcss/postcss-scss
 * **postcss-selector-parser@6<i></i>.0<i></i>.9**
   - license: MIT
   - repository: https://github.com/postcss/postcss-selector-parser
@@ -5688,21 +5640,12 @@
 * **remark-parse@8<i></i>.0<i></i>.3**
   - license: MIT
   - repository: https://github.com/remarkjs/remark/tree/main/packages/remark-parse
-* **remark-parse@9<i></i>.0<i></i>.0**
-  - license: MIT
-  - repository: https://github.com/remarkjs/remark/tree/main/packages/remark-parse
 * **remark-slug@6<i></i>.1<i></i>.0**
   - license: MIT
   - repository: https://github.com/remarkjs/remark-slug
 * **remark-squeeze-paragraphs@4<i></i>.0<i></i>.0**
   - license: MIT
   - repository: https://github.com/remarkjs/remark-squeeze-paragraphs
-* **remark-stringify@9<i></i>.0<i></i>.1**
-  - license: MIT
-  - repository: https://github.com/remarkjs/remark/tree/main/packages/remark-stringify
-* **remark@13<i></i>.0<i></i>.0**
-  - license: MIT
-  - repository: https://github.com/remarkjs/remark/tree/main/packages/remark
 * **remove-trailing-separator@1<i></i>.1<i></i>.0**
   - license: ISC
   - repository: https://github.com/darsain/remove-trailing-separator
@@ -6243,21 +6186,18 @@
 * **stylelint-config-prettier@9<i></i>.0<i></i>.3**
   - license: MIT
   - repository: https://github.com/prettier/stylelint-config-prettier
-* **stylelint-config-recommended@5<i></i>.0<i></i>.0**
+* **stylelint-config-recommended@6<i></i>.0<i></i>.0**
   - license: MIT
   - repository: https://github.com/stylelint/stylelint-config-recommended
-* **stylelint-config-standard@22<i></i>.0<i></i>.0**
+* **stylelint-config-standard@24<i></i>.0<i></i>.0**
   - license: MIT
   - repository: https://github.com/stylelint/stylelint-config-standard
-* **stylelint@13<i></i>.13<i></i>.1**
+* **stylelint@14<i></i>.3<i></i>.0**
   - license: MIT
   - repository: https://github.com/stylelint/stylelint
 * **stylis@4<i></i>.0<i></i>.13**
   - license: MIT
   - repository: https://github.com/thysultan/stylis.js
-* **sugarss@2<i></i>.0<i></i>.0**
-  - license: MIT
-  - repository: https://github.com/postcss/sugarss
 * **supports-color@5<i></i>.5<i></i>.0**
   - license: MIT
   - repository: https://github.com/chalk/supports-color
@@ -6537,6 +6477,9 @@
 * **typedarray-to-buffer@3<i></i>.1<i></i>.5**
   - license: MIT
   - repository: https://github.com/feross/typedarray-to-buffer
+* **typedarray-to-buffer@4<i></i>.0<i></i>.0**
+  - license: MIT
+  - repository: https://github.com/feross/typedarray-to-buffer
 * **typedarray@0<i></i>.0<i></i>.6**
   - license: MIT
   - repository: https://github.com/substack/typedarray
@@ -6597,9 +6540,6 @@
 * **unist-builder@2<i></i>.0<i></i>.3**
   - license: MIT
   - repository: https://github.com/syntax-tree/unist-builder
-* **unist-util-find-all-after@3<i></i>.0<i></i>.2**
-  - license: MIT
-  - repository: https://github.com/syntax-tree/unist-util-find-all-after
 * **unist-util-generated@1<i></i>.1<i></i>.6**
   - license: MIT
   - repository: https://github.com/syntax-tree/unist-util-generated
@@ -6898,6 +6838,9 @@
   - license: ISC
   - repository: https://github.com/iarna/write-file-atomic
 * **write-file-atomic@3<i></i>.0<i></i>.3**
+  - license: ISC
+  - repository: https://github.com/npm/write-file-atomic
+* **write-file-atomic@4<i></i>.0<i></i>.0**
   - license: ISC
   - repository: https://github.com/npm/write-file-atomic
 * **write-json-file@3<i></i>.2<i></i>.0**
