@@ -1,18 +1,24 @@
 {
   "extends": ["stylelint-config-standard", "stylelint-config-recommended"],
   "ignoreFiles": ["**/*.js", "**/*.ts"],
+  "customSyntax": "@stylelint/postcss-css-in-js",
+  "files": ["**/*.jsx", "**/*.tsx"],
   "rules": {
     "at-rule-no-unknown": null,
+    "block-opening-brace-space-before": null,
     "color-hex-case": "lower",
     "color-hex-length": "long",
     "declaration-block-no-duplicate-properties": true,
     "declaration-colon-newline-after": null,
+    "function-parentheses-newline-inside": null,
     "indentation": null,
     "no-descending-specificity": null,
     "no-duplicate-selectors": true,
     "selector-combinator-space-before": null,
     "selector-descendant-combinator-no-non-space": null,
+    "selector-list-comma-newline-after": null,
     "selector-max-compound-selectors": 6,
+    "string-quotes": "single",
     "value-keyword-case": null,
     "value-list-comma-newline-after": null
   }

@@ -20,7 +20,9 @@ const LoaderDot = styled('div')(({ theme }) => ({
   top: 0,
 
   '&::before': {
+    /* stylelint-disable */
     content: '""',
+    /* stylelint-enable */
     display: 'block',
     margin: '0 auto',
     width: '15%',

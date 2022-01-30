@@ -53,5 +53,8 @@
   "prettier.tabWidth": 2,
   "prettier.singleQuote": true,
   "prettier.trailingComma": "none",
-  "typescript.tsdk": "node_modules\\typescript\\lib"
+  "stylelint.useLocal": true,
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "stylelint.configBasedir": "packages\\browser\\node_modules",
+  "stylelint.configFile": "packages\\browser\\.stylelintrc.json"
 }
