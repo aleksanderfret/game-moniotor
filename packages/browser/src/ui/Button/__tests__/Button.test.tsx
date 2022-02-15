@@ -3,7 +3,7 @@ import { cleanup, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import render from '__tests__/utils/render';
-import { Button } from 'ui/Button';
+import Button from 'ui/Button/Button';
 
 describe('<Button />', () => {
   afterEach(() => {
@@ -53,12 +53,11 @@ describe('<Button />', () => {
 
     const button = screen.getByRole('button');
 
-    userEvent.click(button);
-
+    expect(() => userEvent.click(button)).toThrow();
     expect(handleClick).toHaveBeenCalledTimes(0);
   });
 
-  test('does not call onClick when loading', () => {
+  test('behaves correctly when loading', () => {
     const handleClick = jest.fn();
 
     render(
@@ -69,8 +68,11 @@ describe('<Button />', () => {
 
     const button = screen.getByRole('button');
 
-    userEvent.click(button);
+    expect(screen.getByRole('progressbar')).toBeVisible();
 
+    expect(button).toBeDisabled();
+
+    expect(() => userEvent.click(button)).toThrow();
     expect(handleClick).toHaveBeenCalledTimes(0);
   });
 });

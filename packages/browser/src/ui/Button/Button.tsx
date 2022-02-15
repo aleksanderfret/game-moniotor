@@ -1,72 +1,52 @@
 import React, { forwardRef } from 'react';
-import clsx from 'clsx';
+import { styled } from '@mui/material/styles';
+import LoadingButton from '@mui/lab/LoadingButton';
 
+import Loader from 'ui/Loader';
 import { ButtonProps } from './types';
-import { DangerButton, PrimaryButton, SecondaryButton } from './StyledButtons';
+
+const StyledButton = styled(LoadingButton)(({ theme }) => ({
+  textTransform: 'none',
+  fontWeight: theme.font.weight.light,
+
+  '&.MuiLoadingButton-loading.MuiButton-outlined': {
+    color: theme.utils.alpha(theme.palette.primary.main, 30),
+    borderColor: theme.palette.primary.main,
+  },
+
+  '&.MuiLoadingButton-loading.MuiButton-contained': {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.utils.alpha(theme.palette.primary.contrastText, 30),
+  },
+
+  '&.MuiLoadingButton-loading.MuiButton-containedError': {
+    backgroundColor: theme.palette.error.main,
+    color: theme.utils.alpha(theme.palette.error.contrastText, 60),
+  },
+}));
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      children,
-      danger,
-      disabled: sourceDisabled,
-      label,
-      loading,
-      onClick,
-      primary: sourcePrimary,
-      secondary: sourceSecondary,
-      size = 'medium',
-      title,
-      type = 'button',
-      ...rest
-    },
-    ref
-  ) => {
-    const secondary = sourceSecondary && !sourcePrimary;
-    const primary = sourcePrimary || !secondary;
-    const disabled = sourceDisabled || loading;
-
-    const Component = primary
-      ? danger
-        ? DangerButton
-        : PrimaryButton
-      : SecondaryButton;
-
-    const handleClick = (
-      event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ) => {
-      if (loading || !onClick) {
-        return;
-      }
-
-      onClick(event);
-    };
-
-    const classes = clsx({
-      loading,
-      danger,
-      small: size === 'small',
-      medium: size === 'medium',
-      big: size === 'big',
-    });
+  ({ danger, disabled, loading, secondary, size, tertiary, ...props }, ref) => {
+    const variant = tertiary ? 'text' : secondary ? 'outlined' : 'contained';
+    const finalDisabled = disabled || loading;
+    const loaderColor = secondary && !danger ? 'main' : 'contrast';
+    const loaderSize = size === 'small' ? 'small' : 'medium';
+    const color = danger ? 'error' : 'primary';
 
     return (
-      <Component
-        {...rest}
-        aria-label={label}
-        className={classes}
-        disabled={disabled}
-        onClick={handleClick}
+      <StyledButton
+        color={color}
+        disabled={finalDisabled}
+        loading={loading}
+        loadingIndicator={<Loader color={loaderColor} size={loaderSize} />}
         ref={ref}
-        title={title}
-        type={type}
-      >
-        {children}
-      </Component>
+        size="medium"
+        variant={variant}
+        {...props}
+      />
     );
   }
 );
 
 Button.displayName = 'Button';
-
 export default Button;

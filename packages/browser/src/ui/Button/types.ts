@@ -1,17 +1,9 @@
-import React, { ComponentPropsWithoutRef } from 'react';
+import { LoadingButtonProps } from '@mui/lab/LoadingButton';
 
-export type ButtonSize = 'small' | 'medium' | 'big';
-
-export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
-  danger?: boolean;
-  disabled?: boolean;
-  label?: string;
-  loading?: boolean;
-  primary?: boolean;
+export interface ButtonProps extends LoadingButtonProps {
   secondary?: boolean;
-  size?: ButtonSize;
-  title?: string;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  tertiary?: boolean;
+  danger?: boolean;
 }
 
 export interface AsyncContentBoxProps {

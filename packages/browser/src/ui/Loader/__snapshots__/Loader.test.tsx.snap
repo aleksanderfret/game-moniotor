@@ -3,7 +3,7 @@
 exports[`<Loader /> should have proper structure 1`] = `
 <DocumentFragment>
   <div
-    class="medium css-1at6hqf"
+    class="medium css-824d5e"
     role="progressbar"
   >
     <div

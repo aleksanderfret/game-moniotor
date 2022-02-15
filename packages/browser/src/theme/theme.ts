@@ -19,13 +19,11 @@ import {
 
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {
-    xxs: true;
     xs: true;
     sm: true;
     md: true;
     lg: true;
     xl: true;
-    xxl: true;
   }
 
   interface Theme {
@@ -208,7 +206,7 @@ const createCustomTheme = (): ThemeOptions => {
       focusError: `0 0 0 ${sizes.xxs} ${alpha(palette.error.main, 60)}`,
     },
     shape: {
-      borderRadius: 16,
+      borderRadius: 8,
     },
     spacing: (factor: number) => `${1 * factor}rem`,
     utils: {

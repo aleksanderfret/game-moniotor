@@ -20,6 +20,7 @@
     "selector-max-compound-selectors": 6,
     "string-quotes": "single",
     "value-keyword-case": null,
-    "value-list-comma-newline-after": null
+    "value-list-comma-newline-after": null,
+    "selector-class-pattern": null
   }
 }

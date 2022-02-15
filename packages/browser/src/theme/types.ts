@@ -1,23 +1,19 @@
 import { CSSProperties } from 'react';
 
 export enum BreakpointKey {
-  xxs = 'xxs',
   xs = 'xs',
   sm = 'sm',
   md = 'md',
   lg = 'lg',
   xl = 'xl',
-  xxl = 'xxl',
 }
 
 export enum BreakpointSizes {
-  xxs = 0,
-  xs = 320,
-  sm = 576,
-  md = 768,
-  lg = 992,
-  xl = 1200,
-  xxl = 1440,
+  xs = 0,
+  sm = 600,
+  md = 900,
+  lg = 1200,
+  xl = 1500,
 }
 
 export type SizeLabel =
@@ -143,13 +139,11 @@ export interface ShadowParams {
 export type ShadowFunction = (params: ShadowParams) => string;
 
 const breakpointValues: BreakpointValues = {
-  [BreakpointKey.xxs]: BreakpointSizes.xxs,
   [BreakpointKey.xs]: BreakpointSizes.xs,
   [BreakpointKey.sm]: BreakpointSizes.sm,
   [BreakpointKey.md]: BreakpointSizes.md,
   [BreakpointKey.lg]: BreakpointSizes.lg,
   [BreakpointKey.xl]: BreakpointSizes.xl,
-  [BreakpointKey.xxl]: BreakpointSizes.xxl,
 };
 
 export const breakpoints: Breakpoints = {
