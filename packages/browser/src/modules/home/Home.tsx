@@ -1,21 +1,31 @@
 import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
+import { ButtonOnClickHandler } from 'types/types';
 import { Path } from 'router';
+import Button from 'ui/Button/Button';
 
 const Home: FC = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate =
+    (path: string): ButtonOnClickHandler =>
+    () => {
+      navigate(path);
+    };
+
   return (
     <ul>
       <li>
-        <Link to={Path.SignIn}>
+        <Button onClick={handleNavigate(Path.SignIn)}>
           <FormattedMessage id="sign-in" />
-        </Link>
+        </Button>
       </li>
       <li>
-        <Link to={Path.SignUp}>
+        <Button onClick={handleNavigate(Path.SignUp)} secondary>
           <FormattedMessage id="sign-up" />
-        </Link>
+        </Button>
       </li>
     </ul>
   );

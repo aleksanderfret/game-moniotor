@@ -1,6 +1,7 @@
+import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
 
-const Page = styled('div')(({ theme }) => ({
+const Page = styled(Box)(({ theme }) => ({
   display: 'flex',
   minWidth: '100vw',
   width: '100vw',

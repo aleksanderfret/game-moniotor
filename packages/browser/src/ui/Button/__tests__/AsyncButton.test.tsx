@@ -65,21 +65,13 @@ describe('<AsyncButton />', () => {
 
     expect(button).toBeDisabled();
 
-    expect(button).toHaveClass('loading');
-
-    expect(buttonContent).not.toBeVisible();
-
-    userEvent.click(button);
+    expect(() => userEvent.click(button)).toThrow();
 
     expect(handler).toHaveBeenCalledTimes(1);
 
     await waitForElementToBeRemoved(() => screen.queryByRole('progressbar'));
 
     expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
-
-    expect(buttonContent).toBeVisible();
-
-    expect(button).not.toHaveClass('loading');
 
     expect(button).toBeEnabled();
   });
@@ -110,11 +102,7 @@ describe('<AsyncButton />', () => {
 
     expect(button).toBeDisabled();
 
-    expect(button).toHaveClass('loading');
-
-    expect(buttonContent).not.toBeVisible();
-
-    userEvent.click(button);
+    expect(() => userEvent.click(button)).toThrow();
 
     expect(handler).toHaveBeenCalledTimes(1);
 
@@ -123,8 +111,6 @@ describe('<AsyncButton />', () => {
     expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
 
     expect(buttonContent).toBeVisible();
-
-    expect(button).not.toHaveClass('loading');
 
     expect(button).toBeEnabled();
   });

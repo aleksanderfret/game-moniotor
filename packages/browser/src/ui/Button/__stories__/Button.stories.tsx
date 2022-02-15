@@ -10,10 +10,8 @@ export default {
   args: {
     danger: false,
     disabled: false,
-    label: 'Button',
     loading: false,
     onClick: () => alert('button clicked'),
-    primary: true,
     secondary: false,
     size: 'medium',
     title: '',
@@ -27,7 +25,7 @@ export const Primary = Template.bind({});
 Primary.args = {};
 
 export const Secondary = Template.bind({});
-Secondary.args = { primary: false, secondary: true };
+Secondary.args = { secondary: true };
 
 export const Danger = Template.bind({});
 Danger.args = { danger: true };
@@ -36,7 +34,7 @@ export const Disabled = Template.bind({});
 Disabled.args = { disabled: true };
 
 export const SecondaryDisabled = Template.bind({});
-SecondaryDisabled.args = { disabled: true, primary: false, secondary: true };
+SecondaryDisabled.args = { disabled: true, secondary: true };
 
 export const Small = Template.bind({});
 Small.args = { size: 'small' };
@@ -45,4 +43,4 @@ export const Medium = Template.bind({});
 Medium.args = { size: 'medium' };
 
 export const Big = Template.bind({});
-Big.args = { size: 'big' };
+Big.args = { size: 'large' };

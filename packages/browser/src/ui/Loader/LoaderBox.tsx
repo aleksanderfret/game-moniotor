@@ -1,8 +1,6 @@
 import { styled } from '@mui/material/styles';
 
 const LoaderBox = styled('div')(({ theme }) => ({
-  position: 'absolute',
-
   '&.small': {
     ...theme.utils.constSize(theme.sizes.sm),
   },

@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
-import { styled } from '@mui/material/styles';
 import { Link, Route, Routes } from 'react-router-dom';
 
 import Logo from 'ui/Logo';
-import Tile from 'ui/Tile';
 import Home from 'modules/home';
 import {
+  AuthBox,
   ForgotPassword,
   RemoveAccountConfirmation,
   ResetPassword,
@@ -15,18 +14,8 @@ import {
 } from 'modules/auth';
 import { Path } from 'router';
 
-const IntroBox = styled(Tile)(() => ({
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  width: '90%',
-  maxWidth: '600px',
-  margin: 'auto',
-}));
-
 const Intro: FC = () => (
-  <IntroBox>
+  <AuthBox>
     <h1>
       <Link to={Path.Home}>
         <Logo size="medium" variant="vertical" />
@@ -46,6 +35,6 @@ const Intro: FC = () => (
       <Route element={<Home />} path="*" />
     </Routes>
     <div>© 2021 Apps First</div>
-  </IntroBox>
+  </AuthBox>
 );
 export default Intro;

@@ -10,10 +10,8 @@ export default {
   args: {
     danger: false,
     disabled: false,
-    label: 'Button',
     loading: false,
     onClick: () => alert('button clicked'),
-    primary: true,
     secondary: false,
     size: 'medium',
     title: '',
@@ -41,7 +39,6 @@ Danger.args = {
 export const Secondary = Template.bind({});
 Secondary.args = {
   loading: true,
-  primary: false,
   secondary: true,
   size: 'medium',
 };
