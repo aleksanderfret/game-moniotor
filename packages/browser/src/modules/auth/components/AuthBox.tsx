@@ -8,9 +8,13 @@ const Intro = styled(Paper)(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   width: '90%',
-  maxWidth: '600px',
+  maxWidth: '480px',
   margin: 'auto',
   padding: theme.spacing(1),
+
+  '& > *:not(:last-child)': {
+    marginBottom: theme.spacing(2),
+  },
 }));
 
 const AuthBox: FC<PaperProps> = ({ children, ...props }) => (

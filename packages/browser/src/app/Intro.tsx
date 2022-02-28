@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 
+import Copyright from 'ui/Copyright';
 import Logo from 'ui/Logo';
-import Home from 'modules/home';
 import {
   AuthBox,
+  AuthIntro,
   ForgotPassword,
   RemoveAccountConfirmation,
   ResetPassword,
@@ -22,7 +23,7 @@ const Intro: FC = () => (
       </Link>
     </h1>
     <Routes>
-      <Route element={<Home />} path={Path.Home} />
+      <Route element={<AuthIntro />} path={Path.Home} />
       <Route element={<SignIn />} path={Path.SignIn} />
       <Route element={<SignUp />} path={Path.SignUp} />
       <Route element={<SignUpConfirmation />} path={Path.SignUpConfirmation} />
@@ -32,9 +33,9 @@ const Intro: FC = () => (
         path={Path.RemoveAccountConfirmation}
       />
       <Route element={<ResetPassword />} path={Path.ResetPassword} />
-      <Route element={<Home />} path="*" />
+      <Route element={<AuthIntro />} path="*" />
     </Routes>
-    <div>© 2021 Apps First</div>
+    <Copyright />
   </AuthBox>
 );
 export default Intro;

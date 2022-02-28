@@ -5,8 +5,9 @@ import { FormattedMessage } from 'react-intl';
 import { ButtonOnClickHandler } from 'types/types';
 import { Path } from 'router';
 import Button from 'ui/Button/Button';
+import { AuthControls } from 'modules/auth/components';
 
-const Home: FC = () => {
+const AuthIntro: FC = () => {
   const navigate = useNavigate();
 
   const handleNavigate =
@@ -16,19 +17,15 @@ const Home: FC = () => {
     };
 
   return (
-    <ul>
-      <li>
-        <Button onClick={handleNavigate(Path.SignIn)}>
-          <FormattedMessage id="sign-in" />
-        </Button>
-      </li>
-      <li>
-        <Button onClick={handleNavigate(Path.SignUp)} secondary>
-          <FormattedMessage id="sign-up" />
-        </Button>
-      </li>
-    </ul>
+    <AuthControls>
+      <Button onClick={handleNavigate(Path.SignIn)}>
+        <FormattedMessage id="sign-in" />
+      </Button>
+      <Button onClick={handleNavigate(Path.SignUp)} secondary>
+        <FormattedMessage id="sign-up" />
+      </Button>
+    </AuthControls>
   );
 };
 
-export default Home;
+export default AuthIntro;
