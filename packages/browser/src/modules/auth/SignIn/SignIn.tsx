@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { setIsAuthenticated } from 'context';
 import { Path } from 'router';
 import { setAccessToken } from 'modules/auth/token';
+import AuthControls from 'modules/auth/components/AuthControls';
 import { InputChangeHandler } from 'types/types';
 import { useSignInMutation } from './useSignInMutation';
 import { useAppDispatch } from 'hooks';
@@ -46,37 +47,39 @@ export const SignIn: FC = () => {
   return (
     <div>
       <form onSubmit={handleSignIn}>
-        <div>
-          <label>
-            <FormattedMessage id="email" />
-            <input onChange={handleEmailChange} type="text" value={email} />
-          </label>
-        </div>
-        <div>
-          <label>
-            <FormattedMessage id="password" />
-            <input
-              onChange={handlePasswordChange}
-              type="password"
-              value={password}
-            />
-          </label>
-        </div>
-        <div>
-          <AsyncButton loading={loading} type="submit">
-            <FormattedMessage id="sign-in" />
-          </AsyncButton>
-        </div>
-        <div>
-          <Link to={Path.ForgotPassword}>
-            <FormattedMessage id="password.forgot" />
-          </Link>
-        </div>
-        {error && (
+        <AuthControls>
           <div>
-            <FormattedMessage id="error.general" />
+            <label>
+              <FormattedMessage id="email" />
+              <input onChange={handleEmailChange} type="text" value={email} />
+            </label>
           </div>
-        )}
+          <div>
+            <label>
+              <FormattedMessage id="password" />
+              <input
+                onChange={handlePasswordChange}
+                type="password"
+                value={password}
+              />
+            </label>
+          </div>
+          <div>
+            <AsyncButton loading={loading} type="submit">
+              <FormattedMessage id="sign-in" />
+            </AsyncButton>
+          </div>
+          <div>
+            <Link to={Path.ForgotPassword}>
+              <FormattedMessage id="password.forgot" />
+            </Link>
+          </div>
+          {error && (
+            <div>
+              <FormattedMessage id="error.general" />
+            </div>
+          )}
+        </AuthControls>
       </form>
     </div>
   );
