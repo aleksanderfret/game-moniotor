@@ -7,6 +7,7 @@ const AuthControlsBox = styled(Box)(({ theme }) => ({
   flexDirection: 'column',
   width: '100%',
   maxWidth: '320px',
+  margin: '0 auto',
 
   '& > *:not(:last-child)': {
     marginBottom: theme.spacing(1),

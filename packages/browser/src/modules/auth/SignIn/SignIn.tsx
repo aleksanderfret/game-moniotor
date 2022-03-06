@@ -5,11 +5,14 @@ import { FormattedMessage } from 'react-intl';
 import { setIsAuthenticated } from 'context';
 import { Path } from 'router';
 import { setAccessToken } from 'modules/auth/token';
-import AuthControls from 'modules/auth/components/AuthControls';
+import { AuthControls, AuthHeader } from 'modules/auth/components';
 import { InputChangeHandler } from 'types/types';
 import { useSignInMutation } from './useSignInMutation';
 import { useAppDispatch } from 'hooks';
 import { AsyncButton } from 'ui/Button';
+import Input from 'ui/Input';
+import Form from 'ui/Form';
+import Feedback from 'ui/Feedback';
 
 export const SignIn: FC = () => {
   const dispatch = useAppDispatch();
@@ -45,43 +48,36 @@ export const SignIn: FC = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSignIn}>
-        <AuthControls>
-          <div>
-            <label>
-              <FormattedMessage id="email" />
-              <input onChange={handleEmailChange} type="text" value={email} />
-            </label>
-          </div>
-          <div>
-            <label>
-              <FormattedMessage id="password" />
-              <input
-                onChange={handlePasswordChange}
-                type="password"
-                value={password}
-              />
-            </label>
-          </div>
-          <div>
-            <AsyncButton loading={loading} type="submit">
-              <FormattedMessage id="sign-in" />
-            </AsyncButton>
-          </div>
-          <div>
-            <Link to={Path.ForgotPassword}>
-              <FormattedMessage id="password.forgot" />
-            </Link>
-          </div>
-          {error && (
-            <div>
-              <FormattedMessage id="error.general" />
-            </div>
-          )}
-        </AuthControls>
-      </form>
-    </div>
+    <Form onSubmit={handleSignIn}>
+      <AuthHeader>
+        <FormattedMessage id="auth.header.sign-in" />
+      </AuthHeader>
+      <AuthControls>
+        <Input
+          label={<FormattedMessage id="email" />}
+          onChange={handleEmailChange}
+          type="email"
+          value={email}
+        />
+        <Input
+          label={<FormattedMessage id="password" />}
+          onChange={handlePasswordChange}
+          type="password"
+          value={password}
+        />
+        <AsyncButton loading={loading} type="submit">
+          <FormattedMessage id="sign-in" />
+        </AsyncButton>
+        <div>
+          <Link to={Path.ForgotPassword}>
+            <FormattedMessage id="password.forgot" />
+          </Link>
+        </div>
+        {error && (
+          <Feedback message={<FormattedMessage id="error.general" />} />
+        )}
+      </AuthControls>
+    </Form>
   );
 };
 

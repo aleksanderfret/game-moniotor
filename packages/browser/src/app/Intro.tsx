@@ -4,7 +4,6 @@ import { Link, Route, Routes } from 'react-router-dom';
 import Copyright from 'ui/Copyright';
 import Logo from 'ui/Logo';
 import {
-  AuthBox,
   AuthIntro,
   ForgotPassword,
   RemoveAccountConfirmation,
@@ -13,6 +12,7 @@ import {
   SignUp,
   SignUpConfirmation,
 } from 'modules/auth';
+import { AuthBox } from 'modules/auth/components';
 import { Path } from 'router';
 
 const Intro: FC = () => (
