@@ -1,11 +1,16 @@
 import React, { FC, FormEvent, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
+import Box from '@mui/material/Box';
 
 import { useResetPasswordMutation } from './useResetPasswordMutation';
 import { InputChangeHandler } from 'types/types';
 import { Path } from 'router';
 import { AsyncButton } from 'ui/Button';
+import Feedback from 'ui/Feedback';
+import Form from 'ui/Form';
+import Input from 'ui/Input';
+import { AuthControls, AuthHeader } from 'modules/auth/components';
 
 interface RouteParams {
   tokenId: string;
@@ -53,62 +58,62 @@ const ResetPassword: FC = () => {
     });
   };
 
-  const success = data && !error && !loading;
+  const isSuccess = data && !error && !loading;
 
   return (
-    <div>
-      {success ? (
-        <div>
-          <p>
-            <FormattedMessage id="auth.password-changed" />
-          </p>
+    <Box sx={{ width: '100%' }}>
+      <AuthHeader>
+        <FormattedMessage id="auth.header.reset-password" />
+      </AuthHeader>
+      {isSuccess ? (
+        <>
+          <Feedback
+            message={<FormattedMessage id="auth.password-changed" />}
+            severity="success"
+          />
           <p>
             <Link to={Path.SignIn}>
               <FormattedMessage id="sign-in" />
             </Link>
           </p>
-        </div>
+        </>
       ) : (
-        <form onSubmit={handleUpdatePassword}>
-          <div>
-            <label>
-              <FormattedMessage id="email" />
-              <input onChange={handleEmailChange} type="text" value={email} />
-            </label>
-          </div>
-          <div>
-            <label>
-              <FormattedMessage id="password" />
-              <input
-                onChange={handlePasswordChange}
-                type="password"
-                value={password}
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              <FormattedMessage id="password.confirm" />
-              <input
-                onChange={handlePasswordConfirmationChange}
-                type="password"
-                value={passwordConfirmation}
-              />
-            </label>
-          </div>
-          <div>
+        <Form autoComplete="off" onSubmit={handleUpdatePassword}>
+          <AuthControls>
+            <Input
+              autoComplete="off"
+              disabled={loading}
+              label={<FormattedMessage id="email" />}
+              onChange={handleEmailChange}
+              type="email"
+              value={email}
+            />
+            <Input
+              autoComplete="off"
+              disabled={loading}
+              label={<FormattedMessage id="password" />}
+              onChange={handlePasswordChange}
+              type="password"
+              value={password}
+            />
+            <Input
+              autoComplete="off"
+              disabled={loading}
+              label={<FormattedMessage id="password.confirm" />}
+              onChange={handlePasswordConfirmationChange}
+              type="password"
+              value={passwordConfirmation}
+            />
             <AsyncButton loading={loading} type="submit">
               <FormattedMessage id="save" />
             </AsyncButton>
-          </div>
+          </AuthControls>
           {error && (
-            <div>
-              <FormattedMessage id="error.general" />
-            </div>
+            <Feedback message={<FormattedMessage id="error.general" />} />
           )}
-        </form>
+        </Form>
       )}
-    </div>
+    </Box>
   );
 };
 

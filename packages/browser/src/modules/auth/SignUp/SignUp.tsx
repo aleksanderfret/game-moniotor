@@ -1,9 +1,14 @@
 import React, { FC, FormEvent, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 
+import { AuthControls, AuthHeader } from 'modules/auth/components';
 import { InputChangeHandler } from 'types/types';
 import { AsyncButton } from 'ui/Button';
 import { useSignUpMutation } from './useSignUpMutation';
+import Input from 'ui/Input';
+import Checkbox from 'ui/Checkbox';
+import Form from 'ui/Form';
+import Feedback from 'ui/Feedback';
 
 const SignUp: FC = () => {
   const [email, setEmail] = useState('');
@@ -53,75 +58,57 @@ const SignUp: FC = () => {
 
   const isSuccess = data && !error && !loading;
 
-  return isSuccess ? (
+  return (
     <div>
-      <FormattedMessage
-        id="sign-up.success.message"
-        values={{
-          email,
-        }}
-      />
-    </div>
-  ) : (
-    <form onSubmit={handleSignUp}>
-      <div>
-        <label>
-          <FormattedMessage id="email" />
-          <input
-            disabled={loading}
-            onChange={handleEmailChange}
-            type="text"
-            value={email}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          <FormattedMessage id="password" />
-          <input
-            disabled={loading}
-            onChange={handlePasswordChange}
-            type="password"
-            value={password}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          <FormattedMessage id="password.confirm" />
-          <input
-            disabled={loading}
-            onChange={handlePasswordConfirmationChange}
-            type="password"
-            value={passwordConfirmation}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          <FormattedMessage id="policy.acceptance" />
-          <input
-            checked={policy}
-            disabled={loading}
-            onChange={handlePolicyAcceptanceChange}
-            type="checkbox"
-          />
-        </label>
-      </div>
-      <div>
-        <AsyncButton loading={loading} type="submit">
-          <FormattedMessage id="sign-up" />
-        </AsyncButton>
-      </div>
-      {error && (
-        <>
-          <div>
-            <FormattedMessage id="error.general" />
-          </div>
-          {error && error.message && <div>{error.message}</div>}
-        </>
+      <AuthHeader>
+        <FormattedMessage id="auth.header.sign-up" />
+      </AuthHeader>
+      {isSuccess ? (
+        <Feedback
+          message={<FormattedMessage id="sign-up.success.message" />}
+          severity="success"
+        />
+      ) : (
+        <Form autoComplete="off" onSubmit={handleSignUp}>
+          <AuthControls>
+            <Input
+              autoComplete="off"
+              disabled={loading}
+              label={<FormattedMessage id="email" />}
+              onChange={handleEmailChange}
+              type="email"
+              value={email}
+            />
+            <Input
+              autoComplete="off"
+              disabled={loading}
+              label={<FormattedMessage id="password" />}
+              onChange={handlePasswordChange}
+              type="password"
+              value={password}
+            />
+            <Input
+              autoComplete="off"
+              disabled={loading}
+              label={<FormattedMessage id="password.confirm" />}
+              onChange={handlePasswordConfirmationChange}
+              type="password"
+              value={passwordConfirmation}
+            />
+            <Checkbox
+              checked={policy}
+              disabled={loading}
+              label={<FormattedMessage id="policy.acceptance" />}
+              onChange={handlePolicyAcceptanceChange}
+            />
+            <AsyncButton loading={loading} type="submit">
+              <FormattedMessage id="sign-up" />
+            </AsyncButton>
+          </AuthControls>
+          {error && <Feedback message={error.message} />}
+        </Form>
       )}
-    </form>
+    </div>
   );
 };
 
