@@ -42,7 +42,7 @@ const GlobalStyles = () => (
       body: {
         fontStyle: 'normal',
         fontVariant: 'normal',
-        fontWeight: theme.font.weight.light,
+        fontWeight: theme.font.weight.regular,
         fontSize: theme.font.base,
         fontFamily: theme.font.fontFamily,
         lineHeight: theme.font.lineHeight,
