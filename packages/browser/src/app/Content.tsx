@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
+import { styled } from '@mui/material/styles';
 import { Route, Routes } from 'react-router-dom';
+import MuiBox from '@mui/material/Box';
 
 import { Path } from 'router';
 import Dashboard from 'modules/dashboard';
@@ -10,8 +12,14 @@ import { Event, Events } from 'modules/events';
 import { Tool, Tools } from 'modules/tools';
 import BottomNavigation from 'ui/BottomNavigation/BottomNavigation';
 
+const Box = styled(MuiBox)(({ theme }) => ({
+  display: 'flex',
+  minWidth: '100vw',
+  backgroundColor: theme.palette.background.default,
+}));
+
 const Content: FC = () => (
-  <div>
+  <Box>
     <Routes>
       <Route element={<Dashboard />} path={Path.Dashboard} />
       <Route element={<Account />} path={Path.Account} />
@@ -27,6 +35,6 @@ const Content: FC = () => (
       <Route element={<Dashboard />} path="*" />
     </Routes>
     <BottomNavigation />
-  </div>
+  </Box>
 );
 export default Content;
