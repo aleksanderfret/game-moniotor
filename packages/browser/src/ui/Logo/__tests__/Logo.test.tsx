@@ -20,13 +20,19 @@ describe('<Logo />', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test('should render simple logo', () => {
+  test('should render mixed logo', () => {
+    const { asFragment } = render(<Logo variant="mixed" />);
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  test('should render horizontal logo', () => {
     const { asFragment } = render(<Logo variant="horizontal" />);
 
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test('should render simple logo', () => {
+  test('should render vertical logo', () => {
     const { asFragment } = render(<Logo variant="vertical" />);
 
     expect(asFragment()).toMatchSnapshot();
