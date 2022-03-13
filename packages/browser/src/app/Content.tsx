@@ -10,7 +10,7 @@ import { CreateGame, Game, Games } from 'modules/games';
 import { Play, Plays } from 'modules/plays';
 import { Event, Events } from 'modules/events';
 import { Tool, Tools } from 'modules/tools';
-import BottomNavigation from 'ui/BottomNavigation/BottomNavigation';
+import BottomNavigation from 'ui/BottomNavigation';
 import Layout from 'ui/Layout';
 
 const Box = styled(MuiBox)(({ theme }) => ({
