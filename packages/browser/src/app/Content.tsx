@@ -11,6 +11,7 @@ import { Play, Plays } from 'modules/plays';
 import { Event, Events } from 'modules/events';
 import { Tool, Tools } from 'modules/tools';
 import BottomNavigation from 'ui/BottomNavigation/BottomNavigation';
+import Layout from 'ui/Layout';
 
 const Box = styled(MuiBox)(({ theme }) => ({
   display: 'flex',
@@ -20,21 +21,23 @@ const Box = styled(MuiBox)(({ theme }) => ({
 
 const Content: FC = () => (
   <Box>
-    <Routes>
-      <Route element={<Dashboard />} path={Path.Dashboard} />
-      <Route element={<Account />} path={Path.Account} />
-      <Route element={<Game />} path={Path.Game} />
-      <Route element={<Games />} path={Path.Games} />
-      <Route element={<CreateGame />} path={Path.NewGame} />
-      <Route element={<Play />} path={Path.Play} />
-      <Route element={<Plays />} path={Path.Plays} />
-      <Route element={<Event />} path={Path.Event} />
-      <Route element={<Events />} path={Path.Events} />
-      <Route element={<Tool />} path={Path.Tool} />
-      <Route element={<Tools />} path={Path.Tools} />
-      <Route element={<Dashboard />} path="*" />
-    </Routes>
-    <BottomNavigation />
+    <Layout>
+      <Routes>
+        <Route element={<Dashboard />} path={Path.Dashboard} />
+        <Route element={<Account />} path={Path.Account} />
+        <Route element={<Game />} path={Path.Game} />
+        <Route element={<Games />} path={Path.Games} />
+        <Route element={<CreateGame />} path={Path.NewGame} />
+        <Route element={<Play />} path={Path.Play} />
+        <Route element={<Plays />} path={Path.Plays} />
+        <Route element={<Event />} path={Path.Event} />
+        <Route element={<Events />} path={Path.Events} />
+        <Route element={<Tool />} path={Path.Tool} />
+        <Route element={<Tools />} path={Path.Tools} />
+        <Route element={<Dashboard />} path="*" />
+      </Routes>
+      <BottomNavigation />
+    </Layout>
   </Box>
 );
 export default Content;
