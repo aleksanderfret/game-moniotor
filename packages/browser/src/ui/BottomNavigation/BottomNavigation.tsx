@@ -18,6 +18,10 @@ const Link = styled(NavLink)(({ theme }) => ({
   '&.MuiButtonBase-root': {
     color: theme.palette.primary.main,
 
+    '& .MuiSvgIcon-root': {
+      ...theme.utils.constSize('24px'),
+    },
+
     '&.active': {
       fontWeight: 'bold',
 
@@ -37,8 +41,9 @@ const Link = styled(NavLink)(({ theme }) => ({
 const StyledBottomNavigation = styled(MuiBottomNavigation)(({ theme }) => ({
   display: 'flex',
   position: 'fixed',
-  bottom: 0,
   width: '100%',
+  bottom: 0,
+  left: 0,
   backgroundColor: theme.palette.background.paper,
 
   [theme.breakpoints.up('md')]: {
