@@ -66,7 +66,7 @@ export const HorizontalLogo: FC = () => (
   />
 );
 
-export const TwoLinesLogo: FC = () => (
+export const MixedLogo: FC = () => (
   <LogoSVG
     cx="127.074"
     cy="127.95"

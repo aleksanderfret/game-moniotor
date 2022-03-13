@@ -2,21 +2,31 @@ import React, { FC } from 'react';
 import clsx from 'clsx';
 import { styled } from '@mui/material/styles';
 
-import { HorizontalLogo, SimpleLogo, VerticalLogo } from './IconLogo';
+import {
+  HorizontalLogo,
+  MixedLogo,
+  SimpleLogo,
+  VerticalLogo,
+} from './IconLogo';
 
-type LogoVariant = 'simple' | 'horizontal' | 'vertical';
+type LogoVariant = 'simple' | 'horizontal' | 'mixed' | 'vertical';
 
-type LogoSize = 'small' | 'medium' | 'big' | 'large';
+type LogoSize = 'tiny' | 'small' | 'medium' | 'big' | 'large';
 
 export interface LogoProps {
   size?: LogoSize;
   variant?: LogoVariant;
+  gap?: boolean;
 }
 
-const LogoBox = styled('div')(({ theme }) => ({
+const LogoBox = styled('div')<{ gap: boolean }>(({ gap, theme }) => ({
   display: 'inline-block',
   width: 'auto',
-  margin: theme.spacing(1),
+  margin: gap ? theme.spacing(1) : 0,
+
+  '&.tiny, &.tiny svg': {
+    height: theme.utils.size(2.5),
+  },
 
   '&.small, &.small svg': {
     height: theme.utils.size(3),
@@ -41,6 +51,8 @@ const setLogoComponent = (variant: LogoVariant): FC => {
       return SimpleLogo;
     case 'horizontal':
       return HorizontalLogo;
+    case 'mixed':
+      return MixedLogo;
     case 'vertical':
       return VerticalLogo;
     default:
@@ -48,10 +60,15 @@ const setLogoComponent = (variant: LogoVariant): FC => {
   }
 };
 
-const Logo: FC<LogoProps> = ({ size = 'small', variant = 'simple' }) => {
+const Logo: FC<LogoProps> = ({
+  size = 'small',
+  variant = 'simple',
+  gap = true,
+}) => {
   const LogoComponent = setLogoComponent(variant);
 
   const classes = clsx({
+    tiny: size === 'tiny',
     small: size === 'small',
     medium: size === 'medium',
     big: size === 'big',
@@ -59,7 +76,7 @@ const Logo: FC<LogoProps> = ({ size = 'small', variant = 'simple' }) => {
   });
 
   return (
-    <LogoBox className={classes}>
+    <LogoBox className={classes} gap={gap}>
       <LogoComponent />
     </LogoBox>
   );

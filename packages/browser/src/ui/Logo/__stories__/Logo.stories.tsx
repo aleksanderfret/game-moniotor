@@ -22,9 +22,21 @@ Horizontal.args = {
   variant: 'horizontal',
 };
 
+export const Mixed = Template.bind({});
+Mixed.args = {
+  size: 'medium',
+  variant: 'mixed',
+};
+
 export const Vertical = Template.bind({});
 Vertical.args = {
   size: 'medium',
+  variant: 'vertical',
+};
+
+export const Tiny = Template.bind({});
+Tiny.args = {
+  size: 'tiny',
   variant: 'vertical',
 };
 
