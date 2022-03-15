@@ -3,7 +3,8 @@
 exports[`<Logo /> should render horizontal logo 1`] = `
 <DocumentFragment>
   <div
-    class="small css-1sj2cr2"
+    class="small MuiBox-root css-1018ar4"
+    offset="1"
   >
     <svg
       aria-labelledby="logo-title"
@@ -69,7 +70,8 @@ exports[`<Logo /> should render horizontal logo 1`] = `
 exports[`<Logo /> should render mixed logo 1`] = `
 <DocumentFragment>
   <div
-    class="small css-1sj2cr2"
+    class="small MuiBox-root css-1018ar4"
+    offset="1"
   >
     <svg
       aria-labelledby="logo-title"
@@ -135,7 +137,8 @@ exports[`<Logo /> should render mixed logo 1`] = `
 exports[`<Logo /> should render simple logo 1`] = `
 <DocumentFragment>
   <div
-    class="small css-1sj2cr2"
+    class="small MuiBox-root css-1018ar4"
+    offset="1"
   >
     <svg
       aria-labelledby="logo-title"
@@ -196,7 +199,8 @@ exports[`<Logo /> should render simple logo 1`] = `
 exports[`<Logo /> should render vertical logo 1`] = `
 <DocumentFragment>
   <div
-    class="small css-1sj2cr2"
+    class="small MuiBox-root css-1018ar4"
+    offset="1"
   >
     <svg
       aria-labelledby="logo-title"

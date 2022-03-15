@@ -10,31 +10,39 @@ const Layout: FC = ({ children }) => {
   const theme = useTheme();
   const isMediumScreen = useMediaQuery(theme.breakpoints.up('md'));
   const [isOpen, setIsOpen] = useState(isMediumScreen);
+  const [expanded, setExpanded] = useState(true);
 
-  const handleDrawerToggle = () => {
+  const handleNavigationExpand = () => {
+    setExpanded(previousIsExpanded => !previousIsExpanded);
+  };
+
+  const handleNavigationToggle = () => {
     setIsOpen(previousIsOpen => !previousIsOpen);
   };
 
-  const handleDrawerOpen = () => {
+  const handleNavigationOpen = () => {
     setIsOpen(true);
   };
 
-  const handleDrawerClose = () => {
+  const handleNavigationClose = () => {
     setIsOpen(false);
   };
 
   return (
     <>
       <TopBar
-        onClick={isMediumScreen ? handleDrawerToggle : handleDrawerOpen}
+        expanded={expanded}
+        onClick={isMediumScreen ? handleNavigationToggle : handleNavigationOpen}
         open={isOpen}
       />
       <SideBar
-        onClose={handleDrawerClose}
+        expanded={expanded}
+        onClose={handleNavigationClose}
+        onExpand={handleNavigationExpand}
         open={isOpen}
         variant={isMediumScreen ? 'persistent' : 'temporary'}
       />
-      <Content component="main" open={isOpen}>
+      <Content component="main" expanded={expanded ? 1 : 0} open={isOpen}>
         {children}
       </Content>
     </>

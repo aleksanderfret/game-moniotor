@@ -34,7 +34,7 @@ const SidebarLink = styled(NavLink)(({ theme }) => ({
       /* stylelint-disable */
       content: '""',
       /* stylelint-enable */
-      transition: theme.transitions.create('margin-left', {
+      transition: theme.transitions.create(['width', 'margin-left'], {
         easing: theme.transitions.easing.easeInOut,
         duration: theme.transitions.duration.standard,
       }),
@@ -47,7 +47,7 @@ const SidebarLink = styled(NavLink)(({ theme }) => ({
     },
 
     '& .MuiListItemIcon-root': {
-      minWidth: theme.spacing(2.5),
+      minWidth: `calc(${theme.spacing(2.5)} - 1px)`,
     },
 
     '& .MuiSvgIcon-root': {
@@ -75,53 +75,67 @@ const SidebarLink = styled(NavLink)(({ theme }) => ({
   },
 }));
 
-const Navigation: FC = () => (
+interface NavigationProps {
+  showLabels: boolean;
+}
+
+const Navigation: FC<NavigationProps> = ({ showLabels }) => (
   <Box component="nav">
     <List>
       <ListItemButton component={SidebarLink} to={Path.Dashboard}>
         <ListItemIcon>
           <HomeIcon />
         </ListItemIcon>
-        <ListItemText
-          disableTypography
-          primary={<FormattedMessage id="navigation.home" />}
-        />
+        {showLabels && (
+          <ListItemText
+            disableTypography
+            primary={<FormattedMessage id="navigation.home" />}
+          />
+        )}
       </ListItemButton>
       <ListItemButton component={SidebarLink} to={Path.Games}>
         <ListItemIcon>
           <GamesIcon />
         </ListItemIcon>
-        <ListItemText
-          disableTypography
-          primary={<FormattedMessage id="navigation.games" />}
-        />
+        {showLabels && (
+          <ListItemText
+            disableTypography
+            primary={<FormattedMessage id="navigation.games" />}
+          />
+        )}
       </ListItemButton>
       <ListItemButton component={SidebarLink} to={Path.Plays}>
         <ListItemIcon>
           <PlaysIcon />
         </ListItemIcon>
-        <ListItemText
-          disableTypography
-          primary={<FormattedMessage id="navigation.plays" />}
-        />
+        {showLabels && (
+          <ListItemText
+            disableTypography
+            primary={<FormattedMessage id="navigation.plays" />}
+          />
+        )}
       </ListItemButton>
       <ListItemButton component={SidebarLink} to={Path.Events}>
         <ListItemIcon>
           <EventsIcon />
         </ListItemIcon>
-        <ListItemText
-          disableTypography
-          primary={<FormattedMessage id="navigation.events" />}
-        />
+        {showLabels && (
+          <ListItemText
+            disableTypography
+            primary={<FormattedMessage id="navigation.events" />}
+          />
+        )}
       </ListItemButton>
       <ListItemButton component={SidebarLink} to={Path.Tools}>
         <ListItemIcon>
           <ToolsIcon />
         </ListItemIcon>
-        <ListItemText
-          disableTypography
-          primary={<FormattedMessage id="navigation.tools" />}
-        />
+        {showLabels && (
+          <ListItemText
+            disableTypography
+            primary={<FormattedMessage id="navigation.tools" />}
+          />
+        )}
       </ListItemButton>
     </List>
   </Box>
