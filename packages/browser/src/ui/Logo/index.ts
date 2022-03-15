@@ -1,4 +1,4 @@
-import Logo, { LogoProps } from './Logo';
+import Logo, { LogoOffset, LogoProps } from './Logo';
 
-export { LogoProps };
+export { LogoProps, LogoOffset };
 export default Logo;

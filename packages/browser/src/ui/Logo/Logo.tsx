@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import Box, { BoxProps } from '@mui/material/Box';
 import clsx from 'clsx';
 import { styled } from '@mui/material/styles';
 
@@ -13,16 +14,26 @@ type LogoVariant = 'simple' | 'horizontal' | 'mixed' | 'vertical';
 
 type LogoSize = 'tiny' | 'small' | 'medium' | 'big' | 'large';
 
+export enum LogoOffset {
+  NONE,
+  NORMAL,
+  BIG,
+}
+
 export interface LogoProps {
   size?: LogoSize;
   variant?: LogoVariant;
-  gap?: boolean;
+  offset?: LogoOffset;
 }
 
-const LogoBox = styled('div')<{ gap: boolean }>(({ gap, theme }) => ({
+interface LogoBoxProps extends BoxProps {
+  offset: LogoOffset;
+}
+
+const LogoBox = styled(Box)<LogoBoxProps>(({ offset, theme }) => ({
   display: 'inline-block',
   width: 'auto',
-  margin: gap ? theme.spacing(1) : 0,
+  margin: theme.spacing(offset),
 
   '&.tiny, &.tiny svg': {
     height: theme.utils.size(2.5),
@@ -63,7 +74,7 @@ const setLogoComponent = (variant: LogoVariant): FC => {
 const Logo: FC<LogoProps> = ({
   size = 'small',
   variant = 'simple',
-  gap = true,
+  offset = LogoOffset.NORMAL,
 }) => {
   const LogoComponent = setLogoComponent(variant);
 
@@ -76,7 +87,7 @@ const Logo: FC<LogoProps> = ({
   });
 
   return (
-    <LogoBox className={classes} gap={gap}>
+    <LogoBox className={classes} offset={offset}>
       <LogoComponent />
     </LogoBox>
   );

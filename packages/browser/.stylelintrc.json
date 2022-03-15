@@ -10,6 +10,7 @@
     "color-hex-length": "long",
     "declaration-block-no-duplicate-properties": true,
     "declaration-colon-newline-after": null,
+    "declaration-colon-space-after": null,
     "function-parentheses-newline-inside": null,
     "indentation": null,
     "no-descending-specificity": null,
