@@ -10,16 +10,14 @@ interface ContentProps extends BoxProps {
 
 const Content = styled(Box)<ContentProps>(({ expanded, open, theme }) => ({
   flexGrow: 1,
-  padding: theme.spacing(1),
-  paddingTop: theme.spacing(4.5),
+  padding: `${theme.spacing(4.5)} ${theme.spacing(1)}`,
   transition: theme.transitions.create(['margin', 'width'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
 
   [theme.breakpoints.up('sm')]: {
-    padding: theme.spacing(2),
-    paddingTop: theme.spacing(5.5),
+    padding: `${theme.spacing(5.5)} ${theme.spacing(2)}`,
   },
 
   [theme.breakpoints.up('md')]: {
