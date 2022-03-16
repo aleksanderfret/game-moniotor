@@ -31,9 +31,7 @@ const Layout: FC = ({ children }) => {
   return (
     <>
       <TopBar
-        expanded={expanded}
         onClick={isMediumScreen ? handleNavigationToggle : handleNavigationOpen}
-        open={isOpen}
       />
       <SideBar
         expanded={expanded}
