@@ -120,7 +120,7 @@ const SideBar: FC<SideBarProps> = ({
     >
       <>
         <NavHeader expanded={expanded ? 1 : 0}>
-          <Logo offset={LogoOffset.NONE} size="tiny" variant="simple" />
+          <Logo offset={LogoOffset.NONE} size="tiny" variant="mixed" />
           <CloseButton onClick={onClose}>
             <ChevronLeft />
           </CloseButton>
