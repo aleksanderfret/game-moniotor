@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
 
+import View from 'ui/View';
+
 const Plays: FC = () => {
-  return <div>Plays</div>;
+  return <View>Plays</View>;
 };
 
 export default Plays;

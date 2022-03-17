@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
 
+import View from 'ui/View';
+
 const Dashboard: FC = () => {
-  return <div>Dashboard</div>;
+  return <View>Dashboard</View>;
 };
 
 export default Dashboard;

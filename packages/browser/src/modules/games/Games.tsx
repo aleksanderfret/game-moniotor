@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import View from 'ui/View';
 import { useGamesQuery } from './useGamesQuery';
 import { Button } from 'ui/Button';
 import { Path } from 'router';
@@ -18,7 +19,7 @@ const Games: FC = () => {
   }
 
   return (
-    <div>
+    <View>
       <Button onClick={handleCreateNewGame}>Create game</Button>
       <div>
         {error && <div>{error.message}</div>}
@@ -29,7 +30,7 @@ const Games: FC = () => {
             data.games.map(({ id, title }) => <div key={id}>{title}</div>)
           ))}
       </div>
-    </div>
+    </View>
   );
 };
 
