@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
 
+import View from 'ui/View';
+
 const Events: FC = () => {
-  return <div>Events</div>;
+  return <View>Events</View>;
 };
 
 export default Events;
