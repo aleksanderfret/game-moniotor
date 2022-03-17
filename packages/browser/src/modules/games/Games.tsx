@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import View from 'ui/View';
+import { View } from 'ui/View';
 import { useGamesQuery } from './useGamesQuery';
 import { Button } from 'ui/Button';
 import { Path } from 'router';

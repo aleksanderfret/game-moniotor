@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import { ButtonOnClickHandler } from 'types/types';
 import { Path } from 'router';
 import Button from 'ui/Button/Button';
+import { IntroView } from 'ui/View';
 import { AuthControls, AuthHeader } from 'modules/auth/components';
 
 const AuthIntro: FC = () => {
@@ -18,19 +19,21 @@ const AuthIntro: FC = () => {
     };
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <AuthHeader>
-        <FormattedMessage id="auth.header.intro" />
-      </AuthHeader>
-      <AuthControls>
-        <Button onClick={handleNavigate(Path.SignIn)}>
-          <FormattedMessage id="sign-in" />
-        </Button>
-        <Button onClick={handleNavigate(Path.SignUp)} secondary>
-          <FormattedMessage id="sign-up" />
-        </Button>
-      </AuthControls>
-    </Box>
+    <IntroView>
+      <Box sx={{ width: '100%' }}>
+        <AuthHeader>
+          <FormattedMessage id="auth.header.intro" />
+        </AuthHeader>
+        <AuthControls>
+          <Button onClick={handleNavigate(Path.SignIn)}>
+            <FormattedMessage id="sign-in" />
+          </Button>
+          <Button onClick={handleNavigate(Path.SignUp)} secondary>
+            <FormattedMessage id="sign-up" />
+          </Button>
+        </AuthControls>
+      </Box>
+    </IntroView>
   );
 };
 

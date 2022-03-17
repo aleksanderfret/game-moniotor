@@ -9,6 +9,7 @@ import Input from 'ui/Input';
 import Checkbox from 'ui/Checkbox';
 import Form from 'ui/Form';
 import Feedback from 'ui/Feedback';
+import { IntroView } from 'ui/View';
 
 const SignUp: FC = () => {
   const [email, setEmail] = useState('');
@@ -59,56 +60,58 @@ const SignUp: FC = () => {
   const isSuccess = data && !error && !loading;
 
   return (
-    <div>
-      <AuthHeader>
-        <FormattedMessage id="auth.header.sign-up" />
-      </AuthHeader>
-      {isSuccess ? (
-        <Feedback
-          message={<FormattedMessage id="sign-up.success.message" />}
-          severity="success"
-        />
-      ) : (
-        <Form autoComplete="off" onSubmit={handleSignUp}>
-          <AuthControls>
-            <Input
-              autoComplete="off"
-              disabled={loading}
-              label={<FormattedMessage id="email" />}
-              onChange={handleEmailChange}
-              type="email"
-              value={email}
-            />
-            <Input
-              autoComplete="off"
-              disabled={loading}
-              label={<FormattedMessage id="password" />}
-              onChange={handlePasswordChange}
-              type="password"
-              value={password}
-            />
-            <Input
-              autoComplete="off"
-              disabled={loading}
-              label={<FormattedMessage id="password.confirm" />}
-              onChange={handlePasswordConfirmationChange}
-              type="password"
-              value={passwordConfirmation}
-            />
-            <Checkbox
-              checked={policy}
-              disabled={loading}
-              label={<FormattedMessage id="policy.acceptance" />}
-              onChange={handlePolicyAcceptanceChange}
-            />
-            <AsyncButton loading={loading} type="submit">
-              <FormattedMessage id="sign-up" />
-            </AsyncButton>
-          </AuthControls>
-          {error && <Feedback message={error.message} />}
-        </Form>
-      )}
-    </div>
+    <IntroView>
+      <div>
+        <AuthHeader>
+          <FormattedMessage id="auth.header.sign-up" />
+        </AuthHeader>
+        {isSuccess ? (
+          <Feedback
+            message={<FormattedMessage id="sign-up.success.message" />}
+            severity="success"
+          />
+        ) : (
+          <Form autoComplete="off" onSubmit={handleSignUp}>
+            <AuthControls>
+              <Input
+                autoComplete="off"
+                disabled={loading}
+                label={<FormattedMessage id="email" />}
+                onChange={handleEmailChange}
+                type="email"
+                value={email}
+              />
+              <Input
+                autoComplete="off"
+                disabled={loading}
+                label={<FormattedMessage id="password" />}
+                onChange={handlePasswordChange}
+                type="password"
+                value={password}
+              />
+              <Input
+                autoComplete="off"
+                disabled={loading}
+                label={<FormattedMessage id="password.confirm" />}
+                onChange={handlePasswordConfirmationChange}
+                type="password"
+                value={passwordConfirmation}
+              />
+              <Checkbox
+                checked={policy}
+                disabled={loading}
+                label={<FormattedMessage id="policy.acceptance" />}
+                onChange={handlePolicyAcceptanceChange}
+              />
+              <AsyncButton loading={loading} type="submit">
+                <FormattedMessage id="sign-up" />
+              </AsyncButton>
+            </AuthControls>
+            {error && <Feedback message={error.message} />}
+          </Form>
+        )}
+      </div>
+    </IntroView>
   );
 };
 

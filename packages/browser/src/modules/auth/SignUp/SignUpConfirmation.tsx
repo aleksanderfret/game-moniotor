@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
 import Loader from 'ui/Loader';
+import { IntroView } from 'ui/View';
 import {
   SignUpConfirmationArgs,
   useSignUpConfirmationMutation,
@@ -21,15 +22,17 @@ const SignUpConfirmation: FC = () => {
   const success = !loading && !error;
 
   return (
-    <div>
-      {loading && <Loader size="big" />}
-      {success && <FormattedMessage id="sign-up.confirmation.success" />}
-      {error && (
-        <div>
-          <FormattedMessage id="error.general" />
-        </div>
-      )}
-    </div>
+    <IntroView>
+      <div>
+        {loading && <Loader size="big" />}
+        {success && <FormattedMessage id="sign-up.confirmation.success" />}
+        {error && (
+          <div>
+            <FormattedMessage id="error.general" />
+          </div>
+        )}
+      </div>
+    </IntroView>
   );
 };
 
