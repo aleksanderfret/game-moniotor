@@ -1,3 +1,4 @@
 import View from './View';
+import IntroView from './IntroView';
 
-export default View;
+export { IntroView, View };

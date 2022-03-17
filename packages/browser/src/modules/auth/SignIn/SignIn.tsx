@@ -12,6 +12,7 @@ import { useAppDispatch } from 'hooks';
 import { AsyncButton } from 'ui/Button';
 import Input from 'ui/Input';
 import Form from 'ui/Form';
+import { IntroView } from 'ui/View';
 import Feedback from 'ui/Feedback';
 
 export const SignIn: FC = () => {
@@ -48,36 +49,38 @@ export const SignIn: FC = () => {
   };
 
   return (
-    <Form onSubmit={handleSignIn}>
-      <AuthHeader>
-        <FormattedMessage id="auth.header.sign-in" />
-      </AuthHeader>
-      <AuthControls>
-        <Input
-          label={<FormattedMessage id="email" />}
-          onChange={handleEmailChange}
-          type="email"
-          value={email}
-        />
-        <Input
-          label={<FormattedMessage id="password" />}
-          onChange={handlePasswordChange}
-          type="password"
-          value={password}
-        />
-        <AsyncButton loading={loading} type="submit">
-          <FormattedMessage id="sign-in" />
-        </AsyncButton>
-        <div>
-          <Link to={Path.ForgotPassword}>
-            <FormattedMessage id="password.forgot" />
-          </Link>
-        </div>
-        {error && (
-          <Feedback message={<FormattedMessage id="error.general" />} />
-        )}
-      </AuthControls>
-    </Form>
+    <IntroView>
+      <Form onSubmit={handleSignIn}>
+        <AuthHeader>
+          <FormattedMessage id="auth.header.sign-in" />
+        </AuthHeader>
+        <AuthControls>
+          <Input
+            label={<FormattedMessage id="email" />}
+            onChange={handleEmailChange}
+            type="email"
+            value={email}
+          />
+          <Input
+            label={<FormattedMessage id="password" />}
+            onChange={handlePasswordChange}
+            type="password"
+            value={password}
+          />
+          <AsyncButton loading={loading} type="submit">
+            <FormattedMessage id="sign-in" />
+          </AsyncButton>
+          <div>
+            <Link to={Path.ForgotPassword}>
+              <FormattedMessage id="password.forgot" />
+            </Link>
+          </div>
+          {error && (
+            <Feedback message={<FormattedMessage id="error.general" />} />
+          )}
+        </AuthControls>
+      </Form>
+    </IntroView>
   );
 };
 

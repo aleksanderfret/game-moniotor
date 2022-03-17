@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import View from 'ui/View';
+import { View } from 'ui/View';
 
 const Events: FC = () => {
   return <View>Events</View>;

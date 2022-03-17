@@ -7,6 +7,7 @@ import { setAccessToken } from 'modules/auth/token';
 import { useAppDispatch } from 'hooks';
 import { setIsAuthenticated } from 'context';
 import Loader from 'ui/Loader';
+import { IntroView } from 'ui/View';
 
 interface RouteParams {
   tokenId: string;
@@ -36,15 +37,17 @@ const RemoveAccountConfirmation: FC = () => {
   const success = data && !loading && !error;
 
   return (
-    <div>
-      {loading && <Loader size="big" />}
-      {success && <FormattedMessage id="remove-account.success" />}
-      {error && (
-        <div>
-          <FormattedMessage id="error.general" />
-        </div>
-      )}
-    </div>
+    <IntroView>
+      <div>
+        {loading && <Loader size="big" />}
+        {success && <FormattedMessage id="remove-account.success" />}
+        {error && (
+          <div>
+            <FormattedMessage id="error.general" />
+          </div>
+        )}
+      </div>
+    </IntroView>
   );
 };
 
