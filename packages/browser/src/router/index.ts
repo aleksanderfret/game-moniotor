@@ -18,8 +18,10 @@ import {
   createToolsPath,
 } from './pathCreators';
 import Path, { RouteAccess } from './enums';
+import AnimatedRoutes from './AnimatedRoutes';
 
 export {
+  AnimatedRoutes,
   createAccountPath,
   createDashboardPath,
   createEventsPath,
