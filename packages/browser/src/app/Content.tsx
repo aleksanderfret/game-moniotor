@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import MuiBox from '@mui/material/Box';
 
 import { AnimatedRoutes, Path } from 'router';
-import Home from 'modules/dashboard';
+import Home from 'modules/home';
 import Account from 'modules/user/Account';
 import { CreateGame, Game, Games } from 'modules/games';
 import { Play, Plays } from 'modules/plays';
