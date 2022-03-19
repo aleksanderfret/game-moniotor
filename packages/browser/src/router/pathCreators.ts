@@ -1,7 +1,6 @@
 import Path from './enums';
 import Route, {
   AccountRoute,
-  DashboardRoute,
   EventRoute,
   EventsRoute,
   ForgotPasswordRoute,
@@ -39,7 +38,6 @@ const createPath = <T extends Route>(path: T[0]) => {
 };
 
 export const createAccountPath = createPath<AccountRoute>(Path.Account);
-export const createDashboardPath = createPath<DashboardRoute>(Path.Dashboard);
 export const createEventsPath = createPath<EventsRoute>(Path.Events);
 export const createEventPath = createPath<EventRoute>(Path.Event);
 export const createForgotPath = createPath<ForgotPasswordRoute>(

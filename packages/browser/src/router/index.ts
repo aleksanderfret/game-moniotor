@@ -1,6 +1,5 @@
 import {
   createAccountPath,
-  createDashboardPath,
   createEventPath,
   createEventsPath,
   createGamePath,
@@ -23,7 +22,6 @@ import AnimatedRoutes from './AnimatedRoutes';
 export {
   AnimatedRoutes,
   createAccountPath,
-  createDashboardPath,
   createEventsPath,
   createEventPath,
   createGamesPath,
