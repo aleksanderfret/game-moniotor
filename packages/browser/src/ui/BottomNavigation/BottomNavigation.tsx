@@ -63,7 +63,7 @@ const BottomNavigation: FC = () => (
       component={Link}
       icon={<HomeIcon />}
       label={<FormattedMessage id="navigation.home" />}
-      to={Path.Dashboard}
+      to={Path.Home}
     />
     <BottomNavigationAction
       component={Link}
