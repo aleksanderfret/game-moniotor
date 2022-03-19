@@ -2,7 +2,6 @@ import Path from './enums';
 
 export type NoParams = undefined | void;
 export type AccountRoute = [Path.Account, NoParams];
-export type DashboardRoute = [Path.Dashboard, NoParams];
 export type EventsRoute = [Path.Events, NoParams];
 export type EventRoute = [Path.Event, { eventId: string }];
 export type ForgotPasswordRoute = [Path.ForgotPassword, NoParams];
@@ -31,7 +30,6 @@ export type ToolRoute = [Path.Tool, { toolId: string }];
 
 type Route =
   | AccountRoute
-  | DashboardRoute
   | EventRoute
   | EventsRoute
   | ForgotPasswordRoute

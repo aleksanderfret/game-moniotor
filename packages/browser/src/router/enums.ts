@@ -1,6 +1,5 @@
 enum Path {
   Account = '/account',
-  Dashboard = '/dashboard',
   Events = '/events',
   Event = '/events/:eventId',
   ForgotPassword = '/forgot-password',
