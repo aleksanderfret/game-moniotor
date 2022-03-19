@@ -1,6 +1,6 @@
 {
   "name": "games-room-server",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Games Room - Server",
   "main": "src/index.tsx",
   "author": {

@@ -2,10 +2,6 @@
 
 ![games room](./docs/img/games-room.png)
 
-## Version
-
-0.0.1
-
 ## Documentation
 
 ### Installation
