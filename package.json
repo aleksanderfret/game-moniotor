@@ -1,6 +1,6 @@
 {
   "name": "games-room",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "author": {
     "name": "Aleksander Fret",
@@ -52,6 +52,6 @@
     "stylelint": "lerna run stylelint",
     "test": "lerna run test",
     "test:watch": "lerna run test:watch",
-    "version": "lerna version"
+    "version": "lerna version --sign-git-tag"
   }
 }

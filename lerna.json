@@ -1,16 +1,11 @@
 {
   "npmClient": "npm",
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "version": "0.0.2",
   "command": {
     "publish": {
       "message": "chore(release): publish %v",
-      "ignoreChanges": [
-        "ignored-file",
-        "*.md"
-      ]
+      "ignoreChanges": ["ignored-file", "*.md"]
     }
   }
 }
