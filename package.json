@@ -51,6 +51,7 @@
     "storybook": "lerna run storybook",
     "stylelint": "lerna run stylelint",
     "test": "lerna run test",
-    "test:watch": "lerna run test:watch"
+    "test:watch": "lerna run test:watch",
+    "version": "lerna version"
   }
 }
