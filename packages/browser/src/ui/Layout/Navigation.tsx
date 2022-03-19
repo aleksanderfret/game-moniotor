@@ -82,7 +82,7 @@ interface NavigationProps {
 const Navigation: FC<NavigationProps> = ({ showLabels }) => (
   <Box component="nav">
     <List>
-      <ListItemButton component={SidebarLink} to={Path.Dashboard}>
+      <ListItemButton component={SidebarLink} to={Path.Home}>
         <ListItemIcon>
           <HomeIcon />
         </ListItemIcon>

@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 
 import { View } from 'ui/View';
 
-const Dashboard: FC = () => {
-  return <View>Dashboard</View>;
+const Home: FC = () => {
+  return <View>Home</View>;
 };
 
-export default Dashboard;
+export default Home;
