@@ -23,6 +23,8 @@ import Play from 'modules/play/entity/playEntity';
 import GameEvent from 'modules/gameEvent/entity/gameEventEntity';
 import Rate from 'modules/rate/entity/rateEntity';
 import Collection from 'modules/game/entity/collectionEntity';
+import Favorite from 'modules/favorite/entity/favoriteEntity';
+import { OwnStatus, Visibility } from '../enums';
 
 @ObjectType()
 @Entity()
@@ -62,6 +64,27 @@ export default class Game extends BaseEntity {
   @Field({ nullable: true })
   @Column({ nullable: true, precision: 3, scale: 0, type: 'numeric' })
   age!: number;
+
+  @Field(() => GraphQLISODateTime, { nullable: true })
+  @Column({ nullable: true, type: 'timestamptz' })
+  owned!: Date;
+
+  @Field(() => OwnStatus)
+  @Column({
+    enum: OwnStatus,
+    nullable: true,
+    type: 'enum',
+  })
+  status!: OwnStatus;
+
+  @Field(() => Visibility)
+  @Column({
+    default: Visibility.Public,
+    enum: Visibility,
+    nullable: false,
+    type: 'enum',
+  })
+  visibility!: Visibility;
 
   @Field({ nullable: true })
   @Column({ nullable: true, precision: 3, scale: 0, type: 'numeric' })
@@ -119,7 +142,7 @@ export default class Game extends BaseEntity {
 
   @Field(() => Rate)
   @OneToMany(() => Rate, rate => rate.game)
-  rates!: Rate;
+  rates!: Rate[];
 
   @Field(() => Play)
   @OneToMany(() => Play, play => play.game)
@@ -136,4 +159,8 @@ export default class Game extends BaseEntity {
   @Field(() => Review, { nullable: true })
   @OneToMany(() => Review, review => review.game, { nullable: true })
   reviews!: Review[];
+
+  @Field(() => Favorite)
+  @OneToMany(() => Favorite, favorite => favorite.game)
+  favorites!: Favorite[];
 }

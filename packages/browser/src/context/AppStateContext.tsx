@@ -4,7 +4,7 @@ import { AppState, Theme } from './types';
 
 export const initialAppState: AppState = {
   isAuthenticated: false,
-  locale: 'en',
+  locale: 'en-GB',
   theme: Theme.Light,
 };
 

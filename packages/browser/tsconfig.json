@@ -15,7 +15,7 @@
     "moduleResolution": "node",
     "noImplicitAny": true,
     "noImplicitThis": true,
-    "noUnusedLocals": true,
+    // "noUnusedLocals": true,
     "outDir": "../../dist/public",
     "paths": {
       "*": ["src/*"],
@@ -58,5 +58,5 @@
     "typeRoots": ["./src/@types", "./node_modules/@types", ".storybook/**/*.ts"]
   },
   "exclude": ["node_modules"],
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/ui/Icons/components"]
 }

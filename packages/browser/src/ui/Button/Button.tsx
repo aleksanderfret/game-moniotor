@@ -40,7 +40,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         loading={loading}
         loadingIndicator={<Loader color={loaderColor} size={loaderSize} />}
         ref={ref}
-        size="medium"
+        size="large"
         variant={variant}
         {...props}
       />

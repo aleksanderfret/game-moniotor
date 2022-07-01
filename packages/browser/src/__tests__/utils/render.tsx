@@ -16,7 +16,7 @@ interface RenderOptions extends rtlRenderOptions {
 
 const render = (
   ui: ReactElement,
-  { locale, ...options }: RenderOptions = { locale: 'en' }
+  { locale, ...options }: RenderOptions = { locale: 'en-GB' }
 ) =>
   rtlRender(
     <IntlProvider locale={locale} messages={messages[locale]}>

@@ -35,7 +35,7 @@ const GlobalStyles = () => (
         borderSpacing: 0,
       },
       'html,body': {
-        maxWidth: '100%',
+        maxWidth: '100vw',
         overflowX: 'hidden',
         minHeight: '100vh',
       },

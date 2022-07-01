@@ -20,6 +20,7 @@ import Play from 'modules/play/entity/playEntity';
 import Game from 'modules/game/entity/gameEntity';
 import GameEvent from 'modules/gameEvent/entity/gameEventEntity';
 import Collection from 'modules/game/entity/collectionEntity';
+import Favorite from 'modules/favorite/entity/favoriteEntity';
 
 @ObjectType()
 @Entity()
@@ -72,7 +73,7 @@ export default class User extends BaseEntity {
 
   @Field(() => Rate)
   @OneToMany(() => Rate, rate => rate.user)
-  rates!: Rate;
+  rates!: Rate[];
 
   @Field(() => Designer)
   @OneToOne(() => Designer, designer => designer.user)
@@ -110,4 +111,8 @@ export default class User extends BaseEntity {
   @Field(() => GameEvent)
   @ManyToMany(() => GameEvent, gameEvent => gameEvent.participants)
   participation!: GameEvent[];
+
+  @Field(() => Favorite)
+  @OneToMany(() => Favorite, favorite => favorite.user)
+  favorites!: Favorite[];
 }

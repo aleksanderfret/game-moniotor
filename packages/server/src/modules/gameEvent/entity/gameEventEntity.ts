@@ -15,6 +15,7 @@ import User from 'modules/user/entity/userEntity';
 import Play from 'modules/play/entity/playEntity';
 import Rate from 'modules/rate/entity/rateEntity';
 import Address from 'modules/address/entity/addressEntity';
+import Favorite from 'modules/favorite/entity/favoriteEntity';
 
 @ObjectType()
 @Entity()
@@ -58,6 +59,10 @@ export default class GameEvent extends BaseEntity {
   @Field(() => Address)
   @OneToMany(() => Address, address => address.plays)
   address!: Address;
+
+  @Field(() => Favorite)
+  @OneToMany(() => Favorite, favorite => favorite.gameEvent)
+  favorites!: Favorite[];
 
   @Field({ nullable: true })
   @Column({

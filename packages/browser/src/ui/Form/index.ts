@@ -1,3 +1,3 @@
-import Form from './Form';
-
-export default Form;
+export * from './filterForm';
+export * from './types';
+export { default as Form } from './Form';

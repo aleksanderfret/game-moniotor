@@ -14,4 +14,4 @@ export const polyfillIntl = async (): Promise<void> => {
   }
 };
 
-export default { en, pl };
+export default { 'en-GB': en, pl };

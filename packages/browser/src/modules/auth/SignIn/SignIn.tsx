@@ -1,25 +1,33 @@
-import React, { FC, FormEvent, useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
+import { useForm } from 'react-hook-form';
 
 import { setIsAuthenticated } from 'context';
 import { Path } from 'router';
 import { setAccessToken } from 'modules/auth/token';
 import { AuthControls, AuthHeader } from 'modules/auth/components';
-import { InputChangeHandler } from 'types/types';
 import { useSignInMutation } from './useSignInMutation';
 import { useAppDispatch } from 'hooks';
 import { AsyncButton } from 'ui/Button';
-import Input from 'ui/Input';
-import Form from 'ui/Form';
+import { TextField } from 'ui/TextField';
+import { Form, FormData } from 'ui/Form';
 import { IntroView } from 'ui/View';
 import Feedback from 'ui/Feedback';
 
-export const SignIn: FC = () => {
+interface SignInForm extends FormData {
+  email: string | null;
+  password: string | null;
+}
+
+const formValues: SignInForm = {
+  email: '',
+  password: '',
+};
+
+export const SignIn = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [signIn, { error, loading }] = useSignInMutation({
     onCompleted: data => {
       setAccessToken(data.signIn.accessToken);
@@ -28,25 +36,21 @@ export const SignIn: FC = () => {
     },
   });
 
-  const handleEmailChange: InputChangeHandler = event => {
-    setEmail(event.target.value);
-  };
+  const { handleSubmit, control } = useForm({
+    defaultValues: {
+      ...formValues,
+    },
+  });
 
-  const handlePasswordChange: InputChangeHandler = event => {
-    setPassword(event.target.value);
-  };
-
-  const handleSignIn = async (event: FormEvent): Promise<Boolean> => {
-    event.preventDefault();
+  const handleSignIn = handleSubmit((data: SignInForm) => {
+    const { email, password } = data;
 
     if (!email || !password) {
-      return false;
+      return;
     }
 
-    await signIn({ variables: { email, password } });
-
-    return false;
-  };
+    signIn({ variables: { email, password } });
+  });
 
   return (
     <IntroView>
@@ -55,17 +59,19 @@ export const SignIn: FC = () => {
           <FormattedMessage id="auth.header.sign-in" />
         </AuthHeader>
         <AuthControls>
-          <Input
+          <TextField
+            control={control}
+            disabled={loading}
             label={<FormattedMessage id="email" />}
-            onChange={handleEmailChange}
+            name="email"
             type="email"
-            value={email}
           />
-          <Input
+          <TextField
+            control={control}
+            disabled={loading}
             label={<FormattedMessage id="password" />}
-            onChange={handlePasswordChange}
+            name="password"
             type="password"
-            value={password}
           />
           <AsyncButton loading={loading} type="submit">
             <FormattedMessage id="sign-in" />

@@ -1,43 +1,47 @@
-import React, { FC, FormEvent, useState } from 'react';
-import { FormattedMessage } from 'react-intl';
+import React from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { useForm } from 'react-hook-form';
 
 import { AuthControls, AuthHeader } from 'modules/auth/components';
-import { InputChangeHandler } from 'types/types';
 import { AsyncButton } from 'ui/Button';
 import { useSignUpMutation } from './useSignUpMutation';
-import Input from 'ui/Input';
-import Checkbox from 'ui/Checkbox';
-import Form from 'ui/Form';
+import { TextField } from 'ui/TextField';
+import { Checkbox } from 'ui/Checkbox';
+import { Form, FormData } from 'ui/Form';
 import Feedback from 'ui/Feedback';
 import { IntroView } from 'ui/View';
 
-const SignUp: FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [policy, setPolicy] = useState(false);
+interface SignUpForm extends FormData {
+  email: string | null;
+  password: string | null;
+  passwordConfirmation: string | null;
+  policy: boolean;
+}
+
+const formValues: SignUpForm = {
+  email: '',
+  password: '',
+  passwordConfirmation: '',
+  policy: false,
+};
+
+const SignUp = (): JSX.Element => {
   const [signUp, { data, error, loading }] = useSignUpMutation();
-
-  const handleEmailChange: InputChangeHandler = event => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange: InputChangeHandler = event => {
-    setPassword(event.target.value);
-  };
-
-  const handlePasswordConfirmationChange: InputChangeHandler = event => {
-    setPasswordConfirmation(event.target.value);
-  };
-
-  const handlePolicyAcceptanceChange: InputChangeHandler = () => {
-    setPolicy(policy => !policy);
-  };
-
-  const handleSignUp = async (event: FormEvent): Promise<void> => {
-    event.preventDefault();
+  const { formatMessage } = useIntl();
+  const {
+    handleSubmit,
+    control,
+    formState: { isValid },
+  } = useForm({
+    defaultValues: {
+      ...formValues,
+    },
+  });
+  const handleSignUp = handleSubmit((data: SignUpForm) => {
+    const { email, password, passwordConfirmation, policy } = data;
 
     if (
+      !isValid ||
       !email ||
       !password ||
       !policy ||
@@ -47,7 +51,7 @@ const SignUp: FC = () => {
       return;
     }
 
-    await signUp({
+    signUp({
       variables: {
         email,
         password,
@@ -55,7 +59,7 @@ const SignUp: FC = () => {
         policy: new Date().toISOString(),
       },
     });
-  };
+  });
 
   const isSuccess = data && !error && !loading;
 
@@ -73,35 +77,35 @@ const SignUp: FC = () => {
         ) : (
           <Form autoComplete="off" onSubmit={handleSignUp}>
             <AuthControls>
-              <Input
+              <TextField
                 autoComplete="off"
+                control={control}
                 disabled={loading}
                 label={<FormattedMessage id="email" />}
-                onChange={handleEmailChange}
+                name="email"
                 type="email"
-                value={email}
               />
-              <Input
+              <TextField
                 autoComplete="off"
+                control={control}
                 disabled={loading}
                 label={<FormattedMessage id="password" />}
-                onChange={handlePasswordChange}
+                name="password"
                 type="password"
-                value={password}
               />
-              <Input
+              <TextField
                 autoComplete="off"
+                control={control}
                 disabled={loading}
                 label={<FormattedMessage id="password.confirm" />}
-                onChange={handlePasswordConfirmationChange}
+                name="passwordConfirmation"
                 type="password"
-                value={passwordConfirmation}
               />
               <Checkbox
-                checked={policy}
+                control={control}
                 disabled={loading}
-                label={<FormattedMessage id="policy.acceptance" />}
-                onChange={handlePolicyAcceptanceChange}
+                label={formatMessage({ id: 'policy.acceptance' })}
+                name="policy"
               />
               <AsyncButton loading={loading} type="submit">
                 <FormattedMessage id="sign-up" />

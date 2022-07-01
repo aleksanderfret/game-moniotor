@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+import { Controller, ControllerProps } from 'react-hook-form';
 import { styled } from '@mui/material/styles';
 import MuiCheckbox, {
   CheckboxProps as MuiCheckboxProps,
@@ -15,36 +16,71 @@ const StyledCheckbox = styled(MuiCheckbox)(({ theme }) => ({
     color: theme.palette.primary.main,
   },
 
+  '& .MuiSvgIcon-root': {
+    fontSize: theme.font.size.large,
+  },
+
   '&.Mui-checked': {
     color: theme.palette.primary.main,
   },
 }));
 
-interface CheckboxProps
+export interface CheckboxInputProps
   extends MuiCheckboxProps,
     Pick<FormControlLabelProps, 'label' | 'labelPlacement'> {}
 
-const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ label, labelPlacement, ...props }, ref) => {
-    return (
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <StyledCheckbox
-              icon={<CheckboxIcon />}
-              inputRef={ref}
-              size="medium"
-              {...props}
-            />
-          }
-          label={label}
-          labelPlacement={labelPlacement}
-        />
-      </FormGroup>
-    );
-  }
+export const CheckboxInput = forwardRef<HTMLInputElement, CheckboxInputProps>(
+  ({ label, labelPlacement, ...props }, ref) => (
+    <FormGroup>
+      <FormControlLabel
+        control={
+          <StyledCheckbox
+            icon={<CheckboxIcon />}
+            inputRef={ref}
+            size="medium"
+            {...props}
+          />
+        }
+        label={label}
+        labelPlacement={labelPlacement}
+      />
+    </FormGroup>
+  )
 );
 
-Checkbox.displayName = 'Checkbox';
+CheckboxInput.displayName = 'CheckboxInput';
 
-export default Checkbox;
+export type CheckboxProps<TFormValues> = Omit<
+  ControllerProps<TFormValues>,
+  'render'
+> &
+  CheckboxInputProps;
+
+export function Checkbox<TFormValues>({
+  control,
+  defaultValue,
+  rules,
+  name,
+  shouldUnregister,
+  ...rest
+}: CheckboxProps<TFormValues>): JSX.Element {
+  return (
+    <Controller
+      control={control}
+      defaultValue={defaultValue}
+      name={name}
+      render={({ field: { onBlur, onChange, ref, value } }) => (
+        <CheckboxInput
+          checked={value as boolean}
+          {...rest}
+          name={name}
+          onBlur={onBlur}
+          onChange={onChange}
+          ref={ref}
+        />
+      )}
+      rules={rules}
+      shouldUnregister={shouldUnregister}
+    />
+  );
+}

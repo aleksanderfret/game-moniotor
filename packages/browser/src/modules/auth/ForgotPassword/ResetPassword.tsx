@@ -1,63 +1,66 @@
-import React, { FC, FormEvent, useState } from 'react';
+import React, { FC } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import Box from '@mui/material/Box';
+import { useForm } from 'react-hook-form';
 
 import { useResetPasswordMutation } from './useResetPasswordMutation';
-import { InputChangeHandler } from 'types/types';
 import { Path } from 'router';
 import { AsyncButton } from 'ui/Button';
 import Feedback from 'ui/Feedback';
-import Form from 'ui/Form';
-import Input from 'ui/Input';
+import { Form, FormData } from 'ui/Form';
+import { TextField } from 'ui/TextField';
 import { IntroView } from 'ui/View';
 import { AuthControls, AuthHeader } from 'modules/auth/components';
+
+interface ResetPasswordForm extends FormData {
+  email: string | null;
+  password: string | null;
+  passwordConfirmation: string | null;
+}
+const formValues: ResetPasswordForm = {
+  email: '',
+  password: '',
+  passwordConfirmation: '',
+};
 
 interface RouteParams {
   tokenId: string;
 }
 
 const ResetPassword: FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [resetPassword, { data, error, loading }] = useResetPasswordMutation({
-    onCompleted: () => {
-      setEmail('');
-      setPassword('');
-      setPasswordConfirmation('');
+  const {
+    handleSubmit,
+    control,
+    formState: { isValid },
+  } = useForm({
+    defaultValues: {
+      ...formValues,
     },
   });
+
+  const [resetPassword, { data, error, loading }] = useResetPasswordMutation();
   const { tokenId } = useParams<keyof RouteParams>();
 
-  const handleEmailChange: InputChangeHandler = event => {
-    setEmail(event.target.value);
-  };
+  const handleUpdatePassword = handleSubmit(
+    (data: Partial<ResetPasswordForm>) => {
+      const { email, password, passwordConfirmation } = data;
 
-  const handlePasswordChange: InputChangeHandler = event => {
-    setPassword(event.target.value);
-  };
+      if (
+        !isValid ||
+        !email ||
+        !password ||
+        !passwordConfirmation ||
+        password !== passwordConfirmation
+      ) {
+        return;
+      }
 
-  const handlePasswordConfirmationChange: InputChangeHandler = event => {
-    setPasswordConfirmation(event.target.value);
-  };
-
-  const handleUpdatePassword = async (event: FormEvent): Promise<void> => {
-    event.preventDefault();
-
-    if (
-      !email ||
-      !password ||
-      !passwordConfirmation ||
-      password !== passwordConfirmation
-    ) {
-      return;
+      resetPassword({
+        variables: { tokenId, email, password, passwordConfirmation },
+      });
     }
-
-    await resetPassword({
-      variables: { tokenId, email, password, passwordConfirmation },
-    });
-  };
+  );
 
   const isSuccess = data && !error && !loading;
 
@@ -82,29 +85,29 @@ const ResetPassword: FC = () => {
         ) : (
           <Form autoComplete="off" onSubmit={handleUpdatePassword}>
             <AuthControls>
-              <Input
+              <TextField
                 autoComplete="off"
+                control={control}
                 disabled={loading}
                 label={<FormattedMessage id="email" />}
-                onChange={handleEmailChange}
+                name="email"
                 type="email"
-                value={email}
               />
-              <Input
+              <TextField
                 autoComplete="off"
+                control={control}
                 disabled={loading}
                 label={<FormattedMessage id="password" />}
-                onChange={handlePasswordChange}
+                name="password"
                 type="password"
-                value={password}
               />
-              <Input
+              <TextField
                 autoComplete="off"
+                control={control}
                 disabled={loading}
                 label={<FormattedMessage id="password.confirm" />}
-                onChange={handlePasswordConfirmationChange}
+                name="passwordConfirmation"
                 type="password"
-                value={passwordConfirmation}
               />
               <AsyncButton loading={loading} type="submit">
                 <FormattedMessage id="save" />
