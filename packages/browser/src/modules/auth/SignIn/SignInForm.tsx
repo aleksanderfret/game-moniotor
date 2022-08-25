@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { useForm } from 'react-hook-form';
 
 import { setIsAuthenticated } from 'context';
@@ -15,20 +15,19 @@ import { Form, FormData } from 'ui/Form';
 import { IntroView } from 'ui/View';
 import Feedback from 'ui/Feedback';
 
-interface SignInForm extends FormData {
+interface SignInFormData extends FormData {
   email: string | null;
   password: string | null;
 }
-const formValues: SignInForm = {
+
+const formValues: SignInFormData = {
   email: '',
   password: '',
 };
 
-export const SignIn = (): JSX.Element => {
+export const SignInForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { formatMessage: f } = useIntl();
-
   const [signIn, { error, loading }] = useSignInMutation({
     onCompleted: data => {
       setAccessToken(data.signIn.accessToken);
@@ -43,7 +42,7 @@ export const SignIn = (): JSX.Element => {
     },
   });
 
-  const handleSignIn = handleSubmit((data: SignInForm) => {
+  const handleSignIn = handleSubmit((data: SignInFormData) => {
     const { email, password } = data;
 
     if (!email || !password) {
@@ -56,33 +55,39 @@ export const SignIn = (): JSX.Element => {
   return (
     <IntroView>
       <Form onSubmit={handleSignIn}>
-        <AuthHeader>{f({ id: 'auth.header.sign-in' })}</AuthHeader>
+        <AuthHeader>
+          <FormattedMessage id="auth.header.sign-in" />
+        </AuthHeader>
         <AuthControls>
           <TextField
             control={control}
             disabled={loading}
-            label={f({ id: 'email' })}
+            label={<FormattedMessage id="email" />}
             name="email"
             type="email"
           />
           <TextField
             control={control}
             disabled={loading}
-            label={f({ id: 'password' })}
+            label={<FormattedMessage id="password" />}
             name="password"
             type="password"
           />
           <AsyncButton loading={loading} type="submit">
-            {f({ id: 'sign-in' })}
+            <FormattedMessage id="sign-in" />
           </AsyncButton>
           <div>
-            <Link to={Path.ForgotPassword}>{f({ id: 'password.forgot' })}</Link>
+            <Link to={Path.ForgotPassword}>
+              <FormattedMessage id="password.forgot" />
+            </Link>
           </div>
-          {error && <Feedback message={f({ id: 'error.general' })} />}
+          {error && (
+            <Feedback message={<FormattedMessage id="error.general" />} />
+          )}
         </AuthControls>
       </Form>
     </IntroView>
   );
 };
 
-export default SignIn;
+export default SignInForm;

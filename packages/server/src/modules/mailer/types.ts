@@ -1,4 +1,5 @@
 import SendGridMail from '@sendgrid/mail';
+import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { ReactNode } from 'react';
 
 import { Locale } from 'types/types';
@@ -67,7 +68,9 @@ export type AuthMailData = Pick<
 
 export type MailDataCreator<T> = (data: T) => MailData;
 
-export type Send = (messageData: MessageData) => SendMailResult;
+export type Send = (
+  messageData: MessageData
+) => Promise<SMTPTransport.SentMessageInfo>;
 
 export type SignUpMail = [
   EmailTemplate.SignUp,

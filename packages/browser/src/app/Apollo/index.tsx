@@ -9,16 +9,16 @@ const client = new ApolloClient({
   connectToDevTools: true,
   defaultOptions: {
     mutate: {
-      errorPolicy: 'all',
+      errorPolicy: 'none',
     },
     query: {
       fetchPolicy: 'cache-first',
-      errorPolicy: 'all',
+      errorPolicy: 'none',
     },
     watchQuery: {
       fetchPolicy: 'network-only',
       nextFetchPolicy: 'cache-first',
-      errorPolicy: 'none',
+      errorPolicy: 'ignore',
     },
   },
   link,
