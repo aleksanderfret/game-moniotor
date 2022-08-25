@@ -58,7 +58,7 @@
   "sign-in": "Sign in",
   "sign-out": "Sign out",
   "sign-up": "Sign up",
-  "sign-up.confirmation.success": "Potwierdziłeś rejestrację.",
+  "sign-up.confirmation.success": "Registration confirmed. {link} now",
   "sign-up.success.message": "We have sent an email on address {email}. To finish sign up process use the link from the email message to confirm your registration",
   "try-again": "Please try again."
 }

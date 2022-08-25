@@ -47,7 +47,7 @@
   "navigation.tools": "Narzędzia",
   "password": "Hasło",
   "password.confirm": "Potwierdź hasło",
-  "password.forgot": "Zapomniałeś hasła?",
+  "password.forgot": "Nie pamiętam hasła",
   "password.new": "Nowe hasło",
   "password.old": "Stare hasło",
   "password.reset": "Zresetuj hasło",
@@ -58,7 +58,7 @@
   "sign-in": "Zaloguj",
   "sign-out": "Wyloguj",
   "sign-up": "Zarejestruj",
-  "sign-up.confirmation.success": "Potwierdziłeś rejestrację.",
+  "sign-up.confirmation.success": "Potwierdziłeś rejestrację. {link} się",
   "sign-up.success.message": "Wysłaliśmy wiadomość na adres {email}. Użyj linku z wiadomości by dokończyć proces rejestracji.",
   "try-again": "Spróbuj ponownie."
 }
