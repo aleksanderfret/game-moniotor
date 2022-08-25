@@ -36,7 +36,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@apollo/client": "3.5.10",
+    "@apollo/client": "3.6.8",
     "@emotion/react": "11.8.2",
     "@emotion/styled": "11.8.1",
     "@formatjs/intl-pluralrules": "4.3.2",
