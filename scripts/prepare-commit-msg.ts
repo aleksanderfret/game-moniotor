@@ -2,9 +2,18 @@ import { exec as childProcessExec } from 'child_process';
 import fs from 'fs';
 import util from 'util';
 
+const commitName = /^\[[A-Z]{3}-[0-9]{1,5}\].*$/;
+const branchToSkip = 'no branch';
 const cliArguments = process.argv.slice(2);
 const [messageFile] = cliArguments;
-const branchesToSkip = new Set(['main', 'master', 'test', '(no branch)']);
+const branchesToSkip = new Set([
+  'main',
+  'master',
+  'dev',
+  'staging',
+  'test',
+  '(no branch)'
+]);
 
 const exec = util.promisify(childProcessExec);
 
@@ -23,10 +32,15 @@ const getCurrentBranch = async (): Promise<string> => {
   return branch.trim().substring(2);
 };
 
-const isBranchInvalid = (branchName: string) => branchesToSkip.has(branchName);
+const isBranchInvalid = (branchName: string) =>
+  branchesToSkip.has(branchName) || branchName.includes(branchToSkip);
 
 const editCommitMessage = async (messageFile: string) => {
   const message = fs.readFileSync(messageFile, 'utf8').trim();
+
+  if (commitName.test(message)) {
+    return;
+  }
 
   try {
     const branchName = await getCurrentBranch();
