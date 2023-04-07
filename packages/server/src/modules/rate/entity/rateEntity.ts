@@ -9,7 +9,6 @@ import User from 'modules/user/entity/userEntity';
 import Publisher from 'modules/game/entity/publisherEntity';
 import Designer from 'modules/game/entity/designerEntity';
 import Artist from 'modules/game/entity/artistEntity';
-import { RateType } from '../types';
 
 @ObjectType()
 @Entity()
@@ -18,10 +17,9 @@ export default class Rate extends BaseEntity {
     nullable: false,
   })
   @Column({
-    default: 0.0,
-    precision: 3,
-    scale: 1,
-    type: 'decimal',
+    precision: 2,
+    scale: 0,
+    type: 'numeric',
   })
   rate!: number;
 
@@ -29,32 +27,23 @@ export default class Rate extends BaseEntity {
   @ManyToOne(() => User, user => user.rates, { nullable: false })
   user!: User;
 
-  @Field(() => GameEvent)
+  @Field(() => GameEvent, { nullable: true })
   @ManyToOne(() => GameEvent, gameEvent => gameEvent.rates)
   gameEvent!: GameEvent;
 
-  @Field(() => Game)
+  @Field(() => Game, { nullable: true })
   @ManyToOne(() => Game, game => game.rates)
   game!: Game;
 
-  @Field(() => Publisher)
+  @Field(() => Publisher, { nullable: true })
   @ManyToOne(() => Publisher, publisher => publisher.rates)
   publisher!: Publisher;
 
-  @Field(() => Designer)
+  @Field(() => Designer, { nullable: true })
   @ManyToOne(() => Designer, designer => designer.rates)
   designer!: Designer;
 
-  @Field(() => Artist)
+  @Field(() => Artist, { nullable: true })
   @ManyToOne(() => Artist, artist => artist.rates)
   artist!: Artist;
-
-  @Field(() => RateType)
-  @Column({
-    default: RateType.General,
-    enum: RateType,
-    nullable: true,
-    type: 'enum',
-  })
-  type!: RateType;
 }

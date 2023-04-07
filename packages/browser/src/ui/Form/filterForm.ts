@@ -1,4 +1,4 @@
-import { entries, isObject } from 'utils';
+import { entries, isObject, values } from 'utils';
 import { FormData } from './types';
 
 const findDiff = <T>(a: T[], b: T[]) => a.filter((x: T) => !b.includes(x));
@@ -17,7 +17,7 @@ export const filterForm = <T extends FormData>(
         return { ...acc, [key]: value };
       }
     } else if (isObject(value) && isObject(initValue)) {
-      const diff = findDiff(Object.values(value), Object.values(initValue));
+      const diff = findDiff(values(value), values(initValue));
 
       if (diff.length) {
         return { ...acc, [key]: value };

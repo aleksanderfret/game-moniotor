@@ -39,7 +39,6 @@ export const RatingInput = ({
     />
   </RatingBox>
 );
-
 function getDisplayValue<TFormValues>(
   value: UnpackNestedValue<PathValue<TFormValues, Path<TFormValues>>>
 ): number | undefined {
@@ -65,16 +64,18 @@ export function Rating<TFormValues>({
       control={control}
       defaultValue={defaultValue}
       name={name}
-      render={({ field: { onChange, value } }) => (
-        <RatingInput
-          {...rest}
-          name={name}
-          onChange={(_, value) => {
-            onChange(value);
-          }}
-          value={getDisplayValue(value)}
-        />
-      )}
+      render={({ field: { onChange, value } }) => {
+        return (
+          <RatingInput
+            {...rest}
+            name={name}
+            onChange={(_, value) => {
+              onChange(value);
+            }}
+            value={getDisplayValue(value) || null}
+          />
+        );
+      }}
       rules={rules}
       shouldUnregister={shouldUnregister}
     />

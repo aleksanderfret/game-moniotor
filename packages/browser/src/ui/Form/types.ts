@@ -2,6 +2,7 @@ export interface FormData {
   [key: string]:
     | null
     | Date
+    | undefined
     | string
     | number
     | number[]

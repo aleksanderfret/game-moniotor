@@ -12,3 +12,7 @@ export interface Action {
 }
 
 export type Dispatch<T extends Action> = ReactDispatch<T>;
+
+export interface GraphqlNormalize {
+  __typename?: string;
+}

@@ -17,6 +17,7 @@ import Type from './typeEntity';
 import Mechanics from './mechanicsEntity';
 import Designer from './designerEntity';
 import Artist from './artistEntity';
+import Difficulty from './difficultyEntity';
 import Publisher from './publisherEntity';
 import Review from 'modules/review/entity/reviewEntity';
 import Play from 'modules/play/entity/playEntity';
@@ -24,7 +25,7 @@ import GameEvent from 'modules/gameEvent/entity/gameEventEntity';
 import Rate from 'modules/rate/entity/rateEntity';
 import Collection from 'modules/game/entity/collectionEntity';
 import Favorite from 'modules/favorite/entity/favoriteEntity';
-import { OwnStatus, Visibility } from '../enums';
+import { Visibility } from '../enums';
 
 @ObjectType()
 @Entity()
@@ -50,7 +51,7 @@ export default class Game extends BaseEntity {
   title!: string;
 
   @Field({ nullable: true })
-  @Column({ nullable: true, precision: 1, scale: 0, type: 'numeric' })
+  @Column({ nullable: true, precision: 3, scale: 0, type: 'numeric' })
   minTime!: number;
 
   @Field({ nullable: true })
@@ -59,23 +60,7 @@ export default class Game extends BaseEntity {
 
   @Field({ nullable: true })
   @Column({ nullable: true, precision: 3, scale: 0, type: 'numeric' })
-  time!: number;
-
-  @Field({ nullable: true })
-  @Column({ nullable: true, precision: 3, scale: 0, type: 'numeric' })
   age!: number;
-
-  @Field(() => GraphQLISODateTime, { nullable: true })
-  @Column({ nullable: true, type: 'timestamptz' })
-  owned!: Date;
-
-  @Field(() => OwnStatus)
-  @Column({
-    enum: OwnStatus,
-    nullable: true,
-    type: 'enum',
-  })
-  status!: OwnStatus;
 
   @Field(() => Visibility)
   @Column({
@@ -93,15 +78,6 @@ export default class Game extends BaseEntity {
   @Field({ nullable: true })
   @Column({ nullable: true, precision: 3, scale: 0, type: 'numeric' })
   maxPlayers!: number;
-
-  @Field({ nullable: true })
-  @Column({ nullable: true, precision: 3, scale: 0, type: 'numeric' })
-  @JoinTable()
-  players!: number;
-
-  @Field({ nullable: false })
-  @Column({ default: false, nullable: false, type: 'boolean' })
-  private!: boolean;
 
   @Field({ nullable: true })
   @Column({ length: 1000, nullable: true, type: 'varchar' })
@@ -144,12 +120,19 @@ export default class Game extends BaseEntity {
   @OneToMany(() => Rate, rate => rate.game)
   rates!: Rate[];
 
+  @Field(() => Difficulty)
+  @OneToMany(() => Rate, difficulty => difficulty.game)
+  difficulties!: Difficulty[];
+
   @Field(() => Play)
   @OneToMany(() => Play, play => play.game)
   plays!: Play[];
 
   @Field(() => Collection)
-  @OneToMany(() => Collection, collection => collection.game, { cascade: true })
+  @ManyToMany(() => Collection, collection => collection.game, {
+    cascade: true,
+  })
+  @JoinTable()
   collection!: Collection[];
 
   @Field(() => GameEvent)

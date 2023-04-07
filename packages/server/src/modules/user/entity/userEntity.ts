@@ -17,6 +17,7 @@ import Artist from 'modules/game/entity/artistEntity';
 import Rate from 'modules/rate/entity/rateEntity';
 import Review from 'modules/review/entity/reviewEntity';
 import Play from 'modules/play/entity/playEntity';
+import Difficulty from 'modules/game/entity/difficultyEntity';
 import Game from 'modules/game/entity/gameEntity';
 import GameEvent from 'modules/gameEvent/entity/gameEventEntity';
 import Collection from 'modules/game/entity/collectionEntity';
@@ -74,6 +75,10 @@ export default class User extends BaseEntity {
   @Field(() => Rate)
   @OneToMany(() => Rate, rate => rate.user)
   rates!: Rate[];
+
+  @Field(() => Difficulty)
+  @OneToMany(() => Difficulty, difficulty => difficulty.user)
+  difficulties!: Difficulty[];
 
   @Field(() => Designer)
   @OneToOne(() => Designer, designer => designer.user)

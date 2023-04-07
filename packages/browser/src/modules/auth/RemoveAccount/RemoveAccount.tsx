@@ -2,7 +2,7 @@ import React, { FC, FormEvent, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { useRemoveAccountMutation } from './useRemoveAccountMutation';
-import { InputChangeHandler } from 'types/types';
+import { InputChangeHandler } from 'types';
 import { AsyncButton } from 'ui/Button';
 
 const RemoveAccount: FC = () => {

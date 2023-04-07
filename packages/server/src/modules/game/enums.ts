@@ -14,6 +14,7 @@ export enum Visibility {
 }
 
 export enum OwnStatus {
+  Lent = 'lent',
   Owned = 'owned',
   Ordered = 'ordered',
   Founded = 'founded',

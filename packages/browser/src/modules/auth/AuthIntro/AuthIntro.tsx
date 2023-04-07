@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import Box from '@mui/material/Box';
 
-import { ButtonOnClickHandler } from 'types/types';
+import { ButtonOnClickHandler } from 'types';
 import { Path } from 'router';
 import Button from 'ui/Button/Button';
 import { IntroView } from 'ui/View';

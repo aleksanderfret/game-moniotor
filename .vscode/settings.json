@@ -54,7 +54,7 @@
   "prettier.singleQuote": true,
   "prettier.trailingComma": "none",
   "stylelint.useLocal": true,
-  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "typescript.tsdk": "node_modules/typescript/lib",
   "stylelint.configBasedir": "packages\\browser\\node_modules",
   "stylelint.configFile": "packages\\browser\\.stylelintrc.json"
 }

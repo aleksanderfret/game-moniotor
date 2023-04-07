@@ -1,4 +1,5 @@
 import { User } from 'modules/user/types';
+import { GraphqlNormalize } from 'types';
 import { FormData } from 'ui/Form';
 
 export enum Visibility {
@@ -9,38 +10,29 @@ export enum Visibility {
 }
 
 export enum OwnStatus {
+  Lent = 'lent',
   Owned = 'owned',
   Ordered = 'ordered',
   Founded = 'founded',
   WishList = 'wishlist',
 }
 
-export enum Rate {
-  Climate = 'climate',
-  General = 'general',
-  GamePlay = 'gamePlay',
-  Workmanship = 'workmanship',
-}
-
-export interface GameForm extends FormData {
+interface GameCore {
   age: number | null;
-  owned: string | null;
-  players: number[] | null;
+  difficulty: number | null;
+  owned: Date | null;
   premiere: Date | null;
-  rateGeneral: number | null;
-  rateClimate: number | null;
-  rateGamePlay: number | null;
-  rateWorkmanship: number | null;
+  rate: number | null;
   favorite: boolean;
   status: OwnStatus | null;
   subtitle: string | null;
-  time: number[] | null;
   title: string;
   visibility: Visibility | null;
 }
 
-export interface Game extends Omit<GameForm, 'players' | 'time' | 'premiere'> {
+export interface Game extends GameCore, GraphqlNormalize {
   addedBy: User | null;
+  averageDifficulty: number | null;
   averageRating: number | null;
   cover: string | null;
   id: string;
@@ -49,6 +41,35 @@ export interface Game extends Omit<GameForm, 'players' | 'time' | 'premiere'> {
   minPlayers: number | null;
   minTime: number | null;
   players: number | null;
-  premiere: string | null;
   time: number | null;
 }
+
+export interface GameForm extends FormData, GameCore {
+  players: number[] | null;
+  time: number[] | null;
+}
+
+export interface CreateGameInput
+  extends Omit<
+    Partial<Game>,
+    | 'addedBy'
+    | 'averageRating'
+    | 'averageDifficulty'
+    | 'id'
+    | 'title'
+    | 'collection'
+  > {
+  title: string;
+}
+
+export type CreateGameResponse = {
+  createGame: Game;
+};
+
+export interface CreateGameArgs {
+  game: CreateGameInput;
+}
+
+export type GamesResponse = { games: Game[] };
+
+export type GamesArgs = {};

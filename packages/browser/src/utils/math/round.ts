@@ -3,4 +3,5 @@ const round = (number: number, precision = 0): number => {
 
   return Math.round((number + Number.EPSILON) * scale) / scale;
 };
+
 export default round;

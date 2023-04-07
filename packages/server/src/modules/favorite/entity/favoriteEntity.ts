@@ -23,7 +23,7 @@ export default class Favorite extends BaseEntity {
 
   @Field(() => User, { nullable: false })
   @ManyToOne(() => User, user => user.favorites, { nullable: false })
-  user!: User[];
+  user!: User;
 
   @Field(() => GameEvent)
   @ManyToOne(() => GameEvent, gameEvent => gameEvent.favorites)

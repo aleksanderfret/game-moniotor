@@ -2,17 +2,19 @@ query Games {
   games {
     id
     cover
+    difficulty
+    favorite
     subtitle
     title
     minTime
     maxTime
-    time
     age
     minPlayers
     maxPlayers
-    players
     rate
     averageRating
+    averageDifficulty
+    status
     addedBy {
       id
       email
