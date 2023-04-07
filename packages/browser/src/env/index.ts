@@ -3,7 +3,7 @@
 // const PORT = process.env.PORT;
 // const PROTOCOL = process.env.PROTOCOL;
 // const APP_URL = `${PROTOCOL}://${HOST}:${PORT}`;
-const API_URL = 'http://localhost:4000/api';
+const API_URL = 'http://localhost:4001/api';
 
 const environment = {
   API_URL,

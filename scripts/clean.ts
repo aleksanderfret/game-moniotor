@@ -1,19 +1,26 @@
 import fs from 'fs';
 
 const {
+  existsSync,
   promises: { rm }
 } = fs;
 
+const paths = process.argv.slice(2);
 const { cwd } = process;
 
-const dir = `${cwd()}/dist`;
+if (!paths.length) {
+  throw new Error("paths wasn't specified");
+}
 
-const removeDistDirectory = async () => {
+const removeDistDirectory = async (dir: string) => {
+  const path = `${cwd()}/${dir}`;
   try {
-    await rm(dir, { recursive: true });
+    if (existsSync(path)) {
+      await rm(path, { recursive: true });
+    }
   } catch (error) {
     console.error(error);
   }
 };
 
-removeDistDirectory();
+Promise.all(paths.map(path => removeDistDirectory(path)));

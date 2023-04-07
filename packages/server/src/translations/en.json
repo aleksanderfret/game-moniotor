@@ -1,7 +1,7 @@
 {
   "mail.footer.address-label": "Address",
   "mail.footer.contact-label": "Contact",
-  "mail.footer.service-provider": "{app} is a service provided by {COMPANY}",
+  "mail.footer.service-provider": "{app} is a service provided by {company}",
   "mail.register.title": "Confirm registration in Games Room",
   "mail.register.confirm-link": "Confirm registration",
   "mail.register.message": "Hello {email}. Welcome on board. Use the following link to confirm your registration: ",

@@ -1,38 +1,52 @@
-import React, { FC, FormEvent, useState } from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import Box from '@mui/material/Box';
+import { useForm } from 'react-hook-form';
 
-import { InputChangeHandler } from 'types/types';
 import { useForgotPasswordMutation } from './useForgotPasswordMutation';
 import { AsyncButton } from 'ui/Button';
 import Feedback from 'ui/Feedback';
-import Form from 'ui/Form';
-import Input from 'ui/Input';
+import { Form, FormData } from 'ui/Form';
+import { TextField } from 'ui/TextField';
 import { IntroView } from 'ui/View';
 import { AuthControls, AuthHeader } from 'modules/auth/components';
 
-const ResetPassword: FC = () => {
-  const [email, setEmail] = useState('');
+interface ForgotPasswordForm extends FormData {
+  email: string | null;
+}
+
+const formValues: ForgotPasswordForm = {
+  email: '',
+};
+
+const ResetPassword = (): JSX.Element => {
   const [forgotPassword, { data, error, loading }] =
     useForgotPasswordMutation();
+  const {
+    handleSubmit,
+    control,
+    formState: { isValid },
+    getValues,
+  } = useForm({
+    defaultValues: {
+      ...formValues,
+    },
+  });
 
-  const handleEmailChange: InputChangeHandler = event => {
-    setEmail(event.target.value);
-  };
+  const handleForgotPassword = handleSubmit((data: ForgotPasswordForm) => {
+    const { email } = data;
 
-  const handleForgotPassword = async (event: FormEvent): Promise<void> => {
-    event.preventDefault();
-
-    if (!email) {
+    if (!email || !isValid) {
       return;
     }
 
-    await forgotPassword({
+    forgotPassword({
       variables: { email },
     });
-  };
+  });
 
   const isSuccess = data && !error && !loading;
+  const email = getValues('email');
 
   return (
     <IntroView>
@@ -53,12 +67,13 @@ const ResetPassword: FC = () => {
         ) : (
           <Form autoComplete="off" onSubmit={handleForgotPassword}>
             <AuthControls>
-              <Input
+              <TextField
                 autoComplete="off"
+                control={control}
+                disabled={loading}
                 label={<FormattedMessage id="email" />}
-                onChange={handleEmailChange}
+                name="email"
                 type="email"
-                value={email}
               />
               <AsyncButton loading={loading} type="submit">
                 <FormattedMessage id="password.reset" />

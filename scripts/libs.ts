@@ -23,7 +23,7 @@ const cliArguments = process.argv.slice(2);
 const [licenseFile, outputFile, json] = cliArguments;
 const endOfLineMarker = os.EOL;
 const doubleEndOfLineMarker = `${os.EOL}${os.EOL}`;
-const paths = [];
+const paths: string[] = [];
 const targetName =
   outputFile.indexOf('.') < 0 ? outputFile : [outputFile.split('.')];
 const targetFile = `${cwd()}/${targetName}`;

@@ -1,7 +1,10 @@
 export { default as Icon } from './components/Icon';
 export { default as CheckboxIcon } from './components/CheckboxIcon';
 export { default as EventsIcon } from './components/EventsIcon';
+export { default as FavoriteIcon } from './components/FavoriteIcon';
 export { default as HomeIcon } from './components/HomeIcon';
 export { default as GamesIcon } from './components/GamesIcon';
 export { default as PlaysIcon } from './components/PlaysIcon';
+export { default as RadioIcon } from './components/RadioIcon';
+export { default as RadioCheckedIcon } from './components/RadioCheckedIcon';
 export { default as ToolsIcon } from './components/ToolsIcon';

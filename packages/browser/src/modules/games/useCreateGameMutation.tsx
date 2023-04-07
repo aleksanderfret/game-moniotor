@@ -1,20 +1,13 @@
 import { MutationHookOptions, useMutation } from '@apollo/client';
 
-import { Game } from './types';
+import {
+  CreateGameArgs,
+  CreateGameResponse,
+  Game,
+  GamesResponse,
+} from './types';
 import GAMES from './games.graphql';
-import { GamesResponse } from './useGamesQuery';
 import CREATE_GAME from './createGame.graphql';
-
-export type CreateGameResponse = {
-  createGame: Game;
-};
-
-interface CreateGameArgs {
-  game: {
-    title: string;
-  };
-  owned: boolean;
-}
 
 export function useCreateGameMutation(
   baseOptions?: MutationHookOptions<CreateGameResponse, CreateGameArgs>

@@ -1,4 +1,6 @@
-import SendGridMail, { MailDataRequired } from '@sendgrid/mail';
+import nodemailer, { Transporter } from 'nodemailer';
+import { google } from 'googleapis';
+import SMTPTransport from 'nodemailer/lib/smtp-transport';
 
 import environment from 'env/environment';
 import {
@@ -6,7 +8,6 @@ import {
   MessageData,
   ResetPasswordMail,
   Send,
-  SendMailResult,
   SignUpMail,
 } from './types';
 import EmailTemplate from './enums';
@@ -15,14 +16,42 @@ import RemoveAccountConfirmation from './templates/RemoveAccountConfirmation';
 import ResetPasswordConfirmation from './templates/ResetPasswordConfirmation';
 import createMessage from './createMessage';
 
-const { SENDER_EMAIL, SENDGRID_API_KEY } = environment;
-
-SendGridMail.setApiKey(SENDGRID_API_KEY);
-
+const {
+  GOOGLE_API_USER,
+  GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET,
+  GOOGLE_REFRESH_TOKEN,
+  SENDER_EMAIL,
+} = environment;
 const templates = {
   [EmailTemplate.SignUp]: SignUpConfirmation,
   [EmailTemplate.RemoveAccount]: RemoveAccountConfirmation,
   [EmailTemplate.ResetPassword]: ResetPasswordConfirmation,
+};
+
+const { OAuth2 } = google.auth;
+const client = new OAuth2(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET);
+client.setCredentials({ refresh_token: GOOGLE_REFRESH_TOKEN });
+
+const getMailer = async (): Promise<
+  Transporter<SMTPTransport.SentMessageInfo>
+> => {
+  const { token } = await client.getAccessToken();
+  const accessToken = token ? token : '';
+
+  const mailer = nodemailer.createTransport({
+    auth: {
+      accessToken,
+      clientId: GOOGLE_CLIENT_ID,
+      clientSecret: GOOGLE_CLIENT_SECRET,
+      refreshToken: GOOGLE_REFRESH_TOKEN,
+      type: 'OAUTH2',
+      user: GOOGLE_API_USER,
+    },
+    service: 'gmail',
+  });
+
+  return mailer;
 };
 
 const sendMessage =
@@ -34,16 +63,16 @@ const sendMessage =
     return send(createMessage(mailTemplate(data)));
   };
 
-const send = async (messageData: MessageData): SendMailResult => {
+const send = async (messageData: MessageData) => {
   const { recipient, subject, html } = messageData;
-  const message: MailDataRequired = {
+  const mailer = await getMailer();
+
+  return mailer.sendMail({
     from: SENDER_EMAIL,
     html,
     subject,
     to: recipient,
-  };
-
-  return SendGridMail.send(message);
+  });
 };
 
 const sendMail = sendMessage(send);

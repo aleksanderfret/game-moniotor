@@ -135,6 +135,8 @@ export class AuthResolver {
       { activeAt: new Date(), status: Status.Active }
     );
 
+    await Token.delete({ id: tokenId });
+
     return true;
   }
 
@@ -347,8 +349,6 @@ export class AuthResolver {
       throw new Error('Account Not Active');
     }
 
-    // eslint-disable-next-line no-console
-    console.log(createRefreshToken(id, tokenVersion));
     sendRefreshToken(res, createRefreshToken(id, tokenVersion));
 
     return {

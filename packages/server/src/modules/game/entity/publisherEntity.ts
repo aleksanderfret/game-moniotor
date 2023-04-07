@@ -12,6 +12,8 @@ import { ObjectType, Field } from 'type-graphql';
 import BaseEntity from 'db/baseEntity';
 import Game from 'modules/game/entity/gameEntity';
 import Address from 'modules/address/entity/addressEntity';
+import Rate from 'modules/rate/entity/rateEntity';
+import Favorite from 'modules/favorite/entity/favoriteEntity';
 
 @ObjectType()
 @Entity()
@@ -33,4 +35,12 @@ export default class Publisher extends BaseEntity {
   @Field({ nullable: true })
   @Column({ length: 256, nullable: true, type: 'varchar' })
   logo!: string;
+
+  @Field(() => Rate)
+  @OneToMany(() => Rate, rate => rate.publisher)
+  rates!: Rate[];
+
+  @Field(() => Favorite)
+  @OneToMany(() => Favorite, favorite => favorite.publisher)
+  favorites!: Favorite[];
 }

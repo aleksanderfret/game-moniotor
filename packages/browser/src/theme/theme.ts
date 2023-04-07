@@ -71,6 +71,7 @@ const createCustomTheme = (): ThemeOptions => {
   };
 
   const sizes = {
+    xxxxs: '0.0625rem', // 1px
     xxxs: '0.125rem', // 2px
     xxs: '0.25rem', // 4px
     xs: '0.5rem', // 8px
@@ -141,7 +142,7 @@ const createCustomTheme = (): ThemeOptions => {
       fontSize: 16,
       fontFamily: 'Montserrat, sans-serif',
       h1: {
-        fontSize: fontSizes.super,
+        fontSize: them.super,
         fontWeight: fontWeight.bold,
         lineHeight: 1.45,
       },

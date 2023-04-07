@@ -12,9 +12,10 @@ const Feedback: FC<FeedbackProps> = ({
   message,
   severity = 'error',
 }) => (
-  <Alert security={severity}>
+  <Alert severity={severity}>
     {header && <AlertTitle>{header}</AlertTitle>}
     {message}
   </Alert>
 );
+
 export default Feedback;

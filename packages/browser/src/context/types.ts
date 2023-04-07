@@ -5,7 +5,7 @@ export enum Theme {
   Light = 'Light',
 }
 
-export type Locale = 'en' | 'pl';
+export type Locale = 'en-GB' | 'pl';
 
 export enum ActionTypes {
   SetIsAuthenticated = 'APP/UPDATE_IS_AUTHENTICATED',

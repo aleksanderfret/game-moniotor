@@ -1,11 +1,7 @@
 import { QueryHookOptions, useQuery } from '@apollo/client';
 
-import { Game } from 'modules/games/types';
+import { GamesArgs, GamesResponse } from './types';
 import GAMES from './games.graphql';
-
-export type GamesResponse = { games: Game[] };
-
-type GamesArgs = {};
 
 function useGamesQuery(
   baseOptions?: QueryHookOptions<GamesResponse, GamesArgs>

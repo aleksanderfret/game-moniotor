@@ -1,3 +1,4 @@
+import { round } from 'utils';
 import normalizeHexColor from './normalizeHexColor';
 import {
   BreakpointValues,
@@ -31,13 +32,13 @@ export const transition = (...properties: string[]): Transition => ({
 export const alpha = (color: string, opacity: number): string => {
   const hexColor = normalizeHexColor(color);
 
-  const normalizedOpacity = Math.round(
+  const normalizedOpacity = round(
     opacity > -1 && opacity < 1 ? opacity * 100 : opacity
   );
 
   const validOpacity = Math.max(Math.min(normalizedOpacity, 100), 0);
 
-  let hexOpacity = validOpacity.toString(16);
+  let hexOpacity = round((255 * validOpacity) / 100).toString(16);
   hexOpacity = hexOpacity.length === 1 ? `0${hexOpacity}` : hexOpacity;
 
   return `${hexColor}${hexOpacity}`;
@@ -53,7 +54,7 @@ export const tint = (color: string, amount: number): string => {
   const tint = components
     .map((component: string) => {
       const intColor = parseInt(component, 16);
-      const updatedComponent = Math.round(
+      const updatedComponent = round(
         Math.min(Math.max(0, intColor + luminosity), 255)
       ).toString(16);
 

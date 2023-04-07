@@ -12,7 +12,6 @@ import { ObjectType, Field, GraphQLISODateTime } from 'type-graphql';
 import BaseEntity from 'db/baseEntity';
 import Game from 'modules/game/entity/gameEntity';
 import User from 'modules/user/entity/userEntity';
-import Rate from 'modules/rate/entity/rateEntity';
 import Address from 'modules/address/entity/addressEntity';
 import GameEvent from 'modules/gameEvent/entity/gameEventEntity';
 
@@ -59,10 +58,6 @@ export default class Play extends BaseEntity {
   @Field(() => Address)
   @OneToMany(() => Address, address => address.plays)
   address!: Address;
-
-  @Field(() => Rate)
-  @OneToMany(() => Rate, rate => rate.play)
-  rates!: Rate;
 
   @Field({ nullable: true })
   @Column({

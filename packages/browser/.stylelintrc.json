@@ -9,6 +9,7 @@
     "color-hex-case": "lower",
     "color-hex-length": "long",
     "declaration-block-no-duplicate-properties": true,
+    "declaration-block-trailing-semicolon": null,
     "declaration-colon-newline-after": null,
     "declaration-colon-space-after": null,
     "function-comma-newline-after": null,
